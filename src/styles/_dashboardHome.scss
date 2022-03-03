@@ -1,0 +1,318 @@
+.home{
+    background: $color-secondary;
+    height: auto;
+
+.welcome-div{
+        background-color: $color-primary;
+        background-image: url('../assets/logomark.svg');
+        background-position: 104%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        padding: 38px 64px;
+
+         @media only screen and (max-width: 662px){
+                padding: 28px 18px;
+        }
+
+        &_message{
+            width: 602px;
+
+            @media only screen and (max-width: 662px){
+               width: 100%;
+            }
+
+            .title{
+                font-family: Rubik;
+                font-size: 28px;
+                font-weight: 400;
+                line-height: 33px;
+                text-align: left;
+                color: white;
+                display: flex;
+                align-items: flex-start;
+
+                .username{
+                    font-family: Rubik;
+                    font-size: 28px;
+                    font-weight: 700;
+                    line-height: 33px;
+                    text-align: left;
+                    color: white;
+                }
+
+                .message-icon{
+                    margin: 0 16px;
+                }
+            }
+
+            .text{
+                margin: 10px 0;
+                color: #E1E7EC;
+                line-height: 22px;
+                font-size: 16px;
+                font-family: $font-circular;
+                font-weight: 400;
+            }
+        }
+
+}
+
+.home-container{
+        max-width: 1280px;
+
+         @media only screen and (min-width: 677px) and (max-width: 1074px) {
+            width: 90%;
+        }
+
+        @media only screen and (max-width: 676px) {
+            width: 100%;
+            padding: 24px 18px 32px;
+        }
+
+    .get-started{
+    background: rgba(255, 246, 237, 1);
+    margin: 32px 0;
+    border-radius: 3px;
+    border: 1px solid rgba(255, 208, 161, 1);
+    padding: 32px 32px 36px;
+
+     @media only screen and (max-width: 500px){
+          padding: 16px;
+        }
+
+    .getting_started{
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+
+         @media only screen and (max-width: 594px){
+          flex-direction: column;
+        }
+
+        @media only screen and (max-width: 1024px){
+          margin-top: 24px;
+        }
+
+    }
+    &_container{
+        display: flex;
+        flex-direction: column;
+
+         @media only screen and (min-width: 780px){
+          margin-right: 132px;
+        }
+
+        @media only screen and (max-width: 594px){
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .infoo{
+             @media only screen and (min-width: 360px) and (max-width: 594px){
+                margin-right: 32px !important;
+            }
+            @media only screen and (max-width: 360px){
+                margin-right: 16px !important;
+            }
+
+        &_title{
+            color: #212934;
+            font-size: 18px;
+            font-family: $font-rubik;
+            font-weight: 700;
+            margin: 8px 0;
+        }
+
+        &_subtitle{
+            color: #5F6B7A;
+            line-height: 20px;
+            margin: 8px 0;
+            font-family: $font-circular;
+            width: 196px;
+        }
+        }
+       
+    }
+
+    &_steps{
+        width: auto;
+        font-family: $font-circular;
+
+        .complete{
+            font-size: 14px;
+            color: #5F6B7A;
+            font-family: $font-circular;
+            font-weight: 400;
+        }
+
+         .step-stat-done{
+                width: 43px;
+                height: 18px;
+                padding: 4px;
+                margin: 0 12px;
+                color: #5F6B7A;
+                border: 1px solid rgba(95, 107, 122, 1);
+                border-radius: 30px;
+                font-size: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                 @media only screen and (max-width: 649px){
+                    margin-left: 0 !important;
+                }
+            }
+
+        .step{
+            display: flex;
+            align-items: center;
+            margin: 16px 0;
+            &-stat{
+                width: 43px;
+                height: 18px;
+                padding: 4px;
+                margin: 0 12px;
+                color: $color-primary;
+                background: $color-accent;
+                border-radius: 30px;
+                font-size: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+
+                @media only screen and (max-width: 649px){
+                    margin-left: 0 !important;
+                }
+                @media only screen and (max-width: 343px){
+                    width: auto;
+                    height: auto;
+                }
+            }
+
+            &-info{
+                margin: 0 12px 0 0;
+                color: #212934;
+                font-size: 14px;
+                font-family: $font-circular;
+                font-weight: 400;
+            }
+        }
+        
+        
+    }
+
+    .checkbox{
+        
+        input[type='checkbox']{
+            height: 18px;
+            width: 18px;
+            border-radius: 4px;
+            border: 1px solid rgba(225, 231, 236, 1);
+            background-color: white !important;
+        }
+
+        &-info{
+            font-family: $font-rubik;
+            color: #212934;
+            font-size: 12px;
+            margin: 0 12px;
+            font-weight: 400;
+            }
+        }
+}
+
+}
+
+.user-details{
+   
+    &_container{
+        width: 421px;
+        height: 200px;
+        border-radius: 8px;
+        background: white;
+        margin-bottom: 120px;
+        padding: 16px 32px 26px;
+
+         @media only screen and (min-width: 1025px) and (max-width: 1074px) {
+           height: 250px;
+        }
+        @media only screen and (min-width: 501px) and (max-width: 1024px) {
+           margin-bottom: 23px;
+           height: 200px;
+            margin-right: 0 !important;
+        }
+
+         @media only screen and (max-width: 639px) {
+            width: 100%;
+            margin-right: 0 !important;
+            margin-bottom: 16px;
+            height: auto;
+        }
+
+
+        .type{
+            color: #212934;
+            display: flex;
+            align-items: center;
+            margin: 16px 0;
+            font-family: $font-circular;
+            font-weight: 400;
+            p{
+                margin-right: 12px;
+            }
+        }
+
+        .balance-container{
+            margin: 0 0 16px;
+
+            .balance{
+                font-size: 24px;
+                font-family: $font-rubik;
+                font-weight: 700;
+                color: $color-primary;
+            }
+
+            .rates{
+                color: #8895A7;
+                font-family: $font-circular;
+                font-weight: 400;
+                margin: 8px 0;
+            }
+        }
+
+        .percentage-increase{
+            color: $color-accent;
+            font-family: $font-circular;
+            font-weight: 400;
+            margin-right: 4px;
+        }
+
+        .flight-booked{
+            color: #212934;
+            font-family: $font-circular;
+            font-weight: 400;
+
+            .book{
+                margin: 8px 0;
+
+            .booked{
+                margin-right: 8px;
+                font-size: 18px;
+                color: $color-primary;
+                font-weight: 700;
+                font-family: $font-rubik;
+            }
+
+            .aero-token{
+                color: #8895A7;
+                font-family: $font-circular;
+                font-weight: 400;
+                font-size: 14px;
+            }
+        }
+    }
+
+    }
+}
+}

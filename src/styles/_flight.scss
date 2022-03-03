@@ -1,0 +1,629 @@
+.flight{
+    background: $color-secondary;
+    padding: 64px;
+    height: 100%;
+
+    &-container{
+    max-width: 1280px;
+    margin: 0 auto;
+
+    &-navs{
+         width: 827px;
+         margin-bottom: 32px;
+        
+    .search-table{
+        height: 48px;
+        width: 340px;
+        border-radius: 4px;
+        padding: 12px 8px 12px 12px;
+        display: flex;
+        align-items: center;
+        background: white;
+
+        input{
+            width: 100%;
+            border: none;
+            font-family: $font-rubik;
+            color: #B8C4CE;
+
+            &:focus{
+                outline: none !important;
+                border: none !important;
+                box-shadow: none;
+            }
+
+            &::placeholder{
+                color: #B8C4CE;
+            }
+        }
+    }
+
+    .filter-table{
+        height: 48px;
+        width: 210px;
+        border-radius: 4px;
+        padding: 12px 16px;
+        background: white;
+        margin: 0 16px;
+
+        .filter-name{
+            color: #212934;
+            font-size: 14px;
+            font-family: $font-circular;
+        }
+
+        .filter-dropdown{
+            width: 213px;
+            border-radius: 6px;
+            background: white;
+            border: 1px solid rgba(245, 248, 250, 1);
+            box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
+            
+            li{
+                font-family: $font-rubik;
+                font-weight:400;
+                font-size: 14px;
+                display: flex;
+                color: #5F6B7A;
+                align-items: center;
+
+                &:hover{
+                    background: #F0FFFC;
+                }
+
+                button{
+                    padding: 12px 16px;
+                    margin: 0 8px;
+                }
+            }
+
+        }
+    }
+
+    .book-button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 16px;
+        width: 255px;
+        height: 48px;
+        border: 1px solid $color-accent;
+        box-shadow: 0px 2px 4px 0px rgba(6, 10, 51, 0.05);
+        border-radius: 6px;
+        color: $color-primary;
+        font-family: $font-rubik;
+        font-weight: 500;
+        transition: .4s ease-in-out;
+
+        &:hover{
+            background: $color-accent;
+
+        }
+    }
+    }
+
+    &_information{
+        width: 827px;
+        margin-right: 37px;
+
+        &-list{
+            box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
+            margin-bottom: 94px;
+
+            .warning{
+                display: flex;
+                align-items: flex-start;
+                padding: 8px 24px;
+                height: 34px;
+                background: #FFF6ED;
+                border: 1px solid #FCE3B9;
+                border-radius: 4px;
+                margin-bottom: 16px;
+
+                    p{
+                        font-family: $font-circular;
+                        font-weight: 400;
+                        font-size: 14px;
+                        color: #212934;
+                        margin-left: 10px;
+                    }
+            }
+            .header{
+                padding: 32px;
+                border-radius: 8px 8px 0 0;
+                background: #212934;
+                height: 56px;
+                color: white;
+                font-family: $font-rubik;
+                font-weight: 500;
+                font-size: 14px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .flight-type{
+                    display: flex;
+                    align-items: center;
+                    padding: 6px 12px;
+                    height: 29px;
+                    background-color: #212934 !important;
+                    border-radius: 8px;
+                }
+            }
+
+            .section{
+                 .body{
+
+                .info{
+                    padding: 32px;
+                    background: $color-secondary;
+                    height: 42px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    color: $color-primary;
+                    font-family: $font-rubik;
+                    font-weight: 400;
+                    font-size: 14px;
+                }
+
+                &-flight_details{
+                    background: white;
+                    padding: 24px 32px;
+                    display: flex;
+                    align-items: flex-start;
+
+                    .airline-logo{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 16px 10px;
+                        width: 96px;
+                        height: 64px;
+                        border: 1px solid #E1E7EC;
+                        border-radius: 12px;
+                    }
+
+                    .departure-time, .arrival-time{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        width: 156px;
+                        margin-left: 40px;
+
+                        .time{
+                            font-family: $font-rubik;
+                            font-weight: 700;
+                            font-size: 24px;
+                            color: black;
+                            margin-bottom: 8px;
+                        }
+
+                        .location{
+                            font-family: $font-rubik;
+                            font-weight: 400;
+                            font-size: 14px;
+                            color: black;
+                            margin-bottom: 8px;
+                        }
+
+                        .airport{
+                            font-family: $font-circular;
+                            font-weight: 400;
+                            font-size: 10px;
+                            color: #8895A7;
+                        }
+                    }
+
+                    .hours{
+                        margin: 0 32px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        font-family: $font-circular;
+                        font-weight: 400;
+                        font-size: 10px;
+                        color: #8895A7;
+                    }
+
+                    .flight-cabin-economy{
+                        @extend .flight-cabin;
+                        background: #FCC5CE;
+                        border: 0.5px solid #F99BAB;
+                        color: #AD283D;
+                    }
+
+                    .flight-cabin-business{
+                        @extend .flight-cabin;
+                        background: #DDEFFF;
+                        border: 0.5px solid #ACD7FF;
+                        color: #0059AC;
+                    }
+
+                    .flight-cabin-premium-eco{
+                        @extend .flight-cabin;
+                        color: #158957;
+                        background: #C4EFDF;
+                        border: 0.5px solid #9BDFC4;
+                        width: 15% !important;
+                        
+                    }
+                }
+            }
+            }
+
+            .flight-checkout{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 32px;
+                height: 72px;
+                background: $color-secondary;
+                border-radius: 0px 0px 8px 8px;
+
+                p{
+                    font-family: Rubik;
+                    font-weight: 400;
+                    font-size: 14px;
+                    color: #060A33;
+
+                    span{
+                        font-family: Circular;
+                        font-weight: 400;
+                        font-size: 14px;
+                        color: #5F6B7A;
+                    }
+                }
+
+                .cancel-button{
+                    height: 42px;
+                    margin-right: 16px;
+                    font-family: $font-rubik;
+                    font-weight: 500;
+                    font-size: 14px;
+                    color: #060A33;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 15px 16px;
+                    border: 1px solid $color-accent;
+                    box-shadow: 0px 2px 4px 0px rgba(6, 10, 51, 0.05);
+                    border-radius: 6px;
+                }
+
+                .checkIn-button{
+                    height: 42px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 15px 16px;
+                    background: $color-accent;
+                    box-shadow: 0px 2px 4px rgba(6, 10, 51, 0.05);
+                    border-radius: 6px;
+                    font-family: $font-rubik;
+                    font-weight: 500;
+                    font-size: 14px;
+                    color: #060A33;
+                }
+
+                .refund-claim{
+                    height: 24px;
+                    border-radius: 18px;
+                    padding: 4px 8px;
+                    background: #E1E7EC;
+
+                    p{
+                        font-family: $font-circular;
+                        font-weight:400;
+                        font-size: 12px;
+                        display: flex;
+                        align-items: center;
+                        color: #5F6B7A;
+                    }
+
+                }
+            }
+           
+        }
+    }
+
+    &_history{
+        &_title{
+            font-family: $font-circular;
+            font-weight: bold;
+            font-size: 18px;
+            color: #060A33;
+            margin-bottom: 16px;
+
+        }
+
+        &-container{
+            background-color: white;
+            width: 312px;
+            height: auto;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
+
+            
+
+            .flight-history_item{
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                height: 69px;
+                border-radius: 8px;
+                padding: 16px;
+                border: 1px solid rgba(245, 248, 250, 1);
+                margin-bottom: 10px;
+
+                &-list{
+                     &-places{
+                        font-family: $font-rubik;
+                        font-weight: 400;
+                        font-size: 14px;
+                        color: #060A33;
+                        margin-bottom: 5px;
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    &-date{
+                        font-family: $font-circular;
+                        font-weight: 400;
+                        font-size: 12px;
+                        color: #8895A7;
+
+                    }
+                }
+               
+
+            }
+        }
+    }
+}
+}
+
+.flight-cabin{
+    margin: 0 40px;
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    width: 68px;
+    height: 22px;
+    border-radius: 100px;
+    font-family: $font-rubik;
+    font-weight: 400;
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+.checkin{
+    width: 392px;
+    background: white;
+
+    .checkin-header{
+        display: flex;
+        background: $color-secondary;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 24px;
+
+        .title{
+            font-family: $font-rubik;
+            font-size: 18px;
+            color: $color-primary;
+            font-weight: 500;
+        }
+    }
+
+    .checkinmodal-container{
+         padding: 16px 32px 32px;
+         box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.04);
+
+             .subtitle{
+                width: 328px;
+                color: #5F6B7A;
+                font-family: $font-circular;
+                font-weight: 400;
+                margin-bottom: 23px;
+                font-size: 14px;
+            }
+
+            .checkin-btn{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: $color-accent;
+                font-family: $font-rubik;
+                color: $color-primary;
+                font-weight: 500;
+                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+                height: 48px;
+                padding: 15px 16px;
+                border-radius: 6px;
+                margin-bottom: 16px;
+            }
+
+            .cancelFlight-btn{
+                @extend .checkin-btn;
+                background: #D62F4B;
+                color: white;
+                margin-top: 23px;
+            }
+
+            .refund-btn{
+                @extend .checkin-btn;
+                margin-top: 23px;
+            }
+
+            .cancel-btn{
+                background: #F5F8FA;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: $font-rubik;
+                color: #212934;
+                font-weight: 500;
+                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+                height: 48px;
+                padding: 15px 16px;
+                border-radius: 6px;
+            }
+
+            .cancel-label{
+                &_title{
+                    margin-bottom: 8px;
+                    font-family: $font-rubik;
+                    font-weight: 400;
+                    color: #212934;
+                }
+
+                textarea{
+                    width: 328px;
+                    padding: 10px 16px 10px 12px;
+                    border: 1px solid #E1E7EC;
+                    font-family: $font-rubik;
+                    font-weight: 400;
+                    font-size: 14px;
+                    color: #212934;
+
+                    &::placeholder{
+                        color: #B8C4CE;
+                    }
+
+                    &:focus{
+                        border: 1px solid #E1E7EC;
+                        outline: none;
+                        box-shadow: none;
+                    }
+                }
+
+                .refund-input{
+                    input{
+                        padding: 10px 16px 10px 12px;
+                        border: 1px solid #E1E7EC;
+                        font-family: $font-rubik;
+                        font-weight: 400;
+                        font-size: 14px;
+                        color: #212934;
+                    }
+                }
+
+            }
+       
+    }
+
+}
+
+.clicked{
+    border: 1px solid $color-accent !important;
+    box-shadow: 0px 0px 0px 5px rgba(34, 224, 187, 0.35) !important;
+    border-radius: 6px !important;
+}
+
+.unclicked{
+    border:none !important;
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05) !important;
+    border-radius: none !important;
+}
+
+.refund{
+    width: 485px;
+    background: white;
+
+    .refund-header{
+        display: flex;
+        background: $color-secondary;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 24px;
+
+        .title{
+            font-family: $font-rubik;
+            font-size: 18px;
+            color: $color-primary;
+            font-weight: 500;
+        }
+
+    }
+
+    .refundmodal-container{
+         padding: 16px 32px 32px;
+         box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.04);
+
+             .subtitle{
+                width: 418px;
+                color: #5F6B7A;
+                font-family: $font-circular;
+                font-weight: 400;
+                margin-bottom: 23px;
+                font-size: 14px;
+            }
+
+            .refund-btn{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: $color-accent;
+                font-family: $font-rubik;
+                color: $color-primary;
+                font-weight: 500;
+                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+                height: 48px;
+                padding: 15px 16px;
+                border-radius: 6px;
+                margin: 23px 0;
+            }
+
+            .cancel-label{
+                &_title{
+                    margin-bottom: 8px;
+                    font-family: $font-rubik;
+                    font-weight: 400;
+                    color: #212934;
+                }
+
+                .refund-input{
+                    input{
+                        padding: 10px 16px 10px 12px;
+                        border: 1px solid #E1E7EC;
+                        font-family: $font-rubik;
+                        font-weight: 400;
+                        font-size: 14px;
+                        color: #212934;
+                        border-radius: 6px;
+                        width: 100%;
+                    }
+                }
+
+                 .refund-input-2{
+                      @extend .refund-input;
+                    input{
+                       width: 100%;
+                    }
+                }
+
+            }
+
+             .refund-subSubtitle{
+                    font-family: $font-circular;
+                    font-weight: 400;
+                    font-size: 12px;
+                    text-align: center;
+                    letter-spacing: 0.01em;
+                    color: #5F6B7A;
+            }
+       
+    }
+
+}
+
+.bg-gray-input{
+    background: #F5F8FA;
+}

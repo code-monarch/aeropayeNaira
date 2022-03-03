@@ -1,0 +1,24 @@
+// fonts
+$font-mulish: 'Mulish', sans-serif;
+$font-rubik: 'Rubik', sans-serif;
+$font-ibm: 'IBM Plex Mono', monospace;
+$font-circular: 'Circular', sans-serif;
+// colors
+$color-accent: #22E0BB;
+$color-primary: #060A33;
+$color-secondary: #F7FAFC;
+
+body{
+    background-color: white;
+}
+
+input{
+    border: none;
+    padding: 0 !important;
+
+    &:focus{
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+}

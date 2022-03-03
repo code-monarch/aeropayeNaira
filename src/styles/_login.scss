@@ -1,0 +1,236 @@
+.login{
+    background: $color-secondary;
+    padding-top: 64px;
+    padding-bottom: 50px;
+
+
+    &-container{
+        width: 500px;
+        margin: 32px auto;
+        border-radius: 8px;
+        padding: 32px;
+        background: #FFFFFF;
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.04);
+
+        @media only screen and (max-width: 500px) {
+                width: 90%;
+        }
+        .title{
+            font-family: $font-rubik;
+            font-weight: 500;
+            font-size: 18px;
+            color: $color-primary;
+            margin: 10px 0;
+        }
+
+        .subtitle-1{
+            font-size: 14px;
+            font-family: $font-mulish;
+            font-weight: 400;
+            color: #5F6B7A;
+            margin: 8px 0;
+        }
+
+        .error-message{
+            font-size: 14px;
+            font-family: $font-mulish;
+            font-weight: 400;
+            color: red;
+            margin: 8px 0;
+        }
+
+        .line{
+            height: 0.5px;
+            background:#E1E7EC;
+            margin: 16px 0;
+            width: 100%;
+        }
+
+        .error-line{
+            height: 0.5px;
+            background: red;
+            margin: 16px 0;
+            width: 100%;
+        }
+
+        &_email{
+            width: 100%;
+            margin-bottom: 23px;
+            .label{
+                font-family: $font-rubik;
+                font-weight: 400;
+                font-size: 16px;
+                margin: 8px 0;
+                color: #212934;
+            }
+
+            label{
+                height: 48px;
+                width: 100%;
+                border-radius: 6px;
+                padding: 10px 16px 10px 12px;
+                border: 1px solid rgba(225, 231, 236, 1);
+
+                input{
+                    width: 100%;
+                    font-family:$font-rubik;
+                    font-weight: 400;
+                    color: #212934;
+
+                    &:focus{
+                        outline: none;
+                    }
+                }
+            }
+
+            .forgot-password{
+                font-family: $font-rubik;
+                color: $color-primary;
+                font-weight: 500;
+                font-size: 12px;
+                margin: 12px 0;
+            }
+            
+        }
+
+        &_captcha{
+            height: 56px;
+            width: 100%;
+            border-radius: 2px;
+            background: #FCFCFE;
+            border: 1px solid #E1E7EC;
+            padding: 10px;
+            margin-bottom: 23px;
+
+            label{
+                p{
+                    margin: 0 8px;
+                    color: #0B0B0B;
+                    font-size: 12px;
+                    font-family: 'Roboto', sans-serif;
+                }
+                input[type="checkbox"]{
+                    height: 18px;
+                    width: 18px;
+
+                    &:before{
+                        background-color: $color-accent;
+                        border: $color-accent;
+                    }
+                }
+            }
+        }
+
+        &_login{
+            height: 48px;
+            width: 100%;
+            border-radius: 6px;
+            padding: 15px 16px;
+            background: $color-accent;
+            color: $color-primary;
+            font-family: $font-rubik;
+            font-weight: 500;
+        }
+
+        &_login-2{
+            height: 48px;
+            width: 100%;
+            border-radius: 6px;
+            padding: 15px 16px;
+            background: $color-primary;
+            color: white;
+            font-family: $font-rubik;
+            font-weight: 500;
+        }
+
+        &-code{
+            margin: 23px 0;
+
+            input{
+                height: 48px;
+                width: 48px;
+                padding: 10px 16px;
+                border: 1px solid #E1E7EC;
+                border-radius: 6px;
+                background-color: white;
+                margin: 0 8px;
+                font-family: $font-rubik;
+                color: #212934;
+
+                &:focus{
+                    outline: none;
+                }
+            } 
+            
+        }
+    }
+    &-subtitle{
+        font-family: $font-mulish;
+        color: #212934;
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 60px;
+
+        .login-link{
+            font-family: $font-rubik;
+            font-weight: 500;
+            color: $color-primary;
+        }
+    }
+
+    &-subtitle-3{
+        font-family: $font-mulish;
+        color: #212934;
+        font-size: 14px;
+        text-align: center;
+        margin-top: 23px;
+
+        .login-link{
+            font-family: $font-rubik;
+            font-weight: 500;
+            color: $color-primary;
+        }
+    }
+
+    &-text{
+        font-family: $font-rubik;
+        font-weight: 500;
+        color: $color-primary;
+        font-size: 14px;
+        text-align: center;
+        margin-top: 23px;
+    }
+    
+    &-footer-link{
+        font-family: $font-rubik;
+        font-size: 14px;
+        font-weight: 400;
+        color: #5F6B7A;
+       
+
+        &_item{
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    }
+
+    .password-footer-link{
+        margin-top: 12rem;
+        font-family: $font-rubik;
+        font-size: 14px;
+        font-weight: 400;
+        color: #5F6B7A;
+       
+
+        &_item{
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    }
+}
+
+.clicked{
+    border: 1px solid $color-accent !important;
+    box-shadow: 0px 0px 0px 3px rgba(34, 224, 187, 0.35) !important;
+    border-radius: 6px !important;
+}

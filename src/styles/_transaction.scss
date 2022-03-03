@@ -1,0 +1,213 @@
+.table_contain{
+     background: #F7FAFC;
+     height: 100vh;
+      padding: 64px;
+
+       @media only screen and (max-width: 644px) {   
+          padding: 30px 18px;
+      }
+    .table-container{
+      max-width: 1280px;
+      margin: 0 auto;
+      
+    .search-table{
+        height: 48px;
+        width: 340px;
+        border-radius: 4px;
+        padding: 12px 8px 12px 12px;
+        display: flex;
+        align-items: center;
+        background: white;
+
+        input{
+            width: 100%;
+            border: none;
+            font-family: $font-rubik;
+            color: #B8C4CE;
+
+            &:focus{
+                outline: none !important;
+                border: none !important;
+                box-shadow: none;
+            }
+
+            &::placeholder{
+                color: #B8C4CE;
+            }
+        }
+    }
+
+    .filter-table{
+        height: 48px;
+        width: 200px;
+        border-radius: 4px;
+        padding: 12px 16px;
+        background: white;
+
+        .filter-name{
+            color: #212934;
+            font-size: 14px;
+            font-family: $font-circular;
+        }
+
+        .filter-dropdown{
+            width: 213px;
+            border-radius: 6px;
+            background: white;
+            border: 1px solid rgba(245, 248, 250, 1);
+            box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
+            
+            li{
+                font-family: $font-rubik;
+                font-weight:400;
+                font-size: 14px;
+                display: flex;
+                color: #5F6B7A;
+                align-items: center;
+
+                &:hover{
+                    background: #F0FFFC;
+                }
+
+                button{
+                    padding: 12px 16px;
+                    margin: 0 8px;
+                }
+            }
+
+        }
+    }
+
+// .scroll-table{
+//     overflow-x: scroll;
+
+//     &::-webkit-scrollbar {
+//     width: 10px;
+//     }
+
+//     &::-webkit-scrollbar-track {
+//         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+//         border-radius: 5px;
+//     }
+
+//     &::-webkit-scrollbar-thumb {
+//         border-radius: 5px;
+//         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+//     }
+      
+// }
+
+  .table{
+
+    &-head{
+        background: rgba(33, 41, 52, 1);
+        font-family: $font-rubik;
+        font-weight: 600;
+        font-size: 12px;
+        padding: 12px 14px;
+        height: 48px;
+
+        &_item{
+            color: white;
+        }
+    }
+
+    &-body{
+        height: 48px;
+        padding: 14px 0;
+
+        &_items{
+        color: #212934;
+        font-weight: 500;
+        font-family: $font-circular;
+        padding: 0 24px;
+        
+        .rates{
+            font-size: 12px;
+            color: #8895A7;
+            font-weight: 400;
+            font-family: $font-circular;
+            margin: 2px 0;
+        }
+            .status-completed{
+            background: #C4EFDF;
+            border-radius: 18px;
+            padding: 4px 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 77px;
+            height: 24px;
+            color: #158957;
+            font-size: 12px;
+            font-weight: 400;
+            font-family: $font-circular;
+        }
+
+          .status-pending{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 4px 8px;
+            width: 60px;
+            height: 24px;
+            background: #FFF0DB;
+            border-radius: 18px;
+            font-size: 12px;
+            color: #E08304;
+            font-weight: 400;
+            font-family: $font-circular;
+        }
+    }
+    }    
+}
+
+}
+
+}
+.selected{
+    background: #F0FFFC;
+    color: #212934 !important;
+}
+
+ .mobile-filter-table{
+        height: 48px;
+        width: 48px;
+        border-radius: 4px;
+        padding: 12px 16px;
+        background: white;
+
+        .filter-name{
+            color: #212934;
+            font-size: 14px;
+            font-family: $font-circular;
+        }
+
+        .filter-dropdown{
+            width: 213px;
+            border-radius: 6px;
+            background: white;
+            border: 1px solid rgba(245, 248, 250, 1);
+            box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
+            
+            li{
+                font-family: $font-rubik;
+                font-weight:400;
+                font-size: 14px;
+                display: flex;
+                color: #5F6B7A;
+                align-items: center;
+
+                &:hover{
+                    background: #F0FFFC;
+                }
+
+                button{
+                    padding: 12px 16px;
+                    margin: 0 8px;
+                }
+            }
+
+        }
+    }

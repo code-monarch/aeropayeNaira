@@ -1,0 +1,68 @@
+nav{
+    background-color: white;
+    padding: 14px 0;
+    box-shadow: 0px 2px 4px 0px #0000000D;
+
+    ul{
+        .nav-item{
+            font-family: $font-mulish;
+            font-weight: 400;
+            color: #212934;
+            font-size: 16px;
+        }
+    }
+}
+
+ .btn-nav_refund{
+    font-family: $font-rubik;
+    font-weight: 400;
+    font-size: 16px;
+    color: $color-primary;
+    border-radius: 6px;
+    padding: 12.5px 16px;
+    border: 1px solid $color-accent;
+    transition: .4s ease-in-out;
+    
+    &:hover{
+        background: $color-accent;
+        color: $color-primary;
+    }
+}
+
+.mobile-nav{
+        
+    &-items{
+        height: 60vh;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        padding-top: 20px;
+        background: white;
+
+        &-list{
+            margin: 8px 0;
+            padding: 10px;
+            font-family: $font-mulish;
+            font-weight: 400;
+            color: #212934;
+            font-size: 16px;
+            width: 100%;
+            text-align: center;
+            transition: background .5s ease-in-out;
+
+            &:hover{
+                background: $color-accent;
+                color: $color-primary;
+            }
+        }
+
+        &-button{
+            margin: 8px 0;
+            @extend .btn-nav_refund;
+        }
+    }
+}
+
+
+
+

@@ -1,0 +1,283 @@
+.button-1{
+    height: 56px;
+    width: 144px;
+    border-radius: 6px;
+    padding: 18px 16px;
+    background: $color-accent;
+    box-shadow: 0px 12px 24px 0px #060A331A;
+    margin: 0 8px;
+    font-family: $font-rubik;
+    font-weight: 500;
+    color: #060A33;
+}
+
+    .booking-container-dropdown{
+            height: 40px;
+            border-radius: 6px;
+            padding: 10px 16px;
+            margin: 0 8px 16px;
+            background: #5F6B7A;
+            color: white;
+            font-family: $font-mulish;
+            font-weight: 600;
+            font-size: 14px;
+
+            .dropdown-1{
+            width: 128px;
+        }
+        }
+
+        .round-trip{
+            margin-left: 0!important;
+        }
+
+        .mobile-flight-dropdown-1{
+            padding: 10px 16px;
+            height: 48px;
+            width: 100%;
+            background: #F5F8FA;
+            border: 1px solid #E1E7EC;
+            border-radius: 6px;
+            color: #212934;
+            margin: 0 8px 8px 0;
+            .dropdown{
+                width: 100%;
+            }
+        
+            .dropdown-2-container{
+                height: auto;
+                width: 255px;
+                border-radius: 6px;
+                padding: 16px;
+
+                li{
+                    height: 42px;
+                    width: 223px;
+                    font-family: Rubik;
+                    font-weight: 400;
+                    font-size: 14px;
+                    color: #212934;
+                    margin: 19px 0px;
+
+                }
+
+                .active-icon{
+                    height: 32px;
+                    width: 32px;
+                    border-radius: 4px;
+                    border: 1px solid #22E0BB;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .non-active{
+                    @extend .active-icon;
+                    border: none;
+                }
+
+                .btn-confirm{
+                    height: 42px;
+                    width: 223px;
+                    border-radius: 6px;
+                    padding: 15px 16px;
+                    margin: 19px 0;
+                    background-color: $color-accent;
+                    box-shadow: 0px 2px 4px rgba(6, 10, 51, 0.05);
+                    color: #060A33;
+                    font-family: $font-rubik;
+                    font-weight: 400;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .passenger-type{
+                    font-family: Rubik;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 20px;
+                    text-align: left;
+                }
+
+                .passenger-des{
+                    @extend .passenger-type;
+                    font-size: 12px;
+                }
+
+            }
+        }
+
+    .mobile-flight-dropdown-2{
+            @extend .mobile-flight-dropdown-1;
+            margin: 0 0 8px 0;
+            .dropdown{
+                width: 100%;
+            }
+
+             .dropdown-3-container{
+                    height: 160px;
+                    width: 213px;
+                    border-radius: 6px;
+                    box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    background: #FFFFFF;
+                    border: 1px solid #F5F8FA;
+              
+                    
+                    li{
+                        font-family: $font-rubik;
+                        font-weight: 400;
+                        font-size: 14px;
+                        height: 40px;
+                        width: 213px;
+                        border-radius: 0px;
+                        padding: 10px 16px;
+                        color:#212934;
+
+                        &:hover{
+                            background: #F0FFFC;
+                        }
+                    }
+               .selected{
+                            background: #F0FFFC;
+                        }
+            }
+        }
+
+.mobile-booking{
+       border: 0.5px solid #022A50;
+        box-sizing: border-box;
+        border-radius: 0px 10px 10px 10px;
+        padding: 20px 16px;
+        margin: 0px 8px;
+
+
+        .mobile-flight-container{
+           
+            @media only screen and (max-width: 530px) {
+                 position: relative;
+                flex-direction: column;
+            }
+
+            .mobile-switch-button{
+
+            @media only screen and (max-width: 530px) {
+                 position: absolute;
+
+                transform: rotate(90deg);
+            }
+        }
+
+       
+        }
+
+         .mobile-departure{
+            background: #F5F8FA;
+            border: 1px solid #CED6DE;
+            box-sizing: border-box;
+            border-radius: 6px;
+            padding: 10px 16px;
+            height: 56px;
+            width: 100%;
+            margin: 0 8px;
+
+            @media only screen and (max-width: 530px) {
+                margin-bottom: 12px;
+            }
+
+            input{
+                background: #F5F8FA;
+                color: #B8C4CE;
+                font-family: $font-rubik;
+                font-weight: 400;
+                width: 100%;
+
+                &:focus{
+                    outline: none;
+                }
+            }
+
+            span{
+                margin-right: 10px;
+            }
+        }
+
+        .mobile-arrival{
+            @extend .mobile-departure;
+            width: 100% !important;
+
+            input{
+                width: 100%;
+            }
+        }
+
+       
+
+        .mobile-search_button{
+            @extend .button-1;
+            box-shadow: 0px 12px 24px 0px #060A331A;
+            margin: 0;
+
+             @media only screen and (max-width: 640px) {
+                width: 100%;
+            }
+        }
+
+         .mobile-flight-date{
+            @extend .mobile-departure;
+            width: 100%;
+            margin-left: 0;
+
+            .text-1{
+                font-size: 10px;
+                color: #8895A7;
+            }
+            p, .booking-dates{
+                font-family: $font-rubik;
+                font-weight: 400;
+                color: #212934;
+
+                &:placeholder{
+                    color: #212934;
+                }
+            }
+
+        }
+
+        .mobile-flight-date-2{
+            @extend .mobile-flight-date;
+            width: 100%;
+            margin: 0 12px;
+
+            @media only screen and (max-width: 530px) {
+                margin: 0 0 8px;
+                height: auto;
+            }
+
+            .line{
+                width: 1px;
+                height: 23px;
+                background: #B8C4CE;
+                margin: 0 12px
+
+            }
+        }
+
+    }
+
+    .mobile-flight-plans{
+
+        @media only screen and (min-width: 530px) {
+                margin: 16px 0;
+            }
+
+
+    }
+
+    
+  

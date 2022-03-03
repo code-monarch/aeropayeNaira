@@ -1,0 +1,293 @@
+.button-1{
+    height: 56px;
+    width: 144px;
+    border-radius: 6px;
+    padding: 18px 16px;
+    background: $color-accent;
+    box-shadow: 0px 12px 24px 0px #060A331A;
+    margin: 0 8px;
+    font-family: $font-rubik;
+    font-weight: 500;
+    color: #060A33;
+}
+
+.booking-detail{
+    background: $color-secondary;
+    max-height: 100vh;
+    min-height: 100%;
+
+    .book-section{
+        padding: 54px 0;
+        background: $color-primary;
+
+        .mobile-booking{
+        padding: 0 20px;
+        border: none !important;
+        margin: 0 !important;
+    }
+
+
+    .booking-container{
+        box-sizing: border-box;
+        margin: 0px auto;
+        width: 969px;
+        
+
+        @media only screen and (max-width: 1024px) {
+            width: 100%;
+        }
+
+        &-dropdown{
+            height: 40px;
+            border-radius: 6px;
+            padding: 10px 16px;
+            margin: 0 8px 16px;
+            background: #5F6B7A;
+            color: white;
+            font-family: $font-mulish;
+            font-weight: 600;
+            font-size: 14px;
+
+           
+        }
+
+        .dropdown-1{
+            width: 128px;
+        }
+
+        .dropdown-2{
+            width: 140px;
+
+            .dropdown-2-container{
+                height: auto;
+                width: 255px;
+                border-radius: 6px;
+                padding: 16px;
+
+                li{
+                    height: 42px;
+                    width: 223px;
+                    font-family: Rubik;
+                    font-weight: 400;
+                    font-size: 14px;
+                    color: #212934;
+                    margin: 19px 0px;
+
+                }
+
+                .active-icon{
+                    height: 32px;
+                    width: 32px;
+                    border-radius: 4px;
+                    border: 1px solid #22E0BB;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .non-active{
+                    @extend .active-icon;
+                    border: none;
+                }
+
+                .btn-confirm{
+                    height: 42px;
+                    width: 223px;
+                    border-radius: 6px;
+                    padding: 15px 16px;
+                    margin: 19px 0;
+                    background-color: $color-accent;
+                    box-shadow: 0px 2px 4px rgba(6, 10, 51, 0.05);
+                    color: #060A33;
+                    font-family: $font-rubik;
+                    font-weight: 400;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .passenger-type{
+                    font-family: Rubik;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 20px;
+                    text-align: left;
+                }
+
+                .passenger-des{
+                    @extend .passenger-type;
+                    font-size: 12px;
+                }
+
+            }
+        }
+
+        .dropdown-3{
+            width: auto;
+
+             .dropdown-3-container{
+                    height: 160px;
+                    width: 213px;
+                    border-radius: 6px;
+                    box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    background: #FFFFFF;
+                    border: 1px solid #F5F8FA;
+              
+                    
+                    li{
+                        font-family: $font-rubik;
+                        font-weight: 400;
+                        font-size: 14px;
+                        height: 40px;
+                        width: 213px;
+                        border-radius: 0px;
+                        padding: 10px 16px;
+                        color:#212934;
+
+                        &:hover{
+                            background: #F0FFFC;
+                        }
+
+                        
+                    }
+                    .selected{
+                            background: #F0FFFC;
+                        }
+               
+            }
+        }
+
+        .departure{
+            background: #F5F8FA;
+            border: 1px solid #CED6DE;
+            box-sizing: border-box;
+            border-radius: 6px;
+            padding: 10px 16px;
+            height: 56px;
+            width: 258px;
+            margin: 0 8px 8px;
+
+            input{
+                background: #F5F8FA;
+                color: #B8C4CE;
+                font-family: $font-rubik;
+                font-weight: 400;
+                width: 100%;
+
+                &:focus{
+                    outline: none;
+                }
+            }
+
+            span{
+                margin-right: 10px;
+            }
+        }
+
+        .arrival{
+            @extend .departure;
+            width: 260px;
+        }
+
+        .switch-button{
+            position: absolute;
+            z-index: 33;
+            right: -20px;
+            top: 10%;
+        }
+
+        .flight-date{
+            @extend .departure;
+            width: 166px;
+
+            .text-1{
+                font-size: 10px;
+                color: #8895A7;
+            }
+            p{
+                font-family: $font-rubik;
+                font-weight: 400;
+                color: #212934;
+            }
+            
+            .booking-dates{
+                font-family: $font-rubik;
+                font-weight: 400;
+                color: #212934;
+               
+
+                &:placeholder{
+                    color: #212934;
+                }
+            }
+
+        }
+
+        .search_button{
+            @extend .button-1;
+            box-shadow: 0px 12px 24px 0px #060A331A;
+
+            @media only screen and (min-width: 530px) and (max-width: 662px) {
+                width: 40% !important;
+                padding: 0;
+            }
+
+            @media only screen and (min-width: 1280px) and (max-width: 1500px) {
+                padding: 0 !important;
+            }
+        }
+
+        .tab-departure{
+        @extend .arrival;
+        width: 300px;
+    }
+
+     .tab-arrival{
+        @extend .arrival;
+        width: 50%;
+    }
+
+    }
+
+    .booking-container-2{
+        @extend .booking-container;
+        max-width: 1300px;
+        width: 100%;
+        
+
+    .switch-button{
+        @extend .switch-button;
+            right: -20px;
+        }
+
+        .flight-date-2{
+            @extend .flight-date;
+            width: auto;
+            //  @media only screen and (min-width: 1280px) and (max-width: 1356px) {
+            //     height: auto !important;
+            // }
+             @media only screen and (min-width: 830px) {
+                width: 40% !important;
+            }
+            @media only screen and (min-width: 1290px) {
+                width: 30% !important;
+            }
+
+            .line{
+                width: 1px;
+                height: 23px;
+                background: #B8C4CE;
+                margin: 0 12px
+
+            }
+        }
+    }
+    } 
+}
+
+
