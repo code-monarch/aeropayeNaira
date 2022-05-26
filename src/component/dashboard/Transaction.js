@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Nav from './Nav';
+import Nav from '../reusable/Nav';
 import { ReactComponent as Search } from '../../assets/dashboard-icons/Left_ Icon.svg';
 import { ReactComponent as Funnel } from '../../assets/dashboard-icons/Funnel.svg';
 import { ReactComponent as Arrow } from '../../assets/dashboard-icons/arrow-down.svg';

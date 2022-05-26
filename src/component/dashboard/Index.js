@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Home from './Home';
-import Nav from './Nav';
+import Nav from '../reusable/Nav';
 
 
 const Index = () => {

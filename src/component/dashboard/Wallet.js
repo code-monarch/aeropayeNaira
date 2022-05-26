@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import Nav from './Nav';
+import Nav from '../reusable/Nav';
 import { ReactComponent as EyeOpen } from '../../assets/dashboard-icons/eye-icon.svg';
 import { ReactComponent as AddIcon } from '../../assets/dashboard-icons/add-circle.svg';
 import { ReactComponent as MinusIcon } from '../../assets/dashboard-icons/minus-cirlce.svg';

@@ -82,7 +82,7 @@ const Home = ({userName}) => {
           </div>
          
           <div className="flex lg:flex-row flex-col justify-evenly items-center user-details">
-              <Link to='/wallet' className="user-details_container mr-[24px]">
+              <Link to='/passenger/wallet' className="user-details_container mr-[24px]">
                   <div className='flex items-center justify-between'>
                       <div className='type'>
                         <p> Aeropaye Balance </p>
@@ -107,7 +107,7 @@ const Home = ({userName}) => {
                   </div>
               </Link>
 
-              <Link to='/dashboard' className="user-details_container mr-[24px] flex justify-between">
+              <Link to='/passenger/dashboard' className="user-details_container mr-[24px] flex justify-between">
                   <div className=''>
                       <div className='flight-booked my-[20px]'>
                           <p>Flight Booked</p>
@@ -131,7 +131,7 @@ const Home = ({userName}) => {
                   </div>
               </Link>
 
-              <Link to='/transaction-history' className="user-details_container flex justify-between">
+              <Link to='/passenger/transaction-history' className="user-details_container flex justify-between">
                   <div className=''>
                       <div className='flight-booked my-[20px]'>
                           <p>Total Deposits</p>

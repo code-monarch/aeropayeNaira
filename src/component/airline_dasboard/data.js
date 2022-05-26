@@ -1,0 +1,1 @@
+export const BannerSub = 'Create and manage your flight schedules and payments on the go.';

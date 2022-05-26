@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Nav from './Nav';
-import Account from './settings/Account';
+import Nav from '../reusable/Nav';
+import Account from '../../pages/Settings/components/Account';
 import Profile from './settings/Profile';
 import Security from './settings/Security';
-import Currency from './settings/Currency';
+import Currency from '../../pages/Settings/components/Currency';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 

@@ -1,13 +1,13 @@
 import React, { useState, useEffect  } from 'react';
-import { ReactComponent as Arrow } from "../../assets/mobile-arrow.svg";
-import { ReactComponent as Arrival } from "../../assets/arrival-icon.svg";
-import { ReactComponent as Departure } from "../../assets/departure-icon.svg";
-import { ReactComponent as Switch } from "../../assets/switch.svg";
-import { ReactComponent as Calendar } from "../../assets/calendar-2.svg";
-import { ReactComponent as Minus } from "../../assets/minus.svg";
-import { ReactComponent as Add } from "../../assets/plus.svg";
-import { ReactComponent as Tick } from "../../assets/tick.svg";
-import TabBooking from './TabBooking';
+import { ReactComponent as Arrow } from "../../assets/icons/mobile-arrow.svg";
+import { ReactComponent as Arrival } from "../../assets/icons/arrival-icon.svg";
+import { ReactComponent as Departure } from "../../assets/icons/departure-icon.svg";
+import { ReactComponent as Switch } from "../../assets/icons/switch.svg";
+import { ReactComponent as Calendar } from "../../assets/icons/calendar-2.svg";
+import { ReactComponent as Minus } from "../../assets/icons/minus.svg";
+import { ReactComponent as Add } from "../../assets/icons/plus.svg";
+import { ReactComponent as Tick } from "../../assets/icons/tick.svg";
+import TabBooking from '../../pages/Flights/components/TabBooking';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 

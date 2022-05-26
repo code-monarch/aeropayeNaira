@@ -627,20 +627,10 @@ nav .navigation-link {
           align-items: center;
 }
 
-nav .active-nav {
+nav .active {
   color: #060A33;
   font-weight: 500;
   position: relative;
-}
-
-nav .active-nav::after {
-  position: absolute;
-  width: 110%;
-  display: block;
-  height: 3px;
-  background: #22E0BB;
-  bottom: -100%;
-  content: '';
 }
 
 nav .btn-badge {
@@ -662,7 +652,7 @@ nav .btn-badge {
 }
 
 nav .btn-badge .notify {
-  color: #5F6B7A;
+  color: #5f6b7a;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -691,7 +681,7 @@ nav .profile-btn {
 }
 
 nav .profile-btn .profile-name {
-  color: #5F6B7A;
+  color: #5f6b7a;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -730,12 +720,12 @@ nav .profile-btn .profile-dropdown li {
 
 nav .profile-btn .profile-dropdown li .settings {
   font-family: "Rubik", sans-serif;
-  color: #5F6B7A;
+  color: #5f6b7a;
   margin: 0 8px;
 }
 
 nav .profile-btn .profile-dropdown .log-out {
-  color: #D62F4B;
+  color: #d62f4b;
   font-family: "Rubik", sans-serif;
   margin: 0 8px;
 }
@@ -750,7 +740,7 @@ nav .profile-button {
 }
 
 nav .profile-button .profile-name {
-  color: #5F6B7A;
+  color: #5f6b7a;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -790,12 +780,12 @@ nav .profile-button .profile-dropdown li {
 
 nav .profile-button .profile-dropdown li .settings {
   font-family: "Rubik", sans-serif;
-  color: #5F6B7A;
+  color: #5f6b7a;
   margin: 0 8px;
 }
 
 nav .profile-button .profile-dropdown .log-out {
-  color: #D62F4B;
+  color: #d62f4b;
   font-family: "Rubik", sans-serif;
   margin: 0 8px;
 }
@@ -856,7 +846,7 @@ nav .profile-button .profile-dropdown .log-out {
 }
 
 .nav-mobile-container .mobile_btn-badge .notify {
-  color: #5F6B7A;
+  color: #5f6b7a;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -884,7 +874,7 @@ nav .profile-button .profile-dropdown .log-out {
 }
 
 .nav-mobile-container .mobile_profile-btn .profile-name {
-  color: #5F6B7A;
+  color: #5f6b7a;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -923,12 +913,12 @@ nav .profile-button .profile-dropdown .log-out {
 
 .nav-mobile-container .mobile_profile-btn .profile-dropdown li .settings {
   font-family: "Rubik", sans-serif;
-  color: #5F6B7A;
+  color: #5f6b7a;
   margin: 0 8px;
 }
 
 .nav-mobile-container .mobile_profile-btn .profile-dropdown .log-out {
-  color: #D62F4B;
+  color: #d62f4b;
   font-family: "Rubik", sans-serif;
   margin: 0 8px;
 }
@@ -936,7 +926,7 @@ nav .profile-button .profile-dropdown .log-out {
 .nav-mobile-container .line {
   width: 100%;
   height: 0.5px;
-  background: #F5F8FA;
+  background: #f5f8fa;
   margin: 24px 0;
 }
 
@@ -957,7 +947,7 @@ nav .profile-button .profile-dropdown .log-out {
   display: flex;
   font-size: 16px;
   font-family: "Rubik", sans-serif;
-  color: #5F6B7A;
+  color: #5f6b7a;
   font-weight: 400;
   height: 51px;
   padding: 16px;
@@ -965,14 +955,14 @@ nav .profile-button .profile-dropdown .log-out {
 }
 
 .nav-mobile-container_list-item:hover {
-  background: #F7FAFC;
+  background: #f7fafc;
   border-radius: 8px;
 }
 
 .nav-mobile-container_list .active-mobile-nav {
   color: #060A33;
   font-weight: 500;
-  background: #F7FAFC;
+  background: #f7fafc;
   border-radius: 8px;
 }
 
@@ -983,7 +973,7 @@ nav .profile-button .profile-dropdown .log-out {
 
 .home .welcome-div {
   background-color: #060A33;
-  background-image: url("../assets/logomark.svg");
+  background-image: url("../assets/icons/logomark.svg");
   background-position: 104%;
   background-repeat: no-repeat;
   background-size: contain;
@@ -4256,12 +4246,12 @@ nav .profile-button .profile-dropdown .log-out {
   border-radius: 6px;
   padding: 18px 16px;
   background: #22E0BB;
-  -webkit-box-shadow: 0px 12px 24px 0px #060A331A;
-          box-shadow: 0px 12px 24px 0px #060A331A;
+  -webkit-box-shadow: 0px 12px 24px 0px #060a331a;
+          box-shadow: 0px 12px 24px 0px #060a331a;
   margin: 0 8px;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
-  color: #060A33;
+  color: #060a33;
 }
 
 .booking-detail {
@@ -4299,7 +4289,7 @@ nav .profile-button .profile-dropdown .log-out {
   border-radius: 6px;
   padding: 10px 16px;
   margin: 0 8px 16px;
-  background: #5F6B7A;
+  background: #5f6b7a;
   color: white;
   font-family: "Mulish", sans-serif;
   font-weight: 600;
@@ -4335,7 +4325,7 @@ nav .profile-button .profile-dropdown .log-out {
   height: 32px;
   width: 32px;
   border-radius: 4px;
-  border: 1px solid #22E0BB;
+  border: 1px solid #22e0bb;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4360,7 +4350,7 @@ nav .profile-button .profile-dropdown .log-out {
   background-color: #22E0BB;
   -webkit-box-shadow: 0px 2px 4px rgba(6, 10, 51, 0.05);
           box-shadow: 0px 2px 4px rgba(6, 10, 51, 0.05);
-  color: #060A33;
+  color: #060a33;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   display: -webkit-box;
@@ -4413,8 +4403,8 @@ nav .profile-button .profile-dropdown .log-out {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  background: #FFFFFF;
-  border: 1px solid #F5F8FA;
+  background: #ffffff;
+  border: 1px solid #f5f8fa;
 }
 
 .booking-detail .book-section .booking-container .dropdown-3 .dropdown-3-container li, .booking-detail .book-section .booking-container-2 .dropdown-3 .dropdown-3-container li {
@@ -4429,16 +4419,16 @@ nav .profile-button .profile-dropdown .log-out {
 }
 
 .booking-detail .book-section .booking-container .dropdown-3 .dropdown-3-container li:hover, .booking-detail .book-section .booking-container-2 .dropdown-3 .dropdown-3-container li:hover {
-  background: #F0FFFC;
+  background: #f0fffc;
 }
 
 .booking-detail .book-section .booking-container .dropdown-3 .dropdown-3-container .selected, .booking-detail .book-section .booking-container-2 .dropdown-3 .dropdown-3-container .selected {
-  background: #F0FFFC;
+  background: #f0fffc;
 }
 
 .booking-detail .book-section .booking-container .departure, .booking-detail .book-section .booking-container-2 .departure, .booking-detail .book-section .booking-container .arrival, .booking-detail .book-section .booking-container-2 .arrival, .booking-detail .book-section .booking-container .tab-departure, .booking-detail .book-section .booking-container-2 .tab-departure, .booking-detail .book-section .booking-container .tab-arrival, .booking-detail .book-section .booking-container-2 .tab-arrival, .booking-detail .book-section .booking-container .flight-date, .booking-detail .book-section .booking-container-2 .flight-date, .booking-detail .book-section .booking-container-2 .flight-date-2 {
-  background: #F5F8FA;
-  border: 1px solid #CED6DE;
+  background: #f5f8fa;
+  border: 1px solid #ced6de;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 6px;
@@ -4449,8 +4439,8 @@ nav .profile-button .profile-dropdown .log-out {
 }
 
 .booking-detail .book-section .booking-container .departure input, .booking-detail .book-section .booking-container-2 .departure input, .booking-detail .book-section .booking-container .arrival input, .booking-detail .book-section .booking-container-2 .arrival input, .booking-detail .book-section .booking-container .tab-departure input, .booking-detail .book-section .booking-container-2 .tab-departure input, .booking-detail .book-section .booking-container .tab-arrival input, .booking-detail .book-section .booking-container-2 .tab-arrival input, .booking-detail .book-section .booking-container .flight-date input, .booking-detail .book-section .booking-container-2 .flight-date input, .booking-detail .book-section .booking-container-2 .flight-date-2 input {
-  background: #F5F8FA;
-  color: #B8C4CE;
+  background: #f5f8fa;
+  color: #b8c4ce;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   width: 100%;
@@ -4481,7 +4471,7 @@ nav .profile-button .profile-dropdown .log-out {
 
 .booking-detail .book-section .booking-container .flight-date .text-1, .booking-detail .book-section .booking-container-2 .flight-date .text-1, .booking-detail .book-section .booking-container-2 .flight-date-2 .text-1 {
   font-size: 10px;
-  color: #8895A7;
+  color: #8895a7;
 }
 
 .booking-detail .book-section .booking-container .flight-date p, .booking-detail .book-section .booking-container-2 .flight-date p, .booking-detail .book-section .booking-container-2 .flight-date-2 p {
@@ -4501,8 +4491,8 @@ nav .profile-button .profile-dropdown .log-out {
 }
 
 .booking-detail .book-section .booking-container .search_button, .booking-detail .book-section .booking-container-2 .search_button {
-  -webkit-box-shadow: 0px 12px 24px 0px #060A331A;
-          box-shadow: 0px 12px 24px 0px #060A331A;
+  -webkit-box-shadow: 0px 12px 24px 0px #060a331a;
+          box-shadow: 0px 12px 24px 0px #060a331a;
 }
 
 @media only screen and (min-width: 530px) and (max-width: 662px) {
@@ -4554,7 +4544,7 @@ nav .profile-button .profile-dropdown .log-out {
 .booking-detail .book-section .booking-container-2 .flight-date-2 .line {
   width: 1px;
   height: 23px;
-  background: #B8C4CE;
+  background: #b8c4ce;
   margin: 0 12px;
 }
 /*# sourceMappingURL=main.css.map */
