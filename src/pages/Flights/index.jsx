@@ -11,6 +11,7 @@ import CheckInModal from "./components/CheckInModal";
 import CancelModal from "./components/CancelModal";
 import RefundModal from "./components/RefundModal";
 import RefundedModal from "./components/RefundedModal";
+import Layout from "../../component/Layout";
 
 const Flight = () => {
   const [showOption, setShowOption] = useState(false);
@@ -49,115 +50,117 @@ const Flight = () => {
   };
   return (
     <>
-      <div className="flight">
-        <div className="flight-container">
-          <div className="flex items-center flight-container-navs">
-            <label className="search-table border-[1px] border-[#E1E7EC]">
-              <span className="mx-[4px]">
-                <Search />
-              </span>
-              <input type="search" placeholder="Search flights by ID" />
-            </label>
+      <Layout>
+        <div className="flight">
+          <div className="flight-container">
+            <div className="flex items-center flight-container-navs">
+              <label className="search-table border-[1px] border-[#E1E7EC]">
+                <span className="mx-[4px]">
+                  <Search />
+                </span>
+                <input type="search" placeholder="Search flights by ID" />
+              </label>
 
-            <button
-              className="filter-table relative border-[1px] border-[#E1E7EC]"
-              onClick={() => setShowOption(!showOption)}
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <Funnel className="mx-[8px]" />
-                  <span className="filter-name">{filter} flights</span>
+              <button
+                className="filter-table relative border-[1px] border-[#E1E7EC]"
+                onClick={() => setShowOption(!showOption)}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Funnel className="mx-[8px]" />
+                    <span className="filter-name">{filter} flights</span>
+                  </div>
+
+                  <div>
+                    <Arrow />
+                  </div>
                 </div>
 
-                <div>
-                  <Arrow />
-                </div>
-              </div>
-
-              {showOption && (
-                <ul className="filter-dropdown absolute top-12 z-[9999] left-0 ">
-                  {PassengerFlightFilter.map((i, index) => (
-                    <li
-                      key={index}
-                      className={`${tick === index ? "selected" : ""}`}
-                    >
-                      <button
-                        className="flex items-center"
-                        onClick={() => {
-                          setFilter(i);
-                          showTick(index);
-                        }}
+                {showOption && (
+                  <ul className="filter-dropdown absolute top-12 z-[9999] left-0 ">
+                    {PassengerFlightFilter.map((i, index) => (
+                      <li
+                        key={index}
+                        className={`${tick === index ? "selected" : ""}`}
                       >
-                        <Tick
-                          className={`mr-2 ${
-                            tick === index ? "visible" : "invisible"
-                          }`}
-                        />
-                        {i}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
+                        <button
+                          className="flex items-center"
+                          onClick={() => {
+                            setFilter(i);
+                            showTick(index);
+                          }}
+                        >
+                          <Tick
+                            className={`mr-2 ${
+                              tick === index ? "visible" : "invisible"
+                            }`}
+                          />
+                          {i}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </button>
+
+              <Link to="/flights/book-flight" className="book-button">
+                Book a flight
+              </Link>
+            </div>
+
+            <div className="flex">
+              <div className="flight-container_timeline"></div>
+
+              {filter === "All" ? (
+                <FlightsInfo
+                  checkedIn={checkedIn}
+                  onOpenModal={onOpenModal}
+                  onOpenCancelModal={onOpenCancelModal}
+                  isCanceled={isCanceled}
+                  onOpenRefundModal={onOpenRefundModal}
+                  isRefunded={isRefunded}
+                  filter={filter}
+                />
+              ) : filter === "Ongoing" ? (
+                <OngoingFlight
+                  checkedIn={checkedIn}
+                  onOpenModal={onOpenModal}
+                  onOpenCancelModal={onOpenCancelModal}
+                  isCanceled={isCanceled}
+                  onOpenRefundModal={onOpenRefundModal}
+                  isRefunded={isRefunded}
+                />
+              ) : (
+                "canceled"
               )}
-            </button>
-
-            <Link to="/flights/book-flight" className="book-button">
-              Book a flight
-            </Link>
-          </div>
-
-          <div className="flex">
-            <div className="flight-container_timeline"></div>
-
-            {filter === "All" ? (
-              <FlightsInfo
-                checkedIn={checkedIn}
-                onOpenModal={onOpenModal}
-                onOpenCancelModal={onOpenCancelModal}
-                isCanceled={isCanceled}
-                onOpenRefundModal={onOpenRefundModal}
-                isRefunded={isRefunded}
-                filter={filter}
-              />
-            ) : filter === "Ongoing" ? (
-              <OngoingFlight
-                checkedIn={checkedIn}
-                onOpenModal={onOpenModal}
-                onOpenCancelModal={onOpenCancelModal}
-                isCanceled={isCanceled}
-                onOpenRefundModal={onOpenRefundModal}
-                isRefunded={isRefunded}
-              />
-            ) : (
-              "canceled"
-            )}
+            </div>
           </div>
         </div>
-      </div>
 
-      <CheckInModal
-        open={open}
-        onCloseModal={onCloseModal}
-        onChecked={onChecked}
-      />
+        <CheckInModal
+          open={open}
+          onCloseModal={onCloseModal}
+          onChecked={onChecked}
+        />
 
-      <CancelModal
-        openCancelModal={openCancelModal}
-        onCloseCancelModal={onCloseCancelModal}
-        onCanceled={onCanceled}
-      />
+        <CancelModal
+          openCancelModal={openCancelModal}
+          onCloseCancelModal={onCloseCancelModal}
+          onCanceled={onCanceled}
+        />
 
-      <RefundModal
-        openRefundModal={openRefundModal}
-        onCloseRefundModal={onCloseRefundModal}
-        onOpenRefundedModal={onOpenRefundedModal}
-      />
+        <RefundModal
+          openRefundModal={openRefundModal}
+          onCloseRefundModal={onCloseRefundModal}
+          onOpenRefundedModal={onOpenRefundedModal}
+        />
 
-      <RefundedModal
-        openRefundModal={openRefundedModal}
-        onCloseRefundedModal={onCloseRefundedModal}
-        onClaimedRefund={onClaimedRefund}
-      />
+        <RefundedModal
+          openRefundModal={openRefundedModal}
+          onCloseRefundedModal={onCloseRefundedModal}
+          onClaimedRefund={onClaimedRefund}
+        />
+      </Layout>
     </>
   );
 };

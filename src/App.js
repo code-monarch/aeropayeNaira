@@ -21,41 +21,49 @@ import Deposit from "./pages/Wallet/subPage/Deposit";
 import Receive from "./pages/Wallet/subPage/Receive";
 import Transaction from "./pages/Transactions";
 import Settings from "./pages/Settings";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import TwoFA from "./pages/TwoFA";
 
+// Toasts Notification
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-      <Router>
-        {/* Use Helmet for better SEO */}
-        <HelmetProvider>
-          <meta charSet="utf-8" />
-          <title>Aeropaye Blockchain smart flight refund engine</title>
-          <link rel="canonical" href="https://aeropaye.com" />
-          <meta
-            name="description"
-            content="Aeropaye Blockchain smart flight refund and payments engine."
-          />
-        </HelmetProvider>
-        {/*  */}
+    <Router>
+      {/* Use Helmet for better SEO */}
+      <HelmetProvider>
+        <meta charSet="utf-8" />
+        <title>Aeropaye Blockchain smart flight refund engine</title>
+        <link rel="canonical" href="https://aeropaye.com" />
+        <meta
+          name="description"
+          content="Aeropaye Blockchain smart flight refund and payments engine."
+        />
+      </HelmetProvider>
+      {/*  */}
 
-        {/* Layout */}
-        <Nav />
-        <Outlet />
-        {/* Layout End */}
+      {/* Layout */}
+      {/* <Outlet /> */}
+      {/* Layout End */}
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="flights" element={<Flight />} />
-          <Route path="flights/book-flight" element={<BookFlight />} />
-          <Route path="wallet" element={<Wallet />} />
-          <Route path="wallet/withdraw" element={<Withdraw />} />
-          <Route path="wallet/send" element={<Send />} />
-          <Route path="wallet/deposit" element={<Deposit />} />
-          <Route path="wallet/receive" element={<Receive />} />
-          <Route path="transaction-history" element={<Transaction />} />
-          <Route path="settings" element={<Settings />} />
-        </Routes>
-      </Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signup/2FA" element={<TwoFA />} />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="flights" element={<Flight />} />
+        <Route path="flights/book-flight" element={<BookFlight />} />
+        <Route path="wallet" element={<Wallet />} />
+        <Route path="wallet/withdraw" element={<Withdraw />} />
+        <Route path="wallet/send" element={<Send />} />
+        <Route path="wallet/deposit" element={<Deposit />} />
+        <Route path="wallet/receive" element={<Receive />} />
+        <Route path="transaction-history" element={<Transaction />} />
+        <Route path="settings" element={<Settings />} />
+        {/* <Route path="login" element={<Login />} /> */}
+      </Routes>
+    </Router>
   );
 }
 

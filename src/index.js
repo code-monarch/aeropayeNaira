@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import './styles/main.css'
-import App from './App';
-import 'flowbite';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import "./styles/main.css";
+import App from "./App";
+import "flowbite";
 
 import {
   ApolloClient,
@@ -18,17 +18,23 @@ import UserSessionManager from "./helpers/session.manager";
 import { AuthProvider } from "./hooks/auth";
 
 const authLink = setContext((_, { headers }) => {
-  // const loggedInUser = JSON.parse(
-  //   UserSessionManager.getItem(process.env.aeropaye_user)
-  // );
-  // console.log(loggedInUser)
-  // const token = loggedInUser ? loggedInUser.token : null;
-  // const token = loggedInUser ? loggedInUser.token : null;
-  // console.log(token)
+  const loggedInUser = JSON.parse(
+    UserSessionManager.getItem(process.env.REACT_APP_LOCAL_STORAGE_KEY)
+  );
+  console.log("loggedIn User", loggedInUser);
+  const token = loggedInUser
+    ? loggedInUser.token
+    : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1MzY5NTI3Nn0.aC0dZ5D_rkiuZUt8R6JSG1B3AZWiLGkFJUIKZeDCGKU";
+  console.log("token", token);
   return {
+    // headers: {
+    //   ...headers,
+    //   authorization:
+    //     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1MzY5NTI3Nn0.aC0dZ5D_rkiuZUt8R6JSG1B3AZWiLGkFJUIKZeDCGKU",
+    // },
     headers: {
-      ...headers, 
-      authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1MzU1NjAxMH0.NPn5tHSWw7e5DaoXumpOAMTcCTmUBCx15R1b4gE24mw",
+      ...headers,
+      authorization: `Bearer ${token}`,
     },
   };
 });

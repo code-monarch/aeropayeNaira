@@ -133,7 +133,7 @@ const FlightItinerary = () => {
         </div>
           </div>
       ))}
-      <div className="flight-container_information-list">
+      {/* <div className="flight-container_information-list">
         <div className="warning">
           <Warning />
           <p>
@@ -216,7 +216,7 @@ const FlightItinerary = () => {
             <button className="checkIn-button">Make payment</button>
           </div>
         </div>
-      </div>
+      </div> */}
       <BookingSummaryModal
         openBookingSummary={openBookingSummary}
         onCloseBookingModal={onCloseBookingModal}

@@ -1,11 +1,7 @@
 import { gql } from "@apollo/client";
 
-export const GET_ALL_PASSENGERS = gql`
-  query allPassengers {
-    allPassengers {
-      id
-      email
-      firstname
-    }
+export const GET_AIRLINE_FLIGHTS = gql`
+  query getAirlineFlights {
+    airlineName
   }
 `;

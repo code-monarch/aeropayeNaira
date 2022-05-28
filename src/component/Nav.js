@@ -149,7 +149,7 @@ const Nav = ({ userName, isActive, setIsActive }) => {
                     <NavLink to='/' className="settings">Settings</NavLink>
                   </li>
                    <li>
-                     <NavLink to='/' className="log-out">Logout</NavLink>
+                     <div className="log-out">Logout</div>
                   </li>
                 </ul>
                 }

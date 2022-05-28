@@ -4547,4 +4547,271 @@ nav .profile-button .profile-dropdown .log-out {
   background: #b8c4ce;
   margin: 0 12px;
 }
+
+.signup-container {
+  background-color: #F7FAFC;
+  padding: 64px 0;
+  background-image: url("../assets/icons/logomark2.svg");
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: 30%;
+}
+
+@media only screen and (max-width: 950px) {
+  .signup-container-2 {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.signup-container .signup {
+  margin-top: 100px;
+  width: 405px;
+}
+
+@media only screen and (max-width: 950px) {
+  .signup-container .signup {
+    width: 80%;
+    margin: 40px auto 0;
+  }
+}
+
+.signup-container .signup-logo {
+  margin-bottom: 32px;
+}
+
+.signup-container .signup-footer {
+  margin-left: 100px;
+}
+
+@media only screen and (max-width: 950px) {
+  .signup-container .signup-footer {
+    width: 80%;
+    margin: 40px auto 0;
+  }
+}
+
+.signup-container .signup-details {
+  margin: 24px 0;
+}
+
+.signup-container .signup-details_icon {
+  margin: 0 8px;
+  width: 28px;
+  height: 28px;
+}
+
+.signup-container .signup-details_title {
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #060A33;
+}
+
+.signup-container .signup-details_subtitle {
+  font-family: "Mulish", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #5f6b7a;
+  margin: 4px 0;
+}
+
+.signup-container .signup-form {
+  height: auto;
+  width: 500px;
+  border-radius: 8px;
+  padding: 32px;
+  -webkit-box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.04);
+          box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.04);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  background-color: white;
+}
+
+@media only screen and (max-width: 949px) {
+  .signup-container .signup-form {
+    margin: 40px auto 0;
+    padding: 23px;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .signup-container .signup-form {
+    width: 90%;
+  }
+}
+
+.signup-container .signup-form .title {
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #060A33;
+  margin-top: 10px;
+}
+
+.signup-container .signup-form .sub {
+  font-size: 13px;
+  color: #5f6b7a;
+  margin: 8px 0;
+}
+
+.signup-container .signup-form .signup-alt-btn {
+  height: 48px;
+  width: 100%;
+  border-radius: 8px;
+  padding: 4px;
+  border: 1px solid #e1e7ec;
+  padding: 4px;
+  margin: 12px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.signup-container .signup-form .signup-alt-btn_btn-1 {
+  height: 40px;
+  width: 192px;
+  border-radius: 5px;
+  padding: 12px 32px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #5f6b7a;
+}
+
+@media only screen and (max-width: 350px) {
+  .signup-container .signup-form .signup-alt-btn_btn-1 {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.signup-container .signup-form .line {
+  height: 0.5px;
+  background: #e1e7ec;
+  margin: 16px 0 20px;
+  width: 100%;
+}
+
+.signup-container .signup-form .error-message {
+  font-size: 14px;
+  font-family: "Mulish", sans-serif;
+  font-weight: 400;
+  color: red;
+  margin: 8px 0;
+}
+
+.signup-container .signup-form .error-line {
+  height: 0.5px;
+  background: red;
+  margin: 16px 0;
+  width: 100%;
+}
+
+.signup-container .signup-form_field {
+  margin-bottom: 23px;
+}
+
+.signup-container .signup-form_field .react-tel-input {
+  margin: 8px 0;
+}
+
+.signup-container .signup-form_field .react-tel-input .form-control {
+  height: 48px;
+  width: 100%;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  color: #212934;
+}
+
+.signup-container .signup-form_field .react-tel-input .selected-flag {
+  padding: 10px;
+  width: 48px;
+}
+
+.signup-container .signup-form_field .react-tel-input .country-list .country-name,
+.signup-container .signup-form_field .react-tel-input .country-list .dial-code {
+  color: #060A33;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+}
+
+.signup-container .signup-form_field .label {
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  margin: 0 0 8px;
+  color: #212934;
+}
+
+.signup-container .signup-form_field label {
+  height: 48px;
+  width: 100%;
+  border-radius: 6px;
+  padding: 10px 16px 10px 12px;
+  border: 1px solid #e1e7ec;
+  margin: 8px 0 0;
+}
+
+.signup-container .signup-form_field label input {
+  width: 100%;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  color: #212934;
+}
+
+.signup-container .signup-form_field label input:focus {
+  outline: none;
+}
+
+.signup-container .signup-form .signup-field-tnc {
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #212934;
+}
+
+.signup-container .signup-form .signup-field-tnc_item {
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #060A33;
+  margin: 0 4px;
+}
+
+.signup-container .signup-form .signup-field-checkbox {
+  height: 24px;
+  width: 24px;
+  margin-right: 12px;
+}
+
+.btn-active {
+  background: #212934;
+  color: white !important;
+}
 /*# sourceMappingURL=main.css.map */
