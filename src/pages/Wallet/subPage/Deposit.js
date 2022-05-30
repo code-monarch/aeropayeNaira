@@ -32,11 +32,12 @@ const Deposit = () => {
         amountDeposited: Number(depositAmountPlusTrailingZeros),
       },
     }).then((res) => {
+      console.log("res", res)
       const url = res.data.makePayment.data.authorization_url;
        window.location.replace(`${url}`);
+       console.log(url, "payment checkout")
     })
   };
-  console.log(data, "deposit data")
   // if (data) {
   //   console.log(data, "daghs")
   // }
