@@ -5,11 +5,14 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Outlet,
 } from "react-router-dom";
+import { RequireAuth } from "./pages/RequireAuth";
+
 import Nav from "./component/Nav";
 
 import { HelmetProvider } from "react-helmet-async"; // This reusable React component will manage all of your changes to the document head
+
+import { useContext } from "react"
 
 import Home from "./pages/Home";
 import Flight from "./pages/Flights";
@@ -24,6 +27,7 @@ import Settings from "./pages/Settings";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import TwoFA from "./pages/TwoFA";
+import NoMatch from "./pages/NoMatch";
 
 // Toasts Notification
 import "react-toastify/dist/ReactToastify.css";
@@ -41,27 +45,99 @@ function App() {
           content="Aeropaye Blockchain smart flight refund and payments engine."
         />
       </HelmetProvider>
-      {/*  */}
-
-      {/* Layout */}
-      {/* <Outlet /> */}
-      {/* Layout End */}
 
       <Routes>
-        <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
-        <Route path="signup/2FA" element={<TwoFA />} />
+        <Route
+          path="/"
+          element={
+            <RequireAuth>
+              <Home />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="signup/2FA"
+          element={
+            <RequireAuth>
+              <TwoFA />
+            </RequireAuth>
+          }
+        />
         <Route path="signup" element={<SignUp />} />
-        <Route path="flights" element={<Flight />} />
-        <Route path="flights/book-flight" element={<BookFlight />} />
-        <Route path="wallet" element={<Wallet />} />
-        <Route path="wallet/withdraw" element={<Withdraw />} />
-        <Route path="wallet/send" element={<Send />} />
-        <Route path="wallet/deposit" element={<Deposit />} />
-        <Route path="wallet/receive" element={<Receive />} />
-        <Route path="transaction-history" element={<Transaction />} />
-        <Route path="settings" element={<Settings />} />
-        {/* <Route path="login" element={<Login />} /> */}
+        <Route
+          path="flights"
+          element={
+            <RequireAuth>
+              <Flight />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="flights/book-flight"
+          element={
+            <RequireAuth>
+              <BookFlight />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="wallet"
+          element={
+            <RequireAuth>
+              <Wallet />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="wallet/withdraw"
+          element={
+            <RequireAuth>
+              <Withdraw />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="wallet/send"
+          element={
+            <RequireAuth>
+              <Send />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="wallet/deposit"
+          element={
+            <RequireAuth>
+              <Deposit />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="wallet/receive"
+          element={
+            <RequireAuth>
+              <Receive />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="transaction-history"
+          element={
+            <RequireAuth>
+              <Transaction />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="settings"
+          element={
+            <RequireAuth>
+              <Settings />
+            </RequireAuth>
+          }
+        />
+        <Route path="*" element={<NoMatch />} />
       </Routes>
     </Router>
   );

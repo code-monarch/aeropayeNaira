@@ -7,3 +7,4 @@ export { VERIFY_2FA_MUTATION } from "./mutation.verify.2fa";
 export { RESEND_2FA_MUTATION } from "./mutation.resend.2fa";
 export { SIGNUP_MUTATION } from "./mutation.signup";
 export { MINT_TOKEN_MUTATION } from "./mutation.mint.token";
+export { BOOK_FLIGHT_MUTATION } from "./mutation.bookflight";

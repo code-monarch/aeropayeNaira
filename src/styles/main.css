@@ -25,7 +25,7 @@ nav ul .nav-item {
   font-family: "Mulish", sans-serif;
   font-weight: 400;
   color: #212934;
-  font-size: 16px;
+  font-size: 13px;
 }
 
 .btn-nav_refund, .mobile-nav-items-button {
@@ -1339,7 +1339,7 @@ nav .profile-button .profile-dropdown .log-out {
   margin-right: 8px;
   font-size: 18px;
   color: #060A33;
-  font-weight: 700;
+  font-weight: 200;
   font-family: "Rubik", sans-serif;
 }
 
@@ -1587,7 +1587,8 @@ nav .profile-button .profile-dropdown .log-out {
 
 .wallet-container {
   background: #F7FAFC;
-  height: 100vh;
+  height: auto;
+  padding-bottom: 30px;
 }
 
 .wallet-container .wallet {

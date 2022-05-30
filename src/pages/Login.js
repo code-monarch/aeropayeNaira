@@ -5,7 +5,7 @@ import { ReactComponent as Password } from "../assets/icons/password.svg";
 import { ReactComponent as Hide } from "../assets/icons/Hide.svg";
 import { ReactComponent as ShowIcon } from "../assets/icons/showIcon.svg";
 import { ReactComponent as Recaptcha } from "../assets/icons/recapcha.svg";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_MUTATION } from "../hooks";
 import { toastError, toastSuccess } from "../component/shared/Toasts";
@@ -28,26 +28,24 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-//   const submit = (data) => {  
-//     login({
-//       variables: {
-//         email: data.email,
-//         password: data.password,
-//       },
-//     });
-// }
+  //   const submit = (data) => {
+  //     login({
+  //       variables: {
+  //         email: data.email,
+  //         password: data.password,
+  //       },
+  //     });
+  // }
 
   const submit = (data) => {
-    
     login({
       variables: {
-        email: data.email,
-        password: data.password,
+        email: data?.email,
+        password: data?.password,
       },
     })
       .then((res) => {
-
-        console.log("response", res)
+        console.log("response", res);
         const data = res?.data?.login;
         const user_data = {
           loggedIn: true,
@@ -72,14 +70,13 @@ const Login = () => {
       });
   };
 
-
   return (
     <div className="login h-auto 2xl:h-screen">
       <NavLink to="/" className="flex justify-center login-logo">
         <Logo className="w-auto" />
       </NavLink>
 
-      <div className="login-container">fuse
+      <div className="login-container">
         <p className="title">Sign into your account</p>
 
         <form onSubmit={handleSubmit(submit)}>
@@ -95,7 +92,7 @@ const Login = () => {
               </span>
               <input
                 type="text"
-                placeholder="Email address or phone number"
+                placeholder="Email address or phonetoa number"
                 id="email"
                 name="email"
                 {...register("email", {
@@ -169,16 +166,23 @@ const Login = () => {
       <div className="login-subtitle">
         <p>
           Don't have an account?{" "}
-          <a href="http://localhost:3002/signup" className="login-link">
+          <Link
+            to={{
+              pathname: "/signup",
+            }}
+            className="login-link"
+          >
             Sign Up
-          </a>
+          </Link>
         </p>
-        <a
-          href="http://localhost:3002/forgot-password"
+        <Link
+          to={{
+            pathname: "/signup",
+          }}
           className="login-link"
         >
           Forgot Password?
-        </a>
+        </Link>
       </div>
 
       <div className="flex sm:flex-row flex-col justify-center items-center login-footer-link">

@@ -5,10 +5,12 @@ import flutterwave from "../../../assets/dashboard-icons/flutterwave.svg";
 import { ReactComponent as Lock } from "../../../assets/icons/lock.svg";
 import { Navigate, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { toastError, toastSuccess } from "../../../component/shared/Toasts";
 import { useMutation } from "@apollo/client";
 import { MAKE_PAYMENT_MUTATION } from "../../../hooks";
+
 import Layout from "../../../component/Layout";
+import { ReactComponent as Spinner } from "../../../assets/icons/spinnerIcon.svg";
+import { toastError, toastSuccess } from "../../../component/shared/Toasts";
 
 const Deposit = () => {
   let navigate = useNavigate();
@@ -145,7 +147,7 @@ const Deposit = () => {
                     // window.location.replace(`${authorization_url}`);
                   }}
                 >
-                  Continue {loading && "loadng..."}
+                  Continue {loading && (<Spinner />)}
                 </div>
               </div>
 

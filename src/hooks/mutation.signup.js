@@ -8,24 +8,23 @@ export const SIGNUP_MUTATION = gql`
     $password: String!
     $mobile: String!
   ) {
-    token
-    user{
+    signup(
+      firstname: $firstname
+      lastname: $lastname
+      email: $email
+      password: $password
+      mobile: $mobile
+    ) {
+      status
+      statusMessage
+      token
+      user {
         id
-        email
         firstname
         lastname
+        email
         mobile
-        password
-        emailVerified
-        mobileVerified
-        enabled2FA
-        roles
-        addr
-        pvtKey
+      }
     }
-    smsTokenStatus
-    statusMessage
-    status
-    }
-
+  }
 `;

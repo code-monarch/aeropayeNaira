@@ -17,3 +17,8 @@ export const toastWarning = (message) => {
 		position: toast.POSITION.TOP_RIGHT,
 	});
 };
+export const toastLoading = (message) => {
+	return toast.loading(message, {
+		position: toast.POSITION.TOP_RIGHT,
+	});
+};

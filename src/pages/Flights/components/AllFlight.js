@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ReactComponent as Calendar } from "../../../assets/dashboard-icons/calendar-2.svg";
 import { ReactComponent as AirArik } from "../../../assets/dashboard-icons/Airlines.svg";
 import { ReactComponent as Profile } from "../../../assets/dashboard-icons/profile.svg";
@@ -12,9 +11,6 @@ import { ReactComponent as Line } from "../../../assets/dashboard-icons/Line.svg
 
 import FlightItinerary from "./FlightItinerary";
 
-// import { MAKE_PAYMENT_MUTATION } from "../../../hooks/mutation.makepayment";
-// import { useMutation } from "@apollo/client";
-
 const FlightsInfo = ({
   checkedIn,
   onOpenModal,
@@ -24,7 +20,6 @@ const FlightsInfo = ({
   isRefunded,
   filter,
 }) => {
-  // const [makePayment, { data, loading, error }] = useMutation(MAKE_PAYMENT_MUTATION);
 
   return (
     <div className="flex sm:flex-row flex-col">

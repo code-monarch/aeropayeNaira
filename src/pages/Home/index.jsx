@@ -1,4 +1,5 @@
-import React from "react";
+import { useContext } from "react";
+import { authContext } from "../../hooks/auth"
 import { ReactComponent as Wave } from "../../assets/dashboard-icons/wave.svg";
 import { ReactComponent as Onboarding } from "../../assets/dashboard-icons/onboarding_illus.svg";
 import { ReactComponent as ArrowRight } from "../../assets/dashboard-icons/arrow-right.svg";
@@ -11,14 +12,20 @@ import { ReactComponent as ArrowUp } from "../../assets/dashboard-icons/arrow-up
 import { Link } from "react-router-dom";
 import Layout from "../../component/Layout";
 
-const Home = ({ userName }) => {
+const Home = () => {
+  const {
+    auth: {
+      user: { firstname, lastname },
+    },
+  } = useContext(authContext);
   return (
     <Layout>
       <div className="home">
         <div className="welcome-div sticky z-[3] top-[4.5rem] w-full">
           <div className="welcome-div_message">
             <p className="title">
-              Welcome, Jowell<span className="username">&nbsp;{userName}</span>
+              Welcome, &nbsp;
+              <span className="username">&nbsp;{firstname}</span>
               <span className="message-icon">
                 <Wave />
               </span>
@@ -31,7 +38,7 @@ const Home = ({ userName }) => {
           </div>
         </div>
 
-        <section className="home-container mx-auto">
+        <section className="home-container mx-[34px]">
           <div className="get-started flex items-start justify-between lg:flex-row flex-col-reverse">
             <div className="getting_started">
               <div className="get-started_container">
@@ -85,9 +92,10 @@ const Home = ({ userName }) => {
           </div>
 
           <div className="flex lg:flex-row flex-col justify-evenly items-center user-details">
+            {/* First */}
             <Link
-              to="/passenger/wallet"
-              className="user-details_container mr-[24px]"
+              to="/wallet"
+              className="user-details_container mr-[24px] w-[421px]"
             >
               <div className="flex items-center justify-between">
                 <div className="type">
@@ -114,10 +122,10 @@ const Home = ({ userName }) => {
             </Link>
 
             <Link
-              to="/passenger/dashboard"
-              className="user-details_container mr-[24px] flex justify-between"
+              to="/flights"
+              className="user-details_container mr-[24px] flex justify-between items-start"
             >
-              <div className="">
+              <div className="mt-[-7px]">
                 <div className="flight-booked my-[20px]">
                   <p>Flight Booked</p>
                   <div className="flex items-center lg:items-start xl:items-center book xl:flex-row lg:flex-col flex-row">
@@ -141,10 +149,10 @@ const Home = ({ userName }) => {
             </Link>
 
             <Link
-              to="/passenger/transaction-history"
-              className="user-details_container flex justify-between"
+              to="/transaction-history"
+              className="user-details_container flex justify-between text-left"
             >
-              <div className="">
+              <div className="mt-[-7px]">
                 <div className="flight-booked my-[20px]">
                   <p>Total Deposits</p>
                   <div className="flex items-start sm:items-center lg:items-start xl:items-center book xl:flex-row lg:flex-col sm:flex-row flex-col">

@@ -9,8 +9,14 @@ import { ReactComponent as ReceiveIcon } from "../../assets/dashboard-icons/rece
 import { ReactComponent as FundIcon } from "../../assets/dashboard-icons/fundIcon.svg";
 import { ReactComponent as SendIcon } from "../../assets/dashboard-icons/sendIcon.svg";
 import { Link, useLocation } from "react-router-dom";
-import { useMutation, useQuery } from "@apollo/client";
+import { ReactComponent as Spinner } from "../../assets/icons/spinnerIcon.svg";
+import {
+  toastError,
+  toastSuccess,
+  toastLoading,
+} from "../../component/shared/Toasts";
 
+import { useMutation, useQuery } from "@apollo/client";
 import { MINT_TOKEN_MUTATION } from "../../hooks";
 import { BALANCE } from "../../hooks";
 import Layout from "../../component/Layout";
@@ -32,7 +38,13 @@ const Wallet = () => {
   console.log("search param", search)
 
   useEffect(() => {
-    if (search) { mintFunction() };
+    if (search) {
+      mintFunction().then((res) => {
+        res?.data && toastSuccess("Tokens minted successfully");
+      }).catch((error) => {
+        error && toastError("Something went wrong while minting tokens");
+      })
+    };
     console.log("search Query", search);
   }, [search, mintFunction]);
   
@@ -66,7 +78,7 @@ const Wallet = () => {
             </p>
             <p className="wallet-rate">≈ 1,150,000.00 NGN</p>
           </div>
-          {mintLoading && "Loading"}
+          {mintLoading && <Spinner/>}
           {showMobileButton ? (
             <div className="wallet-mobile-buttons">
               <Link to="deposit" className="mobile_deposit mobile_button">

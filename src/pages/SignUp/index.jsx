@@ -77,7 +77,7 @@ const SignUp = () => {
         auth.updateAuth(user_data);
         toastSuccess("User created succesfully");
         // history.push(`/verify/${data.email}`);
-        navigate("/2FA");
+        navigate("signup/2FA");
       })
       .catch((error) => {
         reset();

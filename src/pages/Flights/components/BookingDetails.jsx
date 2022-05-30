@@ -1,12 +1,18 @@
 import React from "react";
 
+import { useMutation, useQuery } from "@apollo/client";
+import { BOOK_FLIGHT_MUTATION } from "../../../hooks";
+import { GET_AVAILABLE_FLIGHTS } from "../../../hooks";
+import { ReactComponent as Spinner } from "../../../assets/icons/spinnerIcon.svg";
+import { toastError, toastSuccess } from "../../../component/shared/Toasts";
+
 const style = {
   card: `card bg-white w-[421px] !mr-[0px] mb-[20px] p-[16px] rounded-[8px] border-[1px] border-[#DDEFFF] cursor-pointer`,
-  inner_wrapper: `card_wrapper `,
+  inner_wrapper: `card_wrapper py-[16px] px-[16px] `,
   flightIdWrapper: `flight_id_wrapper h-[43px] flex justify-between p-[13px] bg-bg rounded-[8px]`,
   flightIdFlex: `flight_id_flex flex items-center p-0`,
-  flightIdText: `flight_Id_text font-sans text-[14px] leading-[17px] font-[500] text-[#41526E] ml-[5.5px]`,
-  flightDetailsWrapper: `flight_details_wrapper w-[389px] flex justify-between my-[16px] p-[11px] rounded-[8px]`,
+  flightIdText: `uppercase flight_Id_text font-sans text-[14px] leading-[17px] font-[500] text-[#41526E] ml-[5.5px]`,
+  flightDetailsWrapper: `bg-red flight_details_wrapper w-[389px] flex justify-between my-[16px] p-[11px] rounded-[8px]`,
   flightDetailsTime: `flight_details_time font-sans font-[500] text-[18px] leading-[21px] text-[#000000]`,
   flightDetailsLocation: `flight_details_Location font-sans font-[400] text-[14px] leading-[17px] text-[#000000] my-[8px]`,
   flightDetailsAirport: `flight_details_Airport max-w-[108px] font-serif font-[400] text-[11px] leading-[14px] text-[#8895A7]`,
@@ -17,13 +23,85 @@ const style = {
   flightManifestFlexText: `flightManifestFlexText font-serif font-[400] min-w-[86px] text-left text-[12px] text-[#8895A7] ml-[6px] tracking-[0.01em] leading-[15px]`,
 };
 
-const BookingSummary = () => {
+const BookingDetails = ({ itinerary }) => {
+  // Get All Flights
+  const { loading, error, data: flightsData } = useQuery(GET_AVAILABLE_FLIGHTS);
+
+  // cycle through the availableFlighths gotten from the Query and stores the values in an array
+  const flights = flightsData?.getAvailableFlights?.map((flight) => {
+    return {
+      flightCode: flight?.flightCode,
+      departureCity: flight?.departureCity,
+      departureDate: flight?.departureDate,
+      arrivalCity: flight?.arrivalCity,
+      arrivalDate: flight?.arrivalDate,
+      arrivalTime: flight?.arrivalTime,
+      departureTime: flight?.departureTime,
+      airfare: flight?.airfare,
+      class: flight?.class,
+      flightSeat: flight?.flightSeat,
+    };
+  });
+
+  console.log("available flights", flights);
+
+  // cycle through the flight array, returns a new array if the modal FlightCode === Itinerary flightCode
+  let flightToBook = flights.find(
+    (item) => item.flightCode === itinerary?.flightCode
+  );
+  console.log("my Itemmmmmmmm", flightToBook);
+  console.log("flightcode", flightToBook?.flightCode);
+
+  // get Ait fare from itinerary and pass to BookFlight mutation variables
+  const airfare = itinerary?.airfare;
+  console.log();
+
+  const [
+    bookFlight,
+    { data: bookingData, loading: bookingLoading, error: bookingError },
+  ] = useMutation(BOOK_FLIGHT_MUTATION);
+
+  console.log("amount", flightToBook.airfare);
+
+  // function controls
+  const payForFlight = () => {
+    bookFlight({
+      variables: {
+        flightCode: flightToBook?.flightCode,
+        departureCity: flightToBook?.departureCity,
+        arrivalCity: flightToBook?.arrivalCity,
+        departureDate: flightToBook?.departureDate,
+        arrivalDate: flightToBook?.arrivalDate,
+        departureTime: flightToBook?.departureTime,
+        arrivalTime: flightToBook?.arrivalTime,
+        numOfAdults: 3,
+        numOfChildren: 3,
+        numOfInfants: 3,
+        amount: flightToBook?.airfare,
+        class: "ECONOMY",
+        flightSeat: "AD 070",
+      },
+    })
+      .then((res) => {
+        if (res?.data) {
+          toastSuccess("Booking successful");
+        }
+      })
+      .catch((error) => {
+        toastError(bookingError);
+      });
+  };
+  console.log("mutation error", bookingError);
+
+  console.log("Booked flight", bookingData);
   return (
-    <>
-      {/* Flight Itinerary */}
-      <div className="bg-white w-[421px] h-[203px] !mr-[0px] mb-[20px] py-[16px] px-[16px] rounded-[8px] border-[1px] border-[#DDEFFF] cursor-pointer">
-        {/* Inner Wrapper */}
-        <div className={style.inner_wrapper}>
+    <div className="bg-white !mr-[0px]rounded-[8px]">
+      <div className="bg-bg p-[16px] font-size font-[500] text-[18px] text-left">
+        Booking Summary
+      </div>
+      {/* Inner Wrapper */}
+      <div className={style.inner_wrapper}>
+        <div className={style.card}>
           {/* Flight Id Flex*/}
           <div className={style.flightIdWrapper}>
             {/* Id */}
@@ -44,7 +122,9 @@ const BookingSummary = () => {
                 </svg>
               </div>
               {/* svg wrapper End */}
-              <h1 className={style.flightIdText}>Flight ID: P4 7134</h1>
+              <h1 className={style.flightIdText}>
+                Flight ID: {flightToBook?.flightCode}
+              </h1>
             </div>
             {/* Id */}
             {/* Flight Date flex*/}
@@ -69,7 +149,9 @@ const BookingSummary = () => {
                 </svg>
               </div>
               {/* Svg wrapper Flight Date End*/}
-              <h1 className={style.flightIdText}>Feb 20, 2022</h1>
+              <h1 className={style.flightIdText}>
+                {flightToBook?.departureDate}
+              </h1>
             </div>
             {/* Flight Date End */}
           </div>
@@ -80,9 +162,13 @@ const BookingSummary = () => {
             {/* Departure */}
             <div>
               {/* Departure Time */}
-              <h2 className={style.flightDetailsTime}>11:30 AM</h2>
+              <h2 className={style.flightDetailsTime}>
+                {flightToBook?.departureTime}
+              </h2>
               {/* Departure Location */}
-              <h3 className={style.flightDetailsLocation}>Lagos</h3>
+              <h3 className={style.flightDetailsLocation}>
+                {flightToBook?.departureCity}
+              </h3>
               {/* Departure Airport */}
               <h4 className={style.flightDetailsAirport}>
                 Murtala Muhammed International Airport (Nigeria)
@@ -124,9 +210,13 @@ const BookingSummary = () => {
             {/* Arrival */}
             <div>
               {/* Arrival Time */}
-              <h2 className={style.flightDetailsTime}>1:30 AM</h2>
+              <h2 className={style.flightDetailsTime}>
+                {flightToBook?.arrivalTime}
+              </h2>
               {/* Arrival Location */}
-              <h3 className={style.flightDetailsLocation}>Abuja</h3>
+              <h3 className={style.flightDetailsLocation}>
+                {flightToBook?.arrivalCity}
+              </h3>
               {/* Arrival Airport */}
               <h4 className={style.flightDetailsAirport}>
                 Nnamdi Azikiwe International Airport (Nigeria)
@@ -136,65 +226,84 @@ const BookingSummary = () => {
           </div>
           {/* Flight Details End*/}
         </div>
-        {/* Inner Wrapper End */}
+        {/* Flight Itinerary End */}
+
+        {/* Flight Fare Summary */}
+        <div className="card bg-bg w-[421px]!mr-[0px] mb-[20px] py-[16px] px-[16px] rounded-[8px] border-[1px] border-[#DDEFFF] cursor-pointer">
+          {/* Number of Passenger */}
+          <div className="flex justify-between mb-[16px]">
+            <div className="no_passengers text-black font-sans font-[400] text-[16px]">
+              2x Passengers:
+            </div>
+            {/* Cost */}
+            <div className="text-right">
+              <div className="text-black font-sans font-[400] text-[16px]">
+                122.8070 ARP
+              </div>
+              <div className="text-[14px] font-sans font-[400] text-[#5F6B7A]">
+                (≈ 80,000 NGN)
+              </div>
+            </div>
+            {/* Number of Passengers */}
+          </div>
+          {/* Number of Passenger End */}
+
+          {/* Discounts */}
+          <div className="discount flex justify-between mb-[16px]">
+            <div className="no_passengers text-black font-sans font-[400] text-[16px]">
+              Discounts:
+            </div>
+            {/* Cost */}
+            <div className="text-right">
+              <div className="text-[14px] font-sans font-[400] text-[#5F6B7A]">
+                0.00 NGN
+              </div>
+            </div>
+          </div>
+          {/* Discounts End */}
+
+          {/* Total */}
+          <div className="flex justify-between">
+            <div className="no_passengers text-black font-[500] font-sans text-[16px]">
+              Total:
+            </div>
+            {/* Cost */}
+            <div className="text-right">
+              <div className="text-black font-sans font-[500] text-[16px]">
+                122.8070 ARP
+              </div>
+              <div className="text-[14px] font-sans font-[500] text-[#5F6B7A]">
+                (≈ 80,000 NGN)
+              </div>
+            </div>
+            {/* Number of Passengers */}
+          </div>
+          {/* Total End */}
+        </div>
+        {/* Flight Fare End */}
+        <div>
+          <div
+            onClick={() => {
+              payForFlight();
+            }}
+            className="bg-[#060A33] flex justify-center items-center text-center rounded-[8px] text-white p-[16px] font-sans cursor-pointer"
+          >
+            <div className="mr-[5px]">
+              Pay now{" "}
+              <span className="font-[500] inline text-[20px]">
+                &nbsp;{airfare}&nbsp;
+              </span>
+              ARP
+            </div>
+            <span>{bookingLoading && <Spinner />}</span>
+          </div>
+          <div className="text-center font-serif text-[#5F6B7A] font-[400] mt-[16px] mb-[16px] cursor-pointer">
+            I will pay later
+          </div>
+        </div>
       </div>
-      {/* Flight Itinerary End */}
-
-      {/* Flight Fare Summary */}
-      <div className="card bg-bg w-[421px]!mr-[0px] mb-[20px] py-[16px] px-[16px] rounded-[8px] border-[1px] border-[#DDEFFF] cursor-pointer">
-        {/* Number of Passenger */}
-        <div className="flex justify-between mb-[16px]">
-          <div className="no_passengers text-black font-sans font-[400] text-[16px]">
-            2x Passengers:
-          </div>
-          {/* Cost */}
-          <div className="text-right">
-            <div className="text-black font-sans font-[400] text-[16px]">
-              122.8070 Aeropaye
-            </div>
-            <div className="text-[14px] font-sans font-[400] text-[#5F6B7A]">
-              (≈ 80,000 NGN)
-            </div>
-          </div>
-          {/* Number of Passengers */}
-        </div>
-        {/* Number of Passenger End */}
-
-        {/* Discounts */}
-        <div className="discount flex justify-between mb-[16px]">
-          <div className="no_passengers text-black font-sans font-[400] text-[16px]">
-            Discounts:
-          </div>
-          {/* Cost */}
-          <div className="text-right">
-            <div className="text-[14px] font-sans font-[400] text-[#5F6B7A]">
-              0.00 NGN
-            </div>
-          </div>
-        </div>
-        {/* Discounts End */}
-
-        {/* Total */}
-        <div className="flex justify-between">
-          <div className="no_passengers text-black font-[500] font-sans text-[16px]">
-            Total:
-          </div>
-          {/* Cost */}
-          <div className="text-right">
-            <div className="text-black font-sans font-[500] text-[16px]">
-              122.8070 Aeropaye
-            </div>
-            <div className="text-[14px] font-sans font-[500] text-[#5F6B7A]">
-              (≈ 80,000 NGN)
-            </div>
-          </div>
-          {/* Number of Passengers */}
-        </div>
-        {/* Total End */}
-      </div>
-      {/* Flight Fare End */}
-    </>
+    </div>
   );
 };
 
-export default BookingSummary;
+export default BookingDetails;

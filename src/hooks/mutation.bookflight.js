@@ -4,18 +4,19 @@ export const BOOK_FLIGHT_MUTATION = gql`
   mutation bookFlight(
     $flightCode: String!
     $departureCity: String!
-    $departureDate: String!
-    $departureTime: String!
     $arrivalCity: String!
+    $departureDate: String!
     $arrivalDate: String!
+    $departureTime: String!
     $arrivalTime: String!
     $numOfAdults: Int!
-    $numOfChildren: Int!
-    $numOfInfants: Int!
+    $numOfChildren: Int
+    $numOfInfants: Int
     $amount: String!
     $class: CLASS!
-    $flightSeat: String!
+    $flightSeat: String
   ) {
+    bookFlight(
       flightCode: $flightCode
       departureCity: $departureCity
       departureDate: $departureDate
@@ -29,15 +30,22 @@ export const BOOK_FLIGHT_MUTATION = gql`
       amount: $amount
       class: $class
       flightSeat: $flightSeat
-{
-        bookUpdate{
-            airlineName
-            airlineAddres
-            userFirstName
-            userLastName
-            $numOfChildren
-            numOfInfants
-        }
+    ) {
+      bookUpdate {
+        airlineId
+        airlineName
+        airlineAddres
+        departureDate
+        departureTime
+        departureInfo
+        arrivalDate
+        arrivalTime
+        arrivalInfo
+        amount
+        status
+        createdAt
+        updatedAt
+      }
     }
   }
 `;

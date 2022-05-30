@@ -1,6 +1,7 @@
 .wallet-container{
     background: $color-secondary;
-    height: 100vh;
+    height: auto;
+    padding-bottom: 30px;
     .wallet{
         background-color: $color-primary;
         background-image: url('../assets/dashboard-icons/bubbles\ 3.svg');

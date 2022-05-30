@@ -1,10 +1,9 @@
 import { gql } from "@apollo/client";
 
 export const GET_AVAILABLE_FLIGHTS = gql`
-  query getAvailableFlights {
+  query {
     getAvailableFlights {
       airlineName
-      airlineAddres
       flightCode
       departureCity
       departureDate
@@ -14,17 +13,9 @@ export const GET_AVAILABLE_FLIGHTS = gql`
       arrivalDate
       arrivalTime
       arrivalInfo
-      postedById
-      class
-      apstatus
-      status
-      flightEscrow
-      createdAt
-      updatedAt
-      cancelled
       airfare
-      delayed
-      booked
+      flightEscrow
+      class
     }
   }
 `;

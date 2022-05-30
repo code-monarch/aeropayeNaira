@@ -1,12 +1,11 @@
 import React, { createContext, useState, useEffect } from "react";
 import { ToastContainer, Slide } from "react-toastify";
-import UserSessionManager from "../helpers/session.manager";
 import lodash from "lodash";
 
 export const authContext = createContext();
 
 const loggedInUser = JSON.parse(
-  UserSessionManager.getItem(process.env.REACT_APP_LOCAL_STORAGE_KEY)
+  localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE_KEY)
 );
 
 export const AuthProvider = (props) => {
@@ -14,9 +13,9 @@ export const AuthProvider = (props) => {
     user: {},
     loggedIn: true,
     logOut: () => {
-      UserSessionManager.removeItem(process.env.REACT_APP_LOCAL_STORAGE_KEY);
+      localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE_KEY);
       auth.updateAuth({ loggedIn: false, token: "", user: {} });
-      window.location.pathname = "/";
+      window.location.pathname = "/login";
     },
     updateAuth: (update) => setAuth((auth) => ({ ...auth, ...update })),
   });
