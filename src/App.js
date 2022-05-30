@@ -1,18 +1,14 @@
 import React from "react";
 import "./index.css";
 import "./styles/main.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { RequireAuth } from "./pages/RequireAuth";
 
 import Nav from "./component/Nav";
 
 import { HelmetProvider } from "react-helmet-async"; // This reusable React component will manage all of your changes to the document head
 
-import { useContext } from "react"
+import { useContext } from "react";
 
 import Home from "./pages/Home";
 import Flight from "./pages/Flights";
@@ -56,15 +52,9 @@ function App() {
             </RequireAuth>
           }
         />
-        <Route
-          path="signup/2FA"
-          element={
-            <RequireAuth>
-              <TwoFA />
-            </RequireAuth>
-          }
-        />
-        <Route path="signup" element={<SignUp />} />
+
+        <Route path="signup" element={<SignUp />} exact/>
+        <Route path="signup/verify" element={<TwoFA />} />
         <Route
           path="flights"
           element={

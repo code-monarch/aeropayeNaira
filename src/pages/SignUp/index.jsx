@@ -76,13 +76,13 @@ const SignUp = () => {
         );
         auth.updateAuth(user_data);
         toastSuccess("User created succesfully");
-        // history.push(`/verify/${data.email}`);
-        navigate("signup/2FA");
+        // history.push(`/2FA`);
+        navigate("verify");
+        
       })
       .catch((error) => {
         reset();
         toastError(error.message);
-        // return loader && loader.current?.complete();
       });
   };
 
