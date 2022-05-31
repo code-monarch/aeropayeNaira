@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ReactComponent as ArrowLeft } from "../../../assets/dashboard-icons/arrow-left.svg";
 import { ReactComponent as Paystack } from "../../../assets/dashboard-icons/Paystack_Logo.svg";
 import flutterwave from "../../../assets/dashboard-icons/flutterwave.svg";
@@ -108,7 +108,7 @@ const Deposit = () => {
                         onFocus={() => setFocus("radio-1")}
                       />
                       <label
-                        for="platform-option-1"
+                        htmlFor="platform-option-1"
                         className="ml-2 platform-option-1"
                       >
                         <Paystack />
@@ -129,7 +129,7 @@ const Deposit = () => {
                         aria-describedby="platform-option-2"
                         onFocus={() => setFocus("radio-2")}
                       />
-                      <label for="platform-option-2" className="ml-2">
+                      <label htmlFor="platform-option-2" className="ml-2">
                         <img src={flutterwave} alt="x" />
                       </label>
                     </div>
@@ -140,15 +140,15 @@ const Deposit = () => {
               <div>
                 <div
                   className="withdraw-form_button flex items-center cursor-pointer justify-center"
-                  type="submit"
+                  // type="submit"
                   onClick={() => {
                     // onContinueToPayment(data);
                     console.log("pay button clicked");
-                    submit();
+                    submit()
                     // window.location.replace(`${authorization_url}`);
                   }}
                 >
-                  Continue {loading && (<Spinner />)}
+                  Continue
                 </div>
               </div>
 
