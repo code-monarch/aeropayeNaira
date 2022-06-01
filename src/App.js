@@ -47,36 +47,36 @@ function App() {
         <Route
           path="/"
           element={
-            <RequireAuth>
+            // <RequireAuth>
               <Home />
-            </RequireAuth>
+            // </RequireAuth>
           }
         />
 
         <Route path="signup" element={<SignUp />} exact/>
-        <Route path="signup/verify" element={<TwoFA />} />
+        <Route path="2FA" element={<TwoFA />} />
         <Route
           path="flights"
           element={
-            <RequireAuth>
+            // <RequireAuth>
               <Flight />
-            </RequireAuth>
+            // </RequireAuth>
           }
         />
         <Route
           path="flights/book-flight"
           element={
-            <RequireAuth>
+            // <RequireAuth>
               <BookFlight />
-            </RequireAuth>
+            // </RequireAuth>
           }
         />
         <Route
           path="wallet"
           element={
-            <RequireAuth>
+            // <RequireAuth>
               <Wallet />
-            </RequireAuth>
+            // </RequireAuth>
           }
         />
         <Route
@@ -98,9 +98,9 @@ function App() {
         <Route
           path="wallet/deposit"
           element={
-            <RequireAuth>
+            // <RequireAuth>
               <Deposit />
-            </RequireAuth>
+            // </RequireAuth>
           }
         />
         <Route

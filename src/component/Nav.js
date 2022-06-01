@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { ReactComponent as Logo } from "../assets/icons/logo.svg";
 import { ReactComponent as Notification } from "../assets/dashboard-icons/Notification.svg";
 import { ReactComponent as Arrow } from "../assets/dashboard-icons/arrow-down.svg";
@@ -16,8 +16,15 @@ import { ReactComponent as SettingActive } from "../assets/dashboard-icons/Setti
 import MobileNav from "./mobile/MobileNav";
 
 import { NavLink } from "react-router-dom";
+import { authContext } from "../hooks/auth";
 
 const Nav = ({ userName, isActive, setIsActive }) => {
+  const {
+    auth: {
+      user: { firstname, lastname },
+    },
+  } = useContext(authContext);
+
   const [showOption, setShowOption] = useState(false);
   const [showProfile, setShowProfile] = useState(
     window.matchMedia("(max-width:1260px)").matches
@@ -42,15 +49,15 @@ const Nav = ({ userName, isActive, setIsActive }) => {
       {showMobileNav ? (
         <MobileNav isActive={isActive} setIsActive={setIsActive} />
       ) : (
-        <nav className="flex items-center justify-between sticky z-10 top-0 w-full">
-          <div className="flex items-center justify-between px-[64px]">
+        <nav className="flex items-center justify-evenly sticky z-10 top-0 w-full">
+          <div className="flex items-center justify-between">
             <div className="mr-[20px] lg:mr-[32px]">
               <NavLink to="/">
-                <Logo className="w-[150px]" />
+                <Logo className="w-auto" />
               </NavLink>
             </div>
 
-            <div className="flex spce-x-[-34px]">
+            <div className="flex items-center ">
               <NavLink
                 to="/"
                 className={`mx-[14px] lg:mx-[23px] navigation-link ${
@@ -164,7 +171,7 @@ const Nav = ({ userName, isActive, setIsActive }) => {
                       <Profile className="mr-[8px]" /> Derek
                     </li>
                     <li>
-                      <NavLink to="/passenger" className="settings">
+                      <NavLink to="/" className="settings">
                         Settings
                       </NavLink>
                     </li>
@@ -184,7 +191,7 @@ const Nav = ({ userName, isActive, setIsActive }) => {
                 <div className="flex justify-between items-center">
                   <div className="flex items-center">
                     <Profile />
-                    <span className="profile-name">Derek</span>
+                    <span className="profile-name">{firstname}</span>
                   </div>
                   <Arrow />
                 </div>
@@ -197,7 +204,9 @@ const Nav = ({ userName, isActive, setIsActive }) => {
                       </NavLink>
                     </li>
                     <li>
-                      <div className="log-out">Logout</div>
+                      <NavLink to="/" className="log-out">
+                        Logout
+                      </NavLink>
                     </li>
                   </ul>
                 )}
@@ -209,5 +218,4 @@ const Nav = ({ userName, isActive, setIsActive }) => {
     </>
   );
 };
-
 export default Nav;

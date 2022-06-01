@@ -19,7 +19,10 @@ import { AuthProvider } from "./hooks/auth";
 import { setContext } from "@apollo/client/link/context";
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem(AUTH_TOKEN);
+  const loggedInUser = JSON.parse(
+    UserSessionManager.getItem(process.env.REACT_APP_LOCAL_STORAGE_KEY)
+  );
+  const token = loggedInUser ? loggedInUser.token : null;
   return {
     headers: {
       ...headers,

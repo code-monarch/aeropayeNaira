@@ -22,25 +22,25 @@ const Deposit = () => {
   console.log(depositAmountPlusTrailingZeros);
 
   //
-  const [onDeposit, { data, loading, error }] = useMutation(
-    MAKE_PAYMENT_MUTATION
-  );
+  const [makePayment, { loading }] = useMutation(MAKE_PAYMENT_MUTATION);
 
   const submit = () => {
-    onDeposit({
+    makePayment({
       variables: {
         amountDeposited: Number(depositAmountPlusTrailingZeros),
       },
-    }).then((res) => {
-      console.log("res", res)
-      const url = res.data.makePayment.data.authorization_url;
-       window.location.replace(`${url}`);
-       console.log(url, "payment checkout")
     })
+      .then((res) => {
+        console.log("res", res);
+        const url = res;
+        // const url = res?.data?.makePayment?.data?.authorization_url;
+        //  window.location.replace(`${url}`);
+        console.log(url, "payment checkout");
+      })
+      .catch((error) => {
+        toastError("Error");
+      });
   };
-  // if (data) {
-  //   console.log(data, "daghs")
-  // }
   return (
     <>
       <Layout>
@@ -73,6 +73,7 @@ const Deposit = () => {
                     {/* Deposit input */}
                     <input
                       type="number"
+                      className="!appearance-none"
                       placeholder="0.00"
                       onFocus={() => setFocus("amt")}
                       onChange={(e) => {

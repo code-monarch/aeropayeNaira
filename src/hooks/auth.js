@@ -1,11 +1,12 @@
 import React, { createContext, useState, useEffect } from "react";
 import { ToastContainer, Slide } from "react-toastify";
+import UserSessionManager from "../helpers/session.manager";
 import lodash from "lodash";
 
 export const authContext = createContext();
 
 const loggedInUser = JSON.parse(
-  localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE_KEY)
+  UserSessionManager.getItem(process.env.REACT_APP_LOCAL_STORAGE_KEY)
 );
 
 export const AuthProvider = (props) => {
@@ -13,13 +14,12 @@ export const AuthProvider = (props) => {
     user: {},
     loggedIn: true,
     logOut: () => {
-      localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE_KEY);
+      UserSessionManager.removeItem(process.env.REACT_APP_LOCAL_STORAGE_KEY);
       auth.updateAuth({ loggedIn: false, token: "", user: {} });
-      window.location.pathname = "/login";
+      window.location.pathname = "/";
     },
     updateAuth: (update) => setAuth((auth) => ({ ...auth, ...update })),
   });
-  console.log(auth)
 
   const [loading, setLoading] = useState(false);
 

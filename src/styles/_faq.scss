@@ -1,0 +1,80 @@
+.faq{
+    background: #F7FBFF;
+    padding: 96px 0;
+    
+    &-container{
+        width: 840px;
+        margin: 0 auto;
+
+        @media only screen and (max-width: 880px) {
+            width: auto;
+            margin: 0 20px;
+        }
+
+         &-subtitle{
+        font-family: $font-ibm;
+        font-size: 14px;
+        font-weight: 300;
+        color: #060A33;
+        text-align: center;
+    }
+
+    &-title{
+        font-size: 32px;
+        font-family: $font-rubik;
+        font-weight: 600;
+        margin: 12px 8px 8px;
+        color: #212934;
+        text-align: center;
+
+         @media only screen and (max-width: 540px) {
+            font-size: 28px;
+        }
+    }
+    .underline{
+        background: $color-accent;
+        width: 144px;
+        height: 4px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .question-container{
+        height: auto;
+        border-radius: 6px;
+        padding: 12px 16px;
+        border: 1px solid #E1E7EC;
+        margin: 12px 0;
+        
+        .questions{
+            &-items{
+                font-family: $font-rubik;
+                font-weight: 500;
+                color: #212934;
+                text-transform: capitalize;
+
+                @media only screen and (max-width: 540px) {
+                   font-size: 14.8px;
+                }
+            }
+
+            &-answer{
+                margin-top: 20px;
+                font-family: $font-mulish;
+                font-weight: 400;
+                color: #5F6B7A;
+                font-size: 14px;
+                border-left: 4px solid $color-accent;
+                padding: 0 10px;
+            }
+        }
+    }
+}
+
+.active-question{
+    border: 1px solid $color-accent !important;
+    background: white !important;
+    border-radius: 6px;
+}
+}
+
