@@ -14,7 +14,7 @@ export const AuthProvider = (props) => {
     user: {},
     loggedIn: true,
     logOut: () => {
-      UserSessionManager.removeItem(process.env.REACT_APP_LOCAL_STORAGE_KEY);
+      localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE_KEY);
       auth.updateAuth({ loggedIn: false, token: "", user: {} });
       window.location.pathname = "/";
     },

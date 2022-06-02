@@ -16,13 +16,13 @@ import { useMutation } from "@apollo/client";
 import { toastError, toastSuccess } from "../../component/shared/Toasts";
 import { Controller, useForm } from "react-hook-form";
 import FormError from "../../component/shared/FormError";
-import { authContext } from "../../hooks/auth";
+import useAuth from "../../hooks/useAuth";
 import Button from "../../component/shared/Button";
 
 
 const SignUp = () => {
-  const { auth } = useContext(authContext);
-  console.log(auth);
+  const { setAuth } = useAuth();
+  console.log(setAuth);
 
   const [showPassword, setShowPassword] = useState(false);
   const [focus, setFocus] = useState("");
@@ -31,7 +31,7 @@ const SignUp = () => {
 
   let navigate = useNavigate();
 
-  const [signup, { loading, reset }] = useMutation(SIGNUP_MUTATION);
+  const [signup, { loading, data, reset }] = useMutation(SIGNUP_MUTATION);
 
   const {
     control,
@@ -55,9 +55,9 @@ const SignUp = () => {
         password: data.password,
       },
     })
-      .then((res) => {
-        console.log("response", res)
-        const data = res?.data?.signup;
+      .then(({ data }) => {
+        // const data = res?.data?.signup?.user;
+        console.log("response", data);
         const user_data = {
           user: { ...data?.user },
           account_type: "individual",
@@ -66,7 +66,7 @@ const SignUp = () => {
           process.env.REACT_APP_LOCAL_STORAGE_KEY,
           JSON.stringify(user_data)
         );
-        auth.updateAuth(user_data);
+        setAuth({ user_data });
         toastSuccess("User created succesfully");
         // history.push(`/verify/${data.email}`);
         // navigate("/2FA");
@@ -77,6 +77,8 @@ const SignUp = () => {
         // return loader && loader.current?.complete();
       });
   };
+
+  console.log("Mutation data", data)
 
   return (
     <div className="signup-container 2xl:h-screen h-auto">

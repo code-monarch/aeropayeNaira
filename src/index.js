@@ -4,9 +4,7 @@ import "./index.css";
 import "./styles/main.css";
 import App from "./App";
 import "flowbite";
-
-import { useNavigate } from "react-router-dom";
-import { AUTH_TOKEN } from "./constants";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import {
   ApolloClient,
@@ -14,13 +12,12 @@ import {
   ApolloProvider,
   createHttpLink,
 } from "@apollo/client";
-import UserSessionManager from "./helpers/session.manager";
-import { AuthProvider } from "./hooks/auth";
+import { AuthProvider } from "./component/context/AuthProvider";
 import { setContext } from "@apollo/client/link/context";
 
 const authLink = setContext((_, { headers }) => {
   const loggedInUser = JSON.parse(
-    UserSessionManager.getItem(process.env.REACT_APP_LOCAL_STORAGE_KEY)
+    localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE_KEY)
   );
   const token = loggedInUser ? loggedInUser.token : null;
   return {
@@ -43,11 +40,15 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
-      <ApolloProvider client={client}>
-        <App />
-      </ApolloProvider>
-    </AuthProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <ApolloProvider client={client}>
+          <Routes>
+            <Route path="/" element={<App />} />
+          </Routes>
+        </ApolloProvider>
+      </AuthProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

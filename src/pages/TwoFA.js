@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { RESEND_2FA_MUTATION, VERIFY_2FA_MUTATION } from "../hooks";
 import { toastError, toastSuccess } from "../component/shared/Toasts";
-import { authContext } from "../hooks/auth";
+import useAuth from "../hooks/useAuth";
 import Button from "../component/shared/Button";
 
 const TwoFA = () => {
-	const { auth } = useContext(authContext);
+  const { setAuth } = useAuth();
 
 	const [focus, setFocus] = useState("");
 	const [twoFA, setTwoFA] = useState(new Array(6).fill(""));
@@ -44,7 +44,7 @@ const TwoFA = () => {
 			verify({
 				variables: {
 					pin: twoFA.join(""),
-					msisdn: auth?.user?.mobile,
+					msisdn: setAuth?.user?.mobile,
 				},
 			})
 				.then(() => {
@@ -66,7 +66,7 @@ const TwoFA = () => {
 
 		resend2fa({
 			variables: {
-				msisdn: auth?.user?.mobile,
+				msisdn: setAuth?.user?.mobile,
 			},
 		})
 			.then((res) => {

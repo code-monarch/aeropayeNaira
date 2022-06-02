@@ -11,11 +11,11 @@ import { LOGIN_MUTATION } from "../hooks";
 import { toastError, toastSuccess } from "../component/shared/Toasts";
 import { useForm } from "react-hook-form";
 import FormError from "../component/shared/FormError";
-import { authContext } from "../hooks/auth";
+import useAuth from "../hooks/useAuth";
 import Button from "../component/shared/Button";
 
 const Login = () => {
-	const { auth } = useContext(authContext);
+	 const { setAuth } = useAuth();
 
 	const [showPassword, setShowPassword] = useState(false);
 	const [focus, setFocus] = useState("");
@@ -47,7 +47,7 @@ const Login = () => {
 					process.env.REACT_APP_LOCAL_STORAGE_KEY,
 					JSON.stringify(user_data)
 				);
-				auth.updateAuth(user_data);
+				setAuth({ user_data });
 				toastSuccess("Login successful");
 				// history.push(`/verify/${data.email}`);
 				navigate("/2FA");

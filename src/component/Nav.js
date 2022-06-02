@@ -16,14 +16,15 @@ import { ReactComponent as SettingActive } from "../assets/dashboard-icons/Setti
 import MobileNav from "./mobile/MobileNav";
 
 import { NavLink } from "react-router-dom";
-import { authContext } from "../hooks/auth";
+import useAuth from "../hooks/useAuth";
 
 const Nav = ({ userName, isActive, setIsActive }) => {
-  const {
-    auth: {
-      user: { firstname, lastname },
-    },
-  } = useContext(authContext);
+  // const { setAuth } = useAuth();
+  // const {
+  //   setAuth: {
+  //     user: { firstname, lastname },
+  //   },
+  // } = setAuth;
 
   const [showOption, setShowOption] = useState(false);
   const [showProfile, setShowProfile] = useState(
@@ -191,7 +192,8 @@ const Nav = ({ userName, isActive, setIsActive }) => {
                 <div className="flex justify-between items-center">
                   <div className="flex items-center">
                     <Profile />
-                    <span className="profile-name">{firstname}</span>
+                    {/* <span className="profile-name">{firstname}</span> */}
+                    <span className="profile-name">Derek</span>
                   </div>
                   <Arrow />
                 </div>
