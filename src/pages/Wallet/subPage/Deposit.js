@@ -32,13 +32,12 @@ const Deposit = () => {
     })
       .then((res) => {
         console.log("res", res);
-        const url = res;
-        // const url = res?.data?.makePayment?.data?.authorization_url;
-        //  window.location.replace(`${url}`);
+        const url = res?.data?.makePayment?.data?.authorization_url;
+         window.location.replace(`${url}`);
         console.log(url, "payment checkout");
       })
       .catch((error) => {
-        toastError("Error");
+        toastError(error);
       });
   };
   return (

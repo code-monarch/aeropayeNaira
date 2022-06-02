@@ -5,7 +5,6 @@ export const MINT_TOKEN_MUTATION = gql`
     mint {
       status
       message
-      data
     }
   }
 `;

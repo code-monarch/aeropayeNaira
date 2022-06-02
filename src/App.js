@@ -23,8 +23,12 @@ import NoMatch from "./pages/NoMatch";
 // Toasts Notification
 import "react-toastify/dist/ReactToastify.css";
 import Layout from "./component/Layout";
+import useAuth from "./hooks/useAuth";
 
 function App() {
+
+  const { auth } = useAuth();
+  console.log("index auth", auth)
   return (
     <>
       {" "}
@@ -46,6 +50,7 @@ function App() {
 
           {/* Protected Routes */}
 
+        {/* <Route path="/" element={<Layout />}> */}
           <Route
             path="/"
             element={
@@ -137,6 +142,7 @@ function App() {
           />
           {/* Catch All */}
           <Route path="*" element={<NoMatch />} />
+        {/* </Route> */}
       </Routes>
     </>
   );

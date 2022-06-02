@@ -15,7 +15,7 @@ import useAuth from "../hooks/useAuth";
 import Button from "../component/shared/Button";
 
 const Login = () => {
-	 const { setAuth } = useAuth();
+	  const { auth, setAuth } = useAuth();
 
 	const [showPassword, setShowPassword] = useState(false);
 	const [focus, setFocus] = useState("");
@@ -38,19 +38,19 @@ const Login = () => {
 		})
 			.then((res) => {
 				const data = res?.data?.login;
-				const user_data = {
+				const userData = {
 					loggedIn: true,
 					user: { ...data?.user },
 					token: data?.token,
 				};
 				localStorage.setItem(
 					process.env.REACT_APP_LOCAL_STORAGE_KEY,
-					JSON.stringify(user_data)
+					JSON.stringify(userData)
 				);
-				setAuth({ user_data });
+				setAuth({ userData });
 				toastSuccess("Login successful");
 				// history.push(`/verify/${data.email}`);
-				navigate("/2FA");
+				navigate("/");
 				// window.location = "https://aeropaye-dashboard-convexity.vercel.app/";
 			})
 			.catch((error) => {

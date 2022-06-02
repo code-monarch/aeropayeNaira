@@ -33,21 +33,23 @@ const Wallet = () => {
     console.log("balanceData", data);
   }
 
-  
   const { search } = useLocation();
-  console.log("search param", search)
+  console.log("search param", search);
 
   useEffect(() => {
     if (search) {
-      mintFunction().then((res) => {
-        res?.data && toastSuccess("Tokens minted successfully");
-      }).catch((error) => {
-        error && toastError("Something went wrong while minting tokens");
-      })
-    };
+      mintFunction()
+        .then((res) => {
+          const success = res?.data?.status;
+          success === "success" && toastSuccess(res?.data?.message);
+        })
+        .catch((error) => {
+          error && toastError("Something went wrong while minting tokens");
+        });
+    }
     console.log("search Query", search);
   }, [search, mintFunction]);
-  
+
   console.log("Minting Tokens", mintData);
 
   const [isActive, setIsActive] = useState("wallet");
@@ -78,7 +80,7 @@ const Wallet = () => {
             </p>
             <p className="wallet-rate">≈ 1,150,000.00 NGN</p>
           </div>
-          {mintLoading && <Spinner/>}
+          {mintLoading && <Spinner />}
           {showMobileButton ? (
             <div className="wallet-mobile-buttons">
               <Link to="deposit" className="mobile_deposit mobile_button">

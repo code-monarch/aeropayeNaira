@@ -18,11 +18,11 @@ import { Controller, useForm } from "react-hook-form";
 import FormError from "../../component/shared/FormError";
 import useAuth from "../../hooks/useAuth";
 import Button from "../../component/shared/Button";
-
+import { RiContrastDropLine } from "react-icons/ri";
 
 const SignUp = () => {
-  const { setAuth } = useAuth();
-  console.log(setAuth);
+  const { auth, setAuth } = useAuth();
+  console.log("auth context", auth)
 
   const [showPassword, setShowPassword] = useState(false);
   const [focus, setFocus] = useState("");
@@ -31,7 +31,8 @@ const SignUp = () => {
 
   let navigate = useNavigate();
 
-  const [signup, { loading, data, reset }] = useMutation(SIGNUP_MUTATION);
+  const [signup, { loading, data: signupData, reset }] =
+    useMutation(SIGNUP_MUTATION);
 
   const {
     control,
@@ -45,7 +46,9 @@ const SignUp = () => {
   });
 
   const submit = (data) => {
-    console.log(data)
+    // const phone = data?.phone;
+    // console.log("phone", phone)
+    // console.log("form_data", data);
     signup({
       variables: {
         firstname: data.fname,
@@ -58,15 +61,21 @@ const SignUp = () => {
       .then(({ data }) => {
         // const data = res?.data?.signup?.user;
         console.log("response", data);
-        const user_data = {
-          user: { ...data?.user },
+        const userData = {
+          user: data?.signup?.user,
+          token: data?.signup?.token,
           account_type: "individual",
+          phone: data?.signup?.user?.mobile,
         };
+        setAuth({userData});
         localStorage.setItem(
           process.env.REACT_APP_LOCAL_STORAGE_KEY,
-          JSON.stringify(user_data)
+          JSON.stringify(userData)
         );
-        setAuth({ user_data });
+      //  console.log("setAuth", setAuth)
+        console.log("user data", userData)
+        // auth.updateAuth(user_data);
+        // console.log("auth", auth)
         toastSuccess("User created succesfully");
         // history.push(`/verify/${data.email}`);
         // navigate("/2FA");
@@ -78,7 +87,7 @@ const SignUp = () => {
       });
   };
 
-  console.log("Mutation data", data)
+  console.log("Mutation data", signupData);
 
   return (
     <div className="signup-container 2xl:h-screen h-auto">
@@ -157,190 +166,190 @@ const SignUp = () => {
             </p>
 
             <div className={`${error ? "error-line" : "line"}`}></div>
-              <form onSubmit={handleSubmit(submit)}>
-                <div className="flex sm:flex-row flex-col">
-                  <div className="signup-form_field w-full">
-                    <p className="label">First Name</p>
-                    <label
-                      className={`flex items-center ${
-                        focus === "fname-input" ? "clicked" : ""
-                      }`}
-                    >
-                      <span className="w-auto">
-                        <Profile className="mr-[8px]" />
-                      </span>
-                      <input
-                        type="text"
-                        id="fname"
-                        name="fname"
-                        {...register("fname", {
-                          required: "Please enter your first name",
-                        })}
-                        onBlur={() => setFocus("")}
-                        onFocus={() => setFocus("fname-input")}
-                      />
-                    </label>
-                    <FormError errors={errors} name="fname" />
-                  </div>
-
-                  <div className="signup-form_field w-full ml-0 sm:ml-[16px]">
-                    <p className="label">Last Name</p>
-                    <label
-                      className={`flex items-center ${
-                        focus === "lname-input" ? "clicked" : ""
-                      }`}
-                    >
-                      <span className="w-auto">
-                        <Profile className="mr-[8px]" />
-                      </span>
-                      <input
-                        type="text"
-                        id="lname"
-                        name="lname"
-                        {...register("lname", {
-                          required: "Please enter your last name",
-                        })}
-                        placeholder="Doe"
-                        onBlur={() => setFocus("")}
-                        onFocus={() => setFocus("lname-input")}
-                      />
-                    </label>
-                    <FormError errors={errors} name="lname" />
-                  </div>
-                </div>
-
-                <div className="signup-form_field">
-                  <p className="label">Email Address</p>
+            <form onSubmit={ handleSubmit(submit)}>
+              <div className="flex sm:flex-row flex-col">
+                <div className="signup-form_field w-full">
+                  <p className="label">First Name</p>
                   <label
                     className={`flex items-center ${
-                      focus === "email-input" ? "clicked" : ""
+                      focus === "fname-input" ? "clicked" : ""
                     }`}
                   >
-                    <span className="flex items-center w-auto">
-                      <Email className="mr-[8px]" />
+                    <span className="w-auto">
+                      <Profile className="mr-[8px]" />
                     </span>
                     <input
-                      type="email"
-                      placeholder="example@gmail.com"
-                      id="email"
-                      name="email"
-                      {...register("email", {
-                        required: "Please enter a valid email",
-                        pattern: {
-                          value:
-                            /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                          message: "Please enter a valid email.",
-                        },
+                      type="text"
+                      id="fname"
+                      name="fname"
+                      {...register("fname", {
+                        required: "Please enter your first name",
                       })}
                       onBlur={() => setFocus("")}
-                      onFocus={() => setFocus("email-input")}
+                      onFocus={() => setFocus("fname-input")}
                     />
                   </label>
-                  <FormError errors={errors} name="email" />
+                  <FormError errors={errors} name="fname" />
                 </div>
 
-                <div className="signup-form_field">
-                  <p className="label">Phone Number</p>
-
-                  <Controller
-                    control={control}
-                    id="phone"
-                    name="phone"
-                    render={({ field: { onChange, value } }) => (
-                      <PhoneInput
-                        country={"ng"}
-                        onChange={onChange}
-                        value={value}
-                        className={`flex items-center ${
-                          focus === "phone-input" ? "clicked" : ""
-                        }`}
-                        onBlur={() => setFocus("")}
-                        onFocus={() => setFocus("phone-input")}
-                      />
-                    )}
-                    rules={{
-                      required: "Enter a valid number",
-                    }}
-                  />
-                  <FormError errors={errors} name="phone" />
-                </div>
-
-                <div className="signup-form_field">
-                  <p className="label">Password</p>
+                <div className="signup-form_field w-full ml-0 sm:ml-[16px]">
+                  <p className="label">Last Name</p>
                   <label
                     className={`flex items-center ${
-                      focus === "password-input" ? "clicked" : ""
+                      focus === "lname-input" ? "clicked" : ""
                     }`}
                   >
-                    <span className="flex items-center w-auto">
-                      <Password className="mr-[8px]" />
+                    <span className="w-auto">
+                      <Profile className="mr-[8px]" />
                     </span>
                     <input
-                      type={showPassword ? "text" : "password"}
-                      placeholder="Password"
-                      id="password"
-                      name="password"
-                      {...register("password", {
-                        required: "Enter a stong password",
-                        minLength: {
-                          value: 8,
-                          message:
-                            "Password should be at least 8 characters long",
-                        },
+                      type="text"
+                      id="lname"
+                      name="lname"
+                      {...register("lname", {
+                        required: "Please enter your last name",
                       })}
+                      placeholder="Doe"
                       onBlur={() => setFocus("")}
-                      onFocus={() => setFocus("password-input")}
+                      onFocus={() => setFocus("lname-input")}
                     />
-
-                    <span
-                      className="cursor-pointer"
-                      onClick={() => {
-                        setShowPassword(!showPassword);
-                      }}
-                    >
-                      {showPassword ? (
-                        <ShowIcon className="h-[12.75px] w-[15px]" />
-                      ) : (
-                        <Hide className="h-[12.75px] w-[15px]" />
-                      )}
-                    </span>
                   </label>
-                  <FormError errors={errors} name="password" />
+                  <FormError errors={errors} name="lname" />
                 </div>
+              </div>
 
-                <div className="mb-[23px]">
-                  <label className="flex items-start">
-                    <input
-                      type="checkbox"
-                      className="signup-field-checkbox"
-                      id="checkbox"
-                      name="checkbox"
-                      {...register("checkbox", {
-                        required: "Please accept the terms",
-                      })}
-                    />
-                    <p className="signup-field-tnc">
-                      By creating an account, you agree to our{" "}
-                      <span className="signup-field-tnc_item">
-                        <NavLink to="/">Terms and Conditions</NavLink>
-                      </span>{" "}
-                      and acknowledge our{" "}
-                      <span className="signup-field-tnc_item">
-                        <NavLink to="/">Privacy policy</NavLink>
-                      </span>{" "}
-                    </p>
-                  </label>
-                  <FormError errors={errors} name="checkbox" />
-                </div>
-
-                <Button
-                  className="login-container_login flex items-center justify-center cursor-pointerjustify-center"
-                  type="submit"
-                  loading={loading}
+              <div className="signup-form_field">
+                <p className="label">Email Address</p>
+                <label
+                  className={`flex items-center ${
+                    focus === "email-input" ? "clicked" : ""
+                  }`}
                 >
-                  Create account
-                </Button>
-              </form>
+                  <span className="flex items-center w-auto">
+                    <Email className="mr-[8px]" />
+                  </span>
+                  <input
+                    type="email"
+                    placeholder="example@gmail.com"
+                    id="email"
+                    name="email"
+                    {...register("email", {
+                      required: "Please enter a valid email",
+                      pattern: {
+                        value:
+                          /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                        message: "Please enter a valid email.",
+                      },
+                    })}
+                    onBlur={() => setFocus("")}
+                    onFocus={() => setFocus("email-input")}
+                  />
+                </label>
+                <FormError errors={errors} name="email" />
+              </div>
+
+              <div className="signup-form_field">
+                <p className="label">Phone Number</p>
+
+                <Controller
+                  control={control}
+                  id="phone"
+                  name="phone"
+                  render={({ field: { onChange, value } }) => (
+                    <PhoneInput
+                      country={"ng"}
+                      onChange={onChange}
+                      value={value}
+                      className={`flex items-center ${
+                        focus === "phone-input" ? "clicked" : ""
+                      }`}
+                      onBlur={() => setFocus("")}
+                      onFocus={() => setFocus("phone-input")}
+                    />
+                  )}
+                  rules={{
+                    required: "Enter a valid number",
+                  }}
+                />
+                <FormError errors={errors} name="phone" />
+              </div>
+
+              <div className="signup-form_field">
+                <p className="label">Password</p>
+                <label
+                  className={`flex items-center ${
+                    focus === "password-input" ? "clicked" : ""
+                  }`}
+                >
+                  <span className="flex items-center w-auto">
+                    <Password className="mr-[8px]" />
+                  </span>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Password"
+                    id="password"
+                    name="password"
+                    {...register("password", {
+                      required: "Enter a stong password",
+                      minLength: {
+                        value: 8,
+                        message:
+                          "Password should be at least 8 characters long",
+                      },
+                    })}
+                    onBlur={() => setFocus("")}
+                    onFocus={() => setFocus("password-input")}
+                  />
+
+                  <span
+                    className="cursor-pointer"
+                    onClick={() => {
+                      setShowPassword(!showPassword);
+                    }}
+                  >
+                    {showPassword ? (
+                      <ShowIcon className="h-[12.75px] w-[15px]" />
+                    ) : (
+                      <Hide className="h-[12.75px] w-[15px]" />
+                    )}
+                  </span>
+                </label>
+                <FormError errors={errors} name="password" />
+              </div>
+
+              <div className="mb-[23px]">
+                <label className="flex items-start">
+                  <input
+                    type="checkbox"
+                    className="signup-field-checkbox"
+                    id="checkbox"
+                    name="checkbox"
+                    {...register("checkbox", {
+                      required: "Please accept the terms",
+                    })}
+                  />
+                  <p className="signup-field-tnc">
+                    By creating an account, you agree to our{" "}
+                    <span className="signup-field-tnc_item">
+                      <NavLink to="/">Terms and Conditions</NavLink>
+                    </span>{" "}
+                    and acknowledge our{" "}
+                    <span className="signup-field-tnc_item">
+                      <NavLink to="/">Privacy policy</NavLink>
+                    </span>{" "}
+                  </p>
+                </label>
+                <FormError errors={errors} name="checkbox" />
+              </div>
+
+              <Button
+                className="login-container_login flex items-center justify-center cursor-pointerjustify-center"
+                type="submit"
+                loading={loading}
+              >
+                Create account
+              </Button>
+            </form>
           </div>
 
           <div className="login-subtitle mt-[32px]">
@@ -373,4 +382,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-

@@ -5,12 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { RESEND_2FA_MUTATION, VERIFY_2FA_MUTATION } from "../hooks";
 import { toastError, toastSuccess } from "../component/shared/Toasts";
-import useAuth from "../hooks/useAuth";
 import Button from "../component/shared/Button";
 
 const TwoFA = () => {
-  const { setAuth } = useAuth();
-
+	  const loggedInUser = JSON.parse(
+      localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE_KEY)
+    );
+    const { phone } = loggedInUser;
+    console.log("kjjdwkjdwjhcdwj", phone);
 	const [focus, setFocus] = useState("");
 	const [twoFA, setTwoFA] = useState(new Array(6).fill(""));
 	const [fillTwoFA, setFillTwoFA] = useState(false);
@@ -42,20 +44,19 @@ const TwoFA = () => {
 
 		if (twoFA) {
 			verify({
-				variables: {
-					pin: twoFA.join(""),
-					msisdn: setAuth?.user?.mobile,
-				},
-			})
-				.then(() => {
-					toastSuccess("User validated succesfully");
-					navigate("/login");
-
-				})
-				.catch((error) => {
-					reset();
-					toastError(error.message);
-				});
+        variables: {
+          msisdn: phone,
+          pin: twoFA.join(""),
+        },
+      })
+        .then(() => {
+          toastSuccess("User validated succesfully");
+          navigate("/login");
+        })
+        .catch((error) => {
+          reset();
+          toastError(error.message);
+        });
 		} else {
 			setFillTwoFA(true);
 		}
@@ -65,19 +66,19 @@ const TwoFA = () => {
 		e.preventDefault();
 
 		resend2fa({
-			variables: {
-				msisdn: setAuth?.user?.mobile,
-			},
-		})
-			.then((res) => {
-				toastSuccess(res?.data?.sendTermiiTokenToMobile?.status);
-				reset();
-			})
-			.catch((error) => {
-				reset();
-				toastError(error.message);
-				// return loader && loader.current?.complete();
-			});
+      variables: {
+        msisdn: phone,
+      },
+    })
+      .then((res) => {
+        toastSuccess(res?.data?.sendTermiiTokenToMobile?.status);
+        reset();
+      })
+      .catch((error) => {
+        reset();
+        toastError(error.message);
+        // return loader && loader.current?.complete();
+      });
 	};
 
 	return (
