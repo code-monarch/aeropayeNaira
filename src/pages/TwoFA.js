@@ -4,15 +4,18 @@ import { ReactComponent as Logo } from "../assets/icons/logo.svg";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { RESEND_2FA_MUTATION, VERIFY_2FA_MUTATION } from "../hooks";
+import { authContext } from "../hooks/auth";
 import { toastError, toastSuccess } from "../component/shared/Toasts";
 import Button from "../component/shared/Button";
 
 const TwoFA = () => {
-	  const loggedInUser = JSON.parse(
-      localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE_KEY)
-    );
-    const { phone } = loggedInUser;
-    console.log("kjjdwkjdwjhcdwj", phone);
+	const { auth } = useContext(authContext);
+
+	//   const loggedInUser = JSON.parse(
+    //   localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE_KEY)
+    // );
+    // const { phone } = loggedInUser;
+    // console.log("kjjdwkjdwjhcdwj", phone);
 	const [focus, setFocus] = useState("");
 	const [twoFA, setTwoFA] = useState(new Array(6).fill(""));
 	const [fillTwoFA, setFillTwoFA] = useState(false);
@@ -45,7 +48,7 @@ const TwoFA = () => {
 		if (twoFA) {
 			verify({
         variables: {
-          msisdn: phone,
+          msisdn: auth?.user?.mobile,
           pin: twoFA.join(""),
         },
       })
@@ -67,7 +70,7 @@ const TwoFA = () => {
 
 		resend2fa({
       variables: {
-        msisdn: phone,
+        msisdn: auth?.user?.mobile,
       },
     })
       .then((res) => {

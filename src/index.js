@@ -12,7 +12,7 @@ import {
   ApolloProvider,
   createHttpLink,
 } from "@apollo/client";
-import { AuthProvider } from "./context/AuthProvider";
+import { AuthProvider } from "./hooks/auth";
 
 import { setContext } from "@apollo/client/link/context";
 

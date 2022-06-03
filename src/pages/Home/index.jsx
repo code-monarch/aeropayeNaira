@@ -13,11 +13,11 @@ import { Link } from "react-router-dom";
 import Layout from "../../component/Layout";
 
 const Home = () => {
-  // const {
-  //   auth: {
-  //     user: { firstname, lastname },
-  //   },
-  // } = useContext(authContext);
+  const {
+    auth: {
+      user: { firstname, lastname },
+    },
+  } = useContext(authContext);
   return (
     <Layout>
       <div className="home">
@@ -25,8 +25,8 @@ const Home = () => {
           <div className="welcome-div_message">
             <p className="title">
               Welcome, &nbsp;
-              <span className="username">&nbsp;Derek</span>
-              {/* <span className="username">&nbsp;{firstname}</span> */}
+              {/* <span className="username">&nbsp;Derek</span> */}
+              <span className="username">&nbsp;{firstname}</span>
               <span className="message-icon">
                 <Wave />
               </span>

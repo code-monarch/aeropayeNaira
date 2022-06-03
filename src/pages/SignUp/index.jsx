@@ -16,13 +16,15 @@ import { useMutation } from "@apollo/client";
 import { toastError, toastSuccess } from "../../component/shared/Toasts";
 import { Controller, useForm } from "react-hook-form";
 import FormError from "../../component/shared/FormError";
-import useAuth from "../../hooks/useAuth";
+// import useAuth from "../../hooks/useAuth";
+import { authContext } from "../../hooks/auth";
 import Button from "../../component/shared/Button";
 import { RiContrastDropLine } from "react-icons/ri";
 
 const SignUp = () => {
-  const { auth, setAuth } = useAuth();
-  console.log("auth context", auth)
+  // const { auth, setAuth } = useAuth();
+  // console.log("auth context", auth)
+  const { auth } = useContext(authContext);
 
   const [showPassword, setShowPassword] = useState(false);
   const [focus, setFocus] = useState("");
@@ -67,18 +69,18 @@ const SignUp = () => {
           account_type: "individual",
           phone: data?.signup?.user?.mobile,
         };
-        setAuth({userData});
+        // setAuth({userData});
         localStorage.setItem(
           process.env.REACT_APP_LOCAL_STORAGE_KEY,
           JSON.stringify(userData)
         );
       //  console.log("setAuth", setAuth)
-        console.log("user data", userData)
-        // auth.updateAuth(user_data);
+      //   console.log("user data", userData)
+        auth.updateAuth(userData);
         // console.log("auth", auth)
         toastSuccess("User created succesfully");
+        navigate("/2FA");
         // history.push(`/verify/${data.email}`);
-        // navigate("/2FA");
       })
       .catch((error) => {
         reset();

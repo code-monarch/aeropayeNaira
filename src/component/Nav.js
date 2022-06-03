@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { authContext } from "../hooks/auth";
 import { ReactComponent as Logo } from "../assets/icons/logo.svg";
 import { ReactComponent as Notification } from "../assets/dashboard-icons/Notification.svg";
 import { ReactComponent as Arrow } from "../assets/dashboard-icons/arrow-down.svg";
@@ -16,14 +17,13 @@ import { ReactComponent as SettingActive } from "../assets/dashboard-icons/Setti
 import MobileNav from "./mobile/MobileNav";
 
 import { NavLink } from "react-router-dom";
-// import {authContext} from "../hooks/auth";
 
 const Nav = ({ userName, isActive, setIsActive }) => {
-  // const {
-  //   auth: {
-  //     user: { firstname, lastname },
-  //   },
-  // } = useContext(authContext);
+  const {
+    auth: {
+      user: { firstname, lastname },
+    },
+  } = useContext(authContext);
 
   const [showOption, setShowOption] = useState(false);
   const [showProfile, setShowProfile] = useState(
@@ -168,7 +168,7 @@ const Nav = ({ userName, isActive, setIsActive }) => {
                 {showOption && (
                   <ul className="profile-dropdown absolute top-8 z-[99999] right-0 ">
                     <li className="profile-name flex items-center">
-                      <Profile className="mr-[8px]" /> Derek
+                      <Profile className="mr-[8px]" /> { firstname }
                     </li>
                     <li>
                       <NavLink to="/" className="settings">
@@ -191,7 +191,7 @@ const Nav = ({ userName, isActive, setIsActive }) => {
                 <div className="flex justify-between items-center">
                   <div className="flex items-center">
                     <Profile />
-                    <span className="profile-name">Derek</span>
+                        <span className="profile-name">{ firstname }</span>
                     {/* <span className="profile-name">{firstname}</span> */}
                   </div>
                   <Arrow />

@@ -22,7 +22,6 @@ import NoMatch from "./pages/NoMatch";
 
 // Toasts Notification
 import "react-toastify/dist/ReactToastify.css";
-import Layout from "./component/Layout";
 import useAuth from "./hooks/useAuth";
 
 function App() {

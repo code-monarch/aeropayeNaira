@@ -7,6 +7,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { MAKE_PAYMENT_MUTATION } from "../../../hooks";
+import { BALANCE } from "../../../hooks";
 
 import Layout from "../../../component/Layout";
 import { ReactComponent as Spinner } from "../../../assets/icons/spinnerIcon.svg";

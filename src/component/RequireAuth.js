@@ -1,16 +1,14 @@
 import React, { useContext } from "react";
 
-import { Navigate, useLocation, Outlet } from "react-router-dom";
-import { authContext } from "../hooks/auth";
+import { Navigate, useLocation } from "react-router-dom";
 
 const RequireAuth = ({ children }) => {
   const loggedInUser = JSON.parse(
     localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE_KEY)
   );
-  const { loggedIn } = loggedInUser;
   const location = useLocation();
 
-  return loggedIn ? (
+  return loggedInUser?.token ? (
     children
   ) : (
     <Navigate to="/login" state={{ from: location }} replace />

@@ -5,17 +5,21 @@ import { ReactComponent as Password } from "../assets/icons/password.svg";
 import { ReactComponent as Hide } from "../assets/icons/Hide.svg";
 import { ReactComponent as ShowIcon } from "../assets/icons/showIcon.svg";
 import { ReactComponent as Recaptcha } from "../assets/icons/recapcha.svg";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_MUTATION } from "../hooks";
 import { toastError, toastSuccess } from "../component/shared/Toasts";
 import { useForm } from "react-hook-form";
 import FormError from "../component/shared/FormError";
-import useAuth from "../hooks/useAuth";
+// import useAuth from "../hooks/useAuth";
+import { authContext } from "../hooks/auth";
 import Button from "../component/shared/Button";
 
 const Login = () => {
-	  const { auth, setAuth } = useAuth();
+	const { auth } = useContext(authContext);
+	const location = useLocation()
+	const from = location.state?.from?.pathname || "/";
+	//   const { auth, setAuth } = useAuth();
 
 	const [showPassword, setShowPassword] = useState(false);
 	const [focus, setFocus] = useState("");
@@ -47,10 +51,11 @@ const Login = () => {
 					process.env.REACT_APP_LOCAL_STORAGE_KEY,
 					JSON.stringify(userData)
 				);
-				setAuth({ userData });
+				auth.updateAuth(userData);
+				// setAuth({ userData });
 				toastSuccess("Login successful");
 				// history.push(`/verify/${data.email}`);
-				navigate("/");
+				navigate(from, { replace: true });
 				// window.location = "https://aeropaye-dashboard-convexity.vercel.app/";
 			})
 			.catch((error) => {

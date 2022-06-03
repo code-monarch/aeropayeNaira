@@ -27,7 +27,12 @@ const Wallet = () => {
   const [
     mintFunction,
     { data: mintData, loading: mintLoading, error: mintError },
-  ] = useMutation(MINT_TOKEN_MUTATION);
+  ] = useMutation(MINT_TOKEN_MUTATION, {
+    refetchQueries: [
+      { query: BALANCE }, // DocumentNode object parsed with gql
+      "balance", // Query name
+    ],
+  });
 
   if (data) {
     console.log("balanceData", data);

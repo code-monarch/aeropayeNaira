@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from "react";
+import { authContext } from "../../hooks/auth";
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as NavIcon} from '../../assets/icons/nav-icon.svg';
@@ -18,6 +19,11 @@ import { ReactComponent as SwapActive } from '../../assets/dashboard-icons/Swap-
 import { ReactComponent as SettingActive } from '../../assets/dashboard-icons/Setting-active.svg';
 
 const MobileNav = ({ isActive, setIsActive }) => {
+      const {
+        auth: {
+          user: { firstname, lastname },
+        },
+      } = useContext(authContext);
     const [ showOption, setShowOption ] = useState(false);
     const [openNav, setOpenNav] = useState(false);
     const showNav = () => {
@@ -62,7 +68,7 @@ const MobileNav = ({ isActive, setIsActive }) => {
                     <div className="flex items-center">
                         <Profile /> 
                         <span className='profile-name'>
-                            Derek
+                            { firstname }
                         </span>
                     </div>
                     <Arrow />
