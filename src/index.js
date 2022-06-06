@@ -4,7 +4,7 @@ import "./index.css";
 import "./styles/main.css";
 import App from "./App";
 import "flowbite";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import {
   ApolloClient,

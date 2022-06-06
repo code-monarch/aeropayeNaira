@@ -24,7 +24,7 @@ const Home = () => {
         <div className="welcome-div sticky z-[3] top-[4.5rem] w-full">
           <div className="welcome-div_message">
             <p className="title">
-              Welcome, &nbsp;
+              Welcome,
               {/* <span className="username">&nbsp;Derek</span> */}
               <span className="username">&nbsp;{firstname}</span>
               <span className="message-icon">

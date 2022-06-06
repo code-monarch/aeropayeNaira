@@ -16,14 +16,13 @@ import { ReactComponent as SwapActive } from "../assets/dashboard-icons/Swap-act
 import { ReactComponent as SettingActive } from "../assets/dashboard-icons/Setting-active.svg";
 import MobileNav from "./mobile/MobileNav";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Nav = ({ userName, isActive, setIsActive }) => {
-  const {
-    auth: {
-      user: { firstname, lastname },
-    },
-  } = useContext(authContext);
+  const navigate = useNavigate()
+
+  const { auth } = useContext(authContext);
+  const firstname = auth?.user?.firstname
 
   const [showOption, setShowOption] = useState(false);
   const [showProfile, setShowProfile] = useState(
@@ -168,17 +167,25 @@ const Nav = ({ userName, isActive, setIsActive }) => {
                 {showOption && (
                   <ul className="profile-dropdown absolute top-8 z-[99999] right-0 ">
                     <li className="profile-name flex items-center">
-                      <Profile className="mr-[8px]" /> { firstname }
+                      <Profile className="mr-[8px]" /> {firstname}
+                    </li>
+                    <li
+                      onClick={() => {
+                        navigate("/settings");
+                      }}
+                      className="settings"
+                    >
+                      Settings
                     </li>
                     <li>
-                      <NavLink to="/" className="settings">
-                        Settings
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/login" className="log-out">
+                      <div
+                        onClick={() => {
+                          auth.logOut();
+                        }}
+                        className="log-out"
+                      >
                         Logout
-                      </NavLink>
+                      </div>
                     </li>
                   </ul>
                 )}
@@ -191,7 +198,7 @@ const Nav = ({ userName, isActive, setIsActive }) => {
                 <div className="flex justify-between items-center">
                   <div className="flex items-center">
                     <Profile />
-                        <span className="profile-name">{ firstname }</span>
+                    <span className="profile-name">{firstname}</span>
                     {/* <span className="profile-name">{firstname}</span> */}
                   </div>
                   <Arrow />
@@ -199,15 +206,23 @@ const Nav = ({ userName, isActive, setIsActive }) => {
 
                 {showOption && (
                   <ul className="profile-dropdown absolute top-8 z-[99999] left-0 ">
-                    <li>
-                      <NavLink to="/" className="settings">
-                        Settings
-                      </NavLink>
+                    <li
+                      onClick={() => {
+                        navigate("/settings");
+                      }}
+                      className="settings"
+                    >
+                      Settings
                     </li>
                     <li>
-                      <NavLink to="/" className="log-out">
+                      <div
+                        onClick={() => {
+                          auth.logOut();
+                        }}
+                        className="log-out"
+                      >
                         Logout
-                      </NavLink>
+                      </div>
                     </li>
                   </ul>
                 )}

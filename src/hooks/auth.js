@@ -12,11 +12,11 @@ const loggedInUser = JSON.parse(
 export const AuthProvider = (props) => {
   const [auth, setAuth] = useState({
     user: {},
-    loggedIn: true,
+    loggedIn: false,
     logOut: () => {
       localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE_KEY);
       auth.updateAuth({ loggedIn: false, token: "", user: {} });
-      window.location.pathname = "/";
+      window.location.pathname = "/login";
     },
     updateAuth: (update) => setAuth((auth) => ({ ...auth, ...update })),
   });
@@ -33,14 +33,14 @@ export const AuthProvider = (props) => {
   }, []);
 
   const authChanged = React.useCallback(() => {
-    if (auth.token) {
+    if (auth?.user?.token) {
       if (auth.loggedIn === false) {
         localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE_KEY);
       } else if (!lodash.isEqual(auth, loggedInUser)) {
-        let user_data = JSON.stringify(auth);
+        let userData = JSON.stringify(auth);
         localStorage.setItem(
           process.env.REACT_APP_LOCAL_STORAGE_KEY,
-          user_data
+          userData
         );
       }
     }

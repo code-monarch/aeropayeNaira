@@ -5,6 +5,8 @@ import { ReactComponent as Arrow } from "../../assets/dashboard-icons/arrow-down
 import { ReactComponent as ArrDown } from "../../assets/dashboard-icons/Down.svg";
 import { ReactComponent as Tick } from "../../assets/icons/tick.svg";
 import { Filter } from "../../data/dropdown-options";
+import { ReactComponent as ArrowLeft } from "../../assets/dashboard-icons/arrow-left.svg";
+import { Link } from "react-router-dom";
 import Layout from "../../component/Layout";
 
 const Transaction = () => {
@@ -34,6 +36,10 @@ const Transaction = () => {
   return (
     <>
       <Layout>
+                    {/* <Link to="/wallet" className="back-link">
+              <ArrowLeft />
+              <p className="back-link_nav">Back</p>
+            </Link> */}
         <section className="table_contain">
           <div className="table-container">
             <div className="flex items-center mb-[16px]">

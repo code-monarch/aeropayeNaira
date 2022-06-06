@@ -16,6 +16,11 @@ export const GET_AVAILABLE_FLIGHTS = gql`
       airfare
       flightEscrow
       class
+      apstatus
+      status
+      cancelled
+      delayed
+      booked
     }
   }
 `;

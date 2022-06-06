@@ -3,6 +3,7 @@ import { ReactComponent as ArrowLeft } from "../../../assets/dashboard-icons/arr
 import { ReactComponent as Paystack } from "../../../assets/dashboard-icons/Paystack_Logo.svg";
 import flutterwave from "../../../assets/dashboard-icons/flutterwave.svg";
 import { ReactComponent as Lock } from "../../../assets/icons/lock.svg";
+import Button from "../../../component/shared/Button";
 import { Navigate, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
@@ -10,7 +11,6 @@ import { MAKE_PAYMENT_MUTATION } from "../../../hooks";
 import { BALANCE } from "../../../hooks";
 
 import Layout from "../../../component/Layout";
-import { ReactComponent as Spinner } from "../../../assets/icons/spinnerIcon.svg";
 import { toastError, toastSuccess } from "../../../component/shared/Toasts";
 
 const Deposit = () => {
@@ -139,18 +139,16 @@ const Deposit = () => {
               </div>
 
               <div>
-                <div
+                <Button
                   className="withdraw-form_button flex items-center cursor-pointer justify-center"
-                  // type="submit"
+                  loading={loading}
                   onClick={() => {
-                    // onContinueToPayment(data);
-                    console.log("pay button clicked");
                     submit()
                     // window.location.replace(`${authorization_url}`);
                   }}
                 >
                   Continue
-                </div>
+                </Button>
               </div>
 
               <p className="withdraw-form_info-depo flex items-center">

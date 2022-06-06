@@ -20,7 +20,7 @@ const BookingSummaryModal = ({
         // center
         closeIconId="closeButton"
       >
-        <BookingDetails itinerary={itinerary} />
+        <BookingDetails itinerary={itinerary} closeBookingModal={closeBookingModal}/>
       </Modal>
     </>
   );

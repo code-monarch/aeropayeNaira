@@ -4,7 +4,6 @@ import "./styles/main.css";
 import { Route, Routes } from "react-router-dom";
 import RequireAuth from "./component/RequireAuth";
 import { HelmetProvider } from "react-helmet-async"; // This reusable React component will manage all of your changes to the document head
-
 import Home from "./pages/Home";
 import Flight from "./pages/Flights";
 import BookFlight from "./pages/Flights/subPage/BookFlight";

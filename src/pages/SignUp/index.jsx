@@ -29,7 +29,6 @@ const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [focus, setFocus] = useState("");
   const [error, setError] = useState(false);
-  const [acctType, setAcctType] = useState("individual");
 
   let navigate = useNavigate();
 
@@ -48,9 +47,6 @@ const SignUp = () => {
   });
 
   const submit = (data) => {
-    // const phone = data?.phone;
-    // console.log("phone", phone)
-    // console.log("form_data", data);
     signup({
       variables: {
         firstname: data.fname,
@@ -74,13 +70,9 @@ const SignUp = () => {
           process.env.REACT_APP_LOCAL_STORAGE_KEY,
           JSON.stringify(userData)
         );
-      //  console.log("setAuth", setAuth)
-      //   console.log("user data", userData)
         auth.updateAuth(userData);
-        // console.log("auth", auth)
         toastSuccess("User created succesfully");
         navigate("/2FA");
-        // history.push(`/verify/${data.email}`);
       })
       .catch((error) => {
         reset();

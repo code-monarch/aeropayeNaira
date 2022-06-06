@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { ReactComponent as EyeOpen } from "../../assets/dashboard-icons/eye-icon.svg";
+import { ReactComponent as EyeClose } from "../../assets/icons/eye-close.svg";
 import { ReactComponent as AddIcon } from "../../assets/dashboard-icons/add-circle.svg";
 import { ReactComponent as MinusIcon } from "../../assets/dashboard-icons/minus-cirlce.svg";
 import { ReactComponent as ArrowUp } from "../../assets/dashboard-icons/arrow_up.svg";
@@ -22,8 +23,13 @@ import { BALANCE } from "../../hooks";
 import Layout from "../../component/Layout";
 
 const Wallet = () => {
+    const numberWithCommas = (x) => {
+      return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+  
+  const [controlShowBalance, setControlShowBalance] = useState('show');
+  const [showBalance, setShowBalance] = useState(true);
   const { loading, error, data } = useQuery(BALANCE);
-  const [callmint, setCallmint] = useState(false);
   const [
     mintFunction,
     { data: mintData, loading: mintLoading, error: mintError },
@@ -62,11 +68,16 @@ const Wallet = () => {
     window.matchMedia("(max-width:500px)").matches
   );
 
+  // useEffect(() => {
+  //   window.addEventListener("resize", () => {
+  //     setShowMobileButton(window.matchMedia("(max-width:500px)").matches);
+  //   });
+  // });
+
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      setShowMobileButton(window.matchMedia("(max-width:500px)").matches);
-    });
-  });
+    if(controlShowBalance){setShowBalance(true)};
+  }, [controlShowBalance]);
+  
 
   return (
     <Layout>
@@ -75,15 +86,26 @@ const Wallet = () => {
           <div className="wallet">
             <div className="wallet-type">
               <p> Aeropaye Balance </p>
-              <button>
-                <EyeOpen />
+              <button
+                onClick={() => {
+                  setShowBalance(!showBalance);
+                }}
+              >
+                {showBalance ? <EyeOpen /> : <EyeClose />}
               </button>
             </div>
             <p className="wallet-bal">
-              {" "}
-              {data ? data?.balance?.data?.data : "0000"}
+              {showBalance
+                ? data
+                  ? numberWithCommas(data?.balance?.data?.data)
+                  : "0000"
+                : "****"}
             </p>
-            <p className="wallet-rate">≈ 1,150,000.00 NGN</p>
+            <p className="wallet-rate">
+              {showBalance
+                ? `≈ ${numberWithCommas(data?.balance?.data?.data)}NGN`
+                : "****"}
+            </p>
           </div>
           {mintLoading && <Spinner />}
           {showMobileButton ? (

@@ -1,21 +1,28 @@
 import { useState, useRef } from "react";
 import { ReactComponent as Warning } from "../../../assets/dashboard-icons/Icon_Warning.svg";
+import { ReactComponent as Aero } from "../../../assets/dashboard-icons/aerologo.svg";
+import { ReactComponent as AirArik } from "../../../assets/dashboard-icons/Airlines.svg";
 import { ReactComponent as AirIbom } from "../../../assets/dashboard-icons/Airlines-3.svg";
 import { ReactComponent as AirPeace } from "../../../assets/dashboard-icons/Airlines-2.svg";
 import { ReactComponent as Line } from "../../../assets/dashboard-icons/Line.svg";
 import { ReactComponent as Arr } from "../../../assets/dashboard-icons/Arr2.svg";
 import { ReactComponent as Plane } from "../../../assets/dashboard-icons/flight-plane.svg";
 import { ReactComponent as Calendar } from "../../../assets/dashboard-icons/calendar-2.svg";
-import { ReactComponent as AirArik } from "../../../assets/dashboard-icons/Airlines.svg";
 import { ReactComponent as Profile } from "../../../assets/dashboard-icons/profile.svg";
 import { ReactComponent as Arrival } from "../../../assets/dashboard-icons/arrival-icon.svg";
+import { ReactComponent as ShowIcon } from "../../../assets/icons/showIcon.svg";
 import { ReactComponent as Departure } from "../../../assets/dashboard-icons/departure-icon.svg";
 import { ReactComponent as ArrRight } from "../../../assets/dashboard-icons/ArrRight.svg";
-import { ReactComponent as ShowIcon } from "../../../assets/icons/showIcon.svg";
+import { ReactComponent as BusinessClassIcon } from "../../../assets/flightClass/business.svg";
+import { ReactComponent as EcoClassIcon } from "../../../assets/flightClass/economy.svg";
+import { ReactComponent as PremiumEcoClassIcon } from "../../../assets/flightClass/premiumEco.svg";
+import { ReactComponent as FirstClassIcon } from "../../../assets/flightClass/first.svg";
 
-import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
+import "react-responsive-modal/styles.css";
 import { Link } from "react-router-dom";
+
+import dateFormat from "dateformat";
 
 import { GET_AVAILABLE_FLIGHTS } from "../../../hooks";
 import { GET_ALL_PASSENGERS } from "../../../hooks";
@@ -25,17 +32,9 @@ import BookingSummaryModal from "./BookingSummaryModal";
 import BookingSuccessModal from "./BookingSuccessModal";
 import BookingFailedModal from "./BookingFailedModal";
 
-const style = {
-  label: `font-sans text-[16px] font-[400] text-black`,
-  inputWrap: `flex items-center h-[48px] mt-[8px] mb-[16px] border-[1px] border-[1px] border-[#E1E7EC] rounded-[6px]`,
-  input: `focus:bg-bg w-[100%] h-[45px] border-[1px] border-[#E1E7EC] rounded-r-[6px] placeholder:text-[#B8C4CE]`,
-  flexedInput: `h-[45px] py-[10px] px-[16px] border-[1px] border-[#E1E7EC] rounded-[6px] focus:bg-bg placeholder:text-[#B8C4CE] overflow-scroll`,
-  svgWrap: `bg-bg h-[100%] p-[15px] rounded-l-[6px]`,
-};
-
 const FlightItinerary = () => {
   // saves itinerarRef which is passed to BookingDetails component
-  const [itinerary, setItinerary] = useState("")
+  const [itinerary, setItinerary] = useState("");
   const itineraryRef = useRef(null);
   const [showBookingSummary, setShowBookingSummary] = useState(false);
   const [showBookingSuccess, setShowBookingSuccess] = useState(false);
@@ -109,12 +108,15 @@ const FlightItinerary = () => {
                   </p>
                   <div className="flex items-center">
                     <Calendar className="mr-[12px]" />
-                    <p>{flight?.departureDate}</p>
+                    <p>{dateFormat(flight?.departureDate, "mmmm dS, yyyy")}</p>
                   </div>
                 </div>
                 <div className="body-flight_details">
                   <div className="airline-logo">
-                    <AirPeace />
+                    {flight?.airlineName === "Air Peace" && <AirPeace />}
+                    {flight?.airlineName === "Ibom Air" && <AirIbom />}
+                    {flight?.airlineName === "Arik Air" && <AirArik />}
+                    {flight?.airlineName === "Aero" && <Aero />}
                   </div>
 
                   <div className="departure-time">
@@ -137,7 +139,14 @@ const FlightItinerary = () => {
                     <p className="airport">Kotoka, T3, Accra (Ghana)</p>
                   </div>
 
-                  <div className="flight-cabin-business">{flight?.class}</div>
+                  <div>
+                    {flight?.class === "ECONOMY" && <EcoClassIcon />}
+                    {flight?.class === "FIRST_CLASS" && <FirstClassIcon />}
+                    {flight?.class === "BUSINESS" && <BusinessClassIcon />}
+                    {flight?.class === "PREMIUM_ECONOMY" && (
+                      <PremiumEcoClassIcon />
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -177,6 +186,8 @@ const FlightItinerary = () => {
         showBookingSummary={showBookingSummary}
         openBookingModal={openBookingModal}
         closeBookingModal={closeBookingModal}
+        openBookingFailed={openBookingFailed}
+        openBookingSuccess={openBookingSuccess}
         itinerary={itinerary}
         code={flightCode}
       />
