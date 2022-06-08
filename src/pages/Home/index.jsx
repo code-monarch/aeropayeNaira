@@ -130,7 +130,7 @@ const Home = () => {
                 <div className="flight-booked my-[20px]">
                   <p>Flight Booked</p>
                   <div className="flex items-center lg:items-start xl:items-center book xl:flex-row lg:flex-col flex-row">
-                    <p className="booked">10</p>
+                    <h2 className="booked">10</h2>
                     <p className="aero-token">(1,019.4534 Aeropaye)</p>
                   </div>
                 </div>

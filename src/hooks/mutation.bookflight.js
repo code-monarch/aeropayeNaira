@@ -14,7 +14,6 @@ export const BOOK_FLIGHT_MUTATION = gql`
     $numOfInfants: Int
     $amount: String!
     $class: CLASS!
-    $flightSeat: String
   ) {
     bookFlight(
       flightCode: $flightCode
@@ -29,9 +28,9 @@ export const BOOK_FLIGHT_MUTATION = gql`
       numOfInfants: $numOfInfants
       amount: $amount
       class: $class
-      flightSeat: $flightSeat
     ) {
       bookUpdate {
+        ticketId
         airlineId
         airlineName
         airlineAddres

@@ -1,21 +1,22 @@
 import { gql } from "@apollo/client";
 
-export const GET_AVAILABLE_FLIGHTS = gql`
-  query {
-    getAvailableFlights {
+export const GET_BOOKED_FLIGHTS = gql`
+  query getBookedFlight {
+    getBookedFlight {
+      ticketId
+      airlineId
       airlineName
       flightCode
-      departureCity
       departureDate
       departureTime
       departureInfo
-      arrivalCity
       arrivalDate
       arrivalTime
       arrivalInfo
-      airfare
-      flightEscrow
-      class
+      amount
+      status
+      createdAt
+      updatedAt
     }
   }
 `;

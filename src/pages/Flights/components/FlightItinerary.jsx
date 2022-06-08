@@ -4,6 +4,7 @@ import { ReactComponent as Aero } from "../../../assets/dashboard-icons/aerologo
 import { ReactComponent as AirArik } from "../../../assets/dashboard-icons/Airlines.svg";
 import { ReactComponent as AirIbom } from "../../../assets/dashboard-icons/Airlines-3.svg";
 import { ReactComponent as AirPeace } from "../../../assets/dashboard-icons/Airlines-2.svg";
+import { ReactComponent as Dana } from "../../../assets/dashboard-icons/danaLogo.svg";
 import { ReactComponent as Line } from "../../../assets/dashboard-icons/Line.svg";
 import { ReactComponent as Arr } from "../../../assets/dashboard-icons/Arr2.svg";
 import { ReactComponent as Plane } from "../../../assets/dashboard-icons/flight-plane.svg";
@@ -116,6 +117,7 @@ const FlightItinerary = () => {
                     {flight?.airlineName === "Air Peace" && <AirPeace />}
                     {flight?.airlineName === "Ibom Air" && <AirIbom />}
                     {flight?.airlineName === "Arik Air" && <AirArik />}
+                    {flight?.airlineName === "Dana Air" && <Dana />}
                     {flight?.airlineName === "Aero" && <Aero />}
                   </div>
 
@@ -186,8 +188,8 @@ const FlightItinerary = () => {
         showBookingSummary={showBookingSummary}
         openBookingModal={openBookingModal}
         closeBookingModal={closeBookingModal}
-        openBookingFailed={openBookingFailed}
-        openBookingSuccess={openBookingSuccess}
+        showBookingFailed={showBookingFailed}
+        showBookingSuccess={showBookingSuccess}
         itinerary={itinerary}
         code={flightCode}
       />

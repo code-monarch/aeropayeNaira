@@ -23,13 +23,17 @@ import { BALANCE } from "../../hooks";
 import Layout from "../../component/Layout";
 
 const Wallet = () => {
+  // Function that adds commas to amount figures
     const numberWithCommas = (x) => {
       return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
   
   const [controlShowBalance, setControlShowBalance] = useState('show');
+  // Show wallet balance if false, else Hide wallet balance
   const [showBalance, setShowBalance] = useState(true);
   const { loading, error, data } = useQuery(BALANCE);
+
+  // Mint token Mutation
   const [
     mintFunction,
     { data: mintData, loading: mintLoading, error: mintError },
@@ -44,10 +48,14 @@ const Wallet = () => {
     console.log("balanceData", data);
   }
 
+  // Get the Searched parameter from URl.
+  // The mint function is called immediately there is a searched parameter
+  // The Searched paremeter is the transactionsac reference sent back from paypal in the URl
   const { search } = useLocation();
   console.log("search param", search);
 
   useEffect(() => {
+    // Mint Token when Searched parameter is found
     if (search) {
       mintFunction()
         .then((res) => {
@@ -68,11 +76,11 @@ const Wallet = () => {
     window.matchMedia("(max-width:500px)").matches
   );
 
-  // useEffect(() => {
-  //   window.addEventListener("resize", () => {
-  //     setShowMobileButton(window.matchMedia("(max-width:500px)").matches);
-  //   });
-  // });
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setShowMobileButton(window.matchMedia("(max-width:500px)").matches);
+    });
+  });
 
   useEffect(() => {
     if(controlShowBalance){setShowBalance(true)};

@@ -25,8 +25,12 @@ const style = {
   flightManifestFlexText: `flightManifestFlexText font-serif font-[400] min-w-[86px] text-left text-[12px] text-[#8895A7] ml-[6px] tracking-[0.01em] leading-[15px]`,
 };
 
-const BookingDetails = ({ itinerary, closeBookingModal,openBookingFailed,
-  openBookingSuccess }) => {
+const BookingDetails = ({
+  itinerary,
+  closeBookingModal,
+  showBookingFailed,
+  showBookingSuccess,
+}) => {
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
@@ -88,18 +92,17 @@ const BookingDetails = ({ itinerary, closeBookingModal,openBookingFailed,
         numOfInfants: 3,
         amount: flightToBook?.airfare,
         class: "ECONOMY",
-        flightSeat: "AD 90",
       },
     })
       .then((res) => {
         if (res?.data) {
           toastSuccess("Booking successful");
-          openBookingSuccess()
+          return showBookingSuccess
         }
       })
       .catch((bookingError) => {
-        toastError(bookingError);
-        openBookingFailed()
+        toastError(bookingError.message);
+        return showBookingFailed;
       });
   };
   console.log("mutation error", bookingError);
