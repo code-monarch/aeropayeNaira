@@ -25,7 +25,13 @@ const Account = () => {
 
   //Bank Details Mutation
   const [userBankDetails, { data, loading, error }] = useMutation(
-    BANK_DETAILS_MUTATION
+    BANK_DETAILS_MUTATION,
+    {
+      refetchQueries: [
+        { query: GET_BANK_DETAILS }, // DocumentNode object parsed with gql
+        "userBankDetails", // Query name
+      ],
+    }
   );
   //Bank Details Query
   const {
