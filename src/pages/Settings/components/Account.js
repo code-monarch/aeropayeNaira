@@ -355,7 +355,7 @@ const Account = () => {
                   }}
                   className={`${
                     iban && "text-black"
-                  } placeholder:text-[#8895A7] w-[100%] focus:bg-bg`}
+                  } placeholder:text-[#8895A7] w-[100%] focus:bg-bg cursor-not-allowed`}
                 />
               </div>
             </div>

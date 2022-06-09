@@ -13,23 +13,20 @@ import { BALANCE } from "../../../hooks";
 import { TRANSFER_TOKEN } from "../../../hooks";
 
 const Send = () => {
-    const numberWithCommas = (x) => {
-      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    };
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
   const [address, setAddress] = useState("");
   const [amount, setAmount] = useState("");
   const [walletBalance, setWalletBalance] = useState("");
-  
-    const {
-      control,
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm({
-      defaultValues: {
-        // phone: "",
-      },
-    });
+
+  const {
+    control,
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
 
   // Get balance Query
   const { data } = useQuery(BALANCE);
@@ -37,8 +34,6 @@ const Send = () => {
   let balance = data?.balance?.data?.data;
   console.log("wallet balance", data?.balance?.data?.data);
   // setWalletBalance(data?.balance?.data?.data)
-
-
 
   // Mutation for Transferring Token
   const [
@@ -52,28 +47,28 @@ const Send = () => {
   });
 
   useEffect(() => {
-    balance && setWalletBalance(balance)
-  
-    return () => {
-      setWalletBalance()
-    }
-  }, [balance])
-  
+    balance && setWalletBalance(balance);
 
+    return () => {
+      setWalletBalance();
+    };
+  }, [balance]);
 
   // Handle form submit
   const submit = (data) => {
-        transferToken({
-          variables: {
-            recipientAddress: data.address,
-            amount: data.amount,
-          },
-        }).then((res) => {
-          toastSuccess(`${res.message}`)
-        }).catch((error) => {
-          toastError(`${error.message}`)
-        })
-  }
+    transferToken({
+      variables: {
+        recipientAddress: data.address,
+        amount: data.amount,
+      },
+    })
+      .then((res) => {
+        toastSuccess(`${res.message}`);
+      })
+      .catch((error) => {
+        toastError(`${error.message}`);
+      });
+  };
 
   const [focus, setFocus] = useState("");
   return (
@@ -104,16 +99,12 @@ const Send = () => {
                       type="text"
                       id="address"
                       name="address"
-                      // value={address}
-                      // onChange={(e) => {
-                      //   setAddress(e.target.value);
-                      // }}
                       className="input-email"
                       {...register("address", {
                         required: "Please enter wallet address",
                       })}
                       placeholder="Enter wallet or email address"
-                      onFocus={() => setFocus("email")}
+                      onFocus={() => setFocus("address")}
                     />
                     <button
                       type="button"
@@ -121,27 +112,34 @@ const Send = () => {
                         navigator.clipboard
                           .readText()
                           .then((text) => {
-                            setAddress(text);
+                            setValue("address", `${text}`, {
+                              shouldValidate: true,
+                              shouldDirty: true,
+                            });
                           })
                           .catch((err) => {
                             toastError("Failed to read clipboard contents");
                           });
                       }}
-                      className="max inline-flex items-center px-3"
+                      className="max inline-flex items-center px-3 cursor-pointer"
                     >
                       PASTE
                     </button>
                   </label>
-                  <FormError errors={errors} name="address" />
+                  <div className="w-[100%] flex justify-end">
+                    <FormError errors={errors} name="address" />
+                  </div>
                 </div>
               </div>
 
+              {/* AMOUNT */}
               <div className="mt-[36px] mb-[32px]">
                 <p className="withdraw-form_title">How much are you sending?</p>
 
                 <div className="withdraw-form_amount-form">
                   <p className="withdraw-form_amount-form_title">Amount</p>
 
+                  {/* AMOUNT INPUT */}
                   <label
                     className={`flex withdraw-form_amount-form_input ${
                       focus === "amount" ? "clicked" : ""
@@ -163,12 +161,17 @@ const Send = () => {
                       onFocus={() => setFocus("amount")}
                     />
                   </label>
-                  <FormError errors={errors} name="amount" />
-
-                  <p className="withdraw-form_amount-form_balance">
-                    Balance: {walletBalance && numberWithCommas(walletBalance)}{" "}
-                    {!walletBalance && "0"} {""} ARP
-                  </p>
+                  {/* AMOUNT INPUT END */}
+                  {/* BALANCE AND ERROR */}
+                  <div className="w-[100%] flex justify-between">
+                    <p className="withdraw-form_amount-form_balance">
+                      Balance:{" "}
+                      {walletBalance && numberWithCommas(walletBalance)}{" "}
+                      {!walletBalance && "0"} {""} ARP
+                    </p>
+                    <FormError errors={errors} name="amount" />
+                  </div>
+                  {/* BALANCE AND ERROR END */}
                 </div>
               </div>
 
