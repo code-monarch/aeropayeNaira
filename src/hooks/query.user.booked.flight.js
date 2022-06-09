@@ -8,15 +8,19 @@ export const GET_BOOKED_FLIGHTS = gql`
       airlineName
       flightCode
       departureDate
+      departureCity
       departureTime
       departureInfo
       arrivalDate
+      arrivalCity
       arrivalTime
       arrivalInfo
       amount
+      class
+      flightEscrow
+      userFirstName
+      userLastName
       status
-      createdAt
-      updatedAt
     }
   }
 `;

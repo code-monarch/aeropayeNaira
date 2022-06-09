@@ -39,6 +39,15 @@ const Account = () => {
     loading: loadingBankDetails,
     error: bankDetailsError,
   } = useQuery(GET_BANK_DETAILS);
+  console.log("bank details", bankDetails)
+
+  // const bankdetailsLength = bankDetails?.userBankDetails
+  // console.log("bankdetailslength", bankdetailsLength?.length)
+
+  let bankdetailsLength = Boolean(
+    Array.isArray(bankDetails?.userBankDetails) &&
+      bankDetails?.userBankDetails.length
+  );
 
   const banks = [
     "9Payment Service Bank",
@@ -146,7 +155,7 @@ const Account = () => {
               },
             })
               .then((res) => {
-                toastSuccess(res?.userBankDetails?.message);
+                toastSuccess(`${res?.userBankDetails?.message}`);
                 console.log("Bank details response:", res);
               })
               .catch((error) => {
@@ -338,7 +347,7 @@ const Account = () => {
               <div className="account-form_inputs-label flex items-center">
                 <input
                   type="text"
-                  disabled="true"
+                  disabled={true}
                   placeholder="XXXXXXXX"
                   value={swiftCode}
                   onChange={(e) => {
@@ -370,7 +379,7 @@ const Account = () => {
 
       <div className="accountss">
         <p className="title">My bank accounts</p>
-        {bankDetails ? (
+        {bankDetails && (
           <>
             {bankDetails?.userBankDetails?.map((details, index) => (
               <div key={index} className="accountss-item">
@@ -397,7 +406,8 @@ const Account = () => {
               </div>
             ))}
           </>
-        ) : (
+        )}{" "}
+        {bankdetailsLength === false && (
           <div className="accountss-item">
             <div className="accountss-item_one">
               <p>NO RECORDS FOUND</p>

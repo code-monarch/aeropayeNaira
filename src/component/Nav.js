@@ -16,7 +16,7 @@ import { ReactComponent as SwapActive } from "../assets/dashboard-icons/Swap-act
 import { ReactComponent as SettingActive } from "../assets/dashboard-icons/Setting-active.svg";
 import MobileNav from "./mobile/MobileNav";
 
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Nav = ({ userName, isActive, setIsActive }) => {
   const navigate = useNavigate()
@@ -51,13 +51,13 @@ const Nav = ({ userName, isActive, setIsActive }) => {
         <nav className="flex items-center justify-evenly sticky z-10 top-0 w-full">
           <div className="flex items-center justify-between">
             <div className="mr-[20px] lg:mr-[32px]">
-              <NavLink to="/">
+              <Link to="/">
                 <Logo className="w-auto" />
-              </NavLink>
+              </Link>
             </div>
 
             <div className="flex items-center ">
-              <NavLink
+              <Link
                 to="/"
                 className={`mx-[14px] lg:mx-[23px] navigation-link ${
                   isActive === "home" && "active-nav"
@@ -70,9 +70,9 @@ const Nav = ({ userName, isActive, setIsActive }) => {
                   <Home className="mr-[6px]" />
                 )}
                 Home
-              </NavLink>
+              </Link>
 
-              <NavLink
+              <Link
                 to="/flights"
                 className={`mx-[14px] lg:mx-[23px] navigation-link ${
                   isActive === "flight" && "active-nav"
@@ -85,9 +85,9 @@ const Nav = ({ userName, isActive, setIsActive }) => {
                   <Plane className="mr-[6px]" />
                 )}
                 Flights
-              </NavLink>
+              </Link>
 
-              <NavLink
+              <Link
                 to="/wallet"
                 className={`mx-[14px] lg:mx-[23px] navigation-link ${
                   isActive === "wallet" && "active-nav"
@@ -100,9 +100,9 @@ const Nav = ({ userName, isActive, setIsActive }) => {
                   <Wallet className="mr-[6px]" />
                 )}
                 Wallet
-              </NavLink>
+              </Link>
 
-              <NavLink
+              <Link
                 to="/transaction-history"
                 className={`mx-[14px] lg:mx-[23px] navigation-link ${
                   isActive === "trans" && "active-nav"
@@ -115,9 +115,9 @@ const Nav = ({ userName, isActive, setIsActive }) => {
                   <Swap className="mr-[6px]" />
                 )}
                 Transactions
-              </NavLink>
+              </Link>
 
-              <NavLink
+              <Link
                 to="/settings"
                 className={`mx-[14px] lg:mx-[23px] navigation-link ${
                   isActive === "setting" && "active-nav"
@@ -130,7 +130,7 @@ const Nav = ({ userName, isActive, setIsActive }) => {
                   <Setting className="mr-[6px]" />
                 )}
                 Settings
-              </NavLink>
+              </Link>
             </div>
           </div>
 

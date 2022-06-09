@@ -6,6 +6,8 @@ import { GET_AVAILABLE_FLIGHTS } from "../../../hooks";
 import { toastError, toastSuccess } from "../../../component/shared/Toasts";
 import Button from "../../../component/shared/Button";
 
+import { GET_BOOKED_FLIGHTS } from "../../../hooks";
+
 import dateFormat from "dateformat";
 
 const style = {
@@ -69,10 +71,16 @@ const BookingDetails = ({
   // get Air fare from itinerary and pass to BookFlight mutation variables
   const airfare = itinerary?.airfare;
 
+  // BOOK FLIGHT MUTATION
   const [
     bookFlight,
     { data: bookingData, loading: bookingLoading, error: bookingError },
-  ] = useMutation(BOOK_FLIGHT_MUTATION);
+  ] = useMutation(BOOK_FLIGHT_MUTATION, {
+    refetchQueries: [
+      { query: GET_BOOKED_FLIGHTS }, // DocumentNode object parsed with gql
+      "getBookedFlight", // Query name
+    ],
+  });
 
   console.log("amount", flightToBook.airfare);
 
@@ -91,7 +99,7 @@ const BookingDetails = ({
         numOfChildren: 3,
         numOfInfants: 3,
         amount: flightToBook?.airfare,
-        class: "ECONOMY",
+        class: flightToBook?.class,
       },
     })
       .then((res) => {
@@ -260,7 +268,7 @@ const BookingDetails = ({
                   122.8070 ARP
                 </div>
                 <div className="text-[14px] font-sans font-[400] text-[#5F6B7A]">
-                  (≈ 80,000 NGN)
+                  (≈ 122,8070 NGN)
                 </div>
               </div>
               {/* Number of Passengers */}
@@ -292,7 +300,7 @@ const BookingDetails = ({
                   122.8070 ARP
                 </div>
                 <div className="text-[14px] font-sans font-[500] text-[#5F6B7A]">
-                  (≈ 80,000 NGN)
+                  (≈ 122,8070 NGN)
                 </div>
               </div>
               {/* Number of Passengers */}

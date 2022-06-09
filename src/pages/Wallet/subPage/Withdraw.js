@@ -4,8 +4,68 @@ import { ReactComponent as ArrowDown } from "../../../assets/dashboard-icons/arr
 import { Link } from "react-router-dom";
 import Layout from "../../../component/Layout";
 
+import Button from "../../../component/shared/Button";
+import { toastError, toastSuccess } from "../../../component/shared/Toasts";
+
+import { useForm } from "react-hook-form";
+import FormError from "../../../component/shared/FormError";
+
+import { useMutation, useQuery } from "@apollo/client";
+import { BALANCE } from "../../../hooks";
+import { REDEEM_FIAT_MUTATION } from "../../../hooks";
+import { GET_BANK_DETAILS } from "../../../hooks";
+
 const Withdraw = () => {
   const [focus, setFocus] = useState(false);
+
+  const {
+    control,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      // phone: "",
+    },
+  });
+
+  // Get balance Query
+  const { data } = useQuery(BALANCE);
+  // Get bank details Query
+  const { data: bankDetails } = useQuery(GET_BANK_DETAILS);
+  console.log("Bank Details:", bankDetails)
+  // setWalletBalance(data?.balance?.data?.data);
+  let balance = data?.balance?.data?.data;
+  console.log("wallet balance", data?.balance?.data?.data);
+  // setWalletBalance(data?.balance?.data?.data)
+
+  // Mutation for Redeemign Token to Fiat
+  const [
+    redeemFiat,
+    { data: redeemData, loading: redeeming, error: redeemError },
+  ] = useMutation(REDEEM_FIAT_MUTATION, {
+    refetchQueries: [
+      { query: BALANCE }, // DocumentNode object parsed with gql
+      "balance", // Query name
+    ],
+  });
+
+  // Handle form submit
+  const submit = (data) => {
+    redeemFiat({
+      variables: {
+        amount: data.amount,
+        accountToWithdraw: data.accountToWithdraw,
+      },
+    })
+      .then((res) => {
+        toastSuccess(`${res.message}`);
+      })
+      .catch((error) => {
+        toastError(`${error.message}`);
+      });
+  };
+
   return (
     <>
       <Layout>
@@ -16,7 +76,7 @@ const Withdraw = () => {
               <p className="back-link_nav">Back</p>
             </Link>
 
-            <div className="withdraw-form">
+            <form onSubmit={handleSubmit(submit)} className="withdraw-form">
               <div>
                 <p className="withdraw-form_title">
                   How much do you want to withdraw?
@@ -114,18 +174,20 @@ const Withdraw = () => {
               </div>
 
               <div>
-                <button
+                <Button
                   className="withdraw-form_button flex items-center cursor-pointer justify-center"
                   type="submit"
+                  loading={redeeming}
+                  disabled={redeeming}
                 >
                   Confirm Withdrawal
-                </button>
+                </Button>
               </div>
 
               <p className="withdraw-form_info">
                 Should arrive within 1-2 business days
               </p>
-            </div>
+            </form>
           </div>
         </div>
       </Layout>

@@ -19,14 +19,14 @@ import { ReactComponent as EcoClassIcon } from "../../../assets/flightClass/econ
 import { ReactComponent as PremiumEcoClassIcon } from "../../../assets/flightClass/premiumEco.svg";
 import { ReactComponent as FirstClassIcon } from "../../../assets/flightClass/first.svg";
 
-import { Modal } from "react-responsive-modal";
+// import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import { Link } from "react-router-dom";
 
 import dateFormat from "dateformat";
 
 import { GET_AVAILABLE_FLIGHTS } from "../../../hooks";
-import { GET_ALL_PASSENGERS } from "../../../hooks";
+// import { GET_ALL_PASSENGERS } from "../../../hooks";
 import { useQuery, useLazyQuery } from "@apollo/client";
 
 import BookingSummaryModal from "./BookingSummaryModal";
@@ -37,6 +37,7 @@ const FlightItinerary = () => {
   // saves itinerarRef which is passed to BookingDetails component
   const [itinerary, setItinerary] = useState("");
   const itineraryRef = useRef(null);
+
   const [showBookingSummary, setShowBookingSummary] = useState(false);
   const [showBookingSuccess, setShowBookingSuccess] = useState(false);
   const [showBookingFailed, setShowBookingFailed] = useState(false);
@@ -61,6 +62,7 @@ const FlightItinerary = () => {
   const { loading, error, data } = useQuery(GET_AVAILABLE_FLIGHTS);
   console.log("getAvailable flights data", data?.getAvailableFlights);
 
+  // get flightcode
   const flightCode = data?.getAvailableFlights?.map((flight) => {
     return flight?.flightCode;
   });

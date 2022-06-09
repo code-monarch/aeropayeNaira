@@ -1,5 +1,10 @@
+import { useState, useRef } from "react";
 import { ReactComponent as Calendar } from "../../../assets/dashboard-icons/calendar-2.svg";
 import { ReactComponent as AirArik } from "../../../assets/dashboard-icons/Airlines.svg";
+import { ReactComponent as Aero } from "../../../assets/dashboard-icons/aerologo.svg";
+import { ReactComponent as AirIbom } from "../../../assets/dashboard-icons/Airlines-3.svg";
+import { ReactComponent as AirPeace } from "../../../assets/dashboard-icons/Airlines-2.svg";
+import { ReactComponent as Dana } from "../../../assets/dashboard-icons/danaLogo.svg";
 import { ReactComponent as Profile } from "../../../assets/dashboard-icons/profile.svg";
 import { ReactComponent as Arrival } from "../../../assets/dashboard-icons/arrival-icon.svg";
 import { ReactComponent as Departure } from "../../../assets/dashboard-icons/departure-icon.svg";
@@ -8,6 +13,13 @@ import { ReactComponent as Plane } from "../../../assets/dashboard-icons/flight-
 import { ReactComponent as ArrRight } from "../../../assets/dashboard-icons/ArrRight.svg";
 import { ReactComponent as ShowIcon } from "../../../assets/icons/showIcon.svg";
 import { ReactComponent as Line } from "../../../assets/dashboard-icons/Line.svg";
+import { ReactComponent as BusinessClassIcon } from "../../../assets/flightClass/business.svg";
+import { ReactComponent as EcoClassIcon } from "../../../assets/flightClass/economy.svg";
+import { ReactComponent as PremiumEcoClassIcon } from "../../../assets/flightClass/premiumEco.svg";
+import { ReactComponent as FirstClassIcon } from "../../../assets/flightClass/first.svg";
+
+import { useQuery, useLazyQuery } from "@apollo/client";
+import { GET_BOOKED_FLIGHTS } from "../../../hooks";
 
 import FlightItinerary from "./FlightItinerary";
 
@@ -20,6 +32,25 @@ const FlightsInfo = ({
   isRefunded,
   filter,
 }) => {
+  // saves itinerarRef which is passed to BookingDetails component
+  const [itinerary, setItinerary] = useState("");
+  const itineraryRef = useRef(null);
+
+  // Get Passenger Booked Flights
+  const { data: bookedFlights, loading, error } = useQuery(GET_BOOKED_FLIGHTS);
+  console.log("UserBooked Flights:", bookedFlights);
+
+    const flights = bookedFlights?.getBookedFlight?.map((flight) => {
+      return {
+        flightCode: flight?.flightCode
+      };
+    });
+
+  // cycle through the flight array, return a new array if the modal FlightCode === Itinerary flightCode
+  let flightToCheckIn = flights?.find(
+    (item) => item.flightCode === itinerary?.flightCode
+  );
+  console.log("flightToCheckIn", flightToCheckIn)
 
   return (
     <div className="flex sm:flex-row flex-col">
@@ -29,65 +60,93 @@ const FlightsInfo = ({
             isCanceled && "clicked"
           } ${isRefunded && "unclicked"}`}
         >
-          <div className="header">
-            <p className="flex items-center">
-              Itinerary : &nbsp;&nbsp; Lagos (LOS) &nbsp;&nbsp;
-              <Arr /> &nbsp;&nbsp; Abuja (ABV)&nbsp;&nbsp; |&nbsp;&nbsp;
-              Ticketless ID: 890512
-            </p>
-
-            <div className="flight-type">
-              <Plane className="mr-[8px]" />
-              Round Trip
-            </div>
-          </div>
-
-          <div className="section">
-            <div className="body">
-              <div className="info">
-                <p className="flex items-center">
-                  <Departure className="mr-[12px]" />
-                  Departure:
-                  <span className="mx-[12px]">Lagos (LOS)</span>
-                  <ArrRight />
-                  <span className="mx-[12px]">Abuja(ABV)</span>
-                </p>
-                <div className="flex items-center">
-                  <Calendar className="mr-[12px]" />
-                  <p>Feb 20, 2022</p>
-                </div>
-              </div>
-              <div className="body-flight_details">
-                <div className="airline-logo">
-                  <AirArik />
-                </div>
-
-                <div className="arrival-time">
-                  <p className="time">3:30 PM</p>
-                  <p className="location">Abuja</p>
-                  <p className="airport">
-                    Nnamdi Azikiwe International Airport (Nigeria)
+          {bookedFlights &&
+            bookedFlights?.getBookedFlight?.map((bookedFlight) => (
+              <div key={bookedFlight.ticketId} ref={itineraryRef}>
+                <div className="header">
+                  <p className="flex items-center">
+                    Itinerary : &nbsp;&nbsp; {bookedFlight.departureCity}{" "}
+                    &nbsp;&nbsp;
+                    <Arr /> &nbsp;&nbsp; {bookedFlight.arrivalCity}&nbsp;&nbsp;
+                    |&nbsp;&nbsp; Ticketless ID: {bookedFlight.ticketId}
                   </p>
-                </div>
 
-                <div className="hours">
-                  <p className="mb-[4px]">1h 30m</p>
-                  <Line />
-                  <p className="mt-[4px]">0 Stops</p>
+                  <div className="flight-type">
+                    <Plane className="mr-[8px]" />
+                    {/* Round Trip */}
+                    One-way Trip
+                  </div>
                 </div>
+                {/* Flight card */}
+                <div key={bookedFlight.ticketId} className="section">
+                  <div className="body">
+                    <div className="info">
+                      <p className="flex items-center">
+                        <Departure className="mr-[12px]" />
+                        Departure:
+                        <span className="mx-[12px]">
+                          {bookedFlight.depatureCity}
+                        </span>
+                        <ArrRight />
+                        <span className="mx-[12px]">
+                          {bookedFlight.arrivalCity}
+                        </span>
+                      </p>
+                      <div className="flex items-center">
+                        <Calendar className="mr-[12px]" />
+                        <p>{bookedFlight.departureDate}</p>
+                      </div>
+                    </div>
+                    <div className="body-flight_details">
+                      <div className="airline-logo">
+                        {bookedFlight.airlineName === "Air Peace" && (
+                          <AirPeace />
+                        )}
+                        {bookedFlight.airlineName === "Ibom Air" && <AirIbom />}
+                        {bookedFlight.airlineName === "Arik Air" && <AirArik />}
+                        {bookedFlight.airlineName === "Dana Air" && <Dana />}
+                        {bookedFlight.airlineName === "Aero" && <Aero />}
+                      </div>
 
-                <div className="departure-time">
-                  <p className="time">5:00 PM</p>
-                  <p className="location">Lagos</p>
-                  <p className="airport">
-                    Murtala Muhammed International Airport (Nigeria)
-                  </p>
-                </div>
+                      <div className="arrival-time">
+                        <p className="time">{bookedFlight.departureTime}</p>
+                        <p className="location">{bookedFlight.departureCity}</p>
+                        <p className="airport">
+                          Nnamdi Azikiwe International Airport (Nigeria)
+                        </p>
+                      </div>
 
-                <div className="flight-cabin-economy">Economy</div>
-              </div>
-            </div>
-            <div className="body">
+                      <div className="hours">
+                        <p className="mb-[4px]">1h 30m</p>
+                        <Line />
+                        <p className="mt-[4px]">0 Stops</p>
+                      </div>
+
+                      <div className="departure-time">
+                        <p className="time">{bookedFlight.arrivalTime}</p>
+                        <p className="location">{bookedFlight.arrivalCity}</p>
+                        <p className="airport">
+                          Murtala Muhammed International Airport (Nigeria)
+                        </p>
+                      </div>
+
+                      <div className="">
+                        {bookedFlight.class === "ECONOMY" && <EcoClassIcon />}
+                        {bookedFlight.class === "FIRST_CLASS" && (
+                          <FirstClassIcon />
+                        )}
+                        {bookedFlight.class === "BUSINESS" && (
+                          <BusinessClassIcon />
+                        )}
+                        {bookedFlight.class === "PREMIUM_ECONOMY" && (
+                          <PremiumEcoClassIcon />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  {/* Departure card End */}
+                  {/* Arrival Card */}
+                  {/* <div className="body">
               <div className="info">
                 <p className="flex items-center">
                   <Arrival className="mr-[12px]" />
@@ -130,59 +189,90 @@ const FlightsInfo = ({
 
                 <div className="flight-cabin-economy">Economy</div>
               </div>
-            </div>
-          </div>
-          <div className="flight-checkout">
-            <div className="flex items-center">
-              <Profile className="mx-[10px]" />
-              <p>
-                Passengers:
-                <span className="mx-[8px]">Derek Hale</span>,
-                <span className="mx-[8px]">Jessica Smith</span>
-              </p>
-            </div>
+            </div> */}
+                  {/* Arrival card End */}
+                </div>
+                <div className="flight-checkout">
+                  <div className="flex items-center">
+                    <Profile className="mx-[10px]" />
+                    <p>
+                      Passengers:
+                      <span className="mx-[8px]">
+                        {bookedFlight.userFirstName}&nbsp;
+                        {bookedFlight.userLastName},
+                      </span>
+                      <span className="mx-[8px]">
+                        {bookedFlight.userFirstName}&nbsp;
+                        {bookedFlight.userLastName}
+                      </span>
+                    </p>
+                  </div>
 
-            {isRefunded ? (
-              <div className="refund-claim">
-                <p>Refund has been claimed for this flight</p>
-              </div>
-            ) : (
-              <div>
-                {checkedIn ? (
-                  <div className="flex items-center">
-                    <button className="checkIn-button" disabled>
-                      Checked in
-                    </button>
-                  </div>
-                ) : isCanceled ? (
-                  <div className="flex items-center">
-                    <button
-                      className="cancel-button"
-                      onClick={onOpenRefundModal}
-                    >
-                      Claim refund
-                    </button>
-                  </div>
-                ) : (
-                  <div className="flex items-center">
-                    <button
-                      className="cancel-button"
-                      onClick={onOpenCancelModal}
-                    >
-                      Cancel flight
-                    </button>
+                  {isRefunded ? (
+                    <div className="refund-claim">
+                      <p>Refund has been claimed for this flight</p>
+                    </div>
+                  ) : (
+                    <div>
+                      {checkedIn ? (
+                        <div className="flex items-center">
+                          {/* C */}
+                          <button
+                            className="checkIn-button cursor-not-allowed"
+                            disabled
+                          >
+                            Checked in
+                          </button>
+                        </div>
+                      ) : isCanceled ? (
+                        <div className="flex items-center">
+                          {/* Clam refund Button */}
+                          <button
+                            className="cancel-button"
+                            onClick={onOpenRefundModal}
+                          >
+                            Claim refund
+                          </button>
+                          {/* Claim refund Button End */}
+                        </div>
+                      ) : (
+                        <div className="flex items-center">
+                          {/* Cancel Flight Button */}
+                          <button
+                            className="cancel-button"
+                            onClick={onOpenCancelModal}
+                          >
+                            Cancel flight
+                          </button>
+                          {/* Cancel Flight Button End */}
 
-                    <button className="checkIn-button" onClick={onOpenModal}>
-                      Check in
-                    </button>
-                  </div>
-                )}
+                          {/* Check in Button */}
+                          <button
+                            className="checkIn-button"
+                            // onClick={onOpenModal}
+                            onClick={() => {
+                              itineraryRef.current = bookedFlight;
+                              const itineraryPointer = itineraryRef.current;
+                              console.log("itineraryPointer", itineraryPointer);
+                              setItinerary(itineraryPointer);
+                              onOpenModal();
+                            }}
+                          >
+                            Check in
+                          </button>
+                          {/* Check in Button End */}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
-            )}
-          </div>
+            ))}
         </div>
+
         <FlightItinerary />
       </div>
+
       {/* Flight History Right side */}
       <div className="flight-container_history">
         <p className="flight-container_history_title">My flights history</p>

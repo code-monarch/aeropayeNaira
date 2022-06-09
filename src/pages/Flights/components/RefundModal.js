@@ -34,7 +34,7 @@ const RefundModal = ({ openRefundModal, onCloseRefundModal, onOpenRefundedModal 
 
                     <div className='cancel-label'>
                         <p className='cancel-label_title'>Destination</p>
-                        <label className='refund-input-2'>
+                        <label className='refund-input-2 px-[12px]'>
                             <input type="text" value='Abuja (ABV)' className='bg-gray-input' readOnly/>
                         </label>
                     </div>
