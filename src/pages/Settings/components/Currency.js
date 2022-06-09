@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CurrencyFlag from 'react-currency-flags';
+// import CurrencyFlag from 'react-currency-flags';
 
 const Currency = () => {
   const [currency] = useState('');
@@ -21,7 +21,7 @@ const Currency = () => {
                             Local currency
                         </p>
                         <div className='flex items-center'>
-                          <CurrencyFlag currency={currency} width={38} />
+                          {/* <CurrencyFlag currency={currency} width={38} /> */}
                         </div>
                         
                     </div>
