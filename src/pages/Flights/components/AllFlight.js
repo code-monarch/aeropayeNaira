@@ -32,6 +32,8 @@ const FlightsInfo = ({
   isRefunded,
   filter,
 }) => {
+
+
   // saves itinerarRef which is passed to BookingDetails component
   const [itinerary, setItinerary] = useState("");
   const itineraryRef = useRef(null);

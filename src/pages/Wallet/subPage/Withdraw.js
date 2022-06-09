@@ -10,12 +10,16 @@ import { toastError, toastSuccess } from "../../../component/shared/Toasts";
 import { useForm } from "react-hook-form";
 import FormError from "../../../component/shared/FormError";
 
+import { useNavigate } from "react-router-dom";
+
 import { useMutation, useQuery } from "@apollo/client";
 import { BALANCE } from "../../../hooks";
 import { REDEEM_FIAT_MUTATION } from "../../../hooks";
 import { GET_BANK_DETAILS } from "../../../hooks";
 
 const Withdraw = () => {
+  const navigate = useNavigate();
+
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
@@ -81,9 +85,9 @@ const Withdraw = () => {
         accountToWithdraw: data?.accountToWithdraw,
       },
     })
-      .then((res) => {
-        toastSuccess(`${res?.data?.redeemFiat?.message}`);
-        
+    .then((res) => {
+      toastSuccess(`${res?.data?.redeemFiat?.message}`);
+      navigate(-1)      
       })
       .catch((error) => {
         toastError(`${error?.message}`);

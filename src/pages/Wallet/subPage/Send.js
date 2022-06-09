@@ -11,8 +11,11 @@ import FormError from "../../../component/shared/FormError";
 import { useMutation, useQuery } from "@apollo/client";
 import { BALANCE } from "../../../hooks";
 import { TRANSFER_TOKEN } from "../../../hooks";
+import { useNavigate } from "react-router-dom";
 
 const Send = () => {
+  const navigate = useNavigate();
+
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
@@ -64,6 +67,7 @@ const Send = () => {
     })
       .then((res) => {
         toastSuccess(`${res.message}`);
+        navigate(-1);
       })
       .catch((error) => {
         toastError(`${error.message}`);
