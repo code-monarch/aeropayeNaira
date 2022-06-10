@@ -71,7 +71,7 @@ const Home = () => {
                   <ArrowRight />
                 </Link>
 
-                <Link to="/dashboard" className="step">
+                <Link to="/" className="step">
                   <span className="step-stat uppercase">Step 4</span>
                   <span className="step-info">
                     Complete your booking profile
