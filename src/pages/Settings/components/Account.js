@@ -155,7 +155,7 @@ const Account = () => {
               },
             })
               .then((res) => {
-                toastSuccess(`${res?.userBankDetails?.message}`);
+                toastSuccess(`${res?.data?.userBankDetails?.message}`);
                 console.log("Bank details response:", res);
               })
               .catch((error) => {
