@@ -4,7 +4,7 @@ import { ReactComponent as Paystack } from "../../../assets/dashboard-icons/Pays
 import flutterwave from "../../../assets/dashboard-icons/flutterwave.svg";
 import { ReactComponent as Lock } from "../../../assets/icons/lock.svg";
 import Button from "../../../component/shared/Button";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { MAKE_PAYMENT_MUTATION } from "../../../hooks";

@@ -13,6 +13,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { AuthProvider } from "./hooks/auth";
+import { FlightProvider } from "./context/FlightProvider";
 
 import { setContext } from "@apollo/client/link/context";
 
@@ -29,7 +30,6 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-
 const httpLink = createHttpLink({
   uri: process.env.REACT_APP_GRAPHQL_URI,
 });
@@ -44,9 +44,11 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <ApolloProvider client={client}>
-          <App />
-        </ApolloProvider>
+        <FlightProvider>
+          <ApolloProvider client={client}>
+            <App />
+          </ApolloProvider>
+        </FlightProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,

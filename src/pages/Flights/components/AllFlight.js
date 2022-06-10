@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useMemo, useContext } from "react";
 import { ReactComponent as Calendar } from "../../../assets/dashboard-icons/calendar-2.svg";
 import { ReactComponent as AirArik } from "../../../assets/dashboard-icons/Airlines.svg";
 import { ReactComponent as Aero } from "../../../assets/dashboard-icons/aerologo.svg";
@@ -17,22 +17,35 @@ import { ReactComponent as BusinessClassIcon } from "../../../assets/flightClass
 import { ReactComponent as EcoClassIcon } from "../../../assets/flightClass/economy.svg";
 import { ReactComponent as PremiumEcoClassIcon } from "../../../assets/flightClass/premiumEco.svg";
 import { ReactComponent as FirstClassIcon } from "../../../assets/flightClass/first.svg";
+import { flightContext } from "../../../context/FlightProvider";
+import CancelModal from "./CancelModal";
+import CheckInModal from "./CheckInModal";
 
-import { useQuery, useLazyQuery } from "@apollo/client";
+import Button from "../../../component/shared/Button";
+
+import { useQuery, useMutation } from "@apollo/client";
 import { GET_BOOKED_FLIGHTS } from "../../../hooks";
+import { CHECK_IN } from "../../../hooks";
+import { CANCEL_BOOKING } from "../../../hooks";
 
 import FlightItinerary from "./FlightItinerary";
 
 const FlightsInfo = ({
+  open,
+  onCloseModal,
+  onChecked,
   checkedIn,
+  onCanceled,
+  onCloseCancelModal,
   onOpenModal,
+  openCancelModal,
   onOpenCancelModal,
   isCanceled,
   onOpenRefundModal,
   isRefunded,
   filter,
 }) => {
-
+  const { flight, setFlight } = useContext(flightContext);
 
   // saves itinerarRef which is passed to BookingDetails component
   const [itinerary, setItinerary] = useState("");
@@ -42,17 +55,21 @@ const FlightsInfo = ({
   const { data: bookedFlights, loading, error } = useQuery(GET_BOOKED_FLIGHTS);
   console.log("UserBooked Flights:", bookedFlights);
 
-    const flights = bookedFlights?.getBookedFlight?.map((flight) => {
-      return {
-        flightCode: flight?.flightCode
-      };
-    });
+  const flights = bookedFlights?.getBookedFlight?.map((flight) => {
+    return {
+      flightCode: flight?.flightCode,
+    };
+  });
 
   // cycle through the flight array, return a new array if the modal FlightCode === Itinerary flightCode
   let flightToCheckIn = flights?.find(
     (item) => item.flightCode === itinerary?.flightCode
   );
-  console.log("flightToCheckIn", flightToCheckIn)
+  console.log("flightToCheckIn", flightToCheckIn);
+
+  // FLIGHT CHECK IN MUTATION
+  const [checkIn, { data: checkInResponse, loading: checkingIn }] =
+    useMutation(CHECK_IN);
 
   return (
     <div className="flex sm:flex-row flex-col">
@@ -242,7 +259,13 @@ const FlightsInfo = ({
                           {/* Cancel Flight Button */}
                           <button
                             className="cancel-button"
-                            onClick={onOpenCancelModal}
+                            onClick={() => {
+                              itineraryRef.current = bookedFlight;
+                              const itineraryPointer = itineraryRef.current;
+                              console.log("itineraryPointer", itineraryPointer);
+                              setItinerary(itineraryPointer);
+                              onOpenCancelModal();
+                            }}
                           >
                             Cancel flight
                           </button>
@@ -271,6 +294,7 @@ const FlightsInfo = ({
               </div>
             ))}
         </div>
+        {/* { bookeFlight } */}
 
         <FlightItinerary />
       </div>
@@ -329,6 +353,21 @@ const FlightsInfo = ({
           </div>
         </div>
       </div>
+
+      <CancelModal
+        openCancelModal={openCancelModal}
+        onCloseCancelModal={onCloseCancelModal}
+        onCanceled={onCanceled}
+        flightToCheckIn={flightToCheckIn}
+      />
+
+      <CheckInModal
+        open={open}
+        onOpenModal={onOpenModal}
+        onCloseModal={onCloseModal}
+        onChecked={onChecked}
+        flightToCheckIn={flightToCheckIn}
+      />
     </div>
   );
 };

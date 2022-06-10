@@ -113,8 +113,13 @@ const Flight = () => {
 
               {filter === "All" ? (
                 <FlightsInfo
+                  onCanceled={onCanceled}
                   checkedIn={checkedIn}
+                  open={open}
                   onOpenModal={onOpenModal}
+                  onCloseModal={onCloseModal}
+                  onCloseCancelModal={onCloseCancelModal}
+                  openCancelModal={openCancelModal}
                   onOpenCancelModal={onOpenCancelModal}
                   isCanceled={isCanceled}
                   onOpenRefundModal={onOpenRefundModal}
@@ -136,18 +141,6 @@ const Flight = () => {
             </div>
           </div>
         </div>
-
-        <CheckInModal
-          open={open}
-          onCloseModal={onCloseModal}
-          onChecked={onChecked}
-        />
-
-        <CancelModal
-          openCancelModal={openCancelModal}
-          onCloseCancelModal={onCloseCancelModal}
-          onCanceled={onCanceled}
-        />
 
         <RefundModal
           openRefundModal={openRefundModal}

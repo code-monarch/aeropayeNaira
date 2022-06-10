@@ -14,3 +14,5 @@ export { BOOK_FLIGHT_MUTATION } from "./mutation.bookflight";
 export { BANK_DETAILS_MUTATION } from "./mutation.bank.details";
 export { REDEEM_FIAT_MUTATION } from "./mutation.redeem";
 export { TRANSFER_TOKEN } from "./mutation.transfer.token";
+export { CHECK_IN } from "./mutation.checkin";
+export { CANCEL_BOOKING } from "./mutation.cancel.booking";
