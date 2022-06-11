@@ -30,7 +30,7 @@ const MobileNav = ({ isActive, setIsActive }) => {
     <nav className="sticky z-10 top-0 w-full px-4">
       <div className="flex items-center justify-between">
         <div className="">
-          <NavLink to="/dashboard">
+          <NavLink to="/">
             <Logo className="w-auto" />
           </NavLink>
         </div>
@@ -71,7 +71,7 @@ const MobileNav = ({ isActive, setIsActive }) => {
               {showOption && (
                 <ul className="profile-dropdown absolute top-8 z-[99999] right-0 mt-[12px] ">
                   <li>
-                    <NavLink to="/dashboard" className="settings">
+                    <NavLink to="/settings" className="settings">
                       Settings
                     </NavLink>
                   </li>
@@ -94,7 +94,7 @@ const MobileNav = ({ isActive, setIsActive }) => {
 
           <div className="nav-mobile-container_list">
             <NavLink
-              to="/dashboard"
+              to="/"
               className={`nav-mobile-container_list-item ${
                 isActive === "home" && "active-mobile-nav"
               }`}
@@ -109,7 +109,7 @@ const MobileNav = ({ isActive, setIsActive }) => {
             </NavLink>
 
             <NavLink
-              to="/flight"
+              to="/flights"
               className={`nav-mobile-container_list-item ${
                 isActive === "flight" && "active-mobile-nav"
               }`}

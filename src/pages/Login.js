@@ -142,7 +142,7 @@ const Login = () => {
             <label className="flex items-center cursor-pointer">
               <input
                 type="checkbox"
-                className="appearance-none w-[20px] h-[20px] mr-[3px] bg-[#fff] rounded-sm shadow-sm border-[6px] border-slate-700 checked:bg-green checked:ring-2 checked:ring-green cursor-pointer"
+                className="appearance-none w-[20px] h-[20px] mr-[3px] bg-[#fff] rounded-sm shadow-sm border-[6px] border-slate-700 checked:bg-green cursor-pointer"
               />
               <p>I'm not a robot</p>
             </label>

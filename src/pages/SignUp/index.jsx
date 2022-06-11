@@ -323,7 +323,7 @@ const SignUp = () => {
                 <label className="flex items-center cursor-pointer">
                   <input
                     type="checkbox"
-                    className="appearance-none w-[20px] h-[20px] mr-[12px] bg-bg rounded-sm shadow-sm border-[1px] border-black checked:bg-green checked:ring-2 checked:ring-green cursor-pointer"
+                    className="appearance-none w-[20px] h-[20px] mr-[12px] bg-bg rounded-sm shadow-sm border-[1px] border-black cursor-pointer"
                     id="tncCheckbox"
                     name="checkbox"
                     {...register("checkbox", {
