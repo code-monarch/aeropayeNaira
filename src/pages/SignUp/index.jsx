@@ -10,7 +10,8 @@ import { ReactComponent as ShowIcon } from "../../assets/icons/showIcon.svg";
 import { ReactComponent as AirlineName } from "../../assets/icons/logo.svg";
 import { useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
+import "react-phone-input-2/lib/high-res.css";
+// import "react-phone-input-2/lib/style.css";
 import { SIGNUP_MUTATION } from "../../hooks";
 import { useMutation } from "@apollo/client";
 import { toastError, toastSuccess } from "../../component/shared/Toasts";
@@ -160,7 +161,7 @@ const SignUp = () => {
             </p>
 
             <div className={`${error ? "error-line" : "line"}`}></div>
-            <form onSubmit={ handleSubmit(submit)}>
+            <form onSubmit={handleSubmit(submit)}>
               <div className="flex sm:flex-row flex-col">
                 <div className="signup-form_field w-full">
                   <p className="label">First Name</p>
@@ -176,6 +177,7 @@ const SignUp = () => {
                       type="text"
                       id="fname"
                       name="fname"
+                      className="appearance-none"
                       {...register("fname", {
                         required: "Please enter your first name",
                       })}
@@ -203,7 +205,7 @@ const SignUp = () => {
                       {...register("lname", {
                         required: "Please enter your last name",
                       })}
-                      placeholder="Doe"
+                      placeholder=""
                       onBlur={() => setFocus("")}
                       onFocus={() => setFocus("lname-input")}
                     />
@@ -224,7 +226,7 @@ const SignUp = () => {
                   </span>
                   <input
                     type="email"
-                    placeholder="example@gmail.com"
+                    placeholder=""
                     id="email"
                     name="email"
                     {...register("email", {
@@ -254,6 +256,12 @@ const SignUp = () => {
                       country={"ng"}
                       onChange={onChange}
                       value={value}
+                      inputStyle={{
+                        marginLeft: "50px",
+                        borderTopLeftRadius: "0px",
+                        borderBottomLeftRadius: "0px",
+                        paddingLeft: "10px",
+                      }}
                       className={`flex items-center ${
                         focus === "phone-input" ? "clicked" : ""
                       }`}
@@ -312,11 +320,11 @@ const SignUp = () => {
               </div>
 
               <div className="mb-[23px]">
-                <label className="flex items-start">
+                <label className="flex items-center cursor-pointer">
                   <input
                     type="checkbox"
-                    className="signup-field-checkbox"
-                    id="checkbox"
+                    className="appearance-none w-[20px] h-[20px] mr-[12px] bg-bg rounded-sm shadow-sm border-[1px] border-black checked:bg-green checked:ring-2 checked:ring-green cursor-pointer"
+                    id="tncCheckbox"
                     name="checkbox"
                     {...register("checkbox", {
                       required: "Please accept the terms",

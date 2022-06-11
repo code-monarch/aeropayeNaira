@@ -1,7 +1,10 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  content: ["./src/**/**/**/*.{js,jsx,ts,tsx}", "./node_modules/flowbite/**/*.js"],
+  content: [
+    "./src/**/**/**/*.{js,jsx,ts,tsx}",
+    "./node_modules/flowbite/**/*.js",
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -20,7 +23,11 @@ module.exports = {
       svgPattern: "url('/svg/svgPattern.svg')",
     },
   },
-  plugins: [require("daisyui"), require("flowbite/plugin")],
+  plugins: [
+    require("daisyui"),
+    require("flowbite/plugin"),
+    require("@tailwindcss/forms"),
+  ],
   daisyui: {
     styled: false,
   },

@@ -465,6 +465,14 @@ nav ul .nav-item {
   color: #212934;
 }
 
+.login-container_email input:-webkit-autofill,
+.login-container_email input:-webkit-autofill:hover, 
+.login-container_email input:-webkit-autofill:focus, 
+.login-container_email input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    box-shadow: 0 0 0 30px white inset !important;
+}
+
 .login-container_email label input:focus {
   outline: none;
 }
@@ -4780,6 +4788,12 @@ nav .profile-button .profile-dropdown .log-out {
   padding: 10px 16px 10px 12px;
   border: 1px solid #e1e7ec;
   margin: 8px 0 0;
+}
+ .signup-container .signup-form_field label input:-webkit-autofill,
+.signup-container .signup-form_field label input:-webkit-autofill:hover, 
+.signup-container .signup-form_field label input:-webkit-autofill:focus, 
+.signup-container .signup-form_field label input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
 .signup-container .signup-form_field label input {

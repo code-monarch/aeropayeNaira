@@ -16,3 +16,5 @@ export { REDEEM_FIAT_MUTATION } from "./mutation.redeem";
 export { TRANSFER_TOKEN } from "./mutation.transfer.token";
 export { CHECK_IN } from "./mutation.checkin";
 export { CANCEL_BOOKING } from "./mutation.cancel.booking";
+
+

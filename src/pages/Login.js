@@ -66,126 +66,129 @@ const Login = () => {
 	};
 
 	return (
-		<div className="login h-auto 2xl:h-screen">
-			<NavLink to="/" className="flex justify-center login-logo">
-				<Logo className="w-auto" />
-			</NavLink>
+    <div className="login h-auto 2xl:h-screen">
+      <NavLink to="/" className="flex justify-center login-logo">
+        <Logo className="w-auto" />
+      </NavLink>
 
-			<div className="login-container">
-				<p className="title">Sign into your account</p>
+      <div className="login-container">
+        <p className="title">Sign into your account</p>
 
-				<form onSubmit={handleSubmit(submit)}>
-					<div className="login-container_email">
-						<p className="label">Email or Phone</p>
-						<label
-							className={`flex items-center ${
-								focus === "email-input" ? "clicked" : ""
-							}`}
-						>
-							<span className="flex items-center w-auto">
-								<Profile className="mr-[8px]" />
-							</span>
-							<input
-								type="text"
-								placeholder="Email address or phone number"
-								id="email"
-								name="email"
-								{...register("email", {
-									required: "Please enter a registered email or phone number",
-								})}
-								onBlur={() => setFocus("")}
-								onFocus={() => setFocus("email-input")}
-							/>
-						</label>
-						<FormError errors={errors} name="email" />
-					</div>
+        <form onSubmit={handleSubmit(submit)}>
+          <div className="login-container_email">
+            <p className="label">Email or Phone</p>
+            <label
+              className={`flex items-center ${
+                focus === "email-input" ? "clicked" : ""
+              }`}
+            >
+              <span className="flex items-center w-auto">
+                <Profile className="mr-[8px]" />
+              </span>
+              <input
+                type="text"
+                placeholder="Email address or phone number"
+                id="email"
+                name="email"
+                {...register("email", {
+                  required: "Please enter a registered email or phone number",
+                })}
+                onBlur={() => setFocus("")}
+                onFocus={() => setFocus("email-input")}
+              />
+            </label>
+            <FormError errors={errors} name="email" />
+          </div>
 
-					<div className="login-container_email">
-						<p className="label">Password</p>
-						<label
-							className={`flex items-center ${
-								focus === "password-input" ? "clicked" : ""
-							}`}
-						>
-							<span className="flex items-center w-auto">
-								<Password className="mr-[8px]" />
-							</span>
-							<input
-								type={showPassword ? "text" : "password"}
-								placeholder="Password"
-								onFocus={() => setFocus("password-input")}
-								onBlur={() => setFocus("")}
-								id="password"
-								name="password"
-								{...register("password", {
-									required: "Enter your password",
-								})}
-							/>
+          <div className="login-container_email">
+            <p className="label">Password</p>
+            <label
+              className={`flex items-center ${
+                focus === "password-input" ? "clicked" : ""
+              }`}
+            >
+              <span className="flex items-center w-auto">
+                <Password className="mr-[8px]" />
+              </span>
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                onFocus={() => setFocus("password-input")}
+                onBlur={() => setFocus("")}
+                id="password"
+                name="password"
+                {...register("password", {
+                  required: "Enter your password",
+                })}
+              />
 
-							<span
-								className="cursor-pointer"
-								onClick={() => {
-									setShowPassword(!showPassword);
-								}}
-							>
-								{showPassword ? (
-									<ShowIcon className="h-[12.75px] w-[15px]" />
-								) : (
-									<Hide className="h-[12.75px] w-[15px]" />
-								)}
-							</span>
-						</label>
-						<FormError errors={errors} name="password" />
-					</div>
+              <span
+                className="cursor-pointer"
+                onClick={() => {
+                  setShowPassword(!showPassword);
+                }}
+              >
+                {showPassword ? (
+                  <ShowIcon className="h-[12.75px] w-[15px]" />
+                ) : (
+                  <Hide className="h-[12.75px] w-[15px]" />
+                )}
+              </span>
+            </label>
+            <FormError errors={errors} name="password" />
+          </div>
 
-					<div className="login-container_captcha flex items-center justify-between">
-						<label className="flex items-center">
-							<input type="checkbox" />
-							<p>I'm not a robot</p>
-						</label>
-						<span>
-							<Recaptcha />
-						</span>
-					</div>
+          <div className="login-container_captcha flex items-center justify-between">
+            <label className="flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                className="appearance-none w-[20px] h-[20px] mr-[3px] bg-[#fff] rounded-sm shadow-sm border-[6px] border-slate-700 checked:bg-green checked:ring-2 checked:ring-green cursor-pointer"
+              />
+              <p>I'm not a robot</p>
+            </label>
+            <span>
+              <Recaptcha />
+            </span>
+          </div>
 
-					<Button
-						className="login-container_login flex items-center cursor-pointer justify-center"
-						type="submit"
-						loading={loading}
-					>
-						{loading ? "Logging in" : "Log in"}
-					</Button>
-				</form>
-			</div>
+          <Button
+            className="login-container_login flex items-center cursor-pointer justify-center"
+            type="submit"
+            loading={loading}
+          >
+            {loading ? "Logging in" : "Log in"}
+          </Button>
+        </form>
+      </div>
 
-			<div className="login-subtitle">
-				<p>
-					Don't have an account?{" "}
-					<NavLink to="/signup" className="login-link">
-						Sign Up
-					</NavLink>
-				</p>
-				<NavLink to="/forgot-password" className="login-link">
-					Forgot Password?
-				</NavLink>
-			</div>
+      <div className="login-subtitle">
+        <p>
+          Don't have an account?{" "}
+          <NavLink to="/signup" className="login-link">
+            Sign Up
+          </NavLink>
+        </p>
+        <NavLink to="/forgot-password" className="login-link">
+          Forgot Password?
+        </NavLink>
+      </div>
 
-			<div className="flex sm:flex-row flex-col justify-center items-center login-footer-link">
-				<p className="login-footer-link_item my-2 sm:my-0">
-					&copy; 2022 - Aeropaye
-				</p>
-				<NavLink to="/" className="login-footer-link_item my-2 sm:my-0">
-					Terms and Conditions
-				</NavLink>
-				<NavLink to="/" className="login-footer-link_item my-2 sm:my-0">
-					Privacy policy
-				</NavLink>
-				<NavLink to="/" className="login-footer-link_item my-2 sm:my-0">
-					Contact us
-				</NavLink>
-			</div>
-		</div>
-	);
+      <div className="flex sm:flex-row flex-col justify-center items-center login-footer-link">
+        <p className="login-footer-link_item my-2 sm:my-0">
+          &copy; 2022 - Aeropaye
+        </p>
+        <NavLink to="/" className="login-footer-link_item my-2 sm:my-0">
+          Terms and Conditions
+        </NavLink>
+        <NavLink to="/" className="login-footer-link_item my-2 sm:my-0">
+          Privacy policy
+        </NavLink>
+        <NavLink to="/" className="login-footer-link_item my-2 sm:my-0">
+          Contact us
+        </NavLink>
+      </div>
+    </div>
+  );
 };
 
 export default Login;
