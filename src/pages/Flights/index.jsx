@@ -53,6 +53,7 @@ const Flight = () => {
       <Layout>
         <div className="flight">
           <div className="flight-container">
+            {/* Flight Container Navs */}
             <div className="flex items-center flight-container-navs">
               <label className="search-table border-[1px] border-[#E1E7EC]">
                 <span className="mx-[4px]">
@@ -107,6 +108,7 @@ const Flight = () => {
                 Book a flight
               </Link>
             </div>
+            {/* Flight Container Navs End */}
 
             <div className="flex">
               <div className="flight-container_timeline"></div>

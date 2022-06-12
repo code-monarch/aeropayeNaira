@@ -23,8 +23,8 @@ const Settings = () => {
 
   return (
     <Layout>
-      <div className="settings">
-        <div className="settings-container">
+      <div className="settings bg-bg">
+        <div className="settings-container 2xl:w-[1280px] 2xl:mx-[auto] min-h-[100vh]">
           <div className="settings-container-header">
             <p className="settings-container-header_overview">
               Manage your bank accounts for FIAT withdrawal and payments

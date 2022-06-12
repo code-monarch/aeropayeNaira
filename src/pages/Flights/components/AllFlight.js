@@ -79,6 +79,13 @@ const FlightsInfo = ({
             isCanceled && "clicked"
           } ${isRefunded && "unclicked"}`}
         >
+          {/* {(!bookedFlights || bookedFlights?.getBookedFlight.length === 0) && (
+            <>
+              <div className="section h-[200px] bg-white flex justify-center items-center">
+                <div className="body"> NO RECORDS FOUND </div>
+              </div>
+            </>
+          )} */}
           {bookedFlights &&
             bookedFlights?.getBookedFlight?.map((bookedFlight) => (
               <div key={bookedFlight.ticketId} ref={itineraryRef}>

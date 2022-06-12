@@ -21,7 +21,8 @@ const Home = () => {
   return (
     <Layout>
       <div className="home">
-        <div className="welcome-div sticky z-[3] top-[4.5rem] w-full">
+        {/* Welcome Banner */}
+        <div className="welcome-div sticky z-[3] top-[4.5rem] 2xl:w-[1280px] 2xl:mx-[auto]">
           <div className="welcome-div_message">
             <p className="title">
               Welcome,
@@ -38,6 +39,7 @@ const Home = () => {
             </p>
           </div>
         </div>
+        {/* Welcome Banner End */}
 
         <section className="home-container mx-[34px]">
           <div className="get-started flex items-start justify-between lg:flex-row flex-col-reverse">

@@ -6,7 +6,7 @@ const BookFlight = () => {
   return (
     <>
       <Layout>
-        <div className="booking-detail">
+        <div className="booking-detail 2xl:w-[1280px] 2xl:mx-[auto]">
           <div className="book-section">
             <Booking />
           </div>

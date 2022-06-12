@@ -83,7 +83,7 @@ const FlightItinerary = () => {
             <div className="warning">
               <Warning />
               <p>
-                The availability of this flight will expire in <b>23:30:12</b>
+                The availability of this flight will expire in <b>23:30:12 </b>
                 if payment is not being made.
               </p>
             </div>

@@ -465,14 +465,6 @@ nav ul .nav-item {
   color: #212934;
 }
 
-.login-container_email input:-webkit-autofill,
-.login-container_email input:-webkit-autofill:hover, 
-.login-container_email input:-webkit-autofill:focus, 
-.login-container_email input:-webkit-autofill:active{
-    -webkit-box-shadow: 0 0 0 30px white inset !important;
-    box-shadow: 0 0 0 30px white inset !important;
-}
-
 .login-container_email label input:focus {
   outline: none;
 }
@@ -1043,6 +1035,7 @@ nav .profile-button .profile-dropdown .log-out {
 
 .home .home-container {
   max-width: 1280px;
+  margin: 0 auto;
 }
 
 @media only screen and (min-width: 677px) and (max-width: 1074px) {
@@ -1069,6 +1062,7 @@ nav .profile-button .profile-dropdown .log-out {
 @media only screen and (max-width: 500px) {
   .home .home-container .get-started {
     padding: 16px;
+    margin-top: 0px;
   }
 }
 
@@ -1349,7 +1343,7 @@ nav .profile-button .profile-dropdown .log-out {
   margin-right: 8px;
   font-size: 18px;
   color: #060A33;
-  font-weight: 200;
+  font-weight: 700;
   font-family: "Rubik", sans-serif;
 }
 
@@ -2503,6 +2497,7 @@ nav .profile-button .profile-dropdown .log-out {
           box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
   padding: 15px 16px;
   border-radius: 6px;
+  text-align: center;
   width: 178px;
   height: 48px;
   display: -webkit-box;
@@ -3499,7 +3494,7 @@ nav .profile-button .profile-dropdown .log-out {
 .flight {
   background: #F7FAFC;
   padding: 64px;
-  height: 100%;
+  min-height: 100vh;
 }
 
 .flight-container {
@@ -4789,12 +4784,6 @@ nav .profile-button .profile-dropdown .log-out {
   border: 1px solid #e1e7ec;
   margin: 8px 0 0;
 }
- .signup-container .signup-form_field label input:-webkit-autofill,
-.signup-container .signup-form_field label input:-webkit-autofill:hover, 
-.signup-container .signup-form_field label input:-webkit-autofill:focus, 
-.signup-container .signup-form_field label input:-webkit-autofill:active{
-    -webkit-box-shadow: 0 0 0 30px white inset !important;
-}
 
 .signup-container .signup-form_field label input {
   width: 100%;
@@ -4827,6 +4816,7 @@ nav .profile-button .profile-dropdown .log-out {
   height: 24px;
   width: 24px;
   margin-right: 12px;
+  cursor: pointer;
 }
 
 .btn-active {

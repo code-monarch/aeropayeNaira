@@ -59,6 +59,7 @@
 
 .home-container{
         max-width: 1280px;
+        margin: 0 auto;
 
          @media only screen and (min-width: 677px) and (max-width: 1074px) {
             width: 90%;
@@ -67,6 +68,7 @@
         @media only screen and (max-width: 676px) {
             width: 100%;
             padding: 24px 18px 32px;
+
         }
 
     .get-started{
@@ -78,6 +80,7 @@
 
      @media only screen and (max-width: 500px){
           padding: 16px;
+          margin-top: 0px;
         }
 
     .getting_started{

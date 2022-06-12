@@ -99,7 +99,7 @@ const TwoFA = () => {
 					<div className="flex justify-center items-center login-container-code ">
 						{twoFA.map((data, index) => (
 							<input
-								className={`auth_input flex items-center ${
+								className={`auth_input flex items-center justify-center text-center ${
 									focus === `input-${index}` ? "clicked" : ""
 								}`}
 								type="text"

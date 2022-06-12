@@ -90,7 +90,8 @@ const Wallet = () => {
   return (
     <Layout>
       <div className="wallet-container ">
-        <div className="sticky z-[3] top-[4.5rem] w-full">
+        <div className="sticky z-[3] top-[4.5rem] w-full 2xl:w-[1280px] 2xl:mx-[auto]">
+          {/* Wallet Balance Banner */}
           <div className="wallet">
             <div className="wallet-type">
               <p> Aeropaye Balance </p>
@@ -117,7 +118,9 @@ const Wallet = () => {
                 : "****"}
             </p>
           </div>
-          {mintLoading && <Spinner />}
+          {/* Wallet Balance banner End */}
+
+          {/* {mintLoading && <Spinner />} */}
           {showMobileButton ? (
             <div className="wallet-mobile-buttons">
               <Link to="deposit" className="mobile_deposit mobile_button">
