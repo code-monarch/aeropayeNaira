@@ -15,34 +15,36 @@ const ConfirmEmail = () => {
   ] = useMutation(SEND_EMAIL_VERIFICATION);
 
   return (
-    <div className="bg-bg h-[100vh] w-[100vw] flex flex-col pt-[64px] justify-top items-center">
+    <div className="w-[100vw] h-[100vh] bg-bg flex flex-col pt-[64px] justify-top items-center">
       {console.log("Status State", statusState)}
       <NavLink to="/" className="signup-logo mb-[32px]">
         <Logo className="w-auto" />
       </NavLink>
       {/* Body Container */}
       <div className="bg-white flex flex-col justify-center items-center h-[200px] w-[300px] px-[32px] mb-[64px] rounded-[8px] shadow-sm">
-        <h2 className="mb-[16px] font-[500]">Email not verified</h2>
-        <Button
-          onClick={() => {
-            sendEmailVerification()
-              .then((res) => {
-                console.log("Email verification response", res);
-                // setStatusState(res?.data?.sendEmailVerification?.status);
-                toastSuccess(`${res?.data?.sendEmailVerification?.message}`);
-              })
-              .catch((error) => {
-                console.log("Email verification Error", error);
-                toastError(`${error?.errors?.message}`);
-              });
-          }}
-          loading={sendingEmail}
-          disabled={sendingEmail}
-          className="bg-green  w-[300px] font-[400] mb-[8px] px-[16px] py-[8px] flex flex-col items-center cursor-pointer justify-center whitespace-nowrap rounded-[6px]"
-        >
-          {sendingEmail ? "sending verification email" : "Verify Email"}
-        </Button>
-        <h3 className="text-[12px]">We'll send you a mail</h3>
+        <h2 className="mb-[16px] font-[500]">
+          Email not verified
+        </h2>
+          <Button
+            onClick={() => {
+              sendEmailVerification()
+                .then((res) => {
+                  console.log("Email verification response", res);
+                  // setStatusState(res?.data?.sendEmailVerification?.status);
+                  toastSuccess(`${res?.data?.sendEmailVerification?.message}`);
+                })
+                .catch((error) => {
+                  console.log("Email verification Error", error);
+                  toastError(`${error?.errors?.message}`);
+                });
+            }}
+            loading={sendingEmail}
+            disabled={sendingEmail}
+            className="bg-green w-full font-[400] mb-[8px] px-[16px] py-[8px] flex items-center cursor-pointer justify-center whitespace-nowrap rounded-[6px]"
+          >
+            {sendingEmail ? "sending verification email" : "Verify Email"}
+          </Button>
+          <h3 className="text-[12px]">We'll send you a mail</h3>
       </div>
       {/* Body Container End */}
 

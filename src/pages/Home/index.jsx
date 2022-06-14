@@ -55,31 +55,47 @@ const Home = () => {
                 <Onboarding className="mt-[16px]" />
               </div>
 
+              {/* step 1 */}
               <div className="get-started_steps">
                 <div className="step">
                   <span className="step-stat-done">DONE</span>
                   <span className="complete">Complete registration</span>
                 </div>
+                {/* Step 1 End */}
 
-                <Link to="/settings" className="step">
+                {/* step 2 */}
+                <Link to="/confirmation" className="step">
                   <span className="step-stat uppercase">Step 2</span>
+                  <span className="step-info">Verify email address</span>
+                  <ArrowRight />
+                </Link>
+                {/* Step 2 End */}
+
+                {/* Step 3 */}
+                <Link to="/settings" className="step">
+                  <span className="step-stat uppercase">Step 3</span>
                   <span className="step-info">Add a bank account</span>
                   <ArrowRight />
                 </Link>
+                {/* Step 3 End */}
 
+                {/* Step 4 */}
                 <Link to="/wallet/deposit" className="step">
-                  <span className="step-stat uppercase">Step 3</span>
+                  <span className="step-stat uppercase">Step 4</span>
                   <span className="step-info">Fund your aeropaye wallet</span>
                   <ArrowRight />
                 </Link>
+                {/* Step 4 End */}
 
+                {/* Step 5 */}
                 <Link to="/" className="step">
-                  <span className="step-stat uppercase">Step 4</span>
+                  <span className="step-stat uppercase">Step 5</span>
                   <span className="step-info">
                     Complete your booking profile
                   </span>
                   <ArrowRight />
                 </Link>
+                {/* Step 5 End */}
               </div>
             </div>
 
