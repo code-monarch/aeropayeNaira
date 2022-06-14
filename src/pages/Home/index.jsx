@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { authContext } from "../../hooks/auth"
+import { authContext } from "../../hooks/auth";
 import { ReactComponent as Wave } from "../../assets/dashboard-icons/wave.svg";
 import { ReactComponent as Onboarding } from "../../assets/dashboard-icons/onboarding_illus.svg";
 import { ReactComponent as ArrowRight } from "../../assets/dashboard-icons/arrow-right.svg";
@@ -12,7 +12,40 @@ import { ReactComponent as ArrowUp } from "../../assets/dashboard-icons/arrow-up
 import { Link } from "react-router-dom";
 import Layout from "../../component/Layout";
 
+import { useQuery } from "@apollo/client";
+import { USER_VERIFICATION_STATUS } from "../../hooks";
+import { GET_BANK_DETAILS } from "../../hooks";
+import { BALANCE } from "../../hooks";
+
 const Home = () => {
+  // User verification status
+  const { loading, error, data } = useQuery(USER_VERIFICATION_STATUS);
+
+  // Get Bank Details
+  const {
+    loading: bankDetailsLoading,
+    error: bankdetailsError,
+    data: bankDetailsData,
+  } = useQuery(GET_BANK_DETAILS);
+
+  // Get Wallet Balance
+  const {
+    loading: balanceLoading,
+    error: balanceError,
+    data: balanceData,
+  } = useQuery(BALANCE);
+  console.log("User verification status", data?.userVerificationStatus);
+  console.log("Bank Details", bankDetailsData?.userBankDetails);
+
+  // Store VerificationStatus in variable
+  const verificationStatus = data?.userVerificationStatus;
+
+  let bankdetailsLength = Boolean(
+    Array.isArray(bankDetailsData?.userBankDetails) &&
+      bankDetailsData?.userBankDetails.length
+  );
+
+  // Get User's name from user authentication object
   const {
     auth: {
       user: { firstname, lastname },
@@ -65,25 +98,59 @@ const Home = () => {
 
                 {/* step 2 */}
                 <Link to="/confirmation" className="step">
-                  <span className="step-stat uppercase">Step 2</span>
-                  <span className="step-info">Verify email address</span>
-                  <ArrowRight />
+                  {(verificationStatus === false || verificationStatus === undefined) && (
+                    <>
+                      <span className="step-stat uppercase">Step 2</span>
+                      <span className="step-info">Verify email address</span>
+                    </>
+                  )}
+                  {verificationStatus === true && (
+                    <>
+                      <span className="step-stat-done">DONE</span>
+                      <span className="complete">Verify email address</span>
+                    </>
+                  )}
+                  {verificationStatus === false ? <ArrowRight /> : ""}
                 </Link>
                 {/* Step 2 End */}
 
                 {/* Step 3 */}
                 <Link to="/settings" className="step">
-                  <span className="step-stat uppercase">Step 3</span>
-                  <span className="step-info">Add a bank account</span>
-                  <ArrowRight />
+                  {(bankdetailsLength === false || bankDetailsData === undefined) && (
+                    <>
+                      <span className="step-stat uppercase">Step 3</span>
+                      <span className="step-info">Add a bank account</span>
+                    </>
+                  )}
+                  {bankdetailsLength === true && (
+                    <>
+                      <span className="step-stat-done">DONE</span>
+                      <span className="complete">Add a bank account</span>
+                    </>
+                  )}
+                  {bankdetailsLength === false ? <ArrowRight /> : ""}
                 </Link>
                 {/* Step 3 End */}
 
                 {/* Step 4 */}
                 <Link to="/wallet/deposit" className="step">
-                  <span className="step-stat uppercase">Step 4</span>
-                  <span className="step-info">Fund your aeropaye wallet</span>
-                  <ArrowRight />
+                  {(balanceData === 0) && (
+                    <>
+                      <span className="step-stat uppercase">Step 4</span>
+                      <span className="step-info">
+                        Fund your aeropaye wallet
+                      </span>
+                    </>
+                  )}
+                  {(balanceData !== 0 || balanceData !== undefined) && (
+                    <>
+                      <span className="step-stat-done">DONE</span>
+                      <span className="complete">
+                        Fund your aeropaye wallet
+                      </span>
+                    </>
+                  )}
+                  {balanceData !== 0 || undefined ? "" : <ArrowRight />}
                 </Link>
                 {/* Step 4 End */}
 

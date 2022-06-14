@@ -326,7 +326,7 @@ const Account = () => {
                       <li key={index}>
                         <button
                           type="button"
-                          className="block py-2 px-4 text-sm text-[#212934] hover:bg-[#F0FFFC]"
+                          className="block py-2 px-4 text-sm text-[#212934] !mr-0 hover:bg-[#F0FFFC]"
                           onClick={() => {
                             setSelectAccType(accType);
                           }}
