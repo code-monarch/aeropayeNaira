@@ -17,6 +17,8 @@ import Settings from "./pages/Settings";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import TwoFA from "./pages/TwoFA";
+import ConfirmEmail from "./pages/confirmEmail/ConfirmEmail";
+import EmailToken from "./pages/confirmEmail/EmailToken";
 import NoMatch from "./pages/NoMatch";
 
 // Toasts Notification
@@ -24,9 +26,8 @@ import "react-toastify/dist/ReactToastify.css";
 import useAuth from "./hooks/useAuth";
 
 function App() {
-
   const { auth } = useAuth();
-  console.log("index auth", auth)
+  console.log("index auth", auth);
   return (
     <>
       {" "}
@@ -41,105 +42,134 @@ function App() {
         />
       </HelmetProvider>
       <Routes>
-          {/* Public Routes */}
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="2FA" element={<TwoFA />} />
+        {/* Public Routes */}
+        <Route path="login" exact element={<Login />} />
+        <Route path="signup" exact element={<SignUp />} />
+        <Route path="2FA" exact element={<TwoFA />} />
+        <Route path="confirmation" exact element={<ConfirmEmail />} />
 
-          {/* Protected Routes */}
+        {/* Protected Routes */}
 
         {/* <Route path="/" element={<Layout />}> */}
-          <Route
-            path="/"
-            element={
-              <RequireAuth>
-                <Home />
-              </RequireAuth>
-            }
-          />
+        <Route
+          path="/"
+          element={
+            <RequireAuth>
+              <Home />
+            </RequireAuth>
+          }
+        />
 
-          <Route
-            path="flights"
-            element={
-              <RequireAuth>
-                <Flight />
-              </RequireAuth>
-            }
-          />
+        <Route
+          path="flights"
+          exact
+          element={
+            <RequireAuth>
+              <Flight />
+            </RequireAuth>
+          }
+        />
 
-          <Route
-            path="flights/book-flight"
-            element={
-              <RequireAuth>
-                <BookFlight />
-              </RequireAuth>
-            }
-          />
+        <Route
+          path="flights/book-flight"
+          exact
+          element={
+            <RequireAuth>
+              <BookFlight />
+            </RequireAuth>
+          }
+        />
 
-          <Route
-            path="wallet"
-            element={
-              <RequireAuth>
-                <Wallet />
-              </RequireAuth>
-            }
-          />
+        <Route
+          path="wallet"
+          exact
+          element={
+            <RequireAuth>
+              <Wallet />
+            </RequireAuth>
+          }
+        />
 
-          <Route
-            path="wallet/withdraw"
-            element={
-              <RequireAuth>
-                <Withdraw />
-              </RequireAuth>
-            }
-          />
+        <Route
+          path="wallet/withdraw"
+          exact
+          element={
+            <RequireAuth>
+              <Withdraw />
+            </RequireAuth>
+          }
+        />
 
-          <Route
-            path="wallet/send"
-            element={
-              <RequireAuth>
-                <Send />
-              </RequireAuth>
-            }
-          />
+        <Route
+          path="wallet/send"
+          exact
+          element={
+            <RequireAuth>
+              <Send />
+            </RequireAuth>
+          }
+        />
 
-          <Route
-            path="wallet/deposit"
-            element={
-              <RequireAuth>
-                <Deposit />
-              </RequireAuth>
-            }
-          />
+        <Route
+          path="wallet/deposit"
+          exact
+          element={
+            <RequireAuth>
+              <Deposit />
+            </RequireAuth>
+          }
+        />
 
-          <Route
-            path="wallet/receive"
-            element={
-              <RequireAuth>
-                <Receive />
-              </RequireAuth>
-            }
-          />
+        <Route
+          path="wallet/receive"
+          exact
+          element={
+            <RequireAuth>
+              <Receive />
+            </RequireAuth>
+          }
+        />
 
-          <Route
-            path="transaction-history"
-            element={
-              <RequireAuth>
-                <Transaction />
-              </RequireAuth>
-            }
-          />
+        <Route
+          path="transaction-history"
+          exact
+          element={
+            <RequireAuth>
+              <Transaction />
+            </RequireAuth>
+          }
+        />
 
-          <Route
-            path="settings"
-            element={
-              <RequireAuth>
-                <Settings />
-              </RequireAuth>
-            }
-          />
-          {/* Catch All */}
-          <Route path="*" element={<NoMatch />} />
+        <Route
+          path="settings"
+          exact
+          element={
+            <RequireAuth>
+              <Settings />
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path={"/confirmation"}
+          element={
+            <RequireAuth>
+              <ConfirmEmail />
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path={"/user/verify/:id/:token"}
+          element={
+            <RequireAuth>
+              <EmailToken />
+            </RequireAuth>
+          }
+        />
+
+        {/* Catch All */}
+        <Route path="*" element={<NoMatch />} />
         {/* </Route> */}
       </Routes>
     </>

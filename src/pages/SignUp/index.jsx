@@ -180,6 +180,10 @@ const SignUp = () => {
                       className="appearance-none"
                       {...register("fname", {
                         required: "Please enter your first name",
+                        pattern: {
+                          value: /^[a-zA-Z]*$/,
+                          message: "Name must not contain numbers.",
+                        },
                       })}
                       onBlur={() => setFocus("")}
                       onFocus={() => setFocus("fname-input")}
@@ -204,6 +208,10 @@ const SignUp = () => {
                       name="lname"
                       {...register("lname", {
                         required: "Please enter your last name",
+                        pattern: {
+                          value: /^[a-zA-Z]*$/,
+                          message: "Name must not contain numbers.",
+                        },
                       })}
                       placeholder=""
                       onBlur={() => setFocus("")}
@@ -229,6 +237,7 @@ const SignUp = () => {
                     placeholder=""
                     id="email"
                     name="email"
+                    className="appearance-none"
                     {...register("email", {
                       required: "Please enter a valid email",
                       pattern: {
@@ -289,6 +298,7 @@ const SignUp = () => {
                   <input
                     type={showPassword ? "text" : "password"}
                     placeholder="Password"
+                    className="appearance-none"
                     id="password"
                     name="password"
                     {...register("password", {

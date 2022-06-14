@@ -113,6 +113,7 @@ const Login = () => {
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
+                autoComplete
                 onFocus={() => setFocus("password-input")}
                 onBlur={() => setFocus("")}
                 id="password"

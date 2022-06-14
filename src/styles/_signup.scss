@@ -196,7 +196,14 @@
           font-family: $font-rubik;
           font-weight: 400;
           color: #212934;
-
+          
+          input:-webkit-autofill,
+          input:-webkit-autofill:hover,
+          input:-webkit-autofill:focus,
+          input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px white inset !important;
+            box-shadow: 0 0 0 30px white inset !important;
+          }
           &:focus {
             outline: none;
           }
@@ -223,7 +230,7 @@
       height: 24px;
       width: 24px;
       margin-right: 12px;
-	  cursor: pointer;
+      cursor: pointer;
     }
   }
 }
