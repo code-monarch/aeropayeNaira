@@ -33,15 +33,15 @@ const EmailToken = () => {
   }, [token, verifyUser]);
 
   return (
-    <div className="bg-bg h-[100vh] w-[100vw] flex flex-col justify-center items-center">
+    <div className="bg-bg h-[100vh] w-[100vw] flex flex-col pt-[64px] justify-top items-center">
       <NavLink to="/" className="signup-logo mb-[32px]">
         <Logo className="w-auto" />
       </NavLink>
       {/* Body Container */}
       <div className="bg-white flex flex-col justify-center items-center h-[200px] w-[300px] px-[32px] mb-[64px] rounded-[8px] shadow-sm">
         <h2 className="mb-[16px] font-[500]">
-          {statusRef.current = false && "Email verification failed"}
-          {statusRef.current = true && "Email Verification Successful"}
+          {(statusRef.current = false && "Email verification failed")}
+          {(statusRef.current = true && "Email Verification Successful")}
         </h2>
         <NavLink
           to="/"
