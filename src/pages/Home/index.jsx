@@ -97,61 +97,58 @@ const Home = () => {
                 {/* Step 1 End */}
 
                 {/* step 2 */}
-                <Link to="/confirmation" className="step">
-                  {(verificationStatus === false || verificationStatus === undefined) && (
+                {(verificationStatus === false ||
+                  verificationStatus === undefined) && (
+                  <Link to="/confirmation" className="step">
                     <>
                       <span className="step-stat uppercase">Step 2</span>
                       <span className="step-info">Verify email address</span>
                     </>
-                  )}
-                  {verificationStatus === true && (
-                    <>
-                      <span className="step-stat-done">DONE</span>
-                      <span className="complete">Verify email address</span>
-                    </>
-                  )}
-                  {verificationStatus === false ? <ArrowRight /> : ""}
-                </Link>
+                    {verificationStatus === false ? <ArrowRight /> : ""}
+                  </Link>
+                )}
+                {verificationStatus === true && (
+                  <div className="step">
+                    <span className="step-stat-done">DONE</span>
+                    <span className="complete">Verify email address</span>
+                  </div>
+                )}
                 {/* Step 2 End */}
 
                 {/* Step 3 */}
-                <Link to="/settings" className="step">
-                  {(bankdetailsLength === false || bankDetailsData === undefined) && (
-                    <>
-                      <span className="step-stat uppercase">Step 3</span>
-                      <span className="step-info">Add a bank account</span>
-                    </>
-                  )}
-                  {bankdetailsLength === true && (
+                {(bankdetailsLength === false ||
+                  bankDetailsData === undefined) && (
+                  <Link to="/settings" className="step">
+                    <span className="step-stat uppercase">Step 3</span>
+                    <span className="step-info">Add a bank account</span>
+                    {bankdetailsLength === false ? <ArrowRight /> : ""}
+                  </Link>
+                )}
+                {bankdetailsLength === true && (
+                  <div className="step">
                     <>
                       <span className="step-stat-done">DONE</span>
                       <span className="complete">Add a bank account</span>
                     </>
-                  )}
-                  {bankdetailsLength === false ? <ArrowRight /> : ""}
-                </Link>
+                  </div>
+                )}
                 {/* Step 3 End */}
 
                 {/* Step 4 */}
-                <Link to="/wallet/deposit" className="step">
-                  {(balanceData === 0) && (
-                    <>
-                      <span className="step-stat uppercase">Step 4</span>
-                      <span className="step-info">
-                        Fund your aeropaye wallet
-                      </span>
-                    </>
-                  )}
-                  {(balanceData !== 0 || balanceData !== undefined) && (
-                    <>
-                      <span className="step-stat-done">DONE</span>
-                      <span className="complete">
-                        Fund your aeropaye wallet
-                      </span>
-                    </>
-                  )}
-                  {balanceData !== 0 || undefined ? "" : <ArrowRight />}
-                </Link>
+                {balanceData === 0 && (
+                  <Link to="/wallet/deposit" className="step">
+                    <span className="step-stat uppercase">Step 4</span>
+                    <span className="step-info">Fund your aeropaye wallet</span>
+                    {balanceData !== 0 || undefined ? "" : <ArrowRight />}
+                  </Link>
+                )}
+
+                {(balanceData !== 0 || balanceData !== undefined) && (
+                  <div className="step">
+                    <span className="step-stat-done">DONE</span>
+                    <span className="complete">Fund your aeropaye wallet</span>
+                  </div>
+                )}
                 {/* Step 4 End */}
 
                 {/* Step 5 */}

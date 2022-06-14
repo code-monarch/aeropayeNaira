@@ -4,6 +4,7 @@ export { BALANCE } from "./query.get.balance";
 export { GET_BANK_DETAILS } from "./query.bank.details";
 export { GET_BOOKED_FLIGHTS } from "./query.user.booked.flight";
 export { USER_VERIFICATION_STATUS } from "./query.user.verification";
+export {  GET_TRANSACTION_HISTORY } from "./query.transaction.history";
 // export { GET_ALL_PASSENGERS } from "./query.all.passengers";
 
 export { MAKE_PAYMENT_MUTATION } from "./mutation.make.payment";

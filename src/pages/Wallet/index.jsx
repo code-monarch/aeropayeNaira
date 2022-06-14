@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
+import dateFormat from "dateformat";
 import { ReactComponent as EyeOpen } from "../../assets/dashboard-icons/eye-icon.svg";
 import { ReactComponent as EyeClose } from "../../assets/icons/eye-close.svg";
 import { ReactComponent as AddIcon } from "../../assets/dashboard-icons/add-circle.svg";
@@ -19,16 +20,41 @@ import {
 
 import { useMutation, useQuery } from "@apollo/client";
 import { MINT_TOKEN_MUTATION } from "../../hooks";
+import { GET_TRANSACTION_HISTORY } from "../../hooks";
 import { BALANCE } from "../../hooks";
 import Layout from "../../component/Layout";
 
+// Transaction type object with the different transaction types
+const transactTypes = {
+  withdrawal: "Wthdrawal",
+  deposit: "Deposit",
+  booking: "Booking",
+  refund: "Refund",
+  send: "Send",
+  receive: "Recieve",
+};
+
 const Wallet = () => {
   // Function that adds commas to amount figures
-    const numberWithCommas = (x) => {
-      return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const numberWithCommas = (x) => {
+    return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
-  
-  const [controlShowBalance, setControlShowBalance] = useState('show');
+
+      const dateRef = useRef({
+        date: "",
+      });
+
+  const [date, setDate] = useState()
+
+  //Query User Transaction history
+  const {
+    loading: historyLoading,
+    error: historyError,
+    data: transactions,
+  } = useQuery(GET_TRANSACTION_HISTORY);
+  console.log("user Transactions", transactions?.transactions);
+
+  const [controlShowBalance, setControlShowBalance] = useState("show");
   // Show wallet balance if false, else Hide wallet balance
   const [showBalance, setShowBalance] = useState(true);
   const { loading, error, data } = useQuery(BALANCE);
@@ -83,9 +109,10 @@ const Wallet = () => {
   });
 
   useEffect(() => {
-    if(controlShowBalance){setShowBalance(true)};
+    if (controlShowBalance) {
+      setShowBalance(true);
+    }
   }, [controlShowBalance]);
-  
 
   return (
     <Layout>
@@ -178,91 +205,62 @@ const Wallet = () => {
               See all transactions
             </Link>
           </div>
+          {/* RECENT HISTORY */}
           <div className="recent-history">
-            <div className="flex justify-between items-center recent-history_list">
-              <div className="flex items-center">
-                <WithdrawIcon />
-                <div className="details flex flex-col items-start">
-                  <p className="trans-description">
-                    Withdrawal to bank account
-                  </p>
-                  <p className="trans-date">16 July 2022, 11:35 AM</p>
+            {transactions?.transactions?.map((transaction, index) => (
+              <div ref={dateRef} key={index}>
+                {/* Transaction History */}
+                <div className="flex justify-between items-center recent-history_list">
+                  <div className="flex items-center">
+                    {transaction?.trxType === transactTypes.deposit && (
+                      <FundIcon />
+                    )}
+                    {transaction?.trxType === transactTypes.withdrawal && (
+                      <WithdrawIcon />
+                    )}
+                    {transaction?.trxType === transactTypes.booking && (
+                      <WithdrawIcon />
+                    )}
+                    {transaction?.trxType === transactTypes.receive && (
+                      <ReceiveIcon />
+                    )}
+                    {transaction?.trxType === transactTypes.refund && (
+                      <ReceiveIcon />
+                    )}
+                    {transaction?.trxType === transactTypes.send && (
+                      <SendIcon />
+                    )}
+                    <div className="details flex flex-col items-start">
+                      <p className="trans-description">
+                        {transaction?.description}
+                        {/* Withdrawal to bank account */}
+                      </p>
+                      <p className="trans-date">
+                        {transaction.createdAt}
+                        {/* 16 July 2022, 11:35 AM */}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="details flex flex-col items-end">
+                    <p className="trans-balance">
+                      {`${
+                        transaction?.trxType === transactTypes.withdrawal ||
+                        transaction?.trxType === transactTypes.send ||
+                        transaction?.trxType === transactTypes.booking
+                          ? "-"
+                          : "+"
+                      } ${numberWithCommas(transaction?.amount)}`}
+                    </p>
+                    <p className="trans-rate">
+                      {`≈ ${numberWithCommas(transaction?.amount)} ARP`}
+                    </p>
+                  </div>
                 </div>
+                {/* Transaction History End */}
               </div>
-              <div className="details flex flex-col items-end">
-                <p className="trans-balance">- 100,000.00</p>
-                <p className="trans-rate">≈ 210.4523 Aeropaye</p>
-              </div>
-            </div>
-
-            <div className="divide"></div>
-
-            <div className="flex justify-between items-center recent-history_list">
-              <div className="flex items-center">
-                <ReceiveIcon />
-                <div className="details flex flex-col items-start">
-                  <p className="trans-description">Received</p>
-                  <p className="trans-date">16 July 2022, 11:35 AM</p>
-                </div>
-              </div>
-              <div className="details flex flex-col items-end">
-                <p className="trans-balance">+ 50.4050</p>
-                <p className="trans-rate">≈ 70,000.00 NGN</p>
-              </div>
-            </div>
-
-            <div className="divide"></div>
-
-            <div className="flex justify-between items-center recent-history_list">
-              <div className="flex items-center">
-                <FundIcon />
-                <div className="details flex flex-col items-start">
-                  <p className="trans-description">
-                    Funding wallet via paystack
-                  </p>
-                  <p className="trans-date">16 July 2022, 11:35 AM</p>
-                </div>
-              </div>
-              <div className="details flex flex-col items-end">
-                <p className="trans-balance">+ 250,000.00</p>
-                <p className="trans-rate">≈ 438.5964 Aeropaye</p>
-              </div>
-            </div>
-
-            <div className="divide"></div>
-
-            <div className="flex justify-between items-center recent-history_list">
-              <div className="flex items-center">
-                <SendIcon />
-                <div className="details flex flex-col items-start">
-                  <p className="trans-description">Sent</p>
-                  <p className="trans-date">16 July 2022, 11:35 AM</p>
-                </div>
-              </div>
-              <div className="details flex flex-col items-end">
-                <p className="trans-balance">- 123.9806</p>
-                <p className="trans-rate">≈ 185,000.78 NGN</p>
-              </div>
-            </div>
-
-            <div className="divide"></div>
-
-            <div className="flex justify-between items-center recent-history_list">
-              <div className="flex items-center">
-                <FundIcon />
-                <div className="details flex flex-col items-start">
-                  <p className="trans-description">
-                    Funding wallet via flutterwave
-                  </p>
-                  <p className="trans-date">16 July 2022, 11:35 AM</p>
-                </div>
-              </div>
-              <div className="details flex flex-col items-end">
-                <p className="trans-balance">+ 20,000.00</p>
-                <p className="trans-rate">≈ 35.0877 Aeropaye </p>
-              </div>
-            </div>
+            ))}
           </div>
+          {/* RECENT HISTORY END */}
         </section>
       </div>
     </Layout>

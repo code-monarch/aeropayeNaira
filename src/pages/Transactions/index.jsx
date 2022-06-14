@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+import dateFormat from "dateformat";
+import ReactPaginate from "react-paginate";
 import { ReactComponent as Search } from "../../assets/dashboard-icons/Left_ Icon.svg";
 import { ReactComponent as Funnel } from "../../assets/dashboard-icons/Funnel.svg";
 import { ReactComponent as Arrow } from "../../assets/dashboard-icons/arrow-down.svg";
@@ -6,8 +8,69 @@ import { ReactComponent as ArrDown } from "../../assets/dashboard-icons/Down.svg
 import { ReactComponent as Tick } from "../../assets/icons/tick.svg";
 import { Filter } from "../../data/dropdown-options";
 import { ReactComponent as ArrowLeft } from "../../assets/dashboard-icons/arrow-left.svg";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Layout from "../../component/Layout";
+import { useQuery } from "@apollo/client";
+import { GET_TRANSACTION_HISTORY } from "../../hooks";
+
+const style = {
+  theadTh: `text-[12px] py-3 px-6 font-medium tracking-wider text-left uppercase dark:text-gray-400 table-head_item`,
+  pagination: `flex justify-between capitalize `,
+  pageLink: `py-[6px] px-[13px] text-[14px]`,
+  previousLink: `mr-[8px] text-[14px]`,
+  nextLink: `ml-[8px] text-[14px]`,
+  active: `bg-[#22E0BB] rounded-[4px]`,
+};
+
+const TableRow = ({ currentItems }) => {
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+  return (
+    <>
+      {currentItems &&
+        currentItems.map((items, index) => (
+          <>
+            <tr
+              key={index}
+              className="border-b odd:bg-white even:bg-[#F7FAFC;] dark:border-gray-600 table-body"
+            >
+              <td className="table-body_items whitespace-nowrap dark:text-white">
+                {items?.id}
+              </td>
+              <td className="table-body_items whitespace-nowrap dark:text-gray-400">
+                {/* {dateFormat(items?.createdAt, "mmmm dS, yyyy")} */}
+                {items.createdAt}
+              </td>
+              <td className="table-body_items whitespace-nowrap dark:text-gray-400">
+                {items?.trxType}
+              </td>
+              <td className="table-body_items whitespace-nowrap dark:text-gray-400">
+                {items?.description}
+              </td>
+              <td className="table-body_items pr-[15px] flex flex-col items-end justify-center whitespace-nowrap w-[150px] dark:text-gray-400">
+                <p className="mr-[20px]">{numberWithCommas(items?.amount)}</p>
+                <p className="rates !mr-[20px]">
+                  {`≈${numberWithCommas(items?.amount)} ARP`}
+                </p>
+              </td>
+              <td className="table-body_items whitespace-nowrap dark:text-gray-400">
+                <p
+                  className={`${
+                    items?.status === "Completed"
+                      ? "status-completed"
+                      : "status-pending"
+                  }`}
+                >
+                  {items?.status}
+                </p>
+              </td>
+            </tr>
+          </>
+        ))}
+    </>
+  );
+};
 
 const Transaction = () => {
   const [isActive, setIsActive] = useState("trans");
@@ -17,6 +80,15 @@ const Transaction = () => {
   const [showMobileFilter, setShowMobileFilter] = useState(
     window.matchMedia("(max-width:530px)").matches
   );
+
+  //Query User Transaction history
+  const {
+    loading,
+    error,
+    data: transactions,
+  } = useQuery(GET_TRANSACTION_HISTORY);
+
+  console.log("Transaction Data", transactions?.transactions);
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -33,10 +105,48 @@ const Transaction = () => {
     });
   };
 
+  // Store GET_TRANSACTION_HISTORY Query response in a transaction variable
+  const transactionVar = transactions?.transactions;
+
+  // Memoize transaction to prevent Re-render
+  const transaction = useMemo(
+    () =>
+      transactionVar?.map((transaction) => {
+        return transaction;
+      }),
+    [transactionVar]
+  );
+
+  // PAGINATION
+  // We start with an empty list of items.
+  const [currentItems, setCurrentItems] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  // Here we use item offsets; we could also use page offsets
+  // following the API or data you're working with.
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 7;
+
+  useEffect(() => {
+    // Fetch items from another resources.
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(transaction?.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(transaction?.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, transaction]);
+
+  // Invoke when user click to request another page.
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % transactions?.length;
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    setItemOffset(newOffset);
+  };
+  // PAGINATION END
+
   return (
     <>
       <Layout>
-                    {/* <Link to="/wallet" className="back-link">
+        {/* <Link to="/wallet" className="back-link">
               <ArrowLeft />
               <p className="back-link_nav">Back</p>
             </Link> */}
@@ -141,211 +251,77 @@ const Transaction = () => {
                             scope="col"
                             className="py-3 px-6 font-medium tracking-wider text-left uppercase dark:text-gray-400 table-head_item"
                           >
-                            <div className="flex items-center">
+                            <p className="flex items-center">
                               id <ArrDown />
-                            </div>
+                            </p>
                           </th>
                           <th
                             scope="col"
                             className="py-3 px-6 font-medium tracking-wider text-left uppercase dark:text-gray-400 table-head_item"
                           >
-                            <div className="flex items-center">
+                            <p className="flex items-center">
                               date <ArrDown />
-                            </div>
+                            </p>
                           </th>
                           <th
                             scope="col"
                             className="py-3 px-6 font-medium tracking-wider text-left uppercase dark:text-gray-400 table-head_item"
                           >
-                            <div className="flex items-center">
+                            <p className="flex items-center">
                               type <ArrDown />
-                            </div>
+                            </p>
                           </th>
                           <th
                             scope="col"
                             className="py-3 px-6 font-medium tracking-wider text-left uppercase dark:text-gray-400 table-head_item"
                           >
-                            <div className="flex items-center">
+                            <p className="flex items-center">
                               description <ArrDown />
-                            </div>
+                            </p>
                           </th>
                           <th
                             scope="col"
-                            className="py-3 px-6 font-medium tracking-wider text-left uppercase dark:text-gray-400 table-head_item w-[150px]"
+                            className="py-3 px-6 font-medium tracking-wider text-right uppercase dark:text-gray-400 table-head_item w-[150px]"
                           >
-                            <div className="flex items-center">
+                            <p className="flex items-center justify-end">
                               amount <ArrDown />
-                            </div>
+                            </p>
                           </th>
                           <th
                             scope="col"
                             className="py-3 px-6 font-medium tracking-wider text-left uppercase dark:text-gray-400 table-head_item"
                           >
-                            <div className="flex items-center">
+                            <p className="flex items-center">
                               status <ArrDown />
-                            </div>
+                            </p>
                           </th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr className="border-b odd:bg-white even:bg-[#F7FAFC;] dark:border-gray-600 table-body">
-                          <td className="table-body_items whitespace-nowrap dark:text-white">
-                            A00000000
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Feb 4, 2022, 10:59 AM
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Withdrawal
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Withdrawal to bank account
-                          </td>
-                          <td className="table-body_items whitespace-nowrap w-[150px]dark:text-gray-400 text-right">
-                            <p>250,500</p>
-                            <p className="rates">≈ 441.5201 Aeropaye</p>
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            <p className="status-completed">Completed</p>
-                          </td>
-                        </tr>
-
-                        <tr className="border-b odd:bg-white even:bg-[#F7FAFC;] dark:border-gray-600 table-body">
-                          <td className="table-body_items whitespace-nowrap dark:text-white">
-                            A00000000
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Feb 4, 2022, 10:59 AM
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Deposit
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Funding wallet via paystack
-                          </td>
-                          <td className="table-body_items whitespace-nowrap w-[150px]dark:text-gray-400 text-right">
-                            <p>180.6789</p>
-                            <p className="rates">≈ 102,000.00 NGN</p>
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            <p className="status-pending">Pending</p>
-                          </td>
-                        </tr>
-
-                        <tr className="border-b odd:bg-white even:bg-[#F7FAFC;] dark:border-gray-600 table-body">
-                          <td className="table-body_items whitespace-nowrap dark:text-white">
-                            A00000000
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Feb 4, 2022, 10:59 AM
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Smart contract
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Smart contract call
-                          </td>
-                          <td className="table-body_items whitespace-nowrap w-[150px]dark:text-gray-400 text-right">
-                            <p>1.0000</p>
-                            <p className="rates">≈ 600.00 NGN</p>
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            <p className="status-completed">Completed</p>
-                          </td>
-                        </tr>
-
-                        <tr className="border-b odd:bg-white even:bg-[#F7FAFC;] dark:border-gray-600 table-body">
-                          <td className="table-body_items whitespace-nowrap dark:text-white">
-                            A00000000
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Feb 4, 2022, 10:59 AM
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Booking
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Booking paid: [Airline_name]
-                          </td>
-                          <td className="table-body_items whitespace-nowrap w-[150px]dark:text-gray-400 text-right">
-                            <p>43.8596</p>
-                            <p className="rates">≈ 25,000.00 NGN</p>
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            <p className="status-completed">Completed</p>
-                          </td>
-                        </tr>
-
-                        <tr className="border-b odd:bg-white even:bg-[#F7FAFC;] dark:border-gray-600 table-body">
-                          <td className="table-body_items whitespace-nowrap dark:text-white">
-                            A00000000
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Feb 4, 2022, 10:59 AM
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Refund
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Refund paid: [Airline_name]
-                          </td>
-                          <td className="table-body_items whitespace-nowrap w-[150px]dark:text-gray-400 text-right">
-                            <p>20,500</p>
-                            <p className="rates">≈ 35.0877 Aeropaye</p>
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            <p className="status-completed">Completed</p>
-                          </td>
-                        </tr>
-
-                        <tr className="border-b odd:bg-white even:bg-[#F7FAFC;] dark:border-gray-600 table-body">
-                          <td className="table-body_items whitespace-nowrap dark:text-white">
-                            A00000000
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Feb 4, 2022, 10:59 AM
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Send
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Sent token
-                          </td>
-                          <td className="table-body_items whitespace-nowrap w-[150px]dark:text-gray-400 text-right">
-                            <p>25.0000</p>
-                            <p className="rates">≈ 14,250.00 NGN</p>
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            <p className="status-completed">Completed</p>
-                          </td>
-                        </tr>
-
-                        <tr className="border-b odd:bg-white even:bg-[#F7FAFC;] dark:border-gray-600 table-body">
-                          <td className="table-body_items whitespace-nowrap dark:text-white">
-                            A00000000
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Feb 4, 2022, 10:59 AM
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Receive
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            Received token
-                          </td>
-                          <td className="table-body_items whitespace-nowrap w-[150px]dark:text-gray-400 text-right">
-                            <p>100.5000</p>
-                            <p className="rates">≈ 58,000.00 NGN</p>
-                          </td>
-                          <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                            <p className="status-completed">Completed</p>
-                          </td>
-                        </tr>
+                        <TableRow currentItems={currentItems} />
                       </tbody>
                     </table>
                   </div>
                 </div>
               </div>
+              {/* React Paginate */}
+              <div className="w-[100%] flex justify-end mt-[30px]">
+                <ReactPaginate
+                  breakLabel="..."
+                  nextLabel="next >"
+                  onPageChange={handlePageClick}
+                  pageRangeDisplayed={5}
+                  pageCount={pageCount}
+                  previousLabel="< previous"
+                  renderOnZeroPageCount={null}
+                  containerClassName={style.pagination}
+                  pageLinkClassName={style.pageLink}
+                  previousLinkClassName={style.previousLink}
+                  nextLinkClassName={style.nextLink}
+                  activeLinkClassName={style.active}
+                />
+              </div>
+              {/* React Paginate End */}
             </div>
           </div>
         </section>
