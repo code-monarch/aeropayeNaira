@@ -39,13 +39,13 @@ const EmailToken = () => {
       </NavLink>
       {/* Body Container */}
       <div className="bg-white flex flex-col justify-center items-center h-[200px] w-[300px] px-[32px] mb-[64px] rounded-[8px] shadow-sm">
-        <h2 className="mb-[16px] font-[500]">
+        <h2 className="mb-[16px] font-[500] text-black">
           {(statusRef.current = false && "Email verification failed")}
           {(statusRef.current = true && "Email Verification Successful")}
         </h2>
         <NavLink
           to="/"
-          className="bg-green w-full font-[400] px-[16px] py-[8px] flex items-center cursor-pointer justify-center whitespace-nowrap rounded-[6px]"
+          className="bg-green text-black w-full font-[400] px-[16px] py-[8px] flex items-center cursor-pointer justify-center whitespace-nowrap rounded-[6px]"
         >
           Return Home
         </NavLink>

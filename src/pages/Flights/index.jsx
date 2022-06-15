@@ -17,6 +17,7 @@ const Flight = () => {
   const [showOption, setShowOption] = useState(false);
   const [filter, setFilter] = useState("All");
   const [tick, setTick] = useState(null);
+  
   const [checkedIn, setCheckedIn] = useState(false);
 
   const [open, setOpen] = useState(false);

@@ -3,7 +3,8 @@ import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { ReactComponent as Close } from "../../../assets/dashboard-icons/Close.svg";
 
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
+import { GET_BOOKED_FLIGHTS } from "../../../hooks";
 import { CHECK_IN } from "../../../hooks";
 import { toastError, toastSuccess } from "../../../component/shared/Toasts";
 
@@ -18,6 +19,18 @@ const CheckInModal = ({
 }) => {
   const [checkIn, { data: checkInResponse, loading: checkingIn }] =
     useMutation(CHECK_IN);
+
+  // Get Passenger Booked Flights
+  const { data: bookedFlights, loading, error } = useQuery(GET_BOOKED_FLIGHTS);
+  console.log("UserBooked Flights:", bookedFlights);
+
+  const flights = bookedFlights?.getBookedFlight?.map((flight) => {
+    return {
+      flightCode: flight?.flightCode,
+    };
+  });
+  console.log("flightss: ", flights);
+
   return (
     <Modal open={open} onClose={onCloseModal} center>
       <div className="checkin">
@@ -47,12 +60,14 @@ const CheckInModal = ({
                 },
               })
                 .then((res) => {
-                  toastSuccess(`${res?.cancelBookings.message}`);
-                  onChecked();
-                  onCloseModal();
+                  toastSuccess(`${res?.data?.checkIn?.message}`);
+                  if (flightToCheckIn.flightCode === flights.flightCode) {
+                    onChecked();
+                  }
+                  onCloseModal()
                 })
                 .catch((error) => {
-                  toastError(`${error}`);
+                  toastError(`${error?.message}`);
                 });
             }}
           >

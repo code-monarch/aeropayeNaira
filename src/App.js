@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async"; // This reusable React comp
 import Home from "./pages/Home";
 import Flight from "./pages/Flights";
 import BookFlight from "./pages/Flights/subPage/BookFlight";
+import PayedFlights from "./pages/Flights/subPage/PayedFlights";
 import Wallet from "./pages/Wallet";
 import Withdraw from "./pages/Wallet/subPage/Withdraw";
 import Send from "./pages/Wallet/subPage/Send";
@@ -76,6 +77,16 @@ function App() {
           element={
             <RequireAuth>
               <BookFlight />
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path="flights/payed-flights"
+          exact
+          element={
+            <RequireAuth>
+              <PayedFlights />
             </RequireAuth>
           }
         />

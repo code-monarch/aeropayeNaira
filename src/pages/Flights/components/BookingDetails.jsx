@@ -1,5 +1,6 @@
 import React from "react";
 
+import { useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import { BOOK_FLIGHT_MUTATION } from "../../../hooks";
 import { GET_AVAILABLE_FLIGHTS } from "../../../hooks";
@@ -36,6 +37,9 @@ const BookingDetails = ({
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
+
+  const navigate = useNavigate()
+
   // Get All Flights
   const {
     loading: gettingFlights,
@@ -105,6 +109,7 @@ const BookingDetails = ({
       .then((res) => {
         if (res?.data) {
           toastSuccess("Booking successful");
+          navigate("/flights/payed-flights")
           return showBookingSuccess
         }
       })

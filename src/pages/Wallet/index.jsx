@@ -40,11 +40,11 @@ const Wallet = () => {
     return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
-      const dateRef = useRef({
-        date: "",
-      });
+  const dateRef = useRef({
+    date: "",
+  });
 
-  const [date, setDate] = useState()
+  const [date, setDate] = useState();
 
   //Query User Transaction history
   const {
@@ -116,7 +116,7 @@ const Wallet = () => {
 
   return (
     <Layout>
-      <div className="wallet-container ">
+      <div className="wallet-container !min-h-[100vh]">
         <div className="sticky z-[3] top-[4.5rem] w-full 2xl:w-[1280px] 2xl:mx-[auto]">
           {/* Wallet Balance Banner */}
           <div className="wallet">
@@ -207,6 +207,11 @@ const Wallet = () => {
           </div>
           {/* RECENT HISTORY */}
           <div className="recent-history">
+            {(!transactions || transactions?.transactions.length === 0) && (
+              <div className="recent-history_list text-center py-[32px]">
+                NO RECORDS FOUND
+              </div>
+            )}
             {transactions?.transactions?.map((transaction, index) => (
               <div ref={dateRef} key={index}>
                 {/* Transaction History */}

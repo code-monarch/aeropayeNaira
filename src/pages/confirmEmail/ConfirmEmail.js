@@ -22,29 +22,27 @@ const ConfirmEmail = () => {
       </NavLink>
       {/* Body Container */}
       <div className="bg-white flex flex-col justify-center items-center h-[200px] w-[300px] px-[32px] mb-[64px] rounded-[8px] shadow-sm">
-        <h2 className="mb-[16px] font-[500]">
-          Email not verified
-        </h2>
-          <Button
-            onClick={() => {
-              sendEmailVerification()
-                .then((res) => {
-                  console.log("Email verification response", res);
-                  // setStatusState(res?.data?.sendEmailVerification?.status);
-                  toastSuccess(`${res?.data?.sendEmailVerification?.message}`);
-                })
-                .catch((error) => {
-                  console.log("Email verification Error", error);
-                  toastError(`${error?.errors?.message}`);
-                });
-            }}
-            loading={sendingEmail}
-            disabled={sendingEmail}
-            className="bg-green w-full font-[400] mb-[8px] px-[16px] py-[8px] flex items-center cursor-pointer justify-center whitespace-nowrap rounded-[6px]"
-          >
-            {sendingEmail ? "sending verification email" : "Verify Email"}
-          </Button>
-          <h3 className="text-[12px]">We'll send you a mail</h3>
+        <h2 className="mb-[16px] font-[500] text-black">Email not verified</h2>
+        <Button
+          onClick={() => {
+            sendEmailVerification()
+              .then((res) => {
+                console.log("Email verification response", res);
+                // setStatusState(res?.data?.sendEmailVerification?.status);
+                toastSuccess(`${res?.data?.sendEmailVerification?.message}`);
+              })
+              .catch((error) => {
+                console.log("Email verification Error", error);
+                toastError(`${error?.errors?.message}`);
+              });
+          }}
+          loading={sendingEmail}
+          disabled={sendingEmail || emailData}
+          className="bg-green text-black w-full font-[400] mb-[8px] px-[16px] py-[8px] flex items-center cursor-pointer justify-center whitespace-nowrap rounded-[6px]"
+        >
+          {sendingEmail ? "sending verification email" : "Verify Email"}
+        </Button>
+        <h3 className="text-[12px] text-black">We'll send you a mail</h3>
       </div>
       {/* Body Container End */}
 

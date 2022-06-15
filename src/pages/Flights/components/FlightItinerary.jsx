@@ -77,6 +77,13 @@ const FlightItinerary = () => {
 
   return (
     <div>
+      {(!data || data?.getAvailableFlights.length === 0) && (
+        <div className="flight-container_information">
+          <div className="section h-[200px] bg-white flex justify-center items-center">
+            <div className="body"> NO RECORDS FOUND </div>
+          </div>
+        </div>
+      )}
       {data?.getAvailableFlights?.map((flight) => (
         <div key={flight?.flightCode} ref={itineraryRef}>
           <div className="flight-container_information-list">
