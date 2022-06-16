@@ -13,7 +13,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { AuthProvider } from "./hooks/auth";
-import { FlightProvider } from "./context/FlightProvider";
+import { VerifyProvider } from "./hooks/verifyContext";
 
 import { setContext } from "@apollo/client/link/context";
 
@@ -44,11 +44,11 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <FlightProvider>
+        <VerifyProvider>
           <ApolloProvider client={client}>
             <App />
           </ApolloProvider>
-        </FlightProvider>
+        </VerifyProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,

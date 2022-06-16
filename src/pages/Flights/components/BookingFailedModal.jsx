@@ -2,16 +2,6 @@ import React from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
-const style = {
-  label: `font-sans text-[16px] font-[400] text-black`,
-  inputWrap: `flex items-center h-[48px] mt-[8px] mb-[16px] border-[1px] border-[1px] border-[#E1E7EC] rounded-[6px]`,
-  input: `focus:bg-bg w-[100%] h-[45px] border-[1px] border-[#E1E7EC] rounded-r-[6px] placeholder:text-[#B8C4CE]`,
-  flexedInput: `h-[45px] py-[10px] px-[16px] border-[1px] border-[#E1E7EC] rounded-[6px] focus:bg-bg placeholder:text-[#B8C4CE] overflow-scroll`,
-  svgWrap: `bg-bg h-[100%] p-[15px] rounded-l-[6px]`,
-  card: `card bg-white w-[421px] !mr-[0px] mb-[20px] p-[16px] rounded-[8px] border-[1px] border-[#DDEFFF] cursor-pointer`,
-  inner_wrapper: `card_wrapper `,
-};
-
 const BookingFailedModal = ({
   openBookingFailed,
   closeBookingFailed,

@@ -61,10 +61,8 @@ const CheckInModal = ({
               })
                 .then((res) => {
                   toastSuccess(`${res?.data?.checkIn?.message}`);
-                  if (flightToCheckIn.flightCode === flights.flightCode) {
-                    onChecked();
-                  }
-                  onCloseModal()
+                  onChecked();
+                  onCloseModal();
                 })
                 .catch((error) => {
                   toastError(`${error?.message}`);

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { authContext } from "../hooks/auth";
+import { verifyContext } from "../hooks/verifyContext";
 import { ReactComponent as Logo } from "../assets/icons/logo.svg";
 import { ReactComponent as Notification } from "../assets/dashboard-icons/Notification.svg";
 import { ReactComponent as Arrow } from "../assets/dashboard-icons/arrow-down.svg";
@@ -23,6 +24,10 @@ const Nav = ({ userName, isActive, setIsActive }) => {
 
   const { auth } = useContext(authContext);
   const firstname = auth?.user?.firstname
+
+  const { verify } = useContext(verifyContext);
+
+  console.log("Nav verification status: ", verify)
 
   const [showOption, setShowOption] = useState(false);
   const [showProfile, setShowProfile] = useState(

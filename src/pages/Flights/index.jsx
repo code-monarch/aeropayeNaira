@@ -108,6 +108,12 @@ const Flight = () => {
               <Link to="/flights/book-flight" className="book-button">
                 Book a flight
               </Link>
+              <Link
+                to="/flights/payed-flights"
+                className="payed-button ml-[30px]"
+              >
+                Go to Payed flights
+              </Link>
             </div>
             {/* Flight Container Navs End */}
 

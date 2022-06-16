@@ -3625,6 +3625,31 @@ nav .profile-button .profile-dropdown .log-out {
   background: #22E0BB;
 }
 
+.flight-container-navs .payed-button {
+  background: #22E0BB;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px 16px;
+  width: 255px;
+  height: 48px;
+  border: 1px solid #22E0BB;
+  -webkit-box-shadow: 0px 2px 4px 0px rgba(6, 10, 51, 0.05);
+          box-shadow: 0px 2px 4px 0px rgba(6, 10, 51, 0.05);
+  border-radius: 6px;
+  color: #060A33;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  -webkit-transition: .4s ease-in-out;
+  transition: .4s ease-in-out;
+}
+
 .flight-container_information {
   width: 827px;
   margin-right: 37px;

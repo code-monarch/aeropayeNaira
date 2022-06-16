@@ -15,7 +15,7 @@ const CancelModal = ({
   onCanceled,
   flightToCheckIn,
 }) => {
-  const { flight } = useContext(flightContext);
+  // const { flight } = useContext(flightContext);
 
   const [cancelBookings, { data: cancelResponse, loading: canceling }] =
     useMutation(CANCEL_BOOKING);

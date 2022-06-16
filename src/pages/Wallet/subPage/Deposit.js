@@ -95,7 +95,7 @@ const Deposit = () => {
                     <legend className="sr-only">paymentPlatform</legend>
 
                     <div
-                      className={`platform platform-1 flex items-center ${
+                      className={`platform platform-1 flex items-center cursor-pointer ${
                         focus === "radio-1" ? "checked" : ""
                       }`}
                     >
@@ -117,7 +117,7 @@ const Deposit = () => {
                     </div>
 
                     <div
-                      className={`platform platform-2 flex items-center ${
+                      className={`platform platform-2 flex items-center cursor-pointer ${
                         focus === "radio-2" ? "checked" : ""
                       }`}
                     >

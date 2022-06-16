@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import Layout from "../../../component/Layout";
 import { ReactComponent as ArrowLeft } from "../../../assets/dashboard-icons/arrow-left.svg";
 import { ReactComponent as Calendar } from "../../../assets/dashboard-icons/calendar-2.svg";
@@ -9,7 +9,7 @@ import { ReactComponent as AirIbom } from "../../../assets/dashboard-icons/Airli
 import { ReactComponent as AirPeace } from "../../../assets/dashboard-icons/Airlines-2.svg";
 import { ReactComponent as Dana } from "../../../assets/dashboard-icons/danaLogo.svg";
 import { ReactComponent as Profile } from "../../../assets/dashboard-icons/profile.svg";
-import { ReactComponent as Arrival } from "../../../assets/dashboard-icons/arrival-icon.svg";
+// import { ReactComponent as Arrival } from "../../../assets/dashboard-icons/arrival-icon.svg";
 import { ReactComponent as Departure } from "../../../assets/dashboard-icons/departure-icon.svg";
 import { ReactComponent as Arr } from "../../../assets/dashboard-icons/Arr2.svg";
 import { ReactComponent as Plane } from "../../../assets/dashboard-icons/flight-plane.svg";
@@ -20,19 +20,13 @@ import { ReactComponent as BusinessClassIcon } from "../../../assets/flightClass
 import { ReactComponent as EcoClassIcon } from "../../../assets/flightClass/economy.svg";
 import { ReactComponent as PremiumEcoClassIcon } from "../../../assets/flightClass/premiumEco.svg";
 import { ReactComponent as FirstClassIcon } from "../../../assets/flightClass/first.svg";
-import { flightContext } from "../../../context/FlightProvider";
 import CancelModal from "../components/CancelModal";
 import CheckInModal from "../components/CheckInModal";
 
-import Button from "../../../component/shared/Button";
-
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { GET_BOOKED_FLIGHTS } from "../../../hooks";
-import { CHECK_IN } from "../../../hooks";
-import { CANCEL_BOOKING } from "../../../hooks";
 
 const PayedFlights = () => {
-  const navigate = useNavigate();
 
   const [checkedIn, setCheckedIn] = useState(false);
 
@@ -61,6 +55,7 @@ const PayedFlights = () => {
   // saves itinerarRef which is passed to BookingDetails component
   const [itinerary, setItinerary] = useState("");
   const itineraryRef = useRef(null);
+  const ref = useRef(null);
 
   // Get Passenger Booked Flights
   const { data: bookedFlights, loading, error } = useQuery(GET_BOOKED_FLIGHTS);
@@ -77,6 +72,9 @@ const PayedFlights = () => {
     (item) => item.flightCode === itinerary?.flightCode
   );
   console.log("flightToCheckIn", flightToCheckIn);
+
+  ref.current = flightToCheckIn
+    console.log("current Ref: ", ref.current)
   return (
     <Layout>
       <div className="bg-bg w-[100%] flex flex-col 2xl:items-center min-h-[100vh] py-[32px] pl-[64px]">
@@ -113,6 +111,7 @@ const PayedFlights = () => {
                 bookedFlights?.getBookedFlight?.map((bookedFlight) => (
                   <div
                     key={bookedFlight.ticketId}
+                    ref={ref}
                     className="flight-container_information"
                   >
                     <div
@@ -294,7 +293,7 @@ const PayedFlights = () => {
                             </div>
                           ) : (
                             <div>
-                              {checkedIn ? (
+                              {(checkedIn && ref.current.flightCode === bookedFlight.flightCode) ? (
                                 <div className="flex items-center">
                                   {/* C */}
                                   <button
@@ -311,7 +310,7 @@ const PayedFlights = () => {
                                     className="cancel-button"
                                     onClick={onOpenRefundModal}
                                   >
-                                    Claim refund
+                                    Cancelled
                                   </button>
                                   {/* Claim refund Button End */}
                                 </div>
