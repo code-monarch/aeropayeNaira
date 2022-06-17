@@ -71,8 +71,8 @@ const Home = () => {
     <Layout>
       <div className="home bg-bg min-h-[100vh] mt-[-72px] pt-[72px]">
         {/* Welcome Banner */}
-        <div className="welcome-div sticky z-[3] top-[4.5rem] w-screen 2xl:flex 2xl:flex-col 2xl:items-center">
-          <div className="welcome-div_message">
+        <div className="welcome-div sticky z-[3] top-[4.5rem] w-screen 2xl:flex 2xl:flex-col items-center">
+          <div className="welcome-div_message 2xl:!w-[1312px]">
             <p className="title 2xl:text-[32px]">
               Welcome,
               {/* <span className="username">&nbsp;Derek</span> */}
@@ -90,7 +90,7 @@ const Home = () => {
         </div>
         {/* Welcome Banner End */}
 
-        <section className="home-container mx-[34px] !w-[1280px]">
+        <section className="home-container mx-[34px] w-[1312px]">
           <div
             className={
               closeGetStarted

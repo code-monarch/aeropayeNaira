@@ -625,6 +625,14 @@ nav .navigation-link {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 16px;
+  margin-top: 2px;
+}
+
+@media only screen and (min-width: 1536px) {
+  nav .navigation-link {
+    font-size: 18px;
+  }
 }
 
 nav .active {
@@ -1181,6 +1189,15 @@ nav .profile-button .profile-dropdown .log-out {
 @media only screen and (max-width: 649px) {
   .home .home-container .get-started_steps .step-stat-done {
     margin-left: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 1536px) {
+  .home .home-container .get-started_steps .step-stat-done {
+    width: 50px;
+    height: 22px;
+    padding: 8px;
+    margin: 0 16px;
   }
 }
 
