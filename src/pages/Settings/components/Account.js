@@ -14,6 +14,8 @@ import { GET_BANK_DETAILS } from "../../../hooks";
 // import FormError from "../../../component/shared/FormError";
 
 const Account = () => {
+	const [focus, setFocus] = useState("");
+
   //   const [openDropdown, setOpenDropdown] = useState(false)
   const [selected, setSelected] = useState("NG");
   const [selectCountry, setSelectCountry] = useState();
@@ -157,6 +159,11 @@ const Account = () => {
               .then((res) => {
                 toastSuccess(`${res?.data?.userBankDetails?.message}`);
                 console.log("Bank details response:", res);
+                setSelectCountry("");
+                setAccName("");
+                setSelectedBank("");
+                setIban("");
+                setSelectAccType("");
               })
               .catch((error) => {
                 toastError(`${error?.message}`);
@@ -217,10 +224,13 @@ const Account = () => {
 
             {/* ACCOUNT NAME */}
             <div className="account-form_inputs">
-              <label htmlFor="accName" className="account-form_inputs-title">
-                Name on account
-              </label>
-              <div className="account-form_inputs-label flex items-center">
+              <p className="account-form_inputs-title"> Name on account</p>
+              <label
+                htmlFor="accName"
+                className={`${"account-form_inputs-label flex items-center"} ${
+                  focus === "accName" ? "clicked" : ""
+                }`}
+              >
                 <input
                   type="text"
                   id="accName"
@@ -232,9 +242,11 @@ const Account = () => {
                   placeholder="John Doe"
                   className={`${
                     accName && "text-black"
-                  } placeholder:text-[#8895A7] w-[100%] focus:bg-bg`}
+                  } placeholder:text-[#8895A7] w-[100%]`}
+                  onBlur={() => setFocus("")}
+                  onFocus={() => setFocus("accName")}
                 />
-              </div>
+              </label>
             </div>
           </div>
           {/* ACCOUNT NAME */}
@@ -284,7 +296,11 @@ const Account = () => {
               <p className="account-form_inputs-title">
                 Bank Account Number (IBAN)
               </p>
-              <div className="account-form_inputs-label flex items-center">
+              <label
+                className={`${"account-form_inputs-label flex items-center"} ${
+                  focus === "account number" ? "clicked" : ""
+                }`}
+              >
                 <input
                   type="text"
                   value={iban}
@@ -294,9 +310,11 @@ const Account = () => {
                   placeholder="XXXXXXXXXX"
                   className={`${
                     iban && "text-black"
-                  } placeholder:text-[#8895A7] w-[100%] focus:bg-bg`}
+                  } placeholder:text-[#8895A7] w-[100%] h-[100%]`}
+                  onBlur={() => setFocus("")}
+                  onFocus={() => setFocus("account number")}
                 />
-              </div>
+              </label>
             </div>
           </div>
           {/* BANK ACCOUNT NUMBER END */}
@@ -384,18 +402,18 @@ const Account = () => {
             {bankDetails?.userBankDetails?.map((details, index) => (
               <div key={index} className="accountss-item">
                 <div className="accountss-item_one">
-                  <p>
+                  <p className="!h-fit !mb-[8px]">
                     Account name:{" "}
                     <span className="values">{details?.acctName}</span>
                   </p>
-                  <p>
+                  <p className="!h-fit !mb-[8px]">
                     Account number:{" "}
                     <span className="values">{details?.acctNumber}</span>
                   </p>
                   {/* <p>
                     BIC / SWIFT Code: <span className="values">FBNINGLA</span>
                   </p> */}
-                  <p>
+                  <p className="!h-fit !mb-[8px]">
                     Bank Name:{" "}
                     <span className="values">{details?.acctBank}</span>
                   </p>

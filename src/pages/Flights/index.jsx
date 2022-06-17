@@ -52,7 +52,7 @@ const Flight = () => {
   return (
     <>
       <Layout>
-        <div className="flight">
+        <div className="flight !pt-[72px]">
           <div className="flight-container">
             {/* Flight Container Navs */}
             <div className="flex items-center flight-container-navs">
@@ -107,6 +107,12 @@ const Flight = () => {
 
               <Link to="/flights/book-flight" className="book-button">
                 Book a flight
+              </Link>
+              <Link
+                to="/flights/payed-flights"
+                className="payed-button ml-[30px]"
+              >
+                Go to Payed flights
               </Link>
             </div>
             {/* Flight Container Navs End */}

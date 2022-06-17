@@ -78,7 +78,7 @@ const Send = () => {
   return (
     <>
       <Layout>
-        <div className="withdraw xl:h-screen h-auto">
+        <div className="withdraw xl:h-screen h-auto w-screen 2xl:w-[1536px]">
           <div className="withdraw-container">
             <Link to="/wallet" className="back-link">
               <ArrowLeft />

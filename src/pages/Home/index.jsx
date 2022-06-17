@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useCallback, useState } from "react";
 import { authContext } from "../../hooks/auth";
 import { ReactComponent as Wave } from "../../assets/dashboard-icons/wave.svg";
 import { ReactComponent as Onboarding } from "../../assets/dashboard-icons/onboarding_illus.svg";
@@ -16,10 +16,20 @@ import { useQuery } from "@apollo/client";
 import { USER_VERIFICATION_STATUS } from "../../hooks";
 import { GET_BANK_DETAILS } from "../../hooks";
 import { BALANCE } from "../../hooks";
+import { verifyContext } from "../../hooks/verifyContext";
 
 const Home = () => {
+  const { verify } = useContext(verifyContext);
+
+  const [closeGetStarted, setCloseGetStarted] = useState(false);
+
   // User verification status
   const { loading, error, data } = useQuery(USER_VERIFICATION_STATUS);
+  // useEffect(() => {
+  //   if (data) {
+  //     verify.updateVerify(data);
+  //   }
+  // })
 
   // Get Bank Details
   const {
@@ -40,6 +50,12 @@ const Home = () => {
   // Store VerificationStatus in variable
   const verificationStatus = data?.userVerificationStatus;
 
+  // Memoize Email verification status to prevent continues rerendering
+  useCallback(() => {
+    verify.updateVerify(verificationStatus);
+  }, [verificationStatus, verify]);
+  console.log("Email verification status state:", verify);
+  
   let bankdetailsLength = Boolean(
     Array.isArray(bankDetailsData?.userBankDetails) &&
       bankDetailsData?.userBankDetails.length
@@ -53,9 +69,9 @@ const Home = () => {
   } = useContext(authContext);
   return (
     <Layout>
-      <div className="home">
+      <div className="home bg-bg min-h-[100vh] mt-[-72px] pt-[72px]">
         {/* Welcome Banner */}
-        <div className="welcome-div sticky z-[3] top-[4.5rem] 2xl:w-[1280px] 2xl:mx-[auto]">
+        <div className="welcome-div sticky z-[3] top-[4.5rem] 2xl:w-[1536px] 2xl:mx-[auto]">
           <div className="welcome-div_message">
             <p className="title">
               Welcome,
@@ -75,8 +91,15 @@ const Home = () => {
         {/* Welcome Banner End */}
 
         <section className="home-container mx-[34px]">
-          <div className="get-started flex items-start justify-between lg:flex-row flex-col-reverse">
-            <div className="getting_started">
+          <div
+            className={
+              closeGetStarted
+                ? "hidden"
+                : "get-started flex items-start justify-between lg:flex-row flex-col-reverse"
+            }
+          >
+            {/* Getting Started */}
+            <div className="getting_started transition ease-in-out">
               <div className="get-started_container">
                 <div className="infoo">
                   <p className="infoo_title">Getting Started</p>
@@ -152,7 +175,7 @@ const Home = () => {
                 {/* Step 4 End */}
 
                 {/* Step 5 */}
-                <Link to="/" className="step">
+                <Link to="/settings" className="step">
                   <span className="step-stat uppercase">Step 5</span>
                   <span className="step-info">
                     Complete your booking profile
@@ -162,19 +185,26 @@ const Home = () => {
                 {/* Step 5 End */}
               </div>
             </div>
+            {/* Getting Started End */}
 
             <div className="w-full lg:w-auto flex items-center justify-between pr-2">
               <label className="checkbox flex items-center">
                 <input type="checkbox" />
                 <span className="checkbox-info">Don't show me this again</span>
               </label>
-              <button className="">
+              <div
+                onClick={() => {
+                  setCloseGetStarted(true);
+                  console.log("clickedddddd");
+                }}
+                className="cursor-pointer"
+              >
                 <Close />
-              </button>
+              </div>
             </div>
           </div>
 
-          <div className="flex lg:flex-row flex-col justify-evenly items-center user-details">
+          <div className="flex lg:flex-row flex-col justify-evenly items-center mt-[32px] user-details">
             {/* First */}
             <Link
               to="/wallet"

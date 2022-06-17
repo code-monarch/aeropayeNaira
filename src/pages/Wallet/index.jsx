@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from "react";
-import dateFormat from "dateformat";
+import React, { useState, useEffect, useRef } from "react";
 import { ReactComponent as EyeOpen } from "../../assets/dashboard-icons/eye-icon.svg";
 import { ReactComponent as EyeClose } from "../../assets/icons/eye-close.svg";
 import { ReactComponent as AddIcon } from "../../assets/dashboard-icons/add-circle.svg";
@@ -11,11 +10,9 @@ import { ReactComponent as ReceiveIcon } from "../../assets/dashboard-icons/rece
 import { ReactComponent as FundIcon } from "../../assets/dashboard-icons/fundIcon.svg";
 import { ReactComponent as SendIcon } from "../../assets/dashboard-icons/sendIcon.svg";
 import { Link, useLocation } from "react-router-dom";
-import { ReactComponent as Spinner } from "../../assets/icons/spinnerIcon.svg";
 import {
   toastError,
   toastSuccess,
-  toastLoading,
 } from "../../component/shared/Toasts";
 
 import { useMutation, useQuery } from "@apollo/client";
@@ -43,8 +40,6 @@ const Wallet = () => {
   const dateRef = useRef({
     date: "",
   });
-
-  const [date, setDate] = useState();
 
   //Query User Transaction history
   const {
@@ -87,6 +82,8 @@ const Wallet = () => {
         .then((res) => {
           const success = res?.data?.status;
           success === "success" && toastSuccess(res?.data?.message);
+          // window.location.pathname = "/wallet";
+          window.location.replace("/wallet");
         })
         .catch((error) => {
           error && toastError("Something went wrong while minting tokens");
@@ -116,8 +113,8 @@ const Wallet = () => {
 
   return (
     <Layout>
-      <div className="wallet-container !min-h-[100vh]">
-        <div className="sticky z-[3] top-[4.5rem] w-full 2xl:w-[1280px] 2xl:mx-[auto]">
+      <div className="wallet-container !min-h-[100vh] w-full 2xl:!w-[1536px]">
+        <div className="sticky z-[3] top-[4.5rem]">
           {/* Wallet Balance Banner */}
           <div className="wallet">
             <div className="wallet-type">

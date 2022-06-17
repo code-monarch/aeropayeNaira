@@ -968,7 +968,6 @@ nav .profile-button .profile-dropdown .log-out {
 
 .home {
   background: #F7FAFC;
-  height: auto;
 }
 
 .home .welcome-div {
@@ -1034,7 +1033,7 @@ nav .profile-button .profile-dropdown .log-out {
 }
 
 .home .home-container {
-  max-width: 1280px;
+  max-width: 1536px;
   margin: 0 auto;
 }
 
@@ -2229,6 +2228,7 @@ nav .profile-button .profile-dropdown .log-out {
 .settings-container-header .swiper-wrapper {
   width: auto;
   height: auto;
+  overflow-x: scroll;
 }
 
 .settings-container-header .swiper-slide {
@@ -3623,6 +3623,31 @@ nav .profile-button .profile-dropdown .log-out {
 
 .flight-container-navs .book-button:hover {
   background: #22E0BB;
+}
+
+.flight-container-navs .payed-button {
+  background: #22E0BB;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px 16px;
+  width: 255px;
+  height: 48px;
+  border: 1px solid #22E0BB;
+  -webkit-box-shadow: 0px 2px 4px 0px rgba(6, 10, 51, 0.05);
+          box-shadow: 0px 2px 4px 0px rgba(6, 10, 51, 0.05);
+  border-radius: 6px;
+  color: #060A33;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  -webkit-transition: .4s ease-in-out;
+  transition: .4s ease-in-out;
 }
 
 .flight-container_information {

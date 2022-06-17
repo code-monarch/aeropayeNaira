@@ -34,7 +34,7 @@ const ConfirmEmail = () => {
               .catch((error) => {
                 console.log("Email verification Error", error);
                 toastError(`${error?.errors?.message}`);
-              });
+              })
           }}
           loading={sendingEmail}
           disabled={sendingEmail || emailData}

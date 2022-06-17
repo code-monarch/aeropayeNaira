@@ -100,6 +100,22 @@
 
         }
     }
+    .payed-button{
+        background: $color-accent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 16px;
+        width: 255px;
+        height: 48px;
+        border: 1px solid $color-accent;
+        box-shadow: 0px 2px 4px 0px rgba(6, 10, 51, 0.05);
+        border-radius: 6px;
+        color: $color-primary;
+        font-family: $font-rubik;
+        font-weight: 400;
+        transition: .4s ease-in-out;
+    }
     }
 
     &_information{

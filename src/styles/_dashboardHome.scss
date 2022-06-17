@@ -1,6 +1,5 @@
 .home{
     background: $color-secondary;
-    height: auto;
 
 .welcome-div{
         background-color: $color-primary;
@@ -58,7 +57,7 @@
 }
 
 .home-container{
-        max-width: 1280px;
+        max-width: 1536px;
         margin: 0 auto;
 
          @media only screen and (min-width: 677px) and (max-width: 1074px) {
