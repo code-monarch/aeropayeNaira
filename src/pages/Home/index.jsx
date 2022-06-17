@@ -71,7 +71,7 @@ const Home = () => {
     <Layout>
       <div className="home bg-bg min-h-[100vh] mt-[-72px] pt-[72px]">
         {/* Welcome Banner */}
-        <div className="welcome-div sticky z-[3] top-[4.5rem] w-screen 2xl:w-[1536px] 2xl:mx-[auto]">
+        <div className="welcome-div sticky z-[3] top-[4.5rem] w-screen 2xl:!w-[1536px] 2xl:mx-[auto]">
           <div className="welcome-div_message">
             <p className="title">
               Welcome,
@@ -90,7 +90,7 @@ const Home = () => {
         </div>
         {/* Welcome Banner End */}
 
-        <section className="home-container mx-[34px]">
+        <section className="home-container mx-[34px] !w-[1280px]">
           <div
             className={
               closeGetStarted
