@@ -76,7 +76,7 @@ const PayedFlights = () => {
   console.log("current Ref: ", ref.current);
   return (
     <Layout>
-      <div className="bg-bg w-[100%] 2xl:w-[1536px] pt-[72px] flex flex-col 2xl:items-center min-h-[100vh] py-[32px] pl-[64px]">
+      <div className="bg-bg w-screen pt-[72px] flex flex-col 2xl:items-center min-h-[100vh] py-[32px] pl-[64px]">
         <div className="2xl:w-[1536px] 2xl:flex 2xl:flex-col 2xl:items-center">
           <div className="w-[100%] 2xl:w-[1536px] flex flex-col">
             {/* Back Button */}

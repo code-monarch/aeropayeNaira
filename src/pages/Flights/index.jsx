@@ -52,7 +52,7 @@ const Flight = () => {
   return (
     <>
       <Layout>
-        <div className="flight !pt-[72px] w-screen 2xl:w-[1536px]">
+        <div className="flight !pt-[72px] w-screen">
           <div className="flight-container">
             {/* Flight Container Navs */}
             <div className="flex items-center flight-container-navs">
