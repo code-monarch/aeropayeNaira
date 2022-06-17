@@ -80,7 +80,7 @@ const PayedFlights = () => {
         <div className="2xl:w-[1536px] 2xl:flex 2xl:flex-col 2xl:items-center">
           <div className="w-[100%] 2xl:w-[1536px] flex flex-col">
             {/* Back Button */}
-            <div className="w-[100%] ml-[100px]">
+            <div className="w-[100%] 2xl:ml-[100px]">
               <Link to="/flights" className="flex items-center w-fit py-[32px]">
                 <ArrowLeft />
                 <p className="font-serif !font-semibold text-base text-[#5F6B7A] mx-[10px]">
