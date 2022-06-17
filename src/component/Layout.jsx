@@ -4,7 +4,7 @@ import Nav from "./Nav";
 
 const Layout = ({children}) => {
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <Nav />
       {children}
     </div>

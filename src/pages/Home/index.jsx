@@ -69,9 +69,9 @@ const Home = () => {
   } = useContext(authContext);
   return (
     <Layout>
-      <div className="home bg-bg min-h-[100vh]">
+      <div className="home bg-bg min-h-[100vh] mt-[-72px] pt-[72px]">
         {/* Welcome Banner */}
-        <div className="welcome-div sticky z-[3] top-[4.5rem] 2xl:w-[1280px] 2xl:mx-[auto]">
+        <div className="welcome-div sticky z-[3] top-[4.5rem] 2xl:w-[1536px] 2xl:mx-[auto]">
           <div className="welcome-div_message">
             <p className="title">
               Welcome,

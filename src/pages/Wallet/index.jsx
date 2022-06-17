@@ -113,8 +113,8 @@ const Wallet = () => {
 
   return (
     <Layout>
-      <div className="wallet-container !min-h-[100vh]">
-        <div className="sticky z-[3] top-[4.5rem] w-full 2xl:w-[1280px] 2xl:mx-[auto]">
+      <div className="wallet-container !min-h-[100vh] w-full 2xl:!w-[1536px]">
+        <div className="sticky z-[3] top-[4.5rem]">
           {/* Wallet Balance Banner */}
           <div className="wallet">
             <div className="wallet-type">

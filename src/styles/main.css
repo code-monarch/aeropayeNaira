@@ -968,7 +968,6 @@ nav .profile-button .profile-dropdown .log-out {
 
 .home {
   background: #F7FAFC;
-  height: auto;
 }
 
 .home .welcome-div {
@@ -1034,7 +1033,7 @@ nav .profile-button .profile-dropdown .log-out {
 }
 
 .home .home-container {
-  max-width: 1280px;
+  max-width: 1536px;
   margin: 0 auto;
 }
 
@@ -2229,6 +2228,7 @@ nav .profile-button .profile-dropdown .log-out {
 .settings-container-header .swiper-wrapper {
   width: auto;
   height: auto;
+  overflow-x: scroll;
 }
 
 .settings-container-header .swiper-slide {

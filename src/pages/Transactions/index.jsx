@@ -150,7 +150,7 @@ const Transaction = () => {
               <ArrowLeft />
               <p className="back-link_nav">Back</p>
             </Link> */}
-        <section className="table_contain">
+        <section className="table_contain !bg-bg w-full 2xl:w-[1536px] !pt-[72px]">
           <div className="table-container">
             <div className="flex items-center mb-[16px]">
               <label className="mr-[16px] search-table">
