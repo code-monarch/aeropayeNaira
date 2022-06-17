@@ -357,7 +357,7 @@ const SignUp = () => {
               <Button
                 className="login-container_login flex items-center justify-center cursor-pointerjustify-center"
                 type="submit"
-                loading={loading}
+                loading={loading && loading}
               >
                 Create account
               </Button>

@@ -71,9 +71,9 @@ const Home = () => {
     <Layout>
       <div className="home bg-bg min-h-[100vh] mt-[-72px] pt-[72px]">
         {/* Welcome Banner */}
-        <div className="welcome-div sticky z-[3] top-[4.5rem] w-screen 2xl:!w-[1536px] 2xl:mx-[auto]">
-          <div className="welcome-div_message">
-            <p className="title">
+        <div className="welcome-div sticky z-[3] top-[4.5rem] w-screen 2xl:flex 2xl:flex-col 2xl:items-center">
+          <div className="welcome-div_message 2xl:!w-[1280px] 2xl:py-[58px]">
+            <p className="title 2xl:text-[32px]">
               Welcome,
               {/* <span className="username">&nbsp;Derek</span> */}
               <span className="username">&nbsp;{firstname}</span>
@@ -81,7 +81,7 @@ const Home = () => {
                 <Wave />
               </span>
             </p>
-            <p className="text">
+            <p className="text 2xl:!max-w-[700px]">
               Process your refund claims within seconds of delayed or cancelled
               flight, seemlessly book and pay for flights for your travels and
               events.
@@ -162,7 +162,11 @@ const Home = () => {
                   <Link to="/wallet/deposit" className="step">
                     <span className="step-stat uppercase">Step 4</span>
                     <span className="step-info">Fund your aeropaye wallet</span>
-                    {balanceData !== 0 || undefined ? "" : <ArrowRight />}
+                    {balanceData !== 0 || balanceData !== undefined ? (
+                      ""
+                    ) : (
+                      <ArrowRight />
+                    )}
                   </Link>
                 )}
 

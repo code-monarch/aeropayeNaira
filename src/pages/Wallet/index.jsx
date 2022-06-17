@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { ReactComponent as EyeOpen } from "../../assets/dashboard-icons/eye-icon.svg";
 import { ReactComponent as EyeClose } from "../../assets/icons/eye-close.svg";
 import { ReactComponent as AddIcon } from "../../assets/dashboard-icons/add-circle.svg";
@@ -49,6 +49,14 @@ const Wallet = () => {
   } = useQuery(GET_TRANSACTION_HISTORY);
   console.log("user Transactions", transactions?.transactions);
 
+  // Get six transactions from Transactions query
+  const transactionPlusOffset = useMemo(() => {
+    return transactions?.transactions?.slice(0, 4)
+  }, [transactions])
+    
+  
+  console.log("transactionPlusOffset: ", transactionPlusOffset);
+  
   const [controlShowBalance, setControlShowBalance] = useState("show");
   // Show wallet balance if false, else Hide wallet balance
   const [showBalance, setShowBalance] = useState(true);
@@ -204,12 +212,13 @@ const Wallet = () => {
           </div>
           {/* RECENT HISTORY */}
           <div className="recent-history">
-            {(!transactions || transactions?.transactions.length === 0) && (
+            {(!transactionPlusOffset ||
+              transactionPlusOffset?.transactionPlusOffset?.length === 0) && (
               <div className="recent-history_list text-center py-[32px]">
                 NO RECORDS FOUND
               </div>
             )}
-            {transactions?.transactions?.map((transaction, index) => (
+            {transactionPlusOffset?.map((transaction, index) => (
               <div ref={dateRef} key={index}>
                 {/* Transaction History */}
                 <div className="flex justify-between items-center recent-history_list">

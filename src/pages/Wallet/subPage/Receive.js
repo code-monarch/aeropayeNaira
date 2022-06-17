@@ -18,7 +18,7 @@ const Receive = () => {
   return (
     <>
       <Layout>
-        <div className="withdraw xl:h-screen h-auto w-screen 2xl:w-[1536px]">
+        <div className="withdraw xl:h-screen h-auto w-screen">
           <div className="withdraw-container">
             <Link to="/wallet" className="back-link">
               <ArrowLeft />

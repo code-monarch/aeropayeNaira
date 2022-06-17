@@ -53,7 +53,7 @@ const Nav = ({ userName, isActive, setIsActive }) => {
       {showMobileNav ? (
         <MobileNav isActive={isActive} setIsActive={setIsActive} />
       ) : (
-        <nav className="flex items-center justify-center sticky z-10 top-0 w-full 2xl:w-[1536px]">
+        <nav className="flex items-center justify-center sticky z-10 top-0 w-full">
           <div className="flex items-center justify-evenly w-full 2xl:w-[1536px]">
             <div className="flex items-center justify-between">
               <div className="mr-[20px] lg:mr-[32px]">

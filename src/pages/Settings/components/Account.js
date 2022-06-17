@@ -384,7 +384,7 @@ const Account = () => {
           <div className="flex items-center justify-start md:justify-end">
             <Button
               type="submit"
-              className="account-button"
+              className="account-button !text-center"
               disabled={loading}
               loading={loading}
             >
