@@ -24,9 +24,9 @@ const Settings = () => {
   return (
     <Layout>
       <div className="settings bg-bg">
-        <div className="settings-container w-[100vw] 2xl:w-[1534px] 2xl:mx-[auto] min-h-[100vh]">
-          <div className="settings-container-header">
-            <p className="settings-container-header_overview">
+        <div className="settings-container w-[100vw] min-h-[100vh]">
+          <div className="settings-container-header w-screen">
+            <p className="settings-container-header_overview 2xl:!w-[1536px] 2xl:mx-[auto]">
               Manage your bank accounts for FIAT withdrawal and payments
             </p>
 
@@ -78,59 +78,63 @@ const Settings = () => {
                 </SwiperSlide>
               </Swiper>
             ) : (
-              <div className="settings-container-header_tab-btn">
-                <button
-                  className={`tab-button mr-[12px] ${
-                    openTab === "account" && "open-tab"
-                  }`}
-                  onClick={() => setOpenTab("account")}
-                >
-                  Manage bank account
-                </button>
+              <div className="2xl:w-screen 2xl:flex 2xl:justify-center">
+                <div className="settings-container-header_tab-btn 2xl:!w-[1356px] 2xl:!pl-0">
+                  <button
+                    className={`tab-button mr-[12px] ${
+                      openTab === "account" && "open-tab"
+                    }`}
+                    onClick={() => setOpenTab("account")}
+                  >
+                    Manage bank account
+                  </button>
 
-                <button
-                  className={`tab-button tab-2 mr-[12px] ${
-                    openTab === "profile" && "open-tab"
-                  }`}
-                  onClick={() => setOpenTab("profile")}
-                >
-                  Profile
-                </button>
+                  <button
+                    className={`tab-button tab-2 mr-[12px] ${
+                      openTab === "profile" && "open-tab"
+                    }`}
+                    onClick={() => setOpenTab("profile")}
+                  >
+                    Profile
+                  </button>
 
-                <button
-                  className={`tab-button tab-2 mr-[12px] ${
-                    openTab === "security" && "open-tab"
-                  }`}
-                  onClick={() => setOpenTab("security")}
-                >
-                  Security
-                </button>
+                  <button
+                    className={`tab-button tab-2 mr-[12px] ${
+                      openTab === "security" && "open-tab"
+                    }`}
+                    onClick={() => setOpenTab("security")}
+                  >
+                    Security
+                  </button>
 
-                <button
-                  className={`tab-button tab-2 mr-[12px] ${
-                    openTab === "currency" && "open-tab"
-                  }`}
-                  onClick={() => setOpenTab("currency")}
-                >
-                  Currency
-                </button>
+                  <button
+                    className={`tab-button tab-2 mr-[12px] ${
+                      openTab === "currency" && "open-tab"
+                    }`}
+                    onClick={() => setOpenTab("currency")}
+                  >
+                    Currency
+                  </button>
+                </div>
               </div>
             )}
           </div>
           <div className="line"></div>
 
-          <div className="settings-container_tab">
-            {openTab === "account" ? (
-              <Account />
-            ) : openTab === "profile" ? (
-              <Profile />
-            ) : openTab === "security" ? (
-              <Security />
-            ) : openTab === "currency" ? (
-              <Currency />
-            ) : (
-              <Account />
-            )}
+          <div className="2xl:w-screen 2xl:flex 2xl:justify-center">
+            <div className="settings-container_tab 2xl:!w-[1536px]">
+              {openTab === "account" ? (
+                <Account />
+              ) : openTab === "profile" ? (
+                <Profile />
+              ) : openTab === "security" ? (
+                <Security />
+              ) : openTab === "currency" ? (
+                <Currency />
+              ) : (
+                <Account />
+              )}
+            </div>
           </div>
         </div>
       </div>

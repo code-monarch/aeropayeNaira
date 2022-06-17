@@ -44,7 +44,7 @@ const Deposit = () => {
   return (
     <>
       <Layout>
-        <div className="withdraw xl:h-screen w-screen 2xl:w-[1536px] h-auto">
+        <div className="withdraw xl:h-screen w-screen h-auto">
           <div className="withdraw-container">
             <Link to="/wallet" className="back-link">
               <ArrowLeft />
