@@ -24,28 +24,20 @@ const Home = () => {
   const [closeGetStarted, setCloseGetStarted] = useState(false);
 
   // User verification status
-  const { loading, error, data } = useQuery(USER_VERIFICATION_STATUS);
-  // useEffect(() => {
-  //   if (data) {
-  //     verify.updateVerify(data);
-  //   }
-  // })
+  const { data } = useQuery(USER_VERIFICATION_STATUS);
 
   // Get Bank Details
   const {
-    loading: bankDetailsLoading,
-    error: bankdetailsError,
     data: bankDetailsData,
   } = useQuery(GET_BANK_DETAILS);
 
   // Get Wallet Balance
   const {
-    loading: balanceLoading,
-    error: balanceError,
     data: balanceData,
   } = useQuery(BALANCE);
   console.log("User verification status", data?.userVerificationStatus);
   console.log("Bank Details", bankDetailsData?.userBankDetails);
+  console.log("Wallet balance", balanceData)
 
   // Store VerificationStatus in variable
   const verificationStatus = data?.userVerificationStatus;
@@ -64,7 +56,7 @@ const Home = () => {
   // Get User's name from user authentication object
   const {
     auth: {
-      user: { firstname, lastname },
+      user: { firstname },
     },
   } = useContext(authContext);
   return (
@@ -127,7 +119,12 @@ const Home = () => {
                       <span className="step-stat uppercase">Step 2</span>
                       <span className="step-info">Verify email address</span>
                     </>
-                    {verificationStatus === false ? <ArrowRight /> : ""}
+                    {verificationStatus === false ||
+                    verificationStatus === undefined ? (
+                      <ArrowRight />
+                    ) : (
+                      ""
+                    )}
                   </Link>
                 )}
                 {verificationStatus === true && (
@@ -158,19 +155,18 @@ const Home = () => {
                 {/* Step 3 End */}
 
                 {/* Step 4 */}
-                {balanceData === 0 && (
-                  <Link to="/wallet/deposit" className="step">
-                    <span className="step-stat uppercase">Step 4</span>
-                    <span className="step-info">Fund your aeropaye wallet</span>
-                    {balanceData !== 0 || balanceData !== undefined ? (
-                      ""
-                    ) : (
+                {balanceData === 0 ||
+                  (balanceData === undefined && (
+                    <Link to="/wallet/deposit" className="step">
+                      <span className="step-stat uppercase">Step 4</span>
+                      <span className="step-info">
+                        Fund your aeropaye wallet
+                      </span>
                       <ArrowRight />
-                    )}
-                  </Link>
-                )}
+                    </Link>
+                  ))}
 
-                {(balanceData !== 0 || balanceData !== undefined) && (
+                {(balanceData !== 0 ) && (balanceData !== undefined) && (
                   <div className="step">
                     <span className="step-stat-done">DONE</span>
                     <span className="complete">Fund your aeropaye wallet</span>
