@@ -158,19 +158,15 @@ const Home = () => {
                 {/* Step 3 End */}
 
                 {/* Step 4 */}
-                {balanceData === 0 && (
+                {(balanceData === 0  || balanceData === undefined)  && (
                   <Link to="/wallet/deposit" className="step">
                     <span className="step-stat uppercase">Step 4</span>
                     <span className="step-info">Fund your aeropaye wallet</span>
-                    {balanceData !== 0 || balanceData !== undefined ? (
-                      ""
-                    ) : (
                       <ArrowRight />
-                    )}
                   </Link>
                 )}
 
-                {(balanceData !== 0 || balanceData !== undefined) && (
+                {(balanceData !== 0 ) && (balanceData !== undefined) && (
                   <div className="step">
                     <span className="step-stat-done">DONE</span>
                     <span className="complete">Fund your aeropaye wallet</span>
