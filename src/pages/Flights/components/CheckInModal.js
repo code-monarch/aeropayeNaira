@@ -60,7 +60,7 @@ const CheckInModal = ({
                 },
               })
                 .then((res) => {
-                  toastSuccess(`${res?.data?.checkIn?.message}`);
+                  toastSuccess(`${res?.data?.checkIn?.status}`);
                   onChecked();
                   onCloseModal();
                 })
