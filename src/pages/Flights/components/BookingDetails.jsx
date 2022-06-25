@@ -109,7 +109,7 @@ const BookingDetails = ({
       .then((res) => {
         if (res?.data) {
           toastSuccess("Booking successful");
-          navigate("/flights/payed-flights")
+          navigate("/flights/paid-flights")
           return showBookingSuccess
         }
       })

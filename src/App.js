@@ -82,7 +82,7 @@ function App() {
         />
 
         <Route
-          path="flights/payed-flights"
+          path="flights/paid-flights"
           exact
           element={
             <RequireAuth>
