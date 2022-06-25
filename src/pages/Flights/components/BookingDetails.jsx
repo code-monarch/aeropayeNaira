@@ -99,9 +99,9 @@ const BookingDetails = ({
         arrivalDate: dateFormat(flightToBook?.arrivalDate, "mmmm dS, yyyy"),
         departureTime: flightToBook?.departureTime,
         arrivalTime: flightToBook?.arrivalTime,
-        numOfAdults: 3,
-        numOfChildren: 3,
-        numOfInfants: 3,
+        numOfAdults: 1,
+        numOfChildren: 0,
+        numOfInfants: 0,
         amount: flightToBook?.airfare,
         class: flightToBook?.class,
       },
@@ -265,15 +265,17 @@ const BookingDetails = ({
             {/* Number of Passenger */}
             <div className="flex justify-between mb-[16px]">
               <div className="no_passengers text-black font-sans font-[400] text-[16px]">
-                2x Passengers:
+                1 Passengers:
               </div>
               {/* Cost */}
               <div className="text-right">
                 <div className="text-black font-sans font-[400] text-[16px]">
-                  122.8070 ARP
+                  {numberWithCommas(airfare)}&nbsp;ARP
+                  {/* 122.8070 ARP */}
                 </div>
                 <div className="text-[14px] font-sans font-[400] text-[#5F6B7A]">
-                  (≈ 122,8070 NGN)
+                  {`(≈${numberWithCommas(airfare)} NGN)`}
+                  {/* (≈ 122,8070 NGN) */}
                 </div>
               </div>
               {/* Number of Passengers */}
@@ -302,10 +304,12 @@ const BookingDetails = ({
               {/* Cost */}
               <div className="text-right">
                 <div className="text-black font-sans font-[500] text-[16px]">
-                  122.8070 ARP
+                  {numberWithCommas(airfare)}&nbsp;
+                  {/* ARP 122.8070 ARP */}
                 </div>
                 <div className="text-[14px] font-sans font-[500] text-[#5F6B7A]">
-                  (≈ 122,8070 NGN)
+                  {`(≈${numberWithCommas(airfare)} NGN)`}
+                  {/* (≈ 122,8070 NGN) */}
                 </div>
               </div>
               {/* Number of Passengers */}

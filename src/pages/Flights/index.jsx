@@ -112,7 +112,7 @@ const Flight = () => {
                 to="/flights/payed-flights"
                 className="payed-button ml-[30px]"
               >
-                Go to Payed flights
+                Paid flights
               </Link>
             </div>
             {/* Flight Container Navs End */}
