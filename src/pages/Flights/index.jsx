@@ -109,7 +109,7 @@ const Flight = () => {
                 Book a flight
               </Link>
               <Link
-                to="/flights/payed-flights"
+                to="/flights/paid-flights"
                 className="payed-button ml-[30px]"
               >
                 Paid flights
