@@ -138,8 +138,8 @@ const Wallet = () => {
             <p className="wallet-bal">
               {showBalance
                 ? data
-                  ? `${numberWithCommas(data?.balance?.data?.data)} ARP`
-                  : "0 ARP"
+                  ? `${numberWithCommas(data?.balance?.data?.data)}`
+                  : "0"
                 : "****"}
             </p>
             <p className="wallet-rate">
