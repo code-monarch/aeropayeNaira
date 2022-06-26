@@ -21,6 +21,8 @@ export const GET_BOOKED_FLIGHTS = gql`
       userFirstName
       userLastName
       status
+      checkedIn
+      cancelled
     }
   }
 `;

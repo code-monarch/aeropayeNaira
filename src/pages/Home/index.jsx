@@ -68,7 +68,7 @@ const Home = () => {
             <p className="title 2xl:text-[32px]">
               Welcome,
               {/* <span className="username">&nbsp;Derek</span> */}
-              <span className="username">&nbsp;{firstname}</span>
+              <span className="username capitalize">&nbsp;{firstname}</span>
               <span className="message-icon">
                 <Wave />
               </span>
