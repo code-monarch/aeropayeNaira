@@ -281,10 +281,10 @@ const PayedFlights = () => {
                                   {bookedFlight.userFirstName}&nbsp;
                                   {bookedFlight.userLastName},
                                 </span>
-                                <span className="mx-[8px]">
+                                {/* <span className="mx-[8px]">
                                   {bookedFlight.userFirstName}&nbsp;
                                   {bookedFlight.userLastName}
-                                </span>
+                                </span> */}
                               </p>
                             </div>
 
@@ -294,9 +294,7 @@ const PayedFlights = () => {
                               </div>
                             ) : (
                               <div>
-                                {checkedIn &&
-                                ref.current.flightCode ===
-                                  bookedFlight.flightCode ? (
+                                {bookedFlight?.checkedIn ? (
                                   <div className="flex items-center">
                                     {/* C */}
                                     <button
@@ -306,7 +304,7 @@ const PayedFlights = () => {
                                       Checked in
                                     </button>
                                   </div>
-                                ) : isCanceled ? (
+                                ) : bookedFlight?.cancelled ? (
                                   <div className="flex items-center">
                                     {/* Clam refund Button */}
                                     <button

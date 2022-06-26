@@ -17,11 +17,21 @@ const CheckInModal = ({
   onChecked,
   flightToCheckIn,
 }) => {
-  const [checkIn, { data: checkInResponse, loading: checkingIn }] =
-    useMutation(CHECK_IN);
+  const [checkIn, { data: checkInResponse, loading: checkingIn }] = useMutation(
+    CHECK_IN,
+    {
+      refetchQueries: [
+        { query: GET_BOOKED_FLIGHTS }, // DocumentNode object parsed with gql
+        "getAirlineFlights", // Query name
+      ],
+      onCompleted() {
+        onCloseModal();
+      },
+    }
+  );
 
   // Get Passenger Booked Flights
-  const { data: bookedFlights, loading, error } = useQuery(GET_BOOKED_FLIGHTS);
+  const { data: bookedFlights } = useQuery(GET_BOOKED_FLIGHTS);
   console.log("UserBooked Flights:", bookedFlights);
 
   const flights = bookedFlights?.getBookedFlight?.map((flight) => {

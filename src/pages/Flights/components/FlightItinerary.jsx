@@ -161,14 +161,14 @@ const FlightItinerary = () => {
                 </div>
               </div>
             </div>
-            <div className="flight-checkout">
-              <div className="flex items-center">
+            <div className="flight-checkout !justify-end">
+              {/* <div className="flex items-center">
                 <Profile className="mx-[10px]" />
                 <p>
                   Passengers:
                   <span className="mx-[8px]">Derek Hale</span>
                 </p>
-              </div>
+              </div> */}
 
               {/* Make Payment */}
               {/* Show Flight booking summary when Make Payment is clicked */}
