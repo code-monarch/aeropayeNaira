@@ -173,7 +173,7 @@ const Nav = ({ userName, isActive, setIsActive }) => {
                   {showOption && (
                     <ul className="profile-dropdown absolute top-8 z-[99999] right-0 ">
                       <li className="profile-name flex items-center">
-                        <Profile className="mr-[8px]" /> {firstname}
+                        <Profile className="mr-[8px] capitalize" /> {firstname}
                       </li>
                       <li
                         onClick={() => {
@@ -204,7 +204,7 @@ const Nav = ({ userName, isActive, setIsActive }) => {
                   <div className="flex justify-between items-center">
                     <div className="flex items-center">
                       <Profile />
-                      <span className="profile-name">{firstname}</span>
+                      <span className="profile-name !capitalize">{firstname}</span>
                       {/* <span className="profile-name">{firstname}</span> */}
                     </div>
                     <Arrow />
