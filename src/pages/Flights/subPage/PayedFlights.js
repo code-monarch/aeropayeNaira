@@ -9,7 +9,6 @@ import { ReactComponent as AirIbom } from "../../../assets/dashboard-icons/Airli
 import { ReactComponent as AirPeace } from "../../../assets/dashboard-icons/Airlines-2.svg";
 import { ReactComponent as Dana } from "../../../assets/dashboard-icons/danaLogo.svg";
 import { ReactComponent as Profile } from "../../../assets/dashboard-icons/profile.svg";
-// import { ReactComponent as Arrival } from "../../../assets/dashboard-icons/arrival-icon.svg";
 import { ReactComponent as Departure } from "../../../assets/dashboard-icons/departure-icon.svg";
 import { ReactComponent as Arr } from "../../../assets/dashboard-icons/Arr2.svg";
 import { ReactComponent as Plane } from "../../../assets/dashboard-icons/flight-plane.svg";
@@ -25,6 +24,7 @@ import CheckInModal from "../components/CheckInModal";
 
 import { useQuery } from "@apollo/client";
 import { GET_BOOKED_FLIGHTS } from "../../../hooks";
+import { FLIGHT_HISTORY } from "../../../hooks";
 
 const PayedFlights = () => {
   const [checkedIn, setCheckedIn] = useState(false);
@@ -59,6 +59,10 @@ const PayedFlights = () => {
   // Get Passenger Booked Flights
   const { data: bookedFlights, loading, error } = useQuery(GET_BOOKED_FLIGHTS);
   console.log("UserBooked Flights:", bookedFlights);
+
+  const { data: flightHistory } = useQuery(FLIGHT_HISTORY);
+  console.log("flight History", flightHistory?.bookedFlightHistory);
+  console.log("History", flightHistory);
 
   const flights = bookedFlights?.getBookedFlight?.map((flight) => {
     return {
@@ -308,7 +312,7 @@ const PayedFlights = () => {
                                   <div className="flex items-center">
                                     {/* Clam refund Button */}
                                     <button
-                                      className="cancel-button"
+                                      className="cancel-button cursor-not-allowed"
                                       onClick={onOpenRefundModal}
                                     >
                                       Cancelled
@@ -372,61 +376,37 @@ const PayedFlights = () => {
                   My flights history
                 </p>
                 <div className="flight-container_history-container">
-                  <div className="flight-history_item">
-                    <div className="flight-history_item-list">
-                      <p className="flight-history_item-list-places">
-                        <span className="mr-[12px]">Lagos (LOS)</span>
-                        <ArrRight />
-                        <span className="ml-[12px]">Abuja(ABV)</span>
-                      </p>
-                      <p className="flight-history_item-list-date">
-                        Feb 04, 2022
-                      </p>
+                  {flightHistory?.bookedFlightHistory &&
+                    flightHistory?.bookedFlightHistory?.map(
+                      (flightHistory, index) => (
+                        <div className="flight-history_item" key={index}>
+                          <div className="flight-history_item-list">
+                            <p className="flight-history_item-list-places">
+                              <span className="mr-[12px]">
+                                {flightHistory?.departureCity}
+                                {/* Lagos (LOS) */}
+                              </span>
+                              <ArrRight />
+                              <span className="ml-[12px]">
+                                {flightHistory?.arrivalCity}
+                                {/* Abuja(ABV) */}
+                              </span>
+                            </p>
+                            <p className="flight-history_item-list-date">
+                              {flightHistory?.arrivalDate}
+                              {/* Feb 04, 2022 */}
+                            </p>
+                          </div>
+                          <ShowIcon className="h-[12.75px] w-[15px]" />
+                        </div>
+                      )
+                    )}
+                  {(flightHistory?.bookedFlightHistory?.length === 0 ||
+                    flightHistory === undefined) && (
+                    <div className="flight-history_item !h-[200px] !flex !justify-center !items-center">
+                      NO RECORDS FOUND
                     </div>
-                    <ShowIcon className="h-[12.75px] w-[15px]" />
-                  </div>
-
-                  <div className="flight-history_item">
-                    <div className="flight-history_item-list">
-                      <p className="flight-history_item-list-places">
-                        <span className="mr-[12px]">Lagos (LOS)</span>
-                        <ArrRight />
-                        <span className="ml-[12px]">Abuja(ABV)</span>
-                      </p>
-                      <p className="flight-history_item-list-date">
-                        Feb 04, 2022
-                      </p>
-                    </div>
-                    <ShowIcon className="h-[12.75px] w-[15px]" />
-                  </div>
-
-                  <div className="flight-history_item">
-                    <div className="flight-history_item-list">
-                      <p className="flight-history_item-list-places">
-                        <span className="mr-[12px]">Lagos (LOS)</span>
-                        <ArrRight />
-                        <span className="ml-[12px]">Abuja(ABV)</span>
-                      </p>
-                      <p className="flight-history_item-list-date">
-                        Feb 04, 2022
-                      </p>
-                    </div>
-                    <ShowIcon className="h-[12.75px] w-[15px]" />
-                  </div>
-
-                  <div className="flight-history_item">
-                    <div className="flight-history_item-list">
-                      <p className="flight-history_item-list-places">
-                        <span className="mr-[12px]">Lagos (LOS)</span>
-                        <ArrRight />
-                        <span className="ml-[12px]">Abuja(ABV)</span>
-                      </p>
-                      <p className="flight-history_item-list-date">
-                        Feb 04, 2022
-                      </p>
-                    </div>
-                    <ShowIcon className="h-[12.75px] w-[15px]" />
-                  </div>
+                  )}
                 </div>
               </div>
             </div>
