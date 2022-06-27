@@ -40,10 +40,11 @@ const Withdraw = () => {
   const { data } = useQuery(BALANCE);
 
   // Get bank details Query
-  const { data: bankDetails, loading: loadingBanks } = useQuery(GET_BANK_DETAILS);
+  const { data: bankDetails, loading: loadingBanks } =
+    useQuery(GET_BANK_DETAILS);
   console.log("Bank Details:", bankDetails);
   const banks = bankDetails?.userBankDetails?.acctBank;
-  console.log("banksss: ", banks)
+  console.log("banksss: ", banks);
   const acctBank = bankDetails?.userBankDetails?.acctBank;
   const acctNumber = bankDetails?.userBankDetails?.acctNumber;
 
@@ -78,16 +79,16 @@ const Withdraw = () => {
 
   // Handle form submit
   const submit = (data) => {
-    console.log("dataaa", data)
+    console.log("dataaa", data);
     redeemFiat({
       variables: {
         amount: data?.amount,
         accountToWithdraw: data?.accountToWithdraw,
       },
     })
-    .then((res) => {
-      toastSuccess(`${res?.data?.redeemFiat?.message}`);
-      navigate(-1)      
+      .then((res) => {
+        toastSuccess(`${res?.data?.redeemFiat?.message}`);
+        navigate(-1);
       })
       .catch((error) => {
         toastError(`${error?.message}`);
@@ -130,7 +131,7 @@ const Withdraw = () => {
                       name="amount"
                       // value={() => { getValues("amount") }}
                       onFocus={() => setFocus(true)}
-                      className="input-email"
+                      className="input-email !pl-[5px]"
                       {...register("amount", {
                         required: "Please enter Amount",
                       })}
@@ -171,22 +172,30 @@ const Withdraw = () => {
                   <p className="withdraw-form_amount-form_title">
                     Select Withdrawal Account
                   </p>
-
-                  <button
-                    id="dropdownButton"
-                    name="accountToWithdraw"
-                    data-dropdown-toggle="dropdown"
-                    {...register("accountToWithdraw", {
-                      required: "Please select bank details",
-                    })}
-                    className="withdraw-form_amount-form_dropdown px-4 py-2.5 text-center inline-flex items-center justify-between"
-                    type="button"
-                  >
-                    {/* {loadingBanks && "Getting bank details..."} */}
-                    {bankdetailsLength === false && "No bank records found"}
-                    {bankDetails && "Select bank"}
-                    <ArrowDown />
-                  </button>
+                  <div className="w-full flex justify-between items-center">
+                    <input
+                      readOnly
+                      className="withdraw-form_amount-form_dropdown !w-[65%] !pl-[20px] py-2.5 text-left inline-flex items-center justify-between"
+                      {...register("accountToWithdraw", {
+                        required: "Please select bank details",
+                      })}
+                    />
+                    <button
+                      id="dropdownButton"
+                      name="accountToWithdraw"
+                      data-dropdown-toggle="dropdown"
+                      className="withdraw-form_amount-form_dropdown !w-[30%] px-4 py-2.5 text-center inline-flex items-center justify-between"
+                      type="button"
+                    >
+                      {/* {loadingBanks && "Getting bank details..."} */}
+                      {bankdetailsLength === false && "No bank records found"}
+                      {setValue}
+                      {bankDetails &&
+                        bankdetailsLength !== false &&
+                        "Select bank"}
+                      <ArrowDown />
+                    </button>
+                  </div>
                   <div className="w-[100%] flex justify-end">
                     <FormError errors={errors} name="accountToWithdraw" />
                   </div>
@@ -202,7 +211,7 @@ const Withdraw = () => {
                           onClick={() => {
                             setValue(
                               "accountToWithdraw",
-                              `${bank.acctNumber}`,
+                              `${bank?.acctNumber}`,
                               {
                                 shouldValidate: true,
                                 shouldDirty: true,
@@ -216,34 +225,6 @@ const Withdraw = () => {
                       ))}
                     </ul>
                   </div>
-                  {/* <button
-                    id="dropdownButton"
-                    data-dropdown-toggle="dropdown"
-                    className="withdraw-form_amount-form_dropdown px-4 py-2.5 text-center inline-flex items-center justify-between"
-                    type="button"
-                  >
-                    Firstbank - 0000000000
-                    <ArrowDown />
-                  </button>
-                  <div
-                    id="dropdown"
-                    className="hidden z-10 w-44 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
-                  >
-                    <ul className="py-1" aria-labelledby="dropdownButton">
-                      <li>
-                          Dashboard
-                      </li>
-                      <li>
-                          Settings
-                      </li>
-                      <li>
-                          Earnings
-                      </li>
-                      <li>
-                          Sign out
-                      </li>
-                    </ul>
-                  </div> */}
                 </div>
               </div>
 
