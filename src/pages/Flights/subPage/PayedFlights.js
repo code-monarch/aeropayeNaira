@@ -393,7 +393,7 @@ const PayedFlights = () => {
                               </span>
                             </p>
                             <p className="flight-history_item-list-date">
-                              {flightHistory?.arrivalDate}
+                              {flightHistory?.departureDate}
                               {/* Feb 04, 2022 */}
                             </p>
                           </div>
