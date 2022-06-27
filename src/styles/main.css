@@ -6,21 +6,17 @@ input {
   border: none;
   padding: 0 !important;
 }
-
 input:focus {
   border: none !important;
   outline: none !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 nav {
   background-color: white;
   padding: 14px 0;
-  -webkit-box-shadow: 0px 2px 4px 0px #0000000D;
-          box-shadow: 0px 2px 4px 0px #0000000D;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.0509803922);
 }
-
 nav ul .nav-item {
   font-family: "Mulish", sans-serif;
   font-weight: 400;
@@ -36,10 +32,8 @@ nav ul .nav-item {
   border-radius: 6px;
   padding: 12.5px 16px;
   border: 1px solid #22E0BB;
-  -webkit-transition: .4s ease-in-out;
-  transition: .4s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
-
 .btn-nav_refund:hover, .mobile-nav-items-button:hover {
   background: #22E0BB;
   color: #060A33;
@@ -53,7 +47,6 @@ nav ul .nav-item {
   padding-top: 20px;
   background: white;
 }
-
 .mobile-nav-items-list {
   margin: 8px 0;
   padding: 10px;
@@ -63,27 +56,23 @@ nav ul .nav-item {
   font-size: 16px;
   width: 100%;
   text-align: center;
-  -webkit-transition: background .5s ease-in-out;
-  transition: background .5s ease-in-out;
+  transition: background 0.5s ease-in-out;
 }
-
 .mobile-nav-items-list:hover {
   background: #22E0BB;
   color: #060A33;
 }
-
 .mobile-nav-items-button {
   margin: 8px 0;
 }
 
-.button-1, .mobile-booking .mobile-search_button, .booking-detail .book-section .booking-container .search_button, .booking-detail .book-section .booking-container-2 .search_button {
+.button-1, .booking-detail .book-section .booking-container .search_button, .booking-detail .book-section .booking-container-2 .search_button, .mobile-booking .mobile-search_button {
   height: 56px;
   width: 144px;
   border-radius: 6px;
   padding: 18px 16px;
   background: #22E0BB;
-  -webkit-box-shadow: 0px 12px 24px 0px #060A331A;
-          box-shadow: 0px 12px 24px 0px #060A331A;
+  box-shadow: 0px 12px 24px 0px rgba(6, 10, 51, 0.1019607843);
   margin: 0 8px;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
@@ -101,7 +90,6 @@ nav ul .nav-item {
   font-weight: 600;
   font-size: 14px;
 }
-
 .booking-container-dropdown .dropdown-1 {
   width: 128px;
 }
@@ -120,18 +108,15 @@ nav ul .nav-item {
   color: #212934;
   margin: 0 8px 8px 0;
 }
-
 .mobile-flight-dropdown-1 .dropdown, .mobile-flight-dropdown-2 .dropdown {
   width: 100%;
 }
-
 .mobile-flight-dropdown-1 .dropdown-2-container, .mobile-flight-dropdown-2 .dropdown-2-container {
   height: auto;
   width: 255px;
   border-radius: 6px;
   padding: 16px;
 }
-
 .mobile-flight-dropdown-1 .dropdown-2-container li, .mobile-flight-dropdown-2 .dropdown-2-container li {
   height: 42px;
   width: 223px;
@@ -141,27 +126,18 @@ nav ul .nav-item {
   color: #212934;
   margin: 19px 0px;
 }
-
-.mobile-flight-dropdown-1 .dropdown-2-container .active-icon, .mobile-flight-dropdown-2 .dropdown-2-container .active-icon, .mobile-flight-dropdown-1 .dropdown-2-container .non-active, .mobile-flight-dropdown-2 .dropdown-2-container .non-active, .mobile-flight-dropdown-1 .booking-detail .book-section .booking-container .dropdown-2 .dropdown-2-container .non-active, .booking-detail .book-section .booking-container .dropdown-2 .mobile-flight-dropdown-1 .dropdown-2-container .non-active, .mobile-flight-dropdown-2 .booking-detail .book-section .booking-container .dropdown-2 .dropdown-2-container .non-active, .booking-detail .book-section .booking-container .dropdown-2 .mobile-flight-dropdown-2 .dropdown-2-container .non-active, .mobile-flight-dropdown-1 .booking-detail .book-section .booking-container-2 .dropdown-2 .dropdown-2-container .non-active, .booking-detail .book-section .booking-container-2 .dropdown-2 .mobile-flight-dropdown-1 .dropdown-2-container .non-active, .mobile-flight-dropdown-2 .booking-detail .book-section .booking-container-2 .dropdown-2 .dropdown-2-container .non-active, .booking-detail .book-section .booking-container-2 .dropdown-2 .mobile-flight-dropdown-2 .dropdown-2-container .non-active {
+.mobile-flight-dropdown-1 .dropdown-2-container .active-icon, .mobile-flight-dropdown-1 .booking-detail .book-section .booking-container .dropdown-2 .dropdown-2-container .non-active, .mobile-flight-dropdown-1 .booking-detail .book-section .booking-container-2 .dropdown-2 .dropdown-2-container .non-active, .booking-detail .book-section .booking-container .dropdown-2 .mobile-flight-dropdown-1 .dropdown-2-container .non-active, .booking-detail .book-section .booking-container-2 .dropdown-2 .mobile-flight-dropdown-1 .dropdown-2-container .non-active, .mobile-flight-dropdown-2 .dropdown-2-container .active-icon, .mobile-flight-dropdown-2 .booking-detail .book-section .booking-container .dropdown-2 .dropdown-2-container .non-active, .mobile-flight-dropdown-2 .booking-detail .book-section .booking-container-2 .dropdown-2 .dropdown-2-container .non-active, .booking-detail .book-section .booking-container .dropdown-2 .mobile-flight-dropdown-2 .dropdown-2-container .non-active, .booking-detail .book-section .booking-container-2 .dropdown-2 .mobile-flight-dropdown-2 .dropdown-2-container .non-active, .mobile-flight-dropdown-1 .dropdown-2-container .non-active, .mobile-flight-dropdown-2 .dropdown-2-container .non-active {
   height: 32px;
   width: 32px;
   border-radius: 4px;
   border: 1px solid #22E0BB;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
-
 .mobile-flight-dropdown-1 .dropdown-2-container .non-active, .mobile-flight-dropdown-2 .dropdown-2-container .non-active {
   border: none;
 }
-
 .mobile-flight-dropdown-1 .dropdown-2-container .btn-confirm, .mobile-flight-dropdown-2 .dropdown-2-container .btn-confirm {
   height: 42px;
   width: 223px;
@@ -169,34 +145,22 @@ nav ul .nav-item {
   padding: 15px 16px;
   margin: 19px 0;
   background-color: #22E0BB;
-  -webkit-box-shadow: 0px 2px 4px rgba(6, 10, 51, 0.05);
-          box-shadow: 0px 2px 4px rgba(6, 10, 51, 0.05);
+  box-shadow: 0px 2px 4px rgba(6, 10, 51, 0.05);
   color: #060A33;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
-
-.mobile-flight-dropdown-1 .dropdown-2-container .passenger-type, .mobile-flight-dropdown-2 .dropdown-2-container .passenger-type, .mobile-flight-dropdown-1 .dropdown-2-container .passenger-des, .mobile-flight-dropdown-2 .dropdown-2-container .passenger-des, .mobile-flight-dropdown-1 .booking-detail .book-section .booking-container .dropdown-2 .dropdown-2-container .passenger-des, .booking-detail .book-section .booking-container .dropdown-2 .mobile-flight-dropdown-1 .dropdown-2-container .passenger-des, .mobile-flight-dropdown-2 .booking-detail .book-section .booking-container .dropdown-2 .dropdown-2-container .passenger-des, .booking-detail .book-section .booking-container .dropdown-2 .mobile-flight-dropdown-2 .dropdown-2-container .passenger-des, .mobile-flight-dropdown-1 .booking-detail .book-section .booking-container-2 .dropdown-2 .dropdown-2-container .passenger-des, .booking-detail .book-section .booking-container-2 .dropdown-2 .mobile-flight-dropdown-1 .dropdown-2-container .passenger-des, .mobile-flight-dropdown-2 .booking-detail .book-section .booking-container-2 .dropdown-2 .dropdown-2-container .passenger-des, .booking-detail .book-section .booking-container-2 .dropdown-2 .mobile-flight-dropdown-2 .dropdown-2-container .passenger-des {
+.mobile-flight-dropdown-1 .dropdown-2-container .passenger-type, .mobile-flight-dropdown-1 .booking-detail .book-section .booking-container .dropdown-2 .dropdown-2-container .passenger-des, .mobile-flight-dropdown-1 .booking-detail .book-section .booking-container-2 .dropdown-2 .dropdown-2-container .passenger-des, .booking-detail .book-section .booking-container .dropdown-2 .mobile-flight-dropdown-1 .dropdown-2-container .passenger-des, .booking-detail .book-section .booking-container-2 .dropdown-2 .mobile-flight-dropdown-1 .dropdown-2-container .passenger-des, .mobile-flight-dropdown-2 .dropdown-2-container .passenger-type, .mobile-flight-dropdown-2 .booking-detail .book-section .booking-container .dropdown-2 .dropdown-2-container .passenger-des, .mobile-flight-dropdown-2 .booking-detail .book-section .booking-container-2 .dropdown-2 .dropdown-2-container .passenger-des, .booking-detail .book-section .booking-container .dropdown-2 .mobile-flight-dropdown-2 .dropdown-2-container .passenger-des, .booking-detail .book-section .booking-container-2 .dropdown-2 .mobile-flight-dropdown-2 .dropdown-2-container .passenger-des, .mobile-flight-dropdown-1 .dropdown-2-container .passenger-des, .mobile-flight-dropdown-2 .dropdown-2-container .passenger-des {
   font-family: Rubik;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
   text-align: left;
 }
-
 .mobile-flight-dropdown-1 .dropdown-2-container .passenger-des, .mobile-flight-dropdown-2 .dropdown-2-container .passenger-des {
   font-size: 12px;
 }
@@ -204,34 +168,21 @@ nav ul .nav-item {
 .mobile-flight-dropdown-2 {
   margin: 0 0 8px 0;
 }
-
 .mobile-flight-dropdown-2 .dropdown {
   width: 100%;
 }
-
 .mobile-flight-dropdown-2 .dropdown-3-container {
   height: 160px;
   width: 213px;
   border-radius: 6px;
-  -webkit-box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
-          box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
-  display: -webkit-box;
-  display: -ms-flexbox;
+  box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   background: #FFFFFF;
   border: 1px solid #F5F8FA;
 }
-
 .mobile-flight-dropdown-2 .dropdown-3-container li {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
@@ -242,128 +193,101 @@ nav ul .nav-item {
   padding: 10px 16px;
   color: #212934;
 }
-
 .mobile-flight-dropdown-2 .dropdown-3-container li:hover {
   background: #F0FFFC;
 }
-
 .mobile-flight-dropdown-2 .dropdown-3-container .selected {
   background: #F0FFFC;
 }
 
 .mobile-booking {
   border: 0.5px solid #022A50;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border-radius: 0px 10px 10px 10px;
   padding: 20px 16px;
   margin: 0px 8px;
 }
-
 @media only screen and (max-width: 530px) {
   .mobile-booking .mobile-flight-container {
     position: relative;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
 }
-
 @media only screen and (max-width: 530px) {
   .mobile-booking .mobile-flight-container .mobile-switch-button {
     position: absolute;
-    -webkit-transform: rotate(90deg);
-            transform: rotate(90deg);
+    transform: rotate(90deg);
   }
 }
-
-.mobile-booking .mobile-departure, .mobile-booking .mobile-arrival, .mobile-booking .mobile-flight-date, .mobile-booking .mobile-flight-date-2 {
+.mobile-booking .mobile-departure, .mobile-booking .mobile-flight-date, .mobile-booking .mobile-flight-date-2, .mobile-booking .mobile-arrival {
   background: #F5F8FA;
   border: 1px solid #CED6DE;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border-radius: 6px;
   padding: 10px 16px;
   height: 56px;
   width: 100%;
   margin: 0 8px;
 }
-
 @media only screen and (max-width: 530px) {
-  .mobile-booking .mobile-departure, .mobile-booking .mobile-arrival, .mobile-booking .mobile-flight-date, .mobile-booking .mobile-flight-date-2 {
+  .mobile-booking .mobile-departure, .mobile-booking .mobile-flight-date, .mobile-booking .mobile-flight-date-2, .mobile-booking .mobile-arrival {
     margin-bottom: 12px;
   }
 }
-
-.mobile-booking .mobile-departure input, .mobile-booking .mobile-arrival input, .mobile-booking .mobile-flight-date input, .mobile-booking .mobile-flight-date-2 input {
+.mobile-booking .mobile-departure input, .mobile-booking .mobile-flight-date input, .mobile-booking .mobile-flight-date-2 input, .mobile-booking .mobile-arrival input {
   background: #F5F8FA;
   color: #B8C4CE;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   width: 100%;
 }
-
-.mobile-booking .mobile-departure input:focus, .mobile-booking .mobile-arrival input:focus, .mobile-booking .mobile-flight-date input:focus, .mobile-booking .mobile-flight-date-2 input:focus {
+.mobile-booking .mobile-departure input:focus, .mobile-booking .mobile-flight-date input:focus, .mobile-booking .mobile-flight-date-2 input:focus, .mobile-booking .mobile-arrival input:focus {
   outline: none;
 }
-
-.mobile-booking .mobile-departure span, .mobile-booking .mobile-arrival span, .mobile-booking .mobile-flight-date span, .mobile-booking .mobile-flight-date-2 span {
+.mobile-booking .mobile-departure span, .mobile-booking .mobile-flight-date span, .mobile-booking .mobile-flight-date-2 span, .mobile-booking .mobile-arrival span {
   margin-right: 10px;
 }
-
 .mobile-booking .mobile-arrival {
   width: 100% !important;
 }
-
 .mobile-booking .mobile-arrival input {
   width: 100%;
 }
-
 .mobile-booking .mobile-search_button {
-  -webkit-box-shadow: 0px 12px 24px 0px #060A331A;
-          box-shadow: 0px 12px 24px 0px #060A331A;
+  box-shadow: 0px 12px 24px 0px rgba(6, 10, 51, 0.1019607843);
   margin: 0;
 }
-
 @media only screen and (max-width: 640px) {
   .mobile-booking .mobile-search_button {
     width: 100%;
   }
 }
-
 .mobile-booking .mobile-flight-date, .mobile-booking .mobile-flight-date-2 {
   width: 100%;
   margin-left: 0;
 }
-
 .mobile-booking .mobile-flight-date .text-1, .mobile-booking .mobile-flight-date-2 .text-1 {
   font-size: 10px;
   color: #8895A7;
 }
-
 .mobile-booking .mobile-flight-date p, .mobile-booking .mobile-flight-date-2 p, .mobile-booking .mobile-flight-date .booking-dates, .mobile-booking .mobile-flight-date-2 .booking-dates {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   color: #212934;
 }
-
 .mobile-booking .mobile-flight-date p:placeholder, .mobile-booking .mobile-flight-date-2 p:placeholder, .mobile-booking .mobile-flight-date .booking-dates:placeholder, .mobile-booking .mobile-flight-date-2 .booking-dates:placeholder {
   color: #212934;
 }
-
 .mobile-booking .mobile-flight-date-2 {
   width: 100%;
   margin: 0 12px;
 }
-
 @media only screen and (max-width: 530px) {
   .mobile-booking .mobile-flight-date-2 {
     margin: 0 0 8px;
     height: auto;
   }
 }
-
 .mobile-booking .mobile-flight-date-2 .line {
   width: 1px;
   height: 23px;
@@ -382,23 +306,19 @@ nav ul .nav-item {
   padding-top: 64px;
   padding-bottom: 50px;
 }
-
 .login-container {
   width: 500px;
   margin: 32px auto;
   border-radius: 8px;
   padding: 32px;
   background: #FFFFFF;
-  -webkit-box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.04);
-          box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.04);
 }
-
 @media only screen and (max-width: 500px) {
   .login-container {
     width: 90%;
   }
 }
-
 .login-container .title {
   font-family: "Rubik", sans-serif;
   font-weight: 500;
@@ -406,7 +326,6 @@ nav ul .nav-item {
   color: #060A33;
   margin: 10px 0;
 }
-
 .login-container .subtitle-1 {
   font-size: 14px;
   font-family: "Mulish", sans-serif;
@@ -414,7 +333,6 @@ nav ul .nav-item {
   color: #5F6B7A;
   margin: 8px 0;
 }
-
 .login-container .error-message {
   font-size: 14px;
   font-family: "Mulish", sans-serif;
@@ -422,26 +340,22 @@ nav ul .nav-item {
   color: red;
   margin: 8px 0;
 }
-
 .login-container .line {
   height: 0.5px;
   background: #E1E7EC;
   margin: 16px 0;
   width: 100%;
 }
-
 .login-container .error-line {
   height: 0.5px;
   background: red;
   margin: 16px 0;
   width: 100%;
 }
-
 .login-container_email {
   width: 100%;
   margin-bottom: 23px;
 }
-
 .login-container_email .label {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
@@ -449,26 +363,22 @@ nav ul .nav-item {
   margin: 8px 0;
   color: #212934;
 }
-
 .login-container_email label {
   height: 48px;
   width: 100%;
   border-radius: 6px;
   padding: 10px 16px 10px 12px;
-  border: 1px solid #e1e7ec;
+  border: 1px solid rgb(225, 231, 236);
 }
-
 .login-container_email label input {
   width: 100%;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   color: #212934;
 }
-
 .login-container_email label input:focus {
   outline: none;
 }
-
 .login-container_email .forgot-password {
   font-family: "Rubik", sans-serif;
   color: #060A33;
@@ -476,7 +386,6 @@ nav ul .nav-item {
   font-size: 12px;
   margin: 12px 0;
 }
-
 .login-container_captcha {
   height: 56px;
   width: 100%;
@@ -486,24 +395,20 @@ nav ul .nav-item {
   padding: 10px;
   margin-bottom: 23px;
 }
-
 .login-container_captcha label p {
   margin: 0 8px;
   color: #0B0B0B;
   font-size: 12px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
-
-.login-container_captcha label input[type="checkbox"] {
+.login-container_captcha label input[type=checkbox] {
   height: 18px;
   width: 18px;
 }
-
-.login-container_captcha label input[type="checkbox"]:before {
+.login-container_captcha label input[type=checkbox]:before {
   background-color: #22E0BB;
   border: #22E0BB;
 }
-
 .login-container_login {
   height: 48px;
   width: 100%;
@@ -514,7 +419,6 @@ nav ul .nav-item {
   font-family: "Rubik", sans-serif;
   font-weight: 500;
 }
-
 .login-container_login-2 {
   height: 48px;
   width: 100%;
@@ -525,11 +429,9 @@ nav ul .nav-item {
   font-family: "Rubik", sans-serif;
   font-weight: 500;
 }
-
 .login-container-code {
   margin: 23px 0;
 }
-
 .login-container-code input {
   height: 48px;
   width: 48px;
@@ -541,11 +443,9 @@ nav ul .nav-item {
   font-family: "Rubik", sans-serif;
   color: #212934;
 }
-
 .login-container-code input:focus {
   outline: none;
 }
-
 .login-subtitle {
   font-family: "Mulish", sans-serif;
   color: #212934;
@@ -553,13 +453,11 @@ nav ul .nav-item {
   text-align: center;
   margin-bottom: 60px;
 }
-
 .login-subtitle .login-link {
   font-family: "Rubik", sans-serif;
   font-weight: 500;
   color: #060A33;
 }
-
 .login-subtitle-3 {
   font-family: "Mulish", sans-serif;
   color: #212934;
@@ -567,13 +465,11 @@ nav ul .nav-item {
   text-align: center;
   margin-top: 23px;
 }
-
 .login-subtitle-3 .login-link {
   font-family: "Rubik", sans-serif;
   font-weight: 500;
   color: #060A33;
 }
-
 .login-text {
   font-family: "Rubik", sans-serif;
   font-weight: 500;
@@ -582,19 +478,16 @@ nav ul .nav-item {
   text-align: center;
   margin-top: 23px;
 }
-
 .login-footer-link {
   font-family: "Rubik", sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: #5F6B7A;
 }
-
 .login-footer-link_item {
   margin-left: 10px;
   margin-right: 10px;
 }
-
 .login .password-footer-link {
   margin-top: 12rem;
   font-family: "Rubik", sans-serif;
@@ -602,7 +495,6 @@ nav ul .nav-item {
   font-weight: 400;
   color: #5F6B7A;
 }
-
 .login .password-footer-link_item {
   margin-left: 10px;
   margin-right: 10px;
@@ -610,55 +502,40 @@ nav ul .nav-item {
 
 .clicked {
   border: 1px solid #22E0BB !important;
-  -webkit-box-shadow: 0px 0px 0px 3px rgba(34, 224, 187, 0.35) !important;
-          box-shadow: 0px 0px 0px 3px rgba(34, 224, 187, 0.35) !important;
+  box-shadow: 0px 0px 0px 3px rgba(34, 224, 187, 0.35) !important;
   border-radius: 6px !important;
 }
 
 nav .navigation-link {
-  color: #5f6b7a;
+  color: rgb(95, 107, 122);
   font-family: "Rubik", sans-serif;
   font-weight: 400;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   font-size: 16px;
   margin-top: 2px;
 }
-
 @media only screen and (min-width: 1536px) {
   nav .navigation-link {
     font-size: 18px;
   }
 }
-
 nav .active {
   color: #060A33;
   font-weight: 500;
   position: relative;
 }
-
 nav .btn-badge {
-  background: #f7fafc;
+  background: rgb(247, 250, 252);
   width: 160px;
   height: 38px;
   border-radius: 10px;
-  border: 1px solid #e2edf6;
+  border: 1px solid rgb(226, 237, 246);
   padding: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
-
 nav .btn-badge .notify {
   color: #5f6b7a;
   font-family: "Rubik", sans-serif;
@@ -666,9 +543,8 @@ nav .btn-badge .notify {
   font-size: 14px;
   margin: 0 8px;
 }
-
 nav .btn-badge .badge {
-  background: #d62f4b;
+  background: rgb(214, 47, 75);
   padding: 4px;
   border-radius: 6px;
   height: 18px;
@@ -677,17 +553,15 @@ nav .btn-badge .badge {
   font-family: "Rubik", sans-serif;
   font-weight: 500;
 }
-
 nav .profile-btn {
   height: 38px;
   width: 144px;
   border-radius: 10px;
   padding: 6px 12px;
-  background: #f7fafc;
-  border: 1px solid #e2edf6;
+  background: rgb(247, 250, 252);
+  border: 1px solid rgb(226, 237, 246);
   margin: 0 16px;
 }
-
 nav .profile-btn .profile-name {
   color: #5f6b7a;
   font-family: "Rubik", sans-serif;
@@ -695,58 +569,42 @@ nav .profile-btn .profile-name {
   font-size: 14px;
   margin: 0 8px;
 }
-
 nav .profile-btn .profile-dropdown {
   background: white;
   height: 80px;
   width: 144px;
   border-radius: 6px;
-  -webkit-box-shadow: 0px 8px 30px 0px rgba(174, 174, 192, 0.15);
-          box-shadow: 0px 8px 30px 0px rgba(174, 174, 192, 0.15);
-  border: 1px solid #e1e7ec;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  box-shadow: 0px 8px 30px 0px rgba(174, 174, 192, 0.15);
+  border: 1px solid rgb(225, 231, 236);
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
-
 nav .profile-btn .profile-dropdown li {
   padding: 12px 16px;
   font-size: 14px;
   font-weight: 400;
   height: 40px;
 }
-
 nav .profile-btn .profile-dropdown li .settings {
   font-family: "Rubik", sans-serif;
   color: #5f6b7a;
   margin: 0 8px;
 }
-
 nav .profile-btn .profile-dropdown .log-out {
   color: #d62f4b;
   font-family: "Rubik", sans-serif;
   margin: 0 8px;
 }
-
 nav .profile-button {
   height: 38px;
   border-radius: 10px;
   padding: 6px 12px;
-  background: #f7fafc;
-  border: 1px solid #e2edf6;
+  background: rgb(247, 250, 252);
+  border: 1px solid rgb(226, 237, 246);
   margin: 0 16px;
 }
-
 nav .profile-button .profile-name {
   color: #5f6b7a;
   font-family: "Rubik", sans-serif;
@@ -754,44 +612,30 @@ nav .profile-button .profile-name {
   font-size: 14px;
   margin: 0 8px;
 }
-
 nav .profile-button .profile-dropdown {
   background: white;
   height: auto;
   width: 144px;
   border-radius: 6px;
-  -webkit-box-shadow: 0px 8px 30px 0px rgba(174, 174, 192, 0.15);
-          box-shadow: 0px 8px 30px 0px rgba(174, 174, 192, 0.15);
-  border: 1px solid #e1e7ec;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  box-shadow: 0px 8px 30px 0px rgba(174, 174, 192, 0.15);
+  border: 1px solid rgb(225, 231, 236);
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   margin-top: 10px;
 }
-
 nav .profile-button .profile-dropdown li {
   padding: 12px 16px;
   font-size: 14px;
   font-weight: 400;
   height: 40px;
 }
-
 nav .profile-button .profile-dropdown li .settings {
   font-family: "Rubik", sans-serif;
   color: #5f6b7a;
   margin: 0 8px;
 }
-
 nav .profile-button .profile-dropdown .log-out {
   color: #d62f4b;
   font-family: "Rubik", sans-serif;
@@ -807,52 +651,35 @@ nav .profile-button .profile-dropdown .log-out {
   position: absolute;
   width: 50%;
   background: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
   z-index: 999999;
   left: 0;
   padding: 33px 18px;
 }
-
 @media only screen and (min-width: 501px) and (max-width: 600px) {
   .nav-mobile-container {
     width: 80%;
   }
 }
-
 @media only screen and (max-width: 500px) {
   .nav-mobile-container {
     width: 100%;
   }
 }
-
 .nav-mobile-container .mobile_btn-badge {
-  background: #f7fafc;
+  background: rgb(247, 250, 252);
   width: 200px;
   height: 48px;
   border-radius: 10px;
-  border: 1px solid #e2edf6;
+  border: 1px solid rgb(226, 237, 246);
   padding: 10px;
   margin-right: 16px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
-
 .nav-mobile-container .mobile_btn-badge .notify {
   color: #5f6b7a;
   font-family: "Rubik", sans-serif;
@@ -860,9 +687,8 @@ nav .profile-button .profile-dropdown .log-out {
   font-size: 14px;
   margin: 0 8px;
 }
-
 .nav-mobile-container .mobile_btn-badge .badge {
-  background: #d62f4b;
+  background: rgb(214, 47, 75);
   padding: 4px;
   border-radius: 6px;
   height: 18px;
@@ -871,16 +697,14 @@ nav .profile-button .profile-dropdown .log-out {
   font-family: "Rubik", sans-serif;
   font-weight: 500;
 }
-
 .nav-mobile-container .mobile_profile-btn {
   height: 48px;
   width: 160px;
   border-radius: 10px;
   padding: 6px 12px;
-  background: #f7fafc;
-  border: 1px solid #e2edf6;
+  background: rgb(247, 250, 252);
+  border: 1px solid rgb(226, 237, 246);
 }
-
 .nav-mobile-container .mobile_profile-btn .profile-name {
   color: #5f6b7a;
   font-family: "Rubik", sans-serif;
@@ -888,70 +712,46 @@ nav .profile-button .profile-dropdown .log-out {
   font-size: 14px;
   margin: 0 8px;
 }
-
 .nav-mobile-container .mobile_profile-btn .profile-dropdown {
   background: white;
   height: 80px;
   width: 144px;
   border-radius: 6px;
-  -webkit-box-shadow: 0px 8px 30px 0px rgba(174, 174, 192, 0.15);
-          box-shadow: 0px 8px 30px 0px rgba(174, 174, 192, 0.15);
-  border: 1px solid #e1e7ec;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  box-shadow: 0px 8px 30px 0px rgba(174, 174, 192, 0.15);
+  border: 1px solid rgb(225, 231, 236);
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
-
 .nav-mobile-container .mobile_profile-btn .profile-dropdown li {
   padding: 12px 16px;
   font-size: 14px;
   font-weight: 400;
   height: 40px;
 }
-
 .nav-mobile-container .mobile_profile-btn .profile-dropdown li .settings {
   font-family: "Rubik", sans-serif;
   color: #5f6b7a;
   margin: 0 8px;
 }
-
 .nav-mobile-container .mobile_profile-btn .profile-dropdown .log-out {
   color: #d62f4b;
   font-family: "Rubik", sans-serif;
   margin: 0 8px;
 }
-
 .nav-mobile-container .line {
   width: 100%;
   height: 0.5px;
   background: #f5f8fa;
   margin: 24px 0;
 }
-
 .nav-mobile-container_list {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 100%;
 }
-
 .nav-mobile-container_list-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   font-size: 16px;
   font-family: "Rubik", sans-serif;
@@ -961,12 +761,10 @@ nav .profile-button .profile-dropdown .log-out {
   padding: 16px;
   margin-bottom: 8px;
 }
-
 .nav-mobile-container_list-item:hover {
   background: #f7fafc;
   border-radius: 8px;
 }
-
 .nav-mobile-container_list .active-mobile-nav {
   color: #060A33;
   font-weight: 500;
@@ -977,7 +775,6 @@ nav .profile-button .profile-dropdown .log-out {
 .home {
   background: #F7FAFC;
 }
-
 .home .welcome-div {
   background-color: #060A33;
   background-image: url("../assets/icons/logomark.svg");
@@ -986,23 +783,19 @@ nav .profile-button .profile-dropdown .log-out {
   background-size: contain;
   padding: 38px 64px;
 }
-
 @media only screen and (max-width: 662px) {
   .home .welcome-div {
     padding: 28px 18px;
   }
 }
-
 .home .welcome-div_message {
   width: 602px;
 }
-
 @media only screen and (max-width: 662px) {
   .home .welcome-div_message {
     width: 100%;
   }
 }
-
 .home .welcome-div_message .title {
   font-family: Rubik;
   font-size: 28px;
@@ -1010,14 +803,9 @@ nav .profile-button .profile-dropdown .log-out {
   line-height: 33px;
   text-align: left;
   color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
 }
-
 .home .welcome-div_message .title .username {
   font-family: Rubik;
   font-size: 28px;
@@ -1026,11 +814,9 @@ nav .profile-button .profile-dropdown .log-out {
   text-align: left;
   color: white;
 }
-
 .home .welcome-div_message .title .message-icon {
   margin: 0 16px;
 }
-
 .home .welcome-div_message .text {
   margin: 10px 0;
   color: #E1E7EC;
@@ -1039,104 +825,73 @@ nav .profile-button .profile-dropdown .log-out {
   font-family: "Circular", sans-serif;
   font-weight: 400;
 }
-
 .home .home-container {
   margin: 0 auto;
 }
-
 @media only screen and (min-width: 677px) and (max-width: 1074px) {
   .home .home-container {
     width: 90%;
   }
 }
-
 @media only screen and (max-width: 676px) {
   .home .home-container {
     width: 100%;
     padding: 24px 18px 32px;
   }
 }
-
 .home .home-container .get-started {
-  background: #fff6ed;
+  background: rgb(255, 246, 237);
   margin: 32px 0;
   border-radius: 3px;
-  border: 1px solid #ffd0a1;
+  border: 1px solid rgb(255, 208, 161);
   padding: 32px 32px 36px;
 }
-
 @media only screen and (max-width: 500px) {
   .home .home-container .get-started {
     padding: 16px;
     margin-top: 0px;
   }
 }
-
 .home .home-container .get-started .getting_started {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
   width: 100%;
 }
-
 @media only screen and (max-width: 594px) {
   .home .home-container .get-started .getting_started {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
 }
-
 @media only screen and (max-width: 1024px) {
   .home .home-container .get-started .getting_started {
     margin-top: 24px;
   }
 }
-
 .home .home-container .get-started_container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
 @media only screen and (min-width: 780px) {
   .home .home-container .get-started_container {
     margin-right: 132px;
   }
 }
-
 @media only screen and (max-width: 594px) {
   .home .home-container .get-started_container {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-direction: row;
+    align-items: center;
   }
 }
-
 @media only screen and (min-width: 360px) and (max-width: 594px) {
   .home .home-container .get-started_container .infoo {
     margin-right: 32px !important;
   }
 }
-
 @media only screen and (max-width: 360px) {
   .home .home-container .get-started_container .infoo {
     margin-right: 16px !important;
   }
 }
-
 .home .home-container .get-started_container .infoo_title {
   color: #212934;
   font-size: 18px;
@@ -1144,7 +899,6 @@ nav .profile-button .profile-dropdown .log-out {
   font-weight: 700;
   margin: 8px 0;
 }
-
 .home .home-container .get-started_container .infoo_subtitle {
   color: #5F6B7A;
   line-height: 20px;
@@ -1152,55 +906,39 @@ nav .profile-button .profile-dropdown .log-out {
   font-family: "Circular", sans-serif;
   width: 196px;
 }
-
 .home .home-container .get-started_steps {
   width: auto;
   font-family: "Circular", sans-serif;
 }
-
 .home .home-container .get-started_steps .complete {
   font-size: 14px;
   color: #5F6B7A;
   font-family: "Circular", sans-serif;
   font-weight: 400;
 }
-
 .home .home-container .get-started_steps .step-stat-done {
   width: 43px;
   height: 18px;
   padding: 4px;
   margin: 0 12px;
   color: #5F6B7A;
-  border: 1px solid #5f6b7a;
+  border: 1px solid rgb(95, 107, 122);
   border-radius: 30px;
   font-size: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
-
 @media only screen and (max-width: 649px) {
   .home .home-container .get-started_steps .step-stat-done {
     margin-left: 0 !important;
   }
 }
-
 .home .home-container .get-started_steps .step {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin: 16px 0;
 }
-
 .home .home-container .get-started_steps .step-stat {
   width: 43px;
   height: 18px;
@@ -1210,31 +948,22 @@ nav .profile-button .profile-dropdown .log-out {
   background: #22E0BB;
   border-radius: 30px;
   font-size: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   font-weight: 700;
 }
-
 @media only screen and (max-width: 649px) {
   .home .home-container .get-started_steps .step-stat {
     margin-left: 0 !important;
   }
 }
-
 @media only screen and (max-width: 343px) {
   .home .home-container .get-started_steps .step-stat {
     width: auto;
     height: auto;
   }
 }
-
 .home .home-container .get-started_steps .step-info {
   margin: 0 12px 0 0;
   color: #212934;
@@ -1242,15 +971,13 @@ nav .profile-button .profile-dropdown .log-out {
   font-family: "Circular", sans-serif;
   font-weight: 400;
 }
-
-.home .home-container .get-started .checkbox input[type='checkbox'] {
+.home .home-container .get-started .checkbox input[type=checkbox] {
   height: 18px;
   width: 18px;
   border-radius: 4px;
-  border: 1px solid #e1e7ec;
+  border: 1px solid rgb(225, 231, 236);
   background-color: white !important;
 }
-
 .home .home-container .get-started .checkbox-info {
   font-family: "Rubik", sans-serif;
   color: #212934;
@@ -1258,7 +985,6 @@ nav .profile-button .profile-dropdown .log-out {
   margin: 0 12px;
   font-weight: 400;
 }
-
 .home .user-details_container {
   width: 421px;
   height: 200px;
@@ -1266,16 +992,13 @@ nav .profile-button .profile-dropdown .log-out {
   background: white;
   margin-bottom: 120px;
   padding: 16px 32px 26px;
-  -webkit-box-shadow: 0px 2px 6px 0px #0000000D;
-          box-shadow: 0px 2px 6px 0px #0000000D;
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.0509803922);
 }
-
 @media only screen and (min-width: 1025px) and (max-width: 1074px) {
   .home .user-details_container {
     height: 250px;
   }
 }
-
 @media only screen and (min-width: 501px) and (max-width: 1024px) {
   .home .user-details_container {
     margin-bottom: 23px;
@@ -1283,7 +1006,6 @@ nav .profile-button .profile-dropdown .log-out {
     margin-right: 0 !important;
   }
 }
-
 @media only screen and (max-width: 639px) {
   .home .user-details_container {
     width: 100%;
@@ -1292,59 +1014,46 @@ nav .profile-button .profile-dropdown .log-out {
     height: auto;
   }
 }
-
 .home .user-details_container .type {
   color: #212934;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin: 16px 0;
   font-family: "Circular", sans-serif;
   font-weight: 400;
 }
-
 .home .user-details_container .type p {
   margin-right: 12px;
 }
-
 .home .user-details_container .balance-container {
   margin: 0 0 16px;
 }
-
 .home .user-details_container .balance-container .balance {
   font-size: 24px;
   font-family: "Rubik", sans-serif;
   font-weight: 700;
   color: #060A33;
 }
-
 .home .user-details_container .balance-container .rates {
   color: #8895A7;
   font-family: "Circular", sans-serif;
   font-weight: 400;
   margin: 8px 0;
 }
-
 .home .user-details_container .percentage-increase {
   color: #22E0BB;
   font-family: "Circular", sans-serif;
   font-weight: 400;
   margin-right: 4px;
 }
-
 .home .user-details_container .flight-booked {
   color: #212934;
   font-family: "Circular", sans-serif;
   font-weight: 400;
 }
-
 .home .user-details_container .flight-booked .book {
   margin: 8px 0;
 }
-
 .home .user-details_container .flight-booked .book .booked {
   margin-right: 8px;
   font-size: 18px;
@@ -1352,7 +1061,6 @@ nav .profile-button .profile-dropdown .log-out {
   font-weight: 700;
   font-family: "Rubik", sans-serif;
 }
-
 .home .user-details_container .flight-booked .book .aero-token {
   color: #8895A7;
   font-family: "Circular", sans-serif;
@@ -1365,62 +1073,44 @@ nav .profile-button .profile-dropdown .log-out {
   height: 100vh;
   padding: 64px;
 }
-
 @media only screen and (max-width: 644px) {
   .table_contain {
     padding: 30px 18px;
   }
 }
-
 .table_contain .table-container {
   max-width: 1280px;
   margin: 0 auto;
 }
-
 .table_contain .table-container .search-table {
   height: 48px;
   width: 340px;
   border-radius: 4px;
   padding: 12px 8px 12px 12px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   background: white;
 }
-
 .table_contain .table-container .search-table input {
   width: 100%;
   border: none;
   font-family: "Rubik", sans-serif;
   color: #B8C4CE;
 }
-
 .table_contain .table-container .search-table input:focus {
   outline: none !important;
   border: none !important;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
-
-.table_contain .table-container .search-table input::-webkit-input-placeholder {
+.table_contain .table-container .search-table input::-moz-placeholder {
   color: #B8C4CE;
 }
-
 .table_contain .table-container .search-table input:-ms-input-placeholder {
   color: #B8C4CE;
 }
-
-.table_contain .table-container .search-table input::-ms-input-placeholder {
-  color: #B8C4CE;
-}
-
 .table_contain .table-container .search-table input::placeholder {
   color: #B8C4CE;
 }
-
 .table_contain .table-container .filter-table {
   height: 48px;
   width: 200px;
@@ -1428,69 +1118,54 @@ nav .profile-button .profile-dropdown .log-out {
   padding: 12px 16px;
   background: white;
 }
-
 .table_contain .table-container .filter-table .filter-name {
   color: #212934;
   font-size: 14px;
   font-family: "Circular", sans-serif;
 }
-
 .table_contain .table-container .filter-table .filter-dropdown {
   width: 213px;
   border-radius: 6px;
   background: white;
-  border: 1px solid #f5f8fa;
-  -webkit-box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
-          box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
+  border: 1px solid rgb(245, 248, 250);
+  box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
 }
-
 .table_contain .table-container .filter-table .filter-dropdown li {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 14px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   color: #5F6B7A;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .table_contain .table-container .filter-table .filter-dropdown li:hover {
   background: #F0FFFC;
 }
-
 .table_contain .table-container .filter-table .filter-dropdown li button {
   padding: 12px 16px;
   margin: 0 8px;
 }
-
 .table_contain .table-container .table-head {
-  background: #212934;
+  background: rgb(33, 41, 52);
   font-family: "Rubik", sans-serif;
   font-weight: 600;
   font-size: 12px;
   padding: 12px 14px;
   height: 48px;
 }
-
 .table_contain .table-container .table-head_item {
   color: white;
 }
-
 .table_contain .table-container .table-body {
   height: 48px;
   padding: 14px 0;
 }
-
 .table_contain .table-container .table-body_items {
   color: #212934;
   font-weight: 500;
   font-family: "Circular", sans-serif;
   padding: 0 24px;
 }
-
 .table_contain .table-container .table-body_items .rates {
   font-size: 12px;
   color: #8895A7;
@@ -1498,20 +1173,13 @@ nav .profile-button .profile-dropdown .log-out {
   font-family: "Circular", sans-serif;
   margin: 2px 0;
 }
-
 .table_contain .table-container .table-body_items .status-completed {
   background: #C4EFDF;
   border-radius: 18px;
   padding: 4px 8px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 77px;
   height: 24px;
   color: #158957;
@@ -1519,21 +1187,11 @@ nav .profile-button .profile-dropdown .log-out {
   font-weight: 400;
   font-family: "Circular", sans-serif;
 }
-
 .table_contain .table-container .table-body_items .status-pending {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   padding: 4px 8px;
   width: 60px;
   height: 24px;
@@ -1557,39 +1215,29 @@ nav .profile-button .profile-dropdown .log-out {
   padding: 12px 16px;
   background: white;
 }
-
 .mobile-filter-table .filter-name {
   color: #212934;
   font-size: 14px;
   font-family: "Circular", sans-serif;
 }
-
 .mobile-filter-table .filter-dropdown {
   width: 213px;
   border-radius: 6px;
   background: white;
-  border: 1px solid #f5f8fa;
-  -webkit-box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
-          box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
+  border: 1px solid rgb(245, 248, 250);
+  box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
 }
-
 .mobile-filter-table .filter-dropdown li {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 14px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   color: #5F6B7A;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .mobile-filter-table .filter-dropdown li:hover {
   background: #F0FFFC;
 }
-
 .mobile-filter-table .filter-dropdown li button {
   padding: 12px 16px;
   margin: 0 8px;
@@ -1600,7 +1248,6 @@ nav .profile-button .profile-dropdown .log-out {
   height: auto;
   padding-bottom: 30px;
 }
-
 .wallet-container .wallet {
   background-color: #060A33;
   background-image: url("../assets/dashboard-icons/bubbles 3.svg");
@@ -1608,36 +1255,22 @@ nav .profile-button .profile-dropdown .log-out {
   background-size: contain;
   height: auto;
   padding: 50px 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: center;
+  flex-direction: column;
 }
-
 .wallet-container .wallet-type {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .wallet-container .wallet-type p {
   font-family: "Rubik", sans-serif;
-  color: #B8C4CE;
+  color: #b8c4ce;
   text-transform: uppercase;
   margin: 0 12px;
   font-weight: 400;
   font-size: 16px;
 }
-
 .wallet-container .wallet-bal {
   font-family: "Rubik", sans-serif;
   font-weight: 700;
@@ -1645,125 +1278,87 @@ nav .profile-button .profile-dropdown .log-out {
   font-size: 36px;
   margin: 8px 0;
 }
-
 .wallet-container .wallet-rate {
   font-size: 16px;
-  color: #8895A7;
+  color: #8895a7;
   margin: 8px 0;
   font-family: "Circular", sans-serif;
   font-weight: 400;
 }
-
 .wallet-container .wallet-buttons {
   background: white;
   padding: 24px;
-  -webkit-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
   border-radius: 0px 0px 8px 8px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 672px;
   margin: 0 auto;
 }
-
 @media only screen and (max-width: 700px) {
   .wallet-container .wallet-buttons {
     width: 100%;
     padding: 18px;
   }
 }
-
 .wallet-container .wallet-buttons .button {
   margin: 0 12px;
   width: 112px;
   height: 42px;
   padding: 8px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
-  background: #F5F8FA;
-  border: 1px solid #E1E7EC;
+  background: #f5f8fa;
+  border: 1px solid #e1e7ec;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: #212934;
 }
-
 .wallet-container .wallet-buttons .button span {
   margin: 0 4px;
 }
-
 .wallet-container .wallet-buttons .deposit {
   background: #22E0BB;
-  border: 1px solid #22E0BB;
+  border: 1px solid #22e0bb;
   font-weight: 500;
 }
-
 .wallet-container .wallet-mobile-buttons {
   background: white;
   padding: 24px;
-  -webkit-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
   width: 100%;
   margin-bottom: 32px;
 }
-
 .wallet-container .wallet-mobile-buttons .mobile_button {
   width: 100%;
   height: 48px;
   padding: 8px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   border-radius: 6px;
-  background: #F5F8FA;
-  border: 1px solid #E1E7EC;
+  background: #f5f8fa;
+  border: 1px solid #e1e7ec;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: #212934;
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
 }
-
 .wallet-container .wallet-mobile-buttons .mobile_deposit {
   background: #22E0BB;
-  border: 1px solid #22E0BB;
+  border: 1px solid #22e0bb;
   font-weight: 500;
   width: 100%;
   margin-bottom: 16px;
 }
-
 .wallet-container .mobile-wallet-title {
   color: #060A33;
   font-weight: 700;
@@ -1772,30 +1367,25 @@ nav .profile-button .profile-dropdown .log-out {
   color: #060A33;
   margin-left: 20px;
 }
-
 .wallet-container .wallet-transaction {
   width: 672px;
   padding: 18px;
-  background: #FFFFFF;
-  -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   margin: 24px auto;
 }
-
 @media only screen and (max-width: 700px) {
   .wallet-container .wallet-transaction {
     width: 95%;
     padding: 16px;
   }
 }
-
 @media only screen and (max-width: 530px) {
   .wallet-container .wallet-transaction {
     margin: 16px auto 24px;
   }
 }
-
 .wallet-container .wallet-transaction .title {
   color: #060A33;
   font-weight: 700;
@@ -1804,39 +1394,32 @@ nav .profile-button .profile-dropdown .log-out {
   font-family: "Circular", sans-serif;
   color: #060A33;
 }
-
 .wallet-container .wallet-transaction .trans-history {
-  color: #0D7FE9;
+  color: #0d7fe9;
   font-family: "Rubik", sans-serif;
   font-size: 14px;
   font-weight: 500;
   margin: 0 10px;
 }
-
 .wallet-container .wallet-transaction .recent-history {
   margin: 25px 0 0;
 }
-
 .wallet-container .wallet-transaction .recent-history_list {
   padding: 10px 16px;
 }
-
 @media only screen and (max-width: 530px) {
   .wallet-container .wallet-transaction .recent-history_list {
     padding: 10px 0;
   }
 }
-
 .wallet-container .wallet-transaction .recent-history_list .details {
   margin: 0 12px;
 }
-
 @media only screen and (max-width: 530px) {
   .wallet-container .wallet-transaction .recent-history_list .details {
     margin: 0 0 0 12px;
   }
 }
-
 .wallet-container .wallet-transaction .recent-history_list .details .trans-description, .wallet-container .wallet-transaction .recent-history_list .details .trans-balance {
   font-family: "Rubik", sans-serif;
   font-weight: 500;
@@ -1844,27 +1427,23 @@ nav .profile-button .profile-dropdown .log-out {
   color: #060A33;
   margin: 4px 0;
 }
-
 @media only screen and (max-width: 530px) {
   .wallet-container .wallet-transaction .recent-history_list .details .trans-description, .wallet-container .wallet-transaction .recent-history_list .details .trans-balance {
     font-size: 14px;
   }
 }
-
 .wallet-container .wallet-transaction .recent-history_list .details .trans-date, .wallet-container .wallet-transaction .recent-history_list .details .trans-rate {
-  color: #8895A7;
+  color: #8895a7;
   font-size: 12px;
   margin: 0 0 4px;
   font-family: "Circular", sans-serif;
   font-weight: 400;
 }
-
 @media only screen and (max-width: 530px) {
   .wallet-container .wallet-transaction .recent-history_list .details .trans-date, .wallet-container .wallet-transaction .recent-history_list .details .trans-rate {
     font-size: 10px;
   }
 }
-
 .wallet-container .wallet-transaction .recent-history .divide {
   height: 0.5px;
   width: 100%;
@@ -1875,52 +1454,40 @@ nav .profile-button .profile-dropdown .log-out {
   background: #F7FAFC;
   height: 100vh;
 }
-
 .withdraw-container {
   width: 530px;
   margin: 0 auto;
 }
-
 @media only screen and (max-width: 560px) {
   .withdraw-container {
     width: 95%;
     padding: 18px 18px 60px;
   }
 }
-
 .withdraw-container .back-link {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   padding: 32px 0;
 }
-
 .withdraw-container .back-link_nav {
   margin: 0 10px;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
   font-size: 16px;
-  color: #5F6B7A;
+  color: #5f6b7a;
 }
-
 .withdraw-container .withdraw-form {
   background: white;
   width: 100%;
-  -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   padding: 32px;
 }
-
 @media only screen and (max-width: 560px) {
   .withdraw-container .withdraw-form {
     padding: 16px;
   }
 }
-
 .withdraw-container .withdraw-form_title {
   font-size: 18px;
   font-weight: 700;
@@ -1928,108 +1495,87 @@ nav .profile-button .profile-dropdown .log-out {
   color: #060A33;
   margin-bottom: 24px;
 }
-
 .withdraw-container .withdraw-form_amount-form_title {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   color: #212934;
   margin-bottom: 8px;
 }
-
 .withdraw-container .withdraw-form_amount-form_input {
-  border: 1px solid #E1E7EC;
+  border: 1px solid #e1e7ec;
   height: 48px;
   margin-bottom: 12px;
   border-radius: 6px;
   width: 100%;
 }
-
 .withdraw-container .withdraw-form_amount-form_input .cur {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: #212934;
-  background: #F5F8FA;
+  background: #f5f8fa;
 }
-
 .withdraw-container .withdraw-form_amount-form_input input {
   width: 100%;
   border: none;
   font-family: "Rubik", sans-serif;
   color: #212934;
 }
-
 .withdraw-container .withdraw-form_amount-form_input input:focus {
   outline: none;
   border: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
-
 .withdraw-container .withdraw-form_amount-form_input .max {
-  color: #8895A7;
+  color: #8895a7;
   font-family: "Circular", sans-serif;
   font-weight: 400;
 }
-
-.withdraw-container .withdraw-form_amount-form .input-email::-webkit-input-placeholder {
-  color: #B8C4CE !important;
+.withdraw-container .withdraw-form_amount-form .input-email::-moz-placeholder {
+  color: #b8c4ce !important;
 }
-
 .withdraw-container .withdraw-form_amount-form .input-email:-ms-input-placeholder {
-  color: #B8C4CE !important;
+  color: #b8c4ce !important;
 }
-
-.withdraw-container .withdraw-form_amount-form .input-email::-ms-input-placeholder {
-  color: #B8C4CE !important;
-}
-
 .withdraw-container .withdraw-form_amount-form .input-email::placeholder {
-  color: #B8C4CE !important;
+  color: #b8c4ce !important;
 }
-
 .withdraw-container .withdraw-form_amount-form_input-copy {
-  border: 0.5px solid #8895a7;
+  border: 0.5px solid rgb(136, 149, 167);
   height: 38px;
   margin-bottom: 24px;
   border-radius: 6px;
   width: 100%;
 }
-
 .withdraw-container .withdraw-form_amount-form_input-copy .copy {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: #212934;
-  background: #E1E7EC;
+  background: #e1e7ec;
 }
-
 .withdraw-container .withdraw-form_amount-form_input-copy input {
   width: 100%;
   border: none;
   font-family: "Rubik", sans-serif;
-  background: #F5F8FA;
+  background: #f5f8fa;
   font-size: 14px;
   padding: 9px 13px 9px 11px;
-  color: #5F6B7A;
+  color: #5f6b7a;
 }
-
 .withdraw-container .withdraw-form_amount-form_input-copy input:focus {
   outline: none;
   border: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
-
 .withdraw-container .withdraw-form_amount-form_balance {
-  color: #8895A7;
+  color: #8895a7;
   font-size: 14px;
   font-family: "Circular", sans-serif;
   font-weight: 400;
 }
-
 .withdraw-container .withdraw-form_amount-form_dropdown {
-  border: 1px solid #E1E7EC;
+  border: 1px solid #e1e7ec;
   height: 48px;
   margin-bottom: 12px;
   border-radius: 6px;
@@ -2038,148 +1584,108 @@ nav .profile-button .profile-dropdown .log-out {
   font-weight: 400;
   color: #212934;
 }
-
 .withdraw-container .withdraw-form_amount-form .platforms {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
-
 @media only screen and (max-width: 450px) {
   .withdraw-container .withdraw-form_amount-form .platforms {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
 }
-
 .withdraw-container .withdraw-form_amount-form .platforms .platform {
   height: 64px;
   width: 50%;
-  border: 1px solid #e1e7ec;
+  border: 1px solid rgb(225, 231, 236);
   padding: 16px;
   border-radius: 8px;
 }
-
 @media only screen and (max-width: 450px) {
   .withdraw-container .withdraw-form_amount-form .platforms .platform {
     width: 100%;
   }
 }
-
 .withdraw-container .withdraw-form_amount-form .platforms .platform .radio-button {
   width: 24px;
   height: 24px;
-  border: 1px solid #e1e7ec;
+  border: 1px solid rgb(225, 231, 236);
 }
-
-.withdraw-container .withdraw-form_amount-form .platforms .platform .radio-button[type='radio']:checked {
+.withdraw-container .withdraw-form_amount-form .platforms .platform .radio-button[type=radio]:checked {
   background-color: #22E0BB;
   border-color: #22E0BB;
 }
-
-.withdraw-container .withdraw-form_amount-form .platforms .platform .radio-button[type='radio']:focus {
+.withdraw-container .withdraw-form_amount-form .platforms .platform .radio-button[type=radio]:focus {
   outline: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
-
 .withdraw-container .withdraw-form_amount-form .platforms .platform-1 {
   margin-right: 22px;
 }
-
 @media only screen and (min-width: 451px) and (max-width: 560px) {
   .withdraw-container .withdraw-form_amount-form .platforms .platform-1 {
     margin-right: 15px;
   }
 }
-
 @media only screen and (max-width: 450px) {
   .withdraw-container .withdraw-form_amount-form .platforms .platform-1 {
     margin-right: 0;
     margin-bottom: 16px;
   }
 }
-
 .withdraw-container .withdraw-form_button {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   padding: 15px 16px;
   width: 100%;
   height: 48px;
   background: #22E0BB;
-  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
   margin: 0 0px 20px;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
   color: #060A33;
 }
-
 .withdraw-container .withdraw-form_info {
   text-align: center;
-  color: #5F6B7A;
+  color: #5f6b7a;
   font-size: 12px;
   margin: 0 10px;
   font-weight: 400;
   font-family: "Circular", sans-serif;
 }
-
 .withdraw-container .withdraw-form_info-depo {
   text-align: center;
-  color: #5F6B7A;
+  color: #5f6b7a;
   font-size: 12px;
   margin: 0 10px;
   font-weight: 400;
   font-family: "Circular", sans-serif;
 }
-
 @media only screen and (max-width: 560px) {
   .withdraw-container .withdraw-form_info-depo {
     text-align: left;
   }
 }
-
 .withdraw-container .withdraw-form_sub-info {
   font-family: "Rubik", sans-serif;
   font-weight: 500;
   font-size: 14px;
-  color: #060A33;
+  color: #060a33;
   text-align: center;
   margin-top: 20px;
 }
-
 .withdraw-container .withdraw-form_warning {
   border-radius: 4px;
   padding: 8px 14px;
-  background: #fff6ed;
-  border: 1px solid #fce3b9;
+  background: rgb(255, 246, 237);
+  border: 1px solid rgb(252, 227, 185);
   margin: 16px 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
   font-size: 12px;
   color: #212934;
   font-family: "Circular", sans-serif;
@@ -2187,8 +1693,7 @@ nav .profile-button .profile-dropdown .log-out {
 
 .clicked {
   border: 1px solid #22E0BB !important;
-  -webkit-box-shadow: 0px 0px 0px 3px rgba(34, 224, 187, 0.35) !important;
-          box-shadow: 0px 0px 0px 3px rgba(34, 224, 187, 0.35) !important;
+  box-shadow: 0px 0px 0px 3px rgba(34, 224, 187, 0.35) !important;
   border-radius: 6px !important;
 }
 
@@ -2199,7 +1704,6 @@ nav .profile-button .profile-dropdown .log-out {
 .settings-container-header {
   background: #060A33;
 }
-
 .settings-container-header_overview {
   font-family: "Circular", sans-serif;
   color: white;
@@ -2207,23 +1711,16 @@ nav .profile-button .profile-dropdown .log-out {
   font-weight: 400;
   padding: 38px 64px 64px;
 }
-
 @media only screen and (max-width: 662px) {
   .settings-container-header_overview {
     padding: 32px 18px;
   }
 }
-
 .settings-container-header_tab-btn {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   padding: 0 64px;
 }
-
 .settings-container-header_tab-btn .tab-button {
   color: #B8C4CE;
   font-family: "Rubik", sans-serif;
@@ -2231,26 +1728,18 @@ nav .profile-button .profile-dropdown .log-out {
   padding: 10px;
   height: 39px;
 }
-
 .settings-container-header .swiper-wrapper {
   width: auto;
   height: auto;
   overflow-x: scroll;
 }
-
 .settings-container-header .swiper-slide {
   width: auto !important;
 }
-
 .settings-container-header_mobile-tab-btn {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .settings-container-header_mobile-tab-btn .mobile-tab-button {
   color: #B8C4CE;
   font-family: "Rubik", sans-serif;
@@ -2258,37 +1747,25 @@ nav .profile-button .profile-dropdown .log-out {
   font-size: 14px;
   margin: 0 10px 10px;
 }
-
 .settings-container_tab {
   background-color: #F7FAFC;
   padding: 32px 0 72px 64px;
   height: 100%;
 }
-
 @media only screen and (max-width: 1120px) {
   .settings-container_tab {
     padding: 32px 18px;
   }
 }
-
 .settings-container_tab .account-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
 }
-
 @media only screen and (max-width: 777px) {
   .settings-container_tab .account-container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
 }
-
 .settings-container_tab .account-container_form {
   background: white;
   width: 872px;
@@ -2297,7 +1774,6 @@ nav .profile-button .profile-dropdown .log-out {
   height: auto;
   margin-right: 32px;
 }
-
 @media only screen and (max-width: 777px) {
   .settings-container_tab .account-container_form {
     margin-bottom: 24px;
@@ -2305,13 +1781,11 @@ nav .profile-button .profile-dropdown .log-out {
     margin-right: 0;
   }
 }
-
 @media only screen and (min-width: 778px) and (max-width: 1050px) {
   .settings-container_tab .account-container_form {
     width: 60%;
   }
 }
-
 .settings-container_tab .account-container_form .title {
   font-family: "Circular", sans-serif;
   font-weight: 700;
@@ -2319,7 +1793,6 @@ nav .profile-button .profile-dropdown .log-out {
   color: #060A33;
   margin-bottom: 5px;
 }
-
 .settings-container_tab .account-container_form .subtitle {
   font-family: "Circular", sans-serif;
   font-weight: 400;
@@ -2327,26 +1800,22 @@ nav .profile-button .profile-dropdown .log-out {
   color: #5F6B7A;
   width: 606px;
 }
-
 @media only screen and (max-width: 1050px) {
   .settings-container_tab .account-container_form .subtitle {
     width: 100%;
   }
 }
-
 .settings-container_tab .account-container_form .form-line {
-  background-color: #e1e7ec;
+  background-color: rgb(225, 231, 236);
   height: 0.5px;
   width: 100%;
   margin: 16px 0 20px 0;
 }
-
 .settings-container_tab .account-container_form .dotted-line {
-  border: 0.5px dashed #e1e7ec;
+  border: 0.5px dashed rgb(225, 231, 236);
   width: 100%;
   margin: 16px 0 20px 0;
 }
-
 .settings-container_tab .account-container_form .account-info {
   height: 42px;
   background: #DDEFFF;
@@ -2355,68 +1824,51 @@ nav .profile-button .profile-dropdown .log-out {
   margin-bottom: 20px;
   padding: 12px 24px 12px 12px;
 }
-
 @media only screen and (max-width: 859px) {
   .settings-container_tab .account-container_form .account-info {
     height: 100%;
   }
 }
-
 .settings-container_tab .account-container_form .account-info p {
   margin-left: 10px;
   font-size: 14px;
   font-family: "Circular", sans-serif;
   color: #212934;
 }
-
 .settings-container_tab .account-container_form .account-form .acct-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin-bottom: 20px;
 }
-
 @media only screen and (max-width: 990px) {
   .settings-container_tab .account-container_form .account-form .acct-form {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
     margin-bottom: 0;
   }
 }
-
 .settings-container_tab .account-container_form .account-form .acct-form .input_1 {
   margin-right: 20px;
 }
-
 @media only screen and (max-width: 990px) {
   .settings-container_tab .account-container_form .account-form .acct-form .input_1 {
     margin-right: 0;
   }
 }
-
 .settings-container_tab .account-container_form .account-form .acct-form .account-form_inputs {
   width: 50%;
 }
-
 @media only screen and (max-width: 990px) {
   .settings-container_tab .account-container_form .account-form .acct-form .account-form_inputs {
     width: 100%;
     margin-bottom: 14px;
   }
 }
-
 .settings-container_tab .account-container_form .account-form .acct-form .account-form_inputs-title {
   color: #212934;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   margin: 8px 0;
 }
-
 .settings-container_tab .account-container_form .account-form .acct-form .account-form_inputs-label {
   padding: 10px 16px 10px 12px;
   height: 44px;
@@ -2424,41 +1876,28 @@ nav .profile-button .profile-dropdown .log-out {
   border-radius: 6px;
   background: white;
   margin: 8px 0;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   font-weight: 400;
   font-family: "Rubik", sans-serif;
 }
-
 .settings-container_tab .account-container_form .account-form .acct-form .account-form_inputs-label .acct-input {
   border: none;
   width: 100%;
   color: #8895A7;
 }
-
 .settings-container_tab .account-container_form .account-form .acct-form .account-form_inputs-label .acct-input:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   border: none;
 }
-
-.settings-container_tab .account-container_form .account-form .acct-form .account-form_inputs-label .acct-input::-webkit-input-placeholder {
+.settings-container_tab .account-container_form .account-form .acct-form .account-form_inputs-label .acct-input::-moz-placeholder {
   color: #B8C4CE;
 }
-
 .settings-container_tab .account-container_form .account-form .acct-form .account-form_inputs-label .acct-input:-ms-input-placeholder {
   color: #B8C4CE;
 }
-
-.settings-container_tab .account-container_form .account-form .acct-form .account-form_inputs-label .acct-input::-ms-input-placeholder {
-  color: #B8C4CE;
-}
-
 .settings-container_tab .account-container_form .account-form .acct-form .account-form_inputs-label .acct-input::placeholder {
   color: #B8C4CE;
 }
-
 .settings-container_tab .account-container_form .account-form .acct-form .account-form_inputs-dropdown {
   padding: 10px 16px 10px 12px;
   height: 44px;
@@ -2466,14 +1905,11 @@ nav .profile-button .profile-dropdown .log-out {
   border-radius: 6px;
   background: white;
   margin: 8px 0;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   color: #8895A7;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
 }
-
 .settings-container_tab .account-container_form .account-form .acct-form .account-form_inputs .country-input {
   height: 44px;
   border-radius: 6px;
@@ -2484,54 +1920,41 @@ nav .profile-button .profile-dropdown .log-out {
   color: #212934;
   font-weight: 400;
 }
-
 .settings-container_tab .account-container_form .account-form .acct-form .account-form_inputs .country-input input {
   height: 100%;
 }
-
 .settings-container_tab .account-container_form .account-form .acct-form .account-form_inputs .country-input input:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   border: none;
 }
-
 .settings-container_tab .account-container_form .account-form .account-button {
   background: #22E0BB;
   color: #060A33;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
   padding: 15px 16px;
   border-radius: 6px;
   text-align: center;
   width: 178px;
   height: 48px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 @media only screen and (max-width: 400px) {
   .settings-container_tab .account-container_form .account-form .account-button {
     width: auto;
   }
 }
-
 .settings-container_tab .account-container_form .account-form .addUser-btn {
   margin-bottom: 20px;
 }
-
 .settings-container_tab .account-container_form .account-form .addUser-btn .span {
   font-family: "Rubik", sans-serif;
   font-weight: 500;
   color: #060A33;
   margin-left: 8px;
 }
-
 .settings-container_tab .account-container_form .account-form .removeUser-btn {
   margin-bottom: 20px;
   font-family: "Rubik", sans-serif;
@@ -2539,19 +1962,16 @@ nav .profile-button .profile-dropdown .log-out {
   color: #D62F4B;
   margin-left: 24px;
 }
-
 @media only screen and (max-width: 777px) {
   .settings-container_tab .account-container .accountss {
     width: 100%;
   }
 }
-
 @media only screen and (min-width: 778px) and (max-width: 1050px) {
   .settings-container_tab .account-container .accountss {
     width: 40%;
   }
 }
-
 .settings-container_tab .account-container .accountss .title {
   font-family: "Circular", sans-serif;
   font-weight: 700;
@@ -2559,29 +1979,24 @@ nav .profile-button .profile-dropdown .log-out {
   color: #060A33;
   margin-bottom: 5px;
 }
-
 .settings-container_tab .account-container .accountss-item {
   margin: 16px 0;
   background: white;
   width: 307px;
   padding: 16px;
   border-radius: 8px;
-  -webkit-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
 }
-
 @media only screen and (max-width: 430px) {
   .settings-container_tab .account-container .accountss-item {
     width: 100%;
   }
 }
-
 .settings-container_tab .account-container .accountss-item_one {
   background: #F7FAFC;
   padding: 17px 16px;
   border-radius: 5px;
 }
-
 .settings-container_tab .account-container .accountss-item_one p {
   height: 32px;
   font-family: "Rubik", sans-serif;
@@ -2589,14 +2004,12 @@ nav .profile-button .profile-dropdown .log-out {
   color: #5F6B7A;
   font-weight: 400;
 }
-
 .settings-container_tab .account-container .accountss-item_one p .values {
   font-family: "IBM Plex Mono", monospace;
   color: #212934;
   font-weight: 700;
   margin: 0 10px;
 }
-
 .settings-container_tab .account-container .accountss-item_two {
   background: #F7FAFC;
   padding: 17px 16px;
@@ -2604,7 +2017,6 @@ nav .profile-button .profile-dropdown .log-out {
   height: 38px;
   margin-bottom: 5px;
 }
-
 .settings-container_tab .account-container .accountss-item_two p {
   font-family: "IBM Plex Mono", monospace;
   color: #212934;
@@ -2612,62 +2024,43 @@ nav .profile-button .profile-dropdown .log-out {
   font-size: 14px;
   margin: 0 10px;
 }
-
 .settings-container_tab .account-container .accountss-item_remove {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin: 16px 0;
   font-family: "IBM Plex Mono", monospace;
   color: #D62F4B;
   font-weight: 700;
   font-size: 14px;
 }
-
 .settings-container_tab .security {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
 }
-
 @media only screen and (max-width: 770px) {
   .settings-container_tab .security {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
 }
-
 .settings-container_tab .security-container {
   background: white;
-  -webkit-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
   width: 633px;
   height: auto;
   border-radius: 8px;
   padding: 24px;
   margin-right: 32px;
 }
-
 @media only screen and (min-width: 771px) and (max-width: 1080px) {
   .settings-container_tab .security-container {
     width: 60%;
   }
 }
-
 @media only screen and (max-width: 770px) {
   .settings-container_tab .security-container {
     width: 100%;
   }
 }
-
 .settings-container_tab .security-container .title {
   font-family: "Circular", sans-serif;
   font-weight: 700;
@@ -2675,7 +2068,6 @@ nav .profile-button .profile-dropdown .log-out {
   color: #060A33;
   margin-bottom: 5px;
 }
-
 .settings-container_tab .security-container .subtitle {
   font-family: "Circular", sans-serif;
   font-weight: 400;
@@ -2683,50 +2075,42 @@ nav .profile-button .profile-dropdown .log-out {
   color: #5F6B7A;
   width: 472px;
 }
-
 @media only screen and (max-width: 770px) {
   .settings-container_tab .security-container .subtitle {
     width: 307px;
   }
 }
-
 @media only screen and (min-width: 771px) and (max-width: 1080px) {
   .settings-container_tab .security-container .subtitle {
     width: auto;
   }
 }
-
 .settings-container_tab .security-container .form-line {
-  background-color: #e1e7ec;
+  background-color: rgb(225, 231, 236);
   height: 0.5px;
   width: 100%;
   margin: 16px 0 20px 0;
 }
-
 .settings-container_tab .security-container .security-options-list {
   border-radius: 10px;
   padding: 20px 16px;
-  border: 1px solid #ced6de;
+  border: 1px solid rgb(206, 214, 222);
   margin-bottom: 20px;
 }
-
 .settings-container_tab .security-container .security-options-list_desc {
   width: 390px;
 }
-
 @media only screen and (max-width: 1080px) {
   .settings-container_tab .security-container .security-options-list_desc {
     width: auto !important;
   }
 }
-
 .settings-container_tab .security-container .security-options-list_desc .title {
   font-family: "Rubik", sans-serif;
   font-weight: 500;
   color: #212934;
   margin-bottom: 8px;
 }
-
 .settings-container_tab .security-container .security-options-list_desc .subtitle {
   font-family: "Circular", sans-serif;
   font-weight: 400;
@@ -2734,57 +2118,47 @@ nav .profile-button .profile-dropdown .log-out {
   font-size: 14px;
   margin-bottom: 10px;
 }
-
 @media only screen and (max-width: 1080px) {
   .settings-container_tab .security-container .security-options-list_desc .subtitle {
     width: auto !important;
   }
 }
-
 .settings-container_tab .security-container .security-options-list_toggle input:checked + .toggle-bg {
   background: #00B058 !important;
   border-color: #00B058 !important;
 }
-
 .settings-container_tab .security-container .security-options-list_toggle .toggle-bg::after {
   top: 15%;
   left: 15%;
   width: 18px;
   height: 18px;
 }
-
 .settings-container_tab .security-container .security-options-list_toggle .toggle-btn {
   height: 26px;
   width: 56px;
   background: #B8C4CE;
   border-radius: 19px;
-  -webkit-box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
-          box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
-
 .settings-container_tab .security-password {
   height: auto;
   width: 400px;
   border-radius: 8px;
   padding: 24px;
   background: white;
-  -webkit-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
 }
-
 @media only screen and (max-width: 770px) {
   .settings-container_tab .security-password {
     width: 100%;
     margin-top: 32px;
   }
 }
-
 @media only screen and (min-width: 771px) and (max-width: 1080px) {
   .settings-container_tab .security-password {
     width: 40%;
   }
 }
-
 .settings-container_tab .security-password .title {
   font-family: "Circular", sans-serif;
   font-weight: 700;
@@ -2792,7 +2166,6 @@ nav .profile-button .profile-dropdown .log-out {
   color: #060A33;
   margin-bottom: 5px;
 }
-
 .settings-container_tab .security-password .subtitle {
   font-family: "Circular", sans-serif;
   font-weight: 400;
@@ -2800,92 +2173,69 @@ nav .profile-button .profile-dropdown .log-out {
   color: #5F6B7A;
   width: 472px;
 }
-
 .settings-container_tab .security-password .form-line {
-  background-color: #e1e7ec;
+  background-color: rgb(225, 231, 236);
   height: 0.5px;
   width: 100%;
   margin: 16px 0 20px 0;
 }
-
 .settings-container_tab .security-password_form_inputs-title {
   margin-bottom: 8px;
   color: #212934;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
 }
-
 .settings-container_tab .security-password_form_inputs-label {
   height: 48px;
   padding: 10px 16px 10px 12px;
-  border: 1px solid #e1e7ec;
+  border: 1px solid rgb(225, 231, 236);
   border-radius: 6px;
   width: 100%;
 }
-
 .settings-container_tab .security-password_form .security-button {
   background: #22E0BB;
   color: #060A33;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
   padding: 15px 16px;
   border-radius: 6px;
   width: 100%;
   height: 48px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
-
 .settings-container_tab .currency-container {
   width: 448px;
 }
-
 @media only screen and (max-width: 640px) {
   .settings-container_tab .currency-container {
     width: 100%;
     margin-right: 0;
   }
 }
-
 .settings-container_tab .currency-container .subtitle {
   width: 298px;
 }
-
 @media only screen and (max-width: 400px) {
   .settings-container_tab .currency-container .subtitle {
     width: 100%;
   }
 }
-
 .settings-container_tab .currency-container .currency-button {
   background: #22E0BB;
   color: #060A33;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
   padding: 15px 16px;
   border-radius: 6px;
   width: 96px;
   height: 48px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .open-tab {
@@ -2901,11 +2251,10 @@ nav .profile-button .profile-dropdown .log-out {
   color: white !important;
   position: relative;
 }
-
 .mobile_open-tab::after {
   position: absolute;
   display: block;
-  content: '';
+  content: "";
   background-color: #22E0BB;
   height: 2px;
   width: 100%;
@@ -2924,51 +2273,34 @@ nav .profile-button .profile-dropdown .log-out {
   width: 700px;
   background: white;
 }
-
 @media only screen and (max-width: 755px) {
   .authmodal {
     width: 100%;
     margin: 0 auto !important;
   }
 }
-
 .authmodal .auth-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   background: #F7FAFC;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   padding: 16px 24px;
 }
-
 .authmodal .auth-header .title {
   font-family: "Rubik", sans-serif;
   font-size: 18px;
   color: #060A33;
   font-weight: 500;
 }
-
 .authmodal-container {
   padding: 24px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 @media only screen and (max-width: 755px) {
   .authmodal-container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
 }
-
 .authmodal-container .subtitle {
   width: 350px;
   color: #5F6B7A;
@@ -2976,7 +2308,6 @@ nav .profile-button .profile-dropdown .log-out {
   font-weight: 400;
   margin-bottom: 20px;
 }
-
 .authmodal-container .code-label .subtitle {
   color: #212934;
   font-family: "Circular", sans-serif;
@@ -2984,34 +2315,26 @@ nav .profile-button .profile-dropdown .log-out {
   font-size: 14px;
   width: 296px;
 }
-
 .authmodal-container .code-label .code-input {
   border-radius: 5px;
   height: 38px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin: 12px 0 29px;
 }
-
 .authmodal-container .code-label .code-input .auth-input {
   width: 100%;
   height: 38px;
   background: #F5F8FA;
-  border: 0.5px dashed #8895a7;
+  border: 0.5px dashed rgb(136, 149, 167);
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 14px;
   letter-spacing: 0.15rem;
 }
-
 .authmodal-container .code-label .code-input .auth-input:focus {
-  border: 0.5px dashed #8895a7 !important;
+  border: 0.5px dashed rgb(136, 149, 167) !important;
 }
-
 .authmodal-container .code-label .code-input .copy {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
@@ -3020,7 +2343,6 @@ nav .profile-button .profile-dropdown .log-out {
   background: #E1E7EC;
   height: 38px;
 }
-
 .authmodal-container .auth-code .subtitle {
   font-size: 14px;
   font-family: "Rubik", sans-serif;
@@ -3028,60 +2350,46 @@ nav .profile-button .profile-dropdown .log-out {
   color: #051B30;
   font-weight: 400;
 }
-
 .authmodal-container .auth-code .auth-button {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   background: #22E0BB;
   font-family: "Rubik", sans-serif;
   color: #060A33;
   font-weight: 500;
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
   height: 48px;
   padding: 15px 16px;
   border-radius: 6px;
 }
-
 .authmodal-container .auth-qrcode {
   width: 230px;
 }
-
 @media only screen and (max-width: 755px) {
   .authmodal-container .auth-qrcode {
     margin-top: 16px;
     width: 100%;
   }
 }
-
 .authmodal-container .auth-qrcode_info {
   background: #F7FAFC;
   border-radius: 6px;
   padding: 10px 7px;
   color: #212934;
 }
-
 .authmodal-container .auth-qrcode_info p {
   font-size: 13px;
   font-family: "Circular", sans-serif;
   font-weight: 400;
   width: 213px;
 }
-
 @media only screen and (max-width: 500px) {
   .authmodal-container .auth-qrcode_info p {
     width: auto;
   }
 }
-
 .authmodal-container .auth-qrcode_info p .download-app {
   color: #0D7FE9;
 }
@@ -3090,54 +2398,36 @@ nav .profile-button .profile-dropdown .log-out {
   width: 392px;
   background: white;
 }
-
 .sms .sms-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   background: #F7FAFC;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   padding: 16px 24px;
 }
-
 .sms .sms-header .title {
   font-family: "Rubik", sans-serif;
   font-size: 18px;
   color: #060A33;
   font-weight: 500;
 }
-
 .sms .smsmodal-container {
   padding: 16px 32px 32px;
 }
-
 .sms .smsmodal-container .sms-button {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   background: #22E0BB;
   font-family: "Rubik", sans-serif;
   color: #060A33;
   font-weight: 500;
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
   height: 48px;
   padding: 15px 16px;
   border-radius: 6px;
 }
-
 .sms .smsmodal-container .subtitle {
   width: 285px;
   color: #5F6B7A;
@@ -3146,28 +2436,23 @@ nav .profile-button .profile-dropdown .log-out {
   margin-bottom: 23px;
   font-size: 14px;
 }
-
 .sms .smsmodal-container .code-label {
   width: 100%;
   margin-bottom: 23px;
 }
-
 .sms .smsmodal-container .code-label p {
   font-family: "Rubik", sans-serif;
   color: #212934;
   margin-bottom: 8px;
   font-weight: 400;
 }
-
 .sms .smsmodal-container .code-label .sms-label {
   height: 48px;
   padding: 10px 16px 10px;
   border-radius: 8px;
-  -webkit-box-shadow: 0px 0px 0px 3px rgba(34, 224, 187, 0.35);
-          box-shadow: 0px 0px 0px 3px rgba(34, 224, 187, 0.35);
+  box-shadow: 0px 0px 0px 3px rgba(34, 224, 187, 0.35);
   width: 100%;
 }
-
 .sms .smsmodal-container .code-label .sendSms {
   color: #0D7FE9;
   font-family: "Rubik", sans-serif;
@@ -3184,14 +2469,12 @@ nav .profile-button .profile-dropdown .log-out {
   background: white;
   padding: 0 !important;
   border-radius: 8px;
-  -webkit-box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.05);
 }
 
 .clicked:focus {
   border: 1px solid #22E0BB !important;
-  -webkit-box-shadow: 0px 0px 0px 3px rgba(34, 224, 187, 0.35) !important;
-          box-shadow: 0px 0px 0px 3px rgba(34, 224, 187, 0.35) !important;
+  box-shadow: 0px 0px 0px 3px rgba(34, 224, 187, 0.35) !important;
   border-radius: 6px !important;
 }
 
@@ -3199,7 +2482,6 @@ nav .profile-button .profile-dropdown .log-out {
   margin-top: 0;
   margin-bottom: 32px;
 }
-
 .login-container-code .auth_input-0 {
   margin-left: 0 !important;
 }
@@ -3207,7 +2489,6 @@ nav .profile-button .profile-dropdown .log-out {
 .sms-container-code {
   margin-bottom: 32px;
 }
-
 .sms-container-code .auth_input {
   height: 48px;
   width: 48px;
@@ -3221,7 +2502,6 @@ nav .profile-button .profile-dropdown .log-out {
   font-family: "Rubik", sans-serif;
   color: #212934;
 }
-
 .sms-container-code .auth_input:focus {
   outline: none;
 }
@@ -3231,50 +2511,28 @@ nav .profile-button .profile-dropdown .log-out {
   padding: 12px 14px;
   border-radius: 30px;
   background: #F5F8FA;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
-
 @media only screen and (max-width: 500px) {
   .enabled-verification {
     height: auto;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
-
 @media only screen and (max-width: 500px) {
   .enabled-verification .verify {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
-
 @media only screen and (max-width: 500px) {
   .enabled-verification .ver {
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    align-items: flex-start;
   }
 }
-
 .enabled-verification .added-date {
   font-family: "Circular", sans-serif;
   font-weight: 400;
@@ -3283,7 +2541,6 @@ nav .profile-button .profile-dropdown .log-out {
   letter-spacing: 0.01em;
   color: #8895A7;
 }
-
 .enabled-verification .backup-code {
   font-family: "Circular", sans-serif;
   font-weight: 400;
@@ -3292,7 +2549,6 @@ nav .profile-button .profile-dropdown .log-out {
   letter-spacing: 0.01em;
   color: #5F6B7A;
 }
-
 .enabled-verification .backup-code .code {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
@@ -3302,13 +2558,11 @@ nav .profile-button .profile-dropdown .log-out {
   color: #5F6B7A;
   margin-left: 8px;
 }
-
 @media only screen and (max-width: 500px) {
   .enabled-verification .backup-code .code {
     margin-left: 0;
   }
 }
-
 .enabled-verification .connected-phone {
   font-family: "Circular", sans-serif;
   font-weight: 400;
@@ -3317,7 +2571,6 @@ nav .profile-button .profile-dropdown .log-out {
   letter-spacing: 0.01em;
   color: #5F6B7A;
 }
-
 .enabled-verification .connected-phone .phoneNo {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
@@ -3326,7 +2579,6 @@ nav .profile-button .profile-dropdown .log-out {
   color: #5F6B7A;
   margin-left: 4px;
 }
-
 .enabled-verification .download {
   font-family: "Rubik", sans-serif;
   font-weight: 500;
@@ -3335,75 +2587,52 @@ nav .profile-button .profile-dropdown .log-out {
 }
 
 .acct-form-2 {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin-bottom: 20px !important;
 }
-
 @media only screen and (max-width: 640px) {
   .acct-form-2 {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
 }
-
 @media only screen and (min-width: 641px) and (max-width: 777px) {
   .acct-form-2 {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
+    flex-direction: row;
   }
 }
-
 @media only screen and (min-width: 778px) and (max-width: 992px) {
   .acct-form-2 {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
 }
-
 .acct-form-2 .input_2 {
   margin-right: 20px;
 }
-
 @media only screen and (max-width: 640px) {
   .acct-form-2 .input_2 {
     margin-right: 0;
   }
 }
-
 .acct-form-2 .account-form_inputs {
   width: 50%;
 }
-
 @media only screen and (max-width: 640px) {
   .acct-form-2 .account-form_inputs {
     width: 100%;
   }
 }
-
 @media only screen and (min-width: 778px) and (max-width: 992px) {
   .acct-form-2 .account-form_inputs {
     width: 100%;
   }
 }
-
 .acct-form-2 .account-form_inputs-title {
   color: #212934;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   margin: 8px 0;
 }
-
 .acct-form-2 .account-form_inputs-label {
   padding: 10px 16px 10px 12px;
   height: 44px;
@@ -3411,41 +2640,28 @@ nav .profile-button .profile-dropdown .log-out {
   border-radius: 6px;
   background: white;
   margin: 8px 0;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   font-weight: 400;
   font-family: "Rubik", sans-serif;
 }
-
 .acct-form-2 .account-form_inputs-label .acct-input {
   border: none;
   width: 100%;
   color: #8895A7;
 }
-
 .acct-form-2 .account-form_inputs-label .acct-input:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   border: none;
 }
-
-.acct-form-2 .account-form_inputs-label .acct-input::-webkit-input-placeholder {
+.acct-form-2 .account-form_inputs-label .acct-input::-moz-placeholder {
   color: #B8C4CE;
 }
-
 .acct-form-2 .account-form_inputs-label .acct-input:-ms-input-placeholder {
   color: #B8C4CE;
 }
-
-.acct-form-2 .account-form_inputs-label .acct-input::-ms-input-placeholder {
-  color: #B8C4CE;
-}
-
 .acct-form-2 .account-form_inputs-label .acct-input::placeholder {
   color: #B8C4CE;
 }
-
 .acct-form-2 .account-form_inputs-dropdown {
   padding: 10px 16px 10px 12px;
   height: 44px;
@@ -3453,14 +2669,11 @@ nav .profile-button .profile-dropdown .log-out {
   border-radius: 6px;
   background: white;
   margin: 8px 0;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   color: #8895A7;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
 }
-
 .acct-form-2 .account-form_inputs .country-input {
   height: 44px;
   border-radius: 6px;
@@ -3471,27 +2684,22 @@ nav .profile-button .profile-dropdown .log-out {
   color: #212934;
   font-weight: 400;
 }
-
 .acct-form-2 .account-form_inputs .country-input input {
   height: 100%;
 }
-
 .acct-form-2 .account-form_inputs .country-input input:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   border: none;
 }
 
 .form-2 {
   width: 872px;
 }
-
 @media only screen and (min-width: 778px) and (max-width: 1120px) {
   .form-2 {
     width: 60% !important;
   }
 }
-
 @media only screen and (max-width: 777px) {
   .form-2 {
     width: 100% !important;
@@ -3503,61 +2711,43 @@ nav .profile-button .profile-dropdown .log-out {
   padding: 64px;
   min-height: 100vh;
 }
-
 .flight-container {
   max-width: 1280px;
   margin: 0 auto;
 }
-
 .flight-container-navs {
   width: 827px;
   margin-bottom: 32px;
 }
-
 .flight-container-navs .search-table {
   height: 48px;
   width: 340px;
   border-radius: 4px;
   padding: 12px 8px 12px 12px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   background: white;
 }
-
 .flight-container-navs .search-table input {
   width: 100%;
   border: none;
   font-family: "Rubik", sans-serif;
   color: #B8C4CE;
 }
-
 .flight-container-navs .search-table input:focus {
   outline: none !important;
   border: none !important;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
-
-.flight-container-navs .search-table input::-webkit-input-placeholder {
+.flight-container-navs .search-table input::-moz-placeholder {
   color: #B8C4CE;
 }
-
 .flight-container-navs .search-table input:-ms-input-placeholder {
   color: #B8C4CE;
 }
-
-.flight-container-navs .search-table input::-ms-input-placeholder {
-  color: #B8C4CE;
-}
-
 .flight-container-navs .search-table input::placeholder {
   color: #B8C4CE;
 }
-
 .flight-container-navs .filter-table {
   height: 48px;
   width: 210px;
@@ -3566,115 +2756,78 @@ nav .profile-button .profile-dropdown .log-out {
   background: white;
   margin: 0 16px;
 }
-
 .flight-container-navs .filter-table .filter-name {
   color: #212934;
   font-size: 14px;
   font-family: "Circular", sans-serif;
 }
-
 .flight-container-navs .filter-table .filter-dropdown {
   width: 213px;
   border-radius: 6px;
   background: white;
-  border: 1px solid #f5f8fa;
-  -webkit-box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
-          box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
+  border: 1px solid rgb(245, 248, 250);
+  box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
 }
-
 .flight-container-navs .filter-table .filter-dropdown li {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 14px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   color: #5F6B7A;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .flight-container-navs .filter-table .filter-dropdown li:hover {
   background: #F0FFFC;
 }
-
 .flight-container-navs .filter-table .filter-dropdown li button {
   padding: 12px 16px;
   margin: 0 8px;
 }
-
 .flight-container-navs .book-button {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   padding: 15px 16px;
   width: 255px;
   height: 48px;
   border: 1px solid #22E0BB;
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(6, 10, 51, 0.05);
-          box-shadow: 0px 2px 4px 0px rgba(6, 10, 51, 0.05);
+  box-shadow: 0px 2px 4px 0px rgba(6, 10, 51, 0.05);
   border-radius: 6px;
   color: #060A33;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
-  -webkit-transition: .4s ease-in-out;
-  transition: .4s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
-
 .flight-container-navs .book-button:hover {
   background: #22E0BB;
 }
-
 .flight-container-navs .payed-button {
   background: #22E0BB;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   padding: 15px 16px;
   width: 255px;
   height: 48px;
   border: 1px solid #22E0BB;
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(6, 10, 51, 0.05);
-          box-shadow: 0px 2px 4px 0px rgba(6, 10, 51, 0.05);
+  box-shadow: 0px 2px 4px 0px rgba(6, 10, 51, 0.05);
   border-radius: 6px;
   color: #060A33;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
-  -webkit-transition: .4s ease-in-out;
-  transition: .4s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
-
 .flight-container_information {
   width: 827px;
   margin-right: 37px;
 }
-
 .flight-container_information-list {
-  -webkit-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05);
   margin-bottom: 94px;
 }
-
 .flight-container_information-list .warning {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
   padding: 8px 24px;
   height: 34px;
   background: #FFF6ED;
@@ -3682,7 +2835,6 @@ nav .profile-button .profile-dropdown .log-out {
   border-radius: 4px;
   margin-bottom: 16px;
 }
-
 .flight-container_information-list .warning p {
   font-family: "Circular", sans-serif;
   font-weight: 400;
@@ -3690,7 +2842,6 @@ nav .profile-button .profile-dropdown .log-out {
   color: #212934;
   margin-left: 10px;
 }
-
 .flight-container_information-list .header {
   padding: 32px;
   border-radius: 8px 8px 0 0;
@@ -3700,96 +2851,54 @@ nav .profile-button .profile-dropdown .log-out {
   font-family: "Rubik", sans-serif;
   font-weight: 500;
   font-size: 14px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
-
 .flight-container_information-list .header .flight-type {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   padding: 6px 12px;
   height: 29px;
   background-color: #212934 !important;
   border-radius: 8px;
 }
-
 .flight-container_information-list .section .body .info {
   padding: 32px;
   background: #F7FAFC;
   height: 42px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   color: #060A33;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 14px;
 }
-
 .flight-container_information-list .section .body-flight_details {
   background: white;
   padding: 24px 32px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
 }
-
 .flight-container_information-list .section .body-flight_details .airline-logo {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 16px 10px;
   width: 96px;
   height: 64px;
   border: 1px solid #E1E7EC;
   border-radius: 12px;
 }
-
 .flight-container_information-list .section .body-flight_details .departure-time, .flight-container_information-list .section .body-flight_details .arrival-time {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
   width: 156px;
   margin-left: 40px;
 }
-
 .flight-container_information-list .section .body-flight_details .departure-time .time, .flight-container_information-list .section .body-flight_details .arrival-time .time {
   font-family: "Rubik", sans-serif;
   font-weight: 700;
@@ -3797,7 +2906,6 @@ nav .profile-button .profile-dropdown .log-out {
   color: black;
   margin-bottom: 8px;
 }
-
 .flight-container_information-list .section .body-flight_details .departure-time .location, .flight-container_information-list .section .body-flight_details .arrival-time .location {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
@@ -3805,84 +2913,60 @@ nav .profile-button .profile-dropdown .log-out {
   color: black;
   margin-bottom: 8px;
 }
-
 .flight-container_information-list .section .body-flight_details .departure-time .airport, .flight-container_information-list .section .body-flight_details .arrival-time .airport {
   font-family: "Circular", sans-serif;
   font-weight: 400;
   font-size: 10px;
   color: #8895A7;
 }
-
 .flight-container_information-list .section .body-flight_details .hours {
   margin: 0 32px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-family: "Circular", sans-serif;
   font-weight: 400;
   font-size: 10px;
   color: #8895A7;
 }
-
 .flight-container_information-list .section .body-flight_details .flight-cabin-economy {
   background: #FCC5CE;
   border: 0.5px solid #F99BAB;
   color: #AD283D;
 }
-
 .flight-container_information-list .section .body-flight_details .flight-cabin-business {
   background: #DDEFFF;
   border: 0.5px solid #ACD7FF;
   color: #0059AC;
 }
-
 .flight-container_information-list .section .body-flight_details .flight-cabin-premium-eco {
   color: #158957;
   background: #C4EFDF;
   border: 0.5px solid #9BDFC4;
   width: 15% !important;
 }
-
 .flight-container_information-list .flight-checkout {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   padding: 32px;
   height: 72px;
   background: #F7FAFC;
   border-radius: 0px 0px 8px 8px;
 }
-
 .flight-container_information-list .flight-checkout p {
   font-family: Rubik;
   font-weight: 400;
   font-size: 14px;
   color: #060A33;
 }
-
 .flight-container_information-list .flight-checkout p span {
   font-family: Circular;
   font-weight: 400;
   font-size: 14px;
   color: #5F6B7A;
 }
-
 .flight-container_information-list .flight-checkout .cancel-button {
   height: 42px;
   margin-right: 16px;
@@ -3890,64 +2974,42 @@ nav .profile-button .profile-dropdown .log-out {
   font-weight: 500;
   font-size: 14px;
   color: #060A33;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   padding: 15px 16px;
   border: 1px solid #22E0BB;
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(6, 10, 51, 0.05);
-          box-shadow: 0px 2px 4px 0px rgba(6, 10, 51, 0.05);
+  box-shadow: 0px 2px 4px 0px rgba(6, 10, 51, 0.05);
   border-radius: 6px;
 }
-
 .flight-container_information-list .flight-checkout .checkIn-button {
   height: 42px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   padding: 15px 16px;
   background: #22E0BB;
-  -webkit-box-shadow: 0px 2px 4px rgba(6, 10, 51, 0.05);
-          box-shadow: 0px 2px 4px rgba(6, 10, 51, 0.05);
+  box-shadow: 0px 2px 4px rgba(6, 10, 51, 0.05);
   border-radius: 6px;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
   font-size: 14px;
   color: #060A33;
 }
-
 .flight-container_information-list .flight-checkout .refund-claim {
   height: 24px;
   border-radius: 18px;
   padding: 4px 8px;
   background: #E1E7EC;
 }
-
 .flight-container_information-list .flight-checkout .refund-claim p {
   font-family: "Circular", sans-serif;
   font-weight: 400;
   font-size: 12px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   color: #5F6B7A;
 }
-
 .flight-container_history_title {
   font-family: "Circular", sans-serif;
   font-weight: bold;
@@ -3955,48 +3017,33 @@ nav .profile-button .profile-dropdown .log-out {
   color: #060A33;
   margin-bottom: 16px;
 }
-
 .flight-container_history-container {
   background-color: white;
   width: 312px;
   height: auto;
   padding: 10px;
   border-radius: 10px;
-  -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
 }
-
 .flight-container_history-container .flight-history_item {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: flex-start;
+  justify-content: space-between;
   height: 69px;
   border-radius: 8px;
   padding: 16px;
-  border: 1px solid #f5f8fa;
+  border: 1px solid rgb(245, 248, 250);
   margin-bottom: 10px;
 }
-
 .flight-container_history-container .flight-history_item-list-places {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: #060A33;
   margin-bottom: 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .flight-container_history-container .flight-history_item-list-date {
   font-family: "Circular", sans-serif;
   font-weight: 400;
@@ -4006,12 +3053,8 @@ nav .profile-button .profile-dropdown .log-out {
 
 .flight-cabin, .flight-container_information-list .section .body-flight_details .flight-cabin-economy, .flight-container_information-list .section .body-flight_details .flight-cabin-business, .flight-container_information-list .section .body-flight_details .flight-cabin-premium-eco {
   margin: 0 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   padding: 4px 8px;
   width: 68px;
   height: 22px;
@@ -4026,34 +3069,23 @@ nav .profile-button .profile-dropdown .log-out {
   width: 392px;
   background: white;
 }
-
 .checkin .checkin-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   background: #F7FAFC;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   padding: 16px 24px;
 }
-
 .checkin .checkin-header .title {
   font-family: "Rubik", sans-serif;
   font-size: 18px;
   color: #060A33;
   font-weight: 500;
 }
-
 .checkin .checkinmodal-container {
   padding: 16px 32px 32px;
-  -webkit-box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.04);
-          box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.04);
 }
-
 .checkin .checkinmodal-container .subtitle {
   width: 328px;
   color: #5F6B7A;
@@ -4062,69 +3094,49 @@ nav .profile-button .profile-dropdown .log-out {
   margin-bottom: 23px;
   font-size: 14px;
 }
-
-.checkin .checkinmodal-container .checkin-btn, .checkin .checkinmodal-container .cancelFlight-btn, .checkin .checkinmodal-container .refund-btn {
+.checkin .checkinmodal-container .checkin-btn, .checkin .checkinmodal-container .refund-btn, .checkin .checkinmodal-container .cancelFlight-btn {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   background: #22E0BB;
   font-family: "Rubik", sans-serif;
   color: #060A33;
   font-weight: 500;
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
   height: 48px;
   padding: 15px 16px;
   border-radius: 6px;
   margin-bottom: 16px;
 }
-
 .checkin .checkinmodal-container .cancelFlight-btn {
   background: #D62F4B;
   color: white;
   margin-top: 23px;
 }
-
 .checkin .checkinmodal-container .refund-btn {
   margin-top: 23px;
 }
-
 .checkin .checkinmodal-container .cancel-btn {
   background: #F5F8FA;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   font-family: "Rubik", sans-serif;
   color: #212934;
   font-weight: 500;
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
   height: 48px;
   padding: 15px 16px;
   border-radius: 6px;
 }
-
 .checkin .checkinmodal-container .cancel-label_title {
   margin-bottom: 8px;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   color: #212934;
 }
-
 .checkin .checkinmodal-container .cancel-label textarea {
   width: 328px;
   padding: 10px 16px 10px 12px;
@@ -4134,30 +3146,20 @@ nav .profile-button .profile-dropdown .log-out {
   font-size: 14px;
   color: #212934;
 }
-
-.checkin .checkinmodal-container .cancel-label textarea::-webkit-input-placeholder {
+.checkin .checkinmodal-container .cancel-label textarea::-moz-placeholder {
   color: #B8C4CE;
 }
-
 .checkin .checkinmodal-container .cancel-label textarea:-ms-input-placeholder {
   color: #B8C4CE;
 }
-
-.checkin .checkinmodal-container .cancel-label textarea::-ms-input-placeholder {
-  color: #B8C4CE;
-}
-
 .checkin .checkinmodal-container .cancel-label textarea::placeholder {
   color: #B8C4CE;
 }
-
 .checkin .checkinmodal-container .cancel-label textarea:focus {
   border: 1px solid #E1E7EC;
   outline: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
-
 .checkin .checkinmodal-container .cancel-label .refund-input input, .checkin .checkinmodal-container .refund .refundmodal-container .cancel-label .refund-input-2 input, .refund .refundmodal-container .checkin .checkinmodal-container .cancel-label .refund-input-2 input {
   padding: 10px 16px 10px 12px;
   border: 1px solid #E1E7EC;
@@ -4169,15 +3171,13 @@ nav .profile-button .profile-dropdown .log-out {
 
 .clicked {
   border: 1px solid #22E0BB !important;
-  -webkit-box-shadow: 0px 0px 0px 5px rgba(34, 224, 187, 0.35) !important;
-          box-shadow: 0px 0px 0px 5px rgba(34, 224, 187, 0.35) !important;
+  box-shadow: 0px 0px 0px 5px rgba(34, 224, 187, 0.35) !important;
   border-radius: 6px !important;
 }
 
 .unclicked {
   border: none !important;
-  -webkit-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05) !important;
-          box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.05) !important;
   border-radius: none !important;
 }
 
@@ -4185,34 +3185,23 @@ nav .profile-button .profile-dropdown .log-out {
   width: 485px;
   background: white;
 }
-
 .refund .refund-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   background: #F7FAFC;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   padding: 16px 24px;
 }
-
 .refund .refund-header .title {
   font-family: "Rubik", sans-serif;
   font-size: 18px;
   color: #060A33;
   font-weight: 500;
 }
-
 .refund .refundmodal-container {
   padding: 16px 32px 32px;
-  -webkit-box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.04);
-          box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.04);
 }
-
 .refund .refundmodal-container .subtitle {
   width: 418px;
   color: #5F6B7A;
@@ -4221,37 +3210,27 @@ nav .profile-button .profile-dropdown .log-out {
   margin-bottom: 23px;
   font-size: 14px;
 }
-
 .refund .refundmodal-container .refund-btn {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   background: #22E0BB;
   font-family: "Rubik", sans-serif;
   color: #060A33;
   font-weight: 500;
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
   height: 48px;
   padding: 15px 16px;
   border-radius: 6px;
   margin: 23px 0;
 }
-
 .refund .refundmodal-container .cancel-label_title {
   margin-bottom: 8px;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   color: #212934;
 }
-
 .refund .refundmodal-container .cancel-label .refund-input input, .refund .refundmodal-container .cancel-label .refund-input-2 input {
   padding: 10px 16px 10px 12px;
   border: 1px solid #E1E7EC;
@@ -4262,11 +3241,9 @@ nav .profile-button .profile-dropdown .log-out {
   border-radius: 6px;
   width: 100%;
 }
-
 .refund .refundmodal-container .cancel-label .refund-input-2 input {
   width: 100%;
 }
-
 .refund .refundmodal-container .refund-subSubtitle {
   font-family: "Circular", sans-serif;
   font-weight: 400;
@@ -4280,14 +3257,13 @@ nav .profile-button .profile-dropdown .log-out {
   background: #F5F8FA;
 }
 
-.button-1, .mobile-booking .mobile-search_button, .booking-detail .book-section .booking-container .search_button, .booking-detail .book-section .booking-container-2 .search_button {
+.button-1, .booking-detail .book-section .booking-container .search_button, .booking-detail .book-section .booking-container-2 .search_button, .mobile-booking .mobile-search_button {
   height: 56px;
   width: 144px;
   border-radius: 6px;
   padding: 18px 16px;
   background: #22E0BB;
-  -webkit-box-shadow: 0px 12px 24px 0px #060a331a;
-          box-shadow: 0px 12px 24px 0px #060a331a;
+  box-shadow: 0px 12px 24px 0px rgba(6, 10, 51, 0.1019607843);
   margin: 0 8px;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
@@ -4299,31 +3275,25 @@ nav .profile-button .profile-dropdown .log-out {
   max-height: 100vh;
   min-height: 100%;
 }
-
 .booking-detail .book-section {
   padding: 54px 0;
   background: #060A33;
 }
-
 .booking-detail .book-section .mobile-booking {
   padding: 0 20px;
   border: none !important;
   margin: 0 !important;
 }
-
 .booking-detail .book-section .booking-container, .booking-detail .book-section .booking-container-2 {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0px auto;
   width: 969px;
 }
-
 @media only screen and (max-width: 1024px) {
   .booking-detail .book-section .booking-container, .booking-detail .book-section .booking-container-2 {
     width: 100%;
   }
 }
-
 .booking-detail .book-section .booking-container-dropdown {
   height: 40px;
   border-radius: 6px;
@@ -4335,22 +3305,18 @@ nav .profile-button .profile-dropdown .log-out {
   font-weight: 600;
   font-size: 14px;
 }
-
 .booking-detail .book-section .booking-container .dropdown-1, .booking-detail .book-section .booking-container-2 .dropdown-1 {
   width: 128px;
 }
-
 .booking-detail .book-section .booking-container .dropdown-2, .booking-detail .book-section .booking-container-2 .dropdown-2 {
   width: 140px;
 }
-
 .booking-detail .book-section .booking-container .dropdown-2 .dropdown-2-container, .booking-detail .book-section .booking-container-2 .dropdown-2 .dropdown-2-container {
   height: auto;
   width: 255px;
   border-radius: 6px;
   padding: 16px;
 }
-
 .booking-detail .book-section .booking-container .dropdown-2 .dropdown-2-container li, .booking-detail .book-section .booking-container-2 .dropdown-2 .dropdown-2-container li {
   height: 42px;
   width: 223px;
@@ -4360,27 +3326,18 @@ nav .profile-button .profile-dropdown .log-out {
   color: #212934;
   margin: 19px 0px;
 }
-
 .booking-detail .book-section .booking-container .dropdown-2 .dropdown-2-container .active-icon, .booking-detail .book-section .booking-container-2 .dropdown-2 .dropdown-2-container .active-icon, .booking-detail .book-section .booking-container .dropdown-2 .dropdown-2-container .non-active, .booking-detail .book-section .booking-container-2 .dropdown-2 .dropdown-2-container .non-active {
   height: 32px;
   width: 32px;
   border-radius: 4px;
   border: 1px solid #22e0bb;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
-
 .booking-detail .book-section .booking-container .dropdown-2 .dropdown-2-container .non-active, .booking-detail .book-section .booking-container-2 .dropdown-2 .dropdown-2-container .non-active {
   border: none;
 }
-
 .booking-detail .book-section .booking-container .dropdown-2 .dropdown-2-container .btn-confirm, .booking-detail .book-section .booking-container-2 .dropdown-2 .dropdown-2-container .btn-confirm {
   height: 42px;
   width: 223px;
@@ -4388,26 +3345,15 @@ nav .profile-button .profile-dropdown .log-out {
   padding: 15px 16px;
   margin: 19px 0;
   background-color: #22E0BB;
-  -webkit-box-shadow: 0px 2px 4px rgba(6, 10, 51, 0.05);
-          box-shadow: 0px 2px 4px rgba(6, 10, 51, 0.05);
+  box-shadow: 0px 2px 4px rgba(6, 10, 51, 0.05);
   color: #060a33;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
-
 .booking-detail .book-section .booking-container .dropdown-2 .dropdown-2-container .passenger-type, .booking-detail .book-section .booking-container-2 .dropdown-2 .dropdown-2-container .passenger-type, .booking-detail .book-section .booking-container .dropdown-2 .dropdown-2-container .passenger-des, .booking-detail .book-section .booking-container-2 .dropdown-2 .dropdown-2-container .passenger-des {
   font-family: Rubik;
   font-size: 14px;
@@ -4415,38 +3361,24 @@ nav .profile-button .profile-dropdown .log-out {
   line-height: 20px;
   text-align: left;
 }
-
 .booking-detail .book-section .booking-container .dropdown-2 .dropdown-2-container .passenger-des, .booking-detail .book-section .booking-container-2 .dropdown-2 .dropdown-2-container .passenger-des {
   font-size: 12px;
 }
-
 .booking-detail .book-section .booking-container .dropdown-3, .booking-detail .book-section .booking-container-2 .dropdown-3 {
   width: auto;
 }
-
 .booking-detail .book-section .booking-container .dropdown-3 .dropdown-3-container, .booking-detail .book-section .booking-container-2 .dropdown-3 .dropdown-3-container {
   height: 160px;
   width: 213px;
   border-radius: 6px;
-  -webkit-box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
-          box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
-  display: -webkit-box;
-  display: -ms-flexbox;
+  box-shadow: 0px 8px 16px 0px rgba(3, 47, 60, 0.14);
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   background: #ffffff;
   border: 1px solid #f5f8fa;
 }
-
 .booking-detail .book-section .booking-container .dropdown-3 .dropdown-3-container li, .booking-detail .book-section .booking-container-2 .dropdown-3 .dropdown-3-container li {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
@@ -4457,130 +3389,104 @@ nav .profile-button .profile-dropdown .log-out {
   padding: 10px 16px;
   color: #212934;
 }
-
 .booking-detail .book-section .booking-container .dropdown-3 .dropdown-3-container li:hover, .booking-detail .book-section .booking-container-2 .dropdown-3 .dropdown-3-container li:hover {
   background: #f0fffc;
 }
-
 .booking-detail .book-section .booking-container .dropdown-3 .dropdown-3-container .selected, .booking-detail .book-section .booking-container-2 .dropdown-3 .dropdown-3-container .selected {
   background: #f0fffc;
 }
-
-.booking-detail .book-section .booking-container .departure, .booking-detail .book-section .booking-container-2 .departure, .booking-detail .book-section .booking-container .arrival, .booking-detail .book-section .booking-container-2 .arrival, .booking-detail .book-section .booking-container .tab-departure, .booking-detail .book-section .booking-container-2 .tab-departure, .booking-detail .book-section .booking-container .tab-arrival, .booking-detail .book-section .booking-container-2 .tab-arrival, .booking-detail .book-section .booking-container .flight-date, .booking-detail .book-section .booking-container-2 .flight-date, .booking-detail .book-section .booking-container-2 .flight-date-2 {
+.booking-detail .book-section .booking-container .departure, .booking-detail .book-section .booking-container-2 .departure, .booking-detail .book-section .booking-container .flight-date, .booking-detail .book-section .booking-container .booking-container-2 .flight-date-2, .booking-detail .book-section .booking-container-2 .booking-container .flight-date-2, .booking-detail .book-section .booking-container-2 .flight-date, .booking-detail .book-section .booking-container-2 .flight-date-2, .booking-detail .book-section .booking-container .arrival, .booking-detail .book-section .booking-container-2 .arrival, .booking-detail .book-section .booking-container .tab-arrival, .booking-detail .book-section .booking-container-2 .tab-arrival, .booking-detail .book-section .booking-container .tab-departure, .booking-detail .book-section .booking-container-2 .tab-departure {
   background: #f5f8fa;
   border: 1px solid #ced6de;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border-radius: 6px;
   padding: 10px 16px;
   height: 56px;
   width: 258px;
   margin: 0 8px 8px;
 }
-
-.booking-detail .book-section .booking-container .departure input, .booking-detail .book-section .booking-container-2 .departure input, .booking-detail .book-section .booking-container .arrival input, .booking-detail .book-section .booking-container-2 .arrival input, .booking-detail .book-section .booking-container .tab-departure input, .booking-detail .book-section .booking-container-2 .tab-departure input, .booking-detail .book-section .booking-container .tab-arrival input, .booking-detail .book-section .booking-container-2 .tab-arrival input, .booking-detail .book-section .booking-container .flight-date input, .booking-detail .book-section .booking-container-2 .flight-date input, .booking-detail .book-section .booking-container-2 .flight-date-2 input {
+.booking-detail .book-section .booking-container .departure input, .booking-detail .book-section .booking-container-2 .departure input, .booking-detail .book-section .booking-container .flight-date input, .booking-detail .book-section .booking-container .booking-container-2 .flight-date-2 input, .booking-detail .book-section .booking-container-2 .booking-container .flight-date-2 input, .booking-detail .book-section .booking-container-2 .flight-date input, .booking-detail .book-section .booking-container-2 .flight-date-2 input, .booking-detail .book-section .booking-container .arrival input, .booking-detail .book-section .booking-container-2 .arrival input, .booking-detail .book-section .booking-container .tab-arrival input, .booking-detail .book-section .booking-container-2 .tab-arrival input, .booking-detail .book-section .booking-container .tab-departure input, .booking-detail .book-section .booking-container-2 .tab-departure input {
   background: #f5f8fa;
   color: #b8c4ce;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   width: 100%;
 }
-
-.booking-detail .book-section .booking-container .departure input:focus, .booking-detail .book-section .booking-container-2 .departure input:focus, .booking-detail .book-section .booking-container .arrival input:focus, .booking-detail .book-section .booking-container-2 .arrival input:focus, .booking-detail .book-section .booking-container .tab-departure input:focus, .booking-detail .book-section .booking-container-2 .tab-departure input:focus, .booking-detail .book-section .booking-container .tab-arrival input:focus, .booking-detail .book-section .booking-container-2 .tab-arrival input:focus, .booking-detail .book-section .booking-container .flight-date input:focus, .booking-detail .book-section .booking-container-2 .flight-date input:focus, .booking-detail .book-section .booking-container-2 .flight-date-2 input:focus {
+.booking-detail .book-section .booking-container .departure input:focus, .booking-detail .book-section .booking-container-2 .departure input:focus, .booking-detail .book-section .booking-container .flight-date input:focus, .booking-detail .book-section .booking-container .booking-container-2 .flight-date-2 input:focus, .booking-detail .book-section .booking-container-2 .booking-container .flight-date-2 input:focus, .booking-detail .book-section .booking-container-2 .flight-date input:focus, .booking-detail .book-section .booking-container-2 .flight-date-2 input:focus, .booking-detail .book-section .booking-container .arrival input:focus, .booking-detail .book-section .booking-container-2 .arrival input:focus, .booking-detail .book-section .booking-container .tab-arrival input:focus, .booking-detail .book-section .booking-container-2 .tab-arrival input:focus, .booking-detail .book-section .booking-container .tab-departure input:focus, .booking-detail .book-section .booking-container-2 .tab-departure input:focus {
   outline: none;
 }
-
-.booking-detail .book-section .booking-container .departure span, .booking-detail .book-section .booking-container-2 .departure span, .booking-detail .book-section .booking-container .arrival span, .booking-detail .book-section .booking-container-2 .arrival span, .booking-detail .book-section .booking-container .tab-departure span, .booking-detail .book-section .booking-container-2 .tab-departure span, .booking-detail .book-section .booking-container .tab-arrival span, .booking-detail .book-section .booking-container-2 .tab-arrival span, .booking-detail .book-section .booking-container .flight-date span, .booking-detail .book-section .booking-container-2 .flight-date span, .booking-detail .book-section .booking-container-2 .flight-date-2 span {
+.booking-detail .book-section .booking-container .departure span, .booking-detail .book-section .booking-container-2 .departure span, .booking-detail .book-section .booking-container .flight-date span, .booking-detail .book-section .booking-container .booking-container-2 .flight-date-2 span, .booking-detail .book-section .booking-container-2 .booking-container .flight-date-2 span, .booking-detail .book-section .booking-container-2 .flight-date span, .booking-detail .book-section .booking-container-2 .flight-date-2 span, .booking-detail .book-section .booking-container .arrival span, .booking-detail .book-section .booking-container-2 .arrival span, .booking-detail .book-section .booking-container .tab-arrival span, .booking-detail .book-section .booking-container-2 .tab-arrival span, .booking-detail .book-section .booking-container .tab-departure span, .booking-detail .book-section .booking-container-2 .tab-departure span {
   margin-right: 10px;
 }
-
-.booking-detail .book-section .booking-container .arrival, .booking-detail .book-section .booking-container-2 .arrival, .booking-detail .book-section .booking-container .tab-departure, .booking-detail .book-section .booking-container-2 .tab-departure, .booking-detail .book-section .booking-container .tab-arrival, .booking-detail .book-section .booking-container-2 .tab-arrival {
+.booking-detail .book-section .booking-container .arrival, .booking-detail .book-section .booking-container-2 .arrival, .booking-detail .book-section .booking-container .tab-arrival, .booking-detail .book-section .booking-container-2 .tab-arrival, .booking-detail .book-section .booking-container .tab-departure, .booking-detail .book-section .booking-container-2 .tab-departure {
   width: 260px;
 }
-
-.booking-detail .book-section .booking-container .switch-button, .booking-detail .book-section .booking-container-2 .switch-button {
+.booking-detail .book-section .booking-container .switch-button, .booking-detail .book-section .booking-container .booking-container-2 .switch-button, .booking-detail .book-section .booking-container-2 .booking-container .switch-button, .booking-detail .book-section .booking-container-2 .switch-button, .booking-detail .book-section .booking-container-2 .switch-button {
   position: absolute;
   z-index: 33;
   right: -20px;
   top: 10%;
 }
-
-.booking-detail .book-section .booking-container .flight-date, .booking-detail .book-section .booking-container-2 .flight-date, .booking-detail .book-section .booking-container-2 .flight-date-2 {
+.booking-detail .book-section .booking-container .flight-date, .booking-detail .book-section .booking-container .booking-container-2 .flight-date-2, .booking-detail .book-section .booking-container-2 .booking-container .flight-date-2, .booking-detail .book-section .booking-container-2 .flight-date, .booking-detail .book-section .booking-container-2 .flight-date-2 {
   width: 166px;
 }
-
-.booking-detail .book-section .booking-container .flight-date .text-1, .booking-detail .book-section .booking-container-2 .flight-date .text-1, .booking-detail .book-section .booking-container-2 .flight-date-2 .text-1 {
+.booking-detail .book-section .booking-container .flight-date .text-1, .booking-detail .book-section .booking-container .booking-container-2 .flight-date-2 .text-1, .booking-detail .book-section .booking-container-2 .booking-container .flight-date-2 .text-1, .booking-detail .book-section .booking-container-2 .flight-date .text-1, .booking-detail .book-section .booking-container-2 .flight-date-2 .text-1 {
   font-size: 10px;
   color: #8895a7;
 }
-
-.booking-detail .book-section .booking-container .flight-date p, .booking-detail .book-section .booking-container-2 .flight-date p, .booking-detail .book-section .booking-container-2 .flight-date-2 p {
+.booking-detail .book-section .booking-container .flight-date p, .booking-detail .book-section .booking-container .booking-container-2 .flight-date-2 p, .booking-detail .book-section .booking-container-2 .booking-container .flight-date-2 p, .booking-detail .book-section .booking-container-2 .flight-date p, .booking-detail .book-section .booking-container-2 .flight-date-2 p {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   color: #212934;
 }
-
-.booking-detail .book-section .booking-container .flight-date .booking-dates, .booking-detail .book-section .booking-container-2 .flight-date .booking-dates, .booking-detail .book-section .booking-container-2 .flight-date-2 .booking-dates {
+.booking-detail .book-section .booking-container .flight-date .booking-dates, .booking-detail .book-section .booking-container .booking-container-2 .flight-date-2 .booking-dates, .booking-detail .book-section .booking-container-2 .booking-container .flight-date-2 .booking-dates, .booking-detail .book-section .booking-container-2 .flight-date .booking-dates, .booking-detail .book-section .booking-container-2 .flight-date-2 .booking-dates {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   color: #212934;
 }
-
 .booking-detail .book-section .booking-container .flight-date .booking-dates:placeholder, .booking-detail .book-section .booking-container-2 .flight-date .booking-dates:placeholder, .booking-detail .book-section .booking-container-2 .flight-date-2 .booking-dates:placeholder {
   color: #212934;
 }
-
 .booking-detail .book-section .booking-container .search_button, .booking-detail .book-section .booking-container-2 .search_button {
-  -webkit-box-shadow: 0px 12px 24px 0px #060a331a;
-          box-shadow: 0px 12px 24px 0px #060a331a;
+  box-shadow: 0px 12px 24px 0px rgba(6, 10, 51, 0.1019607843);
 }
-
 @media only screen and (min-width: 530px) and (max-width: 662px) {
   .booking-detail .book-section .booking-container .search_button, .booking-detail .book-section .booking-container-2 .search_button {
     width: 40% !important;
     padding: 0;
   }
 }
-
 @media only screen and (min-width: 1280px) and (max-width: 1500px) {
   .booking-detail .book-section .booking-container .search_button, .booking-detail .book-section .booking-container-2 .search_button {
     padding: 0 !important;
   }
 }
-
 .booking-detail .book-section .booking-container .tab-departure, .booking-detail .book-section .booking-container-2 .tab-departure {
   width: 300px;
 }
-
 .booking-detail .book-section .booking-container .tab-arrival, .booking-detail .book-section .booking-container-2 .tab-arrival {
   width: 50%;
 }
-
 .booking-detail .book-section .booking-container-2 {
   max-width: 1300px;
   width: 100%;
 }
-
-.booking-detail .book-section .booking-container-2 .switch-button {
+.booking-detail .book-section .booking-container-2 .switch-button, .booking-detail .book-section .booking-container-2 .switch-button {
   right: -20px;
 }
-
 .booking-detail .book-section .booking-container-2 .flight-date-2 {
   width: auto;
 }
-
 @media only screen and (min-width: 830px) {
   .booking-detail .book-section .booking-container-2 .flight-date-2 {
     width: 40% !important;
   }
 }
-
 @media only screen and (min-width: 1290px) {
   .booking-detail .book-section .booking-container-2 .flight-date-2 {
     width: 30% !important;
   }
 }
-
 .booking-detail .book-section .booking-container-2 .flight-date-2 .line {
   width: 1px;
   height: 23px;
@@ -4596,60 +3502,47 @@ nav .profile-button .profile-dropdown .log-out {
   background-position: bottom left;
   background-size: 30%;
 }
-
 @media only screen and (max-width: 950px) {
   .signup-container-2 {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
 }
-
 .signup-container .signup {
   margin-top: 100px;
   width: 405px;
 }
-
 @media only screen and (max-width: 950px) {
   .signup-container .signup {
     width: 80%;
     margin: 40px auto 0;
   }
 }
-
 .signup-container .signup-logo {
   margin-bottom: 32px;
 }
-
 .signup-container .signup-footer {
   margin-left: 100px;
 }
-
 @media only screen and (max-width: 950px) {
   .signup-container .signup-footer {
     width: 80%;
     margin: 40px auto 0;
   }
 }
-
 .signup-container .signup-details {
   margin: 24px 0;
 }
-
 .signup-container .signup-details_icon {
   margin: 0 8px;
   width: 28px;
   height: 28px;
 }
-
 .signup-container .signup-details_title {
   font-family: "Rubik", sans-serif;
   font-weight: 600;
   font-size: 16px;
   color: #060A33;
 }
-
 .signup-container .signup-details_subtitle {
   font-family: "Mulish", sans-serif;
   font-weight: 400;
@@ -4657,40 +3550,28 @@ nav .profile-button .profile-dropdown .log-out {
   color: #5f6b7a;
   margin: 4px 0;
 }
-
 .signup-container .signup-form {
   height: auto;
   width: 500px;
   border-radius: 8px;
   padding: 32px;
-  -webkit-box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.04);
-          box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.04);
-  display: -webkit-box;
-  display: -ms-flexbox;
+  box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.04);
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
   background-color: white;
 }
-
 @media only screen and (max-width: 949px) {
   .signup-container .signup-form {
     margin: 40px auto 0;
     padding: 23px;
   }
 }
-
 @media only screen and (max-width: 540px) {
   .signup-container .signup-form {
     width: 90%;
   }
 }
-
 .signup-container .signup-form .title {
   font-family: "Rubik", sans-serif;
   font-weight: 500;
@@ -4698,32 +3579,23 @@ nav .profile-button .profile-dropdown .log-out {
   color: #060A33;
   margin-top: 10px;
 }
-
 .signup-container .signup-form .sub {
   font-size: 13px;
   color: #5f6b7a;
   margin: 8px 0;
 }
-
 .signup-container .signup-form .signup-alt-btn {
   height: 48px;
   width: 100%;
   border-radius: 8px;
   padding: 4px;
-  border: 1px solid #e1e7ec;
+  border: 1px solid rgb(225, 231, 236);
   padding: 4px;
   margin: 12px 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
-
 .signup-container .signup-form .signup-alt-btn_btn-1 {
   height: 40px;
   width: 192px;
@@ -4731,32 +3603,23 @@ nav .profile-button .profile-dropdown .log-out {
   padding: 12px 32px;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   color: #5f6b7a;
 }
-
 @media only screen and (max-width: 350px) {
   .signup-container .signup-form .signup-alt-btn_btn-1 {
     width: 100%;
     margin: 0;
   }
 }
-
 .signup-container .signup-form .line {
   height: 0.5px;
   background: #e1e7ec;
   margin: 16px 0 20px;
   width: 100%;
 }
-
 .signup-container .signup-form .error-message {
   font-size: 14px;
   font-family: "Mulish", sans-serif;
@@ -4764,22 +3627,18 @@ nav .profile-button .profile-dropdown .log-out {
   color: red;
   margin: 8px 0;
 }
-
 .signup-container .signup-form .error-line {
   height: 0.5px;
   background: red;
   margin: 16px 0;
   width: 100%;
 }
-
 .signup-container .signup-form_field {
   margin-bottom: 23px;
 }
-
 .signup-container .signup-form_field .react-tel-input {
   margin: 8px 0;
 }
-
 .signup-container .signup-form_field .react-tel-input .form-control {
   height: 48px;
   width: 100%;
@@ -4787,19 +3646,16 @@ nav .profile-button .profile-dropdown .log-out {
   font-weight: 400;
   color: #212934;
 }
-
 .signup-container .signup-form_field .react-tel-input .selected-flag {
   padding: 10px;
   width: 48px;
 }
-
 .signup-container .signup-form_field .react-tel-input .country-list .country-name,
 .signup-container .signup-form_field .react-tel-input .country-list .dial-code {
   color: #060A33;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
 }
-
 .signup-container .signup-form_field .label {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
@@ -4807,42 +3663,35 @@ nav .profile-button .profile-dropdown .log-out {
   margin: 0 0 8px;
   color: #212934;
 }
-
 .signup-container .signup-form_field label {
   height: 48px;
   width: 100%;
   border-radius: 6px;
   padding: 10px 16px 10px 12px;
-  border: 1px solid #e1e7ec;
+  border: 1px solid rgb(225, 231, 236);
   margin: 8px 0 0;
 }
-
 .signup-container .signup-form_field label input {
   width: 100%;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   color: #212934;
 }
-
 .signup-container .signup-form_field label input input:-webkit-autofill,
 .signup-container .signup-form_field label input input:-webkit-autofill:hover,
 .signup-container .signup-form_field label input input:-webkit-autofill:focus,
 .signup-container .signup-form_field label input input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
   box-shadow: 0 0 0 30px white inset !important;
 }
-
 .signup-container .signup-form_field label input:focus {
   outline: none;
 }
-
 .signup-container .signup-form .signup-field-tnc {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 12px;
   color: #212934;
 }
-
 .signup-container .signup-form .signup-field-tnc_item {
   font-family: "Rubik", sans-serif;
   font-style: normal;
@@ -4851,7 +3700,6 @@ nav .profile-button .profile-dropdown .log-out {
   color: #060A33;
   margin: 0 4px;
 }
-
 .signup-container .signup-form .signup-field-checkbox {
   height: 24px;
   width: 24px;
@@ -4862,5 +3710,4 @@ nav .profile-button .profile-dropdown .log-out {
 .btn-active {
   background: #212934;
   color: white !important;
-}
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */

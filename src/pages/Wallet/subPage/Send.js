@@ -66,7 +66,8 @@ const Send = () => {
       },
     })
       .then((res) => {
-        toastSuccess(`${res.message}`);
+        console.log("resss: ", res)
+        toastSuccess(`${res?.data?.transferToken?.message}`);
         navigate(-1);
       })
       .catch((error) => {
@@ -103,11 +104,11 @@ const Send = () => {
                       type="text"
                       id="address"
                       name="address"
-                      className="input-email"
+                      className="input-email !rounded-l-[6px] !rounded-r-[6px] !pl-[20px]"
                       {...register("address", {
                         required: "Please enter wallet address",
                       })}
-                      placeholder="Enter wallet or email address"
+                      placeholder="Enter wallet address"
                       onFocus={() => setFocus("address")}
                     />
                     <button
@@ -160,7 +161,7 @@ const Send = () => {
                       {...register("amount", {
                         required: "Please enter amount",
                       })}
-                      className="input-email"
+                      className="input-email !rounded-l-[6px] !rounded-r-[6px] !pl-[20px]"
                       placeholder="Enter amount"
                       onFocus={() => setFocus("amount")}
                     />
@@ -181,7 +182,7 @@ const Send = () => {
 
               <div>
                 <Button
-                  className="withdraw-form_button flex items-center cursor-pointer justify-center"
+                  className="withdraw-form_button flex items-center cursor-pointer justify-center cursor-ppointer"
                   type="submit"
                   loading={sendingToken}
                 >

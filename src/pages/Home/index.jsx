@@ -16,9 +16,13 @@ import { useQuery } from "@apollo/client";
 import { USER_VERIFICATION_STATUS } from "../../hooks";
 import { GET_BANK_DETAILS } from "../../hooks";
 import { BALANCE } from "../../hooks";
+import { FLIGHT_HISTORY } from "../../hooks";
 import { verifyContext } from "../../hooks/verifyContext";
 
 const Home = () => {
+  const numberWithCommas = (x) => {
+    return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
   const { verify } = useContext(verifyContext);
 
   const [closeGetStarted, setCloseGetStarted] = useState(false);
@@ -27,17 +31,16 @@ const Home = () => {
   const { data } = useQuery(USER_VERIFICATION_STATUS);
 
   // Get Bank Details
-  const {
-    data: bankDetailsData,
-  } = useQuery(GET_BANK_DETAILS);
+  const { data: bankDetailsData } = useQuery(GET_BANK_DETAILS);
 
   // Get Wallet Balance
-  const {
-    data: balanceData,
-  } = useQuery(BALANCE);
+  const { data: balanceData } = useQuery(BALANCE);
   console.log("User verification status", data?.userVerificationStatus);
   console.log("Bank Details", bankDetailsData?.userBankDetails);
-  console.log("Wallet balance", balanceData)
+  console.log("Wallet balance", balanceData?.balance?.data?.data);
+
+    const { data: flightHistory } = useQuery(FLIGHT_HISTORY);
+    console.log("flight History", flightHistory?.bookedFlightHistory);
 
   // Store VerificationStatus in variable
   const verificationStatus = data?.userVerificationStatus;
@@ -47,7 +50,7 @@ const Home = () => {
     verify.updateVerify(verificationStatus);
   }, [verificationStatus, verify]);
   console.log("Email verification status state:", verify);
-  
+
   let bankdetailsLength = Boolean(
     Array.isArray(bankDetailsData?.userBankDetails) &&
       bankDetailsData?.userBankDetails.length
@@ -160,13 +163,13 @@ const Home = () => {
                     <Link to="/wallet/deposit" className="step">
                       <span className="step-stat uppercase">Step 4</span>
                       <span className="step-info">
-                        Fund your aeropaye wallet
+                        Fund your wallet
                       </span>
                       <ArrowRight />
                     </Link>
                   ))}
 
-                {(balanceData !== 0 ) && (balanceData !== undefined) && (
+                {balanceData !== 0 && balanceData !== undefined && (
                   <div className="step">
                     <span className="step-stat-done">DONE</span>
                     <span className="complete">Fund your aeropaye wallet</span>
@@ -212,7 +215,7 @@ const Home = () => {
             >
               <div className="flex items-center justify-between">
                 <div className="type">
-                  <p> Aeropaye Balance </p>
+                  <p> Wallet Balance </p>
                   <button>
                     <EyeOpen />
                   </button>
@@ -224,12 +227,16 @@ const Home = () => {
               </div>
 
               <div className="balance-container">
-                <p className="balance">0.00000000</p>
-                <p className="rates">≈ 0.00 NGN</p>
+                <p className="balance">
+                  {balanceData?.balance?.data?.data ? numberWithCommas(balanceData?.balance?.data?.data) : "0 NGN"}
+                </p>
+                <p className="rates">
+                  {`≈${numberWithCommas(balanceData?.balance?.data?.data)} NGN`}
+                </p>
               </div>
 
               <div className="flex items-center">
-                <p className="percentage-increase">+5.75%</p>
+                <p className="percentage-increase">+0.00%</p>
                 <ArrowUp />
               </div>
             </Link>
@@ -242,16 +249,18 @@ const Home = () => {
                 <div className="flight-booked my-[20px]">
                   <p>Flight Booked</p>
                   <div className="flex items-center lg:items-start xl:items-center book xl:flex-row lg:flex-col flex-row">
-                    <h2 className="booked">10</h2>
-                    <p className="aero-token">(1,019.4534 Aeropaye)</p>
+                    <h2 className="booked">
+                      {flightHistory?.bookedFlightHistory?.length ?flightHistory?.bookedFlightHistory?.length : "0"}
+                    </h2>
+                    <p className="aero-token">(0.00 Aeropaye)</p>
                   </div>
                 </div>
 
                 <div className="flight-booked my-[20px]">
                   <p>Refunds Claimed</p>
                   <div className="flex items-center book">
-                    <p className="booked">3</p>
-                    <p className="aero-token">(156,000.00 NGN)</p>
+                    <p className="booked">0</p>
+                    <p className="aero-token">(0.00 NGN)</p>
                   </div>
                 </div>
               </div>
@@ -269,15 +278,15 @@ const Home = () => {
                 <div className="flight-booked my-[20px]">
                   <p>Total Deposits</p>
                   <div className="flex items-start sm:items-center lg:items-start xl:items-center book xl:flex-row lg:flex-col sm:flex-row flex-col">
-                    <p className="booked">2,658.6209</p>
-                    <p className="aero-token">(≈ 1,516,060.00 NGN)</p>
+                    <p className="booked">0</p>
+                    <p className="aero-token">(≈ 0.00 NGN)</p>
                   </div>
                 </div>
 
                 <div className="flight-booked my-[20px]">
                   <p>Total Withdrawals</p>
                   <div className="book">
-                    <p className="booked">124,000.00 NGN </p>
+                    <p className="booked">0.00 NGN </p>
                   </div>
                 </div>
               </div>
