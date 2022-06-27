@@ -163,7 +163,7 @@ const Home = () => {
                     <Link to="/wallet/deposit" className="step">
                       <span className="step-stat uppercase">Step 4</span>
                       <span className="step-info">
-                        Fund your aeropaye wallet
+                        Fund your wallet
                       </span>
                       <ArrowRight />
                     </Link>
@@ -228,7 +228,7 @@ const Home = () => {
 
               <div className="balance-container">
                 <p className="balance">
-                  {numberWithCommas(balanceData?.balance?.data?.data)}
+                  {balanceData?.balance?.data?.data ? numberWithCommas(balanceData?.balance?.data?.data) : "0 NGN"}
                 </p>
                 <p className="rates">
                   {`≈${numberWithCommas(balanceData?.balance?.data?.data)} NGN`}
@@ -250,7 +250,7 @@ const Home = () => {
                   <p>Flight Booked</p>
                   <div className="flex items-center lg:items-start xl:items-center book xl:flex-row lg:flex-col flex-row">
                     <h2 className="booked">
-                      {flightHistory?.bookedFlightHistory?.length}
+                      {flightHistory?.bookedFlightHistory?.length ?flightHistory?.bookedFlightHistory?.length : "0"}
                     </h2>
                     <p className="aero-token">(0.00 Aeropaye)</p>
                   </div>

@@ -118,7 +118,7 @@ const Withdraw = () => {
 
                   <label
                     className={`flex withdraw-form_amount-form_input ${
-                      focus ? "clicked" : ""
+                      focus === "amount" ? "clicked" : ""
                     }`}
                   >
                     <span className="cur inline-flex items-center px-3 rounded-l-md">
@@ -130,7 +130,7 @@ const Withdraw = () => {
                       id="amount"
                       name="amount"
                       // value={() => { getValues("amount") }}
-                      onFocus={() => setFocus(true)}
+                      onFocus={() => setFocus("amount")}
                       className="input-email !pl-[5px]"
                       {...register("amount", {
                         required: "Please enter Amount",
@@ -140,7 +140,7 @@ const Withdraw = () => {
                       onClick={() => {
                         setValue(
                           "amount",
-                          `${walletBalance && walletBalance}`,
+                          `${walletBalance ? walletBalance : 0}`,
                           {
                             shouldValidate: true,
                             shouldDirty: true,
@@ -173,22 +173,29 @@ const Withdraw = () => {
                     Select Withdrawal Account
                   </p>
                   <div className="w-full flex justify-between items-center">
-                    <input
-                      readOnly
-                      className="withdraw-form_amount-form_dropdown !w-[65%] !pl-[20px] py-2.5 text-left inline-flex items-center justify-between"
-                      {...register("accountToWithdraw", {
-                        required: "Please select bank details",
-                      })}
-                    />
+                    <label
+                      className={`withdraw-form_amount-form_dropdown !w-[65%] !pl-[20px] py-2.5 text-left inline-flex items-center justify-between withdraw-form_amount-form_input${
+                        focus === "account" ? "clicked" : ""
+                      }`}
+                    >
+                      <input
+                        readOnly
+                        className="w-full"
+                        onFocus={() => setFocus("account")}
+                        {...register("accountToWithdraw", {
+                          required: "Please select bank details",
+                        })}
+                      />
+                    </label>
                     <button
                       id="dropdownButton"
                       name="accountToWithdraw"
                       data-dropdown-toggle="dropdown"
-                      className="withdraw-form_amount-form_dropdown !w-[30%] px-4 py-2.5 text-center inline-flex items-center justify-between"
+                      className="withdraw-form_amount-form_dropdown !w-[30%] !text-[12px] px-1 py-2.5 text-center inline-flex items-center justify-center whitespace-nowrap"
                       type="button"
                     >
                       {/* {loadingBanks && "Getting bank details..."} */}
-                      {bankdetailsLength === false && "No bank records found"}
+                      {bankdetailsLength === false && "No records found"}
                       {setValue}
                       {bankDetails &&
                         bankdetailsLength !== false &&
@@ -240,7 +247,7 @@ const Withdraw = () => {
               </div>
 
               <p className="withdraw-form_info">
-                Should arrive within 1-2 business days
+                Should arrive after 5 network confirmations
               </p>
             </form>
           </div>
