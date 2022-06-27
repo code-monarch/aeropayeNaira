@@ -147,7 +147,7 @@ const FlightItinerary = () => {
                   <div className="arrival-time">
                     <p className="time">{flight?.arrivalTime}</p>
                     <p className="location">{flight?.arrivalCity}</p>
-                    <p className="airport">Kotoka, T3, Accra (Ghana)</p>
+                    <p className="airport">Nnamdi Azikwe Airport (Nigeria)</p>
                   </div>
 
                   <div>
