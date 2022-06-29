@@ -16,18 +16,19 @@ import { ReactComponent as WalletActive } from "../assets/dashboard-icons/Wallet
 import { ReactComponent as SwapActive } from "../assets/dashboard-icons/Swap-active.svg";
 import { ReactComponent as SettingActive } from "../assets/dashboard-icons/Setting-active.svg";
 import MobileNav from "./mobile/MobileNav";
+import { useOnlineStatus } from "../utils/useOnlineStatus";
 
 import { Link, useNavigate } from "react-router-dom";
 
 const Nav = ({ userName, isActive, setIsActive }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const { auth } = useContext(authContext);
-  const firstname = auth?.user?.firstname
+  const firstname = auth?.user?.firstname;
 
   const { verify } = useContext(verifyContext);
 
-  console.log("Nav verification status: ", verify)
+  console.log("Nav verification status: ", verify);
 
   const [showOption, setShowOption] = useState(false);
   const [showProfile, setShowProfile] = useState(
@@ -48,12 +49,24 @@ const Nav = ({ userName, isActive, setIsActive }) => {
     });
   });
 
+  const isOnline = useOnlineStatus();
+  isOnline
+    ? console.log("Is Online: ", true)
+    : console.log("isOnline: ", false);
+
   return (
-    <>
+    <div className="sticky z-10 top-0 w-screen">
+      {!isOnline ? (
+        <div className="text-black flex justify-center items-center bg-[#fff6ed] py-[10px] transition-all ease-out duration-700">
+          You're Offline
+        </div>
+      ) : (
+        ""
+      )}
       {showMobileNav ? (
         <MobileNav isActive={isActive} setIsActive={setIsActive} />
       ) : (
-        <nav className="flex items-center justify-center sticky z-10 top-0 w-full">
+        <nav className="flex items-center justify-center">
           <div className="flex items-center justify-evenly w-full 2xl:w-[1536px]">
             <div className="flex items-center justify-between">
               <div className="mr-[20px] lg:mr-[32px]">
@@ -204,7 +217,9 @@ const Nav = ({ userName, isActive, setIsActive }) => {
                   <div className="flex justify-between items-center">
                     <div className="flex items-center">
                       <Profile />
-                      <span className="profile-name !capitalize">{firstname}</span>
+                      <span className="profile-name !capitalize">
+                        {firstname}
+                      </span>
                       {/* <span className="profile-name">{firstname}</span> */}
                     </div>
                     <Arrow />
@@ -238,7 +253,7 @@ const Nav = ({ userName, isActive, setIsActive }) => {
           </div>
         </nav>
       )}
-    </>
+    </div>
   );
 };
 export default Nav;

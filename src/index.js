@@ -14,6 +14,7 @@ import {
 } from "@apollo/client";
 import { AuthProvider } from "./hooks/auth";
 import { VerifyProvider } from "./hooks/verifyContext";
+import { OnlineStatusProvider } from "./utils/useOnlineStatus";
 
 import { setContext } from "@apollo/client/link/context";
 
@@ -44,11 +45,13 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <VerifyProvider>
-          <ApolloProvider client={client}>
-            <App />
-          </ApolloProvider>
-        </VerifyProvider>
+        <OnlineStatusProvider>
+          <VerifyProvider>
+            <ApolloProvider client={client}>
+              <App />
+            </ApolloProvider>
+          </VerifyProvider>
+        </OnlineStatusProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,

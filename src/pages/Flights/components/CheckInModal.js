@@ -5,7 +5,7 @@ import { ReactComponent as Close } from "../../../assets/dashboard-icons/Close.s
 
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_BOOKED_FLIGHTS } from "../../../hooks";
-import { FLIGHT_HISTORY } from "../../../hooks";
+// import { FLIGHT_HISTORY } from "../../../hooks";
 import { CHECK_IN } from "../../../hooks";
 import { toastError, toastSuccess } from "../../../component/shared/Toasts";
 
@@ -18,18 +18,15 @@ const CheckInModal = ({
   onChecked,
   flightToCheckIn,
 }) => {
-  const [checkIn, { loading: checkingIn }] = useMutation(
-    CHECK_IN,
-    {
-      refetchQueries: [
-        { query: FLIGHT_HISTORY }, // DocumentNode object parsed with gql
-        "getAirlineFlights", // Query name
-      ],
-      onCompleted() {
-        onCloseModal();
-      },
-    }
-  );
+  const [checkIn, { loading: checkingIn }] = useMutation(CHECK_IN, {
+    refetchQueries: [
+      { query: GET_BOOKED_FLIGHTS }, // DocumentNode object parsed with gql
+      "getBookedFlight", // Query name
+    ],
+    onCompleted() {
+      onCloseModal();
+    },
+  });
 
   // Get Passenger Booked Flights
   const { data: bookedFlights } = useQuery(GET_BOOKED_FLIGHTS);

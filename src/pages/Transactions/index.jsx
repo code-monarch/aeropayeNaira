@@ -30,7 +30,6 @@ const TableRow = ({ currentItems }) => {
     <>
       {currentItems &&
         currentItems.map((items, index) => (
-          <>
             <tr
               key={index}
               className="border-b odd:bg-white even:bg-[#F7FAFC;] dark:border-gray-600 table-body"
@@ -66,7 +65,6 @@ const TableRow = ({ currentItems }) => {
                 </p>
               </td>
             </tr>
-          </>
         ))}
     </>
   );

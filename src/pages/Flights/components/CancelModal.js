@@ -7,6 +7,7 @@ import { toastError, toastSuccess } from "../../../component/shared/Toasts";
 import Button from "../../../component/shared/Button";
 
 import { useMutation } from "@apollo/client";
+import { GET_BOOKED_FLIGHTS } from "../../../hooks";
 import { CANCEL_BOOKING } from "../../../hooks";
 
 const CancelModal = ({
@@ -18,7 +19,12 @@ const CancelModal = ({
   // const { flight } = useContext(flightContext);
 
   const [cancelBookings, { data: cancelResponse, loading: canceling }] =
-    useMutation(CANCEL_BOOKING);
+    useMutation(CANCEL_BOOKING, {
+      refetchQueries: [
+        { query: GET_BOOKED_FLIGHTS }, // DocumentNode object parsed with gql
+        "getBookedFlight", // Query name
+      ],
+    });
 
   return (
     <Modal open={openCancelModal} onClose={onCloseCancelModal} center>
