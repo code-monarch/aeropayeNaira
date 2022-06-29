@@ -64,9 +64,9 @@ const Home = () => {
   } = useContext(authContext);
   return (
     <Layout>
-      <div className="home bg-bg min-h-[100vh] mt-[-72px] pt-[72px]">
+      <div className="home bg-bg min-h-[100vh] w-screen mt-[-72px] pt-[72px]">
         {/* Welcome Banner */}
-        <div className="welcome-div sticky z-[3] top-[4.5rem] w-screen 2xl:flex 2xl:flex-col items-center">
+        <div className="welcome-div sticky z-[3] top-[4.5rem] w-full 2xl:flex 2xl:flex-col items-center">
           <div className="welcome-div_message 2xl:!w-[1312px]">
             <p className="title 2xl:text-[32px]">
               Welcome,
@@ -231,7 +231,7 @@ const Home = () => {
                   {balanceData?.balance?.data?.data ? numberWithCommas(balanceData?.balance?.data?.data) : "0 NGN"}
                 </p>
                 <p className="rates">
-                  {`≈${numberWithCommas(balanceData?.balance?.data?.data)} NGN`}
+                  {`≈ ${balanceData?.balance?.data?.data ? numberWithCommas(balanceData?.balance?.data?.data) : "0"} NGN`}
                 </p>
               </div>
 
