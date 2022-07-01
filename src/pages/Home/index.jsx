@@ -228,10 +228,10 @@ const Home = () => {
 
               <div className="balance-container">
                 <p className="balance">
-                  {balanceData?.balance?.data?.data ? numberWithCommas(balanceData?.balance?.data?.data) : "0 NGN"}
+                  {balanceData?.balance?.data?.data ? numberWithCommas(balanceData?.balance?.data?.data) : "0.00 NGN"}
                 </p>
                 <p className="rates">
-                  {`≈ ${balanceData?.balance?.data?.data ? numberWithCommas(balanceData?.balance?.data?.data) : "0"} NGN`}
+                  {`≈ ${balanceData?.balance?.data?.data ? numberWithCommas(balanceData?.balance?.data?.data) : "0.00"} NGN`}
                 </p>
               </div>
 

@@ -81,8 +81,6 @@ const Transaction = () => {
 
   //Query User Transaction history
   const {
-    loading,
-    error,
     data: transactions,
   } = useQuery(GET_TRANSACTION_HISTORY);
 
