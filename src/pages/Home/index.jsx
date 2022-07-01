@@ -17,6 +17,7 @@ import { USER_VERIFICATION_STATUS } from "../../hooks";
 import { GET_BANK_DETAILS } from "../../hooks";
 import { BALANCE } from "../../hooks";
 import { FLIGHT_HISTORY } from "../../hooks";
+import { USER_PROFILE } from "../../hooks";
 import { verifyContext } from "../../hooks/verifyContext";
 
 const Home = () => {
@@ -39,8 +40,8 @@ const Home = () => {
   console.log("Bank Details", bankDetailsData?.userBankDetails);
   console.log("Wallet balance", balanceData?.balance?.data?.data);
 
-    const { data: flightHistory } = useQuery(FLIGHT_HISTORY);
-    console.log("flight History", flightHistory?.bookedFlightHistory);
+    const { data: flightHistory } = useQuery(USER_PROFILE);
+    console.log("Number of flights", flightHistory);
 
   // Store VerificationStatus in variable
   const verificationStatus = data?.userVerificationStatus;
@@ -162,9 +163,7 @@ const Home = () => {
                   (balanceData === undefined && (
                     <Link to="/wallet/deposit" className="step">
                       <span className="step-stat uppercase">Step 4</span>
-                      <span className="step-info">
-                        Fund your wallet
-                      </span>
+                      <span className="step-info">Fund your wallet</span>
                       <ArrowRight />
                     </Link>
                   ))}
@@ -228,10 +227,16 @@ const Home = () => {
 
               <div className="balance-container">
                 <p className="balance">
-                  {balanceData?.balance?.data?.data ? numberWithCommas(balanceData?.balance?.data?.data) : "0.00 NGN"}
+                  {flightHistory?.getAUser?.walletBalance
+                    ? numberWithCommas(flightHistory?.getAUser?.walletBalance)
+                    : "0.00 NGN"}
                 </p>
                 <p className="rates">
-                  {`≈ ${balanceData?.balance?.data?.data ? numberWithCommas(balanceData?.balance?.data?.data) : "0.00"} NGN`}
+                  {`≈ ${
+                    flightHistory?.getAUser?.walletBalance
+                      ? numberWithCommas(flightHistory?.getAUser?.walletBalance)
+                      : "0.00"
+                  } NGN`}
                 </p>
               </div>
 
@@ -250,17 +255,38 @@ const Home = () => {
                   <p>Flight Booked</p>
                   <div className="flex items-center lg:items-start xl:items-center book xl:flex-row lg:flex-col flex-row">
                     <h2 className="booked">
-                      {flightHistory?.bookedFlightHistory?.length ?flightHistory?.bookedFlightHistory?.length : "0"}
+                      {flightHistory
+                        ? flightHistory?.getAUser?.numOfFlights
+                        : "0"}
                     </h2>
-                    <p className="aero-token">(0.00 Aeropaye)</p>
+                    <p className="aero-token">
+                      (
+                      {flightHistory?.getAUser?.totalFee
+                        ? numberWithCommas(flightHistory?.getAUser?.totalFee) +
+                          " NGN"
+                        : "≈ 0.00 NGN"}
+                      )
+                    </p>
                   </div>
                 </div>
 
                 <div className="flight-booked my-[20px]">
                   <p>Refunds Claimed</p>
                   <div className="flex items-center book">
-                    <p className="booked">0</p>
-                    <p className="aero-token">(0.00 NGN)</p>
+                    <p className="booked">
+                      {flightHistory?.getAUser?.numOfRefunds
+                        ? flightHistory?.getAUser?.numOfRefunds
+                        : "0"}
+                    </p>
+                    <p className="aero-token">
+                      (
+                      {flightHistory?.getAUser?.totalRefunds
+                        ? numberWithCommas(
+                            flightHistory?.getAUser?.totalRefunds
+                          ) + " NGN"
+                        : "≈ 0.00 NGN"}
+                      )
+                    </p>
                   </div>
                 </div>
               </div>
@@ -278,15 +304,38 @@ const Home = () => {
                 <div className="flight-booked my-[20px]">
                   <p>Total Deposits</p>
                   <div className="flex items-start sm:items-center lg:items-start xl:items-center book xl:flex-row lg:flex-col sm:flex-row flex-col">
-                    <p className="booked">0</p>
-                    <p className="aero-token">(≈ 0.00 NGN)</p>
+                    <p className="booked">
+                      {" "}
+                      {flightHistory?.getAUser?.totalRefunds
+                        ? numberWithCommas(
+                            flightHistory?.getAUser?.totalDeposits
+                          )
+                        : "0.00"}
+                    </p>
+                    <p className="aero-token">
+                      {`≈ ${
+                        flightHistory?.getAUser?.totalRefunds
+                          ? numberWithCommas(
+                              flightHistory?.getAUser?.totalDeposits
+                            ) + " NGN"
+                          : "≈ 0.00 NGN"
+                      }`}
+                    </p>
                   </div>
                 </div>
 
                 <div className="flight-booked my-[20px]">
                   <p>Total Withdrawals</p>
                   <div className="book">
-                    <p className="booked">0.00 NGN </p>
+                    <p className="booked">
+                      (
+                      {flightHistory?.getAUser?.totalRefunds
+                        ? numberWithCommas(
+                            flightHistory?.getAUser?.totalWithdraws
+                          ) + " NGN"
+                        : "≈ 0.00 NGN"}
+                      )
+                    </p>
                   </div>
                 </div>
               </div>

@@ -26,45 +26,56 @@ const TableRow = ({ currentItems }) => {
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
+  // Converts Milliseconds time to human readable Date
+  const createdAtDate = (x) => {
+    let date = new Date(x);
+    return date.toLocaleDateString("en-GB");
+  };
+  // Converts Milliseconds time to human readable time
+  const createdAtTime = (x) => {
+    let date = new Date(x);
+    return date.toLocaleTimeString("en-US");
+  };
   return (
     <>
       {currentItems &&
         currentItems.map((items, index) => (
-            <tr
-              key={index}
-              className="border-b odd:bg-white even:bg-[#F7FAFC;] dark:border-gray-600 table-body"
-            >
-              <td className="table-body_items whitespace-nowrap dark:text-white">
-                {items?.id}
-              </td>
-              <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                {/* {dateFormat(items?.createdAt, "mmmm dS, yyyy")} */}
-                {items.createdAt}
-              </td>
-              <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                {items?.trxType}
-              </td>
-              <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                {items?.description}
-              </td>
-              <td className="table-body_items pr-[15px] flex flex-col items-end justify-center whitespace-nowrap w-[150px] dark:text-gray-400">
-                <p className="mr-[20px]">{numberWithCommas(items?.amount)}</p>
-                <p className="rates !mr-[20px]">
-                  {`≈${numberWithCommas(items?.amount)} ARP`}
-                </p>
-              </td>
-              <td className="table-body_items whitespace-nowrap dark:text-gray-400">
-                <p
-                  className={`${
-                    items?.status === "Completed"
-                      ? "status-completed"
-                      : "status-pending"
-                  }`}
-                >
-                  {items?.status}
-                </p>
-              </td>
-            </tr>
+          <tr
+            key={index}
+            className="border-b odd:bg-white even:bg-[#F7FAFC;] dark:border-gray-600 table-body"
+          >
+            <td className="table-body_items whitespace-nowrap dark:text-white">
+              {items?.id}
+            </td>
+            <td className="table-body_items whitespace-nowrap dark:text-gray-400">
+              {`${createdAtDate(parseInt(items.createdAt))}, ${createdAtTime(
+                parseInt(items.createdAt)
+              )}`}
+            </td>
+            <td className="table-body_items whitespace-nowrap dark:text-gray-400">
+              {items?.trxType}
+            </td>
+            <td className="table-body_items whitespace-nowrap dark:text-gray-400">
+              {items?.description}
+            </td>
+            <td className="table-body_items pr-[15px] flex flex-col items-end justify-center whitespace-nowrap w-[150px] dark:text-gray-400">
+              <p className="mr-[20px]">{numberWithCommas(items?.amount)}</p>
+              <p className="rates !mr-[20px]">
+                {`≈${numberWithCommas(items?.amount)} ARP`}
+              </p>
+            </td>
+            <td className="table-body_items whitespace-nowrap dark:text-gray-400">
+              <p
+                className={`${
+                  items?.status === "Completed"
+                    ? "status-completed"
+                    : "status-pending"
+                }`}
+              >
+                {items?.status}
+              </p>
+            </td>
+          </tr>
         ))}
     </>
   );

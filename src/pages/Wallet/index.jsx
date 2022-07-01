@@ -10,10 +10,7 @@ import { ReactComponent as ReceiveIcon } from "../../assets/dashboard-icons/rece
 import { ReactComponent as FundIcon } from "../../assets/dashboard-icons/fundIcon.svg";
 import { ReactComponent as SendIcon } from "../../assets/dashboard-icons/sendIcon.svg";
 import { Link, useLocation } from "react-router-dom";
-import {
-  toastError,
-  toastSuccess,
-} from "../../component/shared/Toasts";
+import { toastError, toastSuccess } from "../../component/shared/Toasts";
 
 import { useMutation, useQuery } from "@apollo/client";
 import { MINT_TOKEN_MUTATION } from "../../hooks";
@@ -51,12 +48,11 @@ const Wallet = () => {
 
   // Get six transactions from Transactions query
   const transactionPlusOffset = useMemo(() => {
-    return transactions?.transactions?.slice(0, 4)
-  }, [transactions])
-    
-  
+    return transactions?.transactions?.slice(0, 4);
+  }, [transactions]);
+
   console.log("transactionPlusOffset: ", transactionPlusOffset);
-  
+
   const [controlShowBalance, setControlShowBalance] = useState("show");
   // Show wallet balance if false, else Hide wallet balance
   const [showBalance, setShowBalance] = useState(true);
@@ -118,6 +114,17 @@ const Wallet = () => {
       setShowBalance(true);
     }
   }, [controlShowBalance]);
+
+  // Converts Milliseconds time to human readable date
+  const createdAtDate = (x) => {
+    let date = new Date(x);
+    return date.toLocaleDateString("sv");
+  };
+  // Converts Milliseconds time to human readable time
+  const createdAtTime = (x) => {
+    let date = new Date(x);
+    return date.toLocaleTimeString("en-US");
+  };
 
   return (
     <Layout>
@@ -247,8 +254,9 @@ const Wallet = () => {
                         {/* Withdrawal to bank account */}
                       </p>
                       <p className="trans-date">
-                        {transaction.createdAt}
-                        {/* 16 July 2022, 11:35 AM */}
+                        {`${createdAtDate(
+                          parseInt(transaction.createdAt)
+                        )}, ${createdAtTime(parseInt(transaction.createdAt))}`}
                       </p>
                     </div>
                   </div>
