@@ -16,7 +16,7 @@ import { ReactComponent as WalletActive } from "../assets/dashboard-icons/Wallet
 import { ReactComponent as SwapActive } from "../assets/dashboard-icons/Swap-active.svg";
 import { ReactComponent as SettingActive } from "../assets/dashboard-icons/Setting-active.svg";
 import MobileNav from "./mobile/MobileNav";
-import { useOnlineStatus } from "../utils/useOnlineStatus";
+// import { useOnlineStatus } from "../utils/useOnlineStatus";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -49,20 +49,20 @@ const Nav = ({ userName, isActive, setIsActive }) => {
     });
   });
 
-  const isOnline = useOnlineStatus();
-  isOnline
-    ? console.log("Is Online: ", true)
-    : console.log("isOnline: ", false);
+  // const isOnline = useOnlineStatus();
+  // isOnline
+  //   ? console.log("Is Online: ", true)
+  //   : console.log("isOnline: ", false);
 
   return (
     <div className="sticky z-10 top-0 w-screen">
-      {!isOnline ? (
+      {/* {!isOnline ? (
         <div className="text-black flex justify-center items-center bg-[#fff6ed] py-[10px] transition-all ease-out duration-700">
           You're Offline
         </div>
       ) : (
         ""
-      )}
+      )} */}
       {showMobileNav ? (
         <MobileNav isActive={isActive} setIsActive={setIsActive} />
       ) : (

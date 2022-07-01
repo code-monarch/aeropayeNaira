@@ -18,6 +18,9 @@ module.exports = {
         green: "#22E0BB",
         bg: "#F7FAFC",
       },
+      boxShadow: {
+        custom: "0px 6px 15px rgba(0, 0, 0, 0.04)",
+      },
     },
     backgroundImage: {
       svgPattern: "url('/svg/svgPattern.svg')",
