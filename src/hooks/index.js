@@ -5,7 +5,8 @@ export { GET_BANK_DETAILS } from "./query.bank.details";
 export { GET_BOOKED_FLIGHTS } from "./query.user.booked.flight";
 export { USER_VERIFICATION_STATUS } from "./query.user.verification";
 export {  GET_TRANSACTION_HISTORY } from "./query.transaction.history";
-// export { GET_ALL_PASSENGERS } from "./query.all.passengers";
+export { FLIGHT_HISTORY } from "./query.booked.flight.history";
+export { USER_PROFILE } from "./query.user.profile";
 
 export { MAKE_PAYMENT_MUTATION } from "./mutation.make.payment";
 export { VERIFY_2FA_MUTATION } from "./mutation.verify.2fa";
@@ -20,6 +21,5 @@ export { CHECK_IN } from "./mutation.checkin";
 export { CANCEL_BOOKING } from "./mutation.cancel.booking";
 export { VERIFY_EMAIL } from "./mutation.verify.email";
 export { SEND_EMAIL_VERIFICATION } from "./mutation.sendEmail.verification";
-export { FLIGHT_HISTORY } from "./query.booked.flight.history";
 
 
