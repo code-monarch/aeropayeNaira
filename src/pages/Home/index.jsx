@@ -16,15 +16,12 @@ import { useQuery } from "@apollo/client";
 import { USER_VERIFICATION_STATUS } from "../../hooks";
 import { GET_BANK_DETAILS } from "../../hooks";
 import { BALANCE } from "../../hooks";
-import { FLIGHT_HISTORY } from "../../hooks";
 import { USER_PROFILE } from "../../hooks";
-import { verifyContext } from "../../hooks/verifyContext";
 
 const Home = () => {
   const numberWithCommas = (x) => {
     return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
-  const { verify } = useContext(verifyContext);
 
   const [closeGetStarted, setCloseGetStarted] = useState(false);
 
@@ -34,23 +31,12 @@ const Home = () => {
   // Get Bank Details
   const { data: bankDetailsData } = useQuery(GET_BANK_DETAILS);
 
-  // Get Wallet Balance
-  const { data: balanceData } = useQuery(BALANCE);
-  console.log("User verification status", data?.userVerificationStatus);
-  console.log("Bank Details", bankDetailsData?.userBankDetails);
-  console.log("Wallet balance", balanceData?.balance?.data?.data);
-
-    const { data: flightHistory } = useQuery(USER_PROFILE);
-    console.log("Number of flights", flightHistory);
+  const { data: userProfile } = useQuery(USER_PROFILE);
+  console.log("Number of flights", userProfile);
 
   // Store VerificationStatus in variable
   const verificationStatus = data?.userVerificationStatus;
-
-  // Memoize Email verification status to prevent continues rerendering
-  useCallback(() => {
-    verify.updateVerify(verificationStatus);
-  }, [verificationStatus, verify]);
-  console.log("Email verification status state:", verify);
+  console.log("Email verification status state:", verificationStatus);
 
   let bankdetailsLength = Boolean(
     Array.isArray(bankDetailsData?.userBankDetails) &&
@@ -118,7 +104,7 @@ const Home = () => {
                 {/* step 2 */}
                 {(verificationStatus === false ||
                   verificationStatus === undefined) && (
-                  <Link to="/confirmation" className="step">
+                  <Link to="/verify-email" className="step">
                     <>
                       <span className="step-stat uppercase">Step 2</span>
                       <span className="step-info">Verify email address</span>
@@ -159,8 +145,9 @@ const Home = () => {
                 {/* Step 3 End */}
 
                 {/* Step 4 */}
-                {balanceData === 0 ||
-                  (balanceData === undefined && (
+                {userProfile?.getAUser?.walletBalance === 0 ||
+                  userProfile?.getAUser?.walletBalance === undefined ||
+                  (userProfile?.getAUser?.walletBalance === null && (
                     <Link to="/wallet/deposit" className="step">
                       <span className="step-stat uppercase">Step 4</span>
                       <span className="step-info">Fund your wallet</span>
@@ -168,12 +155,17 @@ const Home = () => {
                     </Link>
                   ))}
 
-                {balanceData !== 0 && balanceData !== undefined && (
-                  <div className="step">
-                    <span className="step-stat-done">DONE</span>
-                    <span className="complete">Fund your aeropaye wallet</span>
-                  </div>
-                )}
+                {userProfile?.getAUser?.walletBalance !== 0 &&
+                  userProfile?.getAUser?.walletBalance !== undefined &&
+                  userProfile?.getAUser?.walletBalance !==
+                    null && (
+                      <div className="step">
+                        <span className="step-stat-done">DONE</span>
+                        <span className="complete">
+                          Fund your aeropaye wallet
+                        </span>
+                      </div>
+                    )}
                 {/* Step 4 End */}
 
                 {/* Step 5 */}
@@ -227,14 +219,14 @@ const Home = () => {
 
               <div className="balance-container">
                 <p className="balance">
-                  {flightHistory?.getAUser?.walletBalance
-                    ? numberWithCommas(flightHistory?.getAUser?.walletBalance)
+                  {userProfile?.getAUser?.walletBalance
+                    ? numberWithCommas(userProfile?.getAUser?.walletBalance)
                     : "0.00 NGN"}
                 </p>
                 <p className="rates">
                   {`≈ ${
-                    flightHistory?.getAUser?.walletBalance
-                      ? numberWithCommas(flightHistory?.getAUser?.walletBalance)
+                    userProfile?.getAUser?.walletBalance
+                      ? numberWithCommas(userProfile?.getAUser?.walletBalance)
                       : "0.00"
                   } NGN`}
                 </p>
@@ -255,14 +247,14 @@ const Home = () => {
                   <p>Flight Booked</p>
                   <div className="flex items-center lg:items-start xl:items-center book xl:flex-row lg:flex-col flex-row">
                     <h2 className="booked">
-                      {flightHistory
-                        ? flightHistory?.getAUser?.numOfFlights
+                      {userProfile?.getAUser?.numOfFlights
+                        ? userProfile?.getAUser?.numOfFlights
                         : "0"}
                     </h2>
                     <p className="aero-token">
                       (
-                      {flightHistory?.getAUser?.totalFee
-                        ? numberWithCommas(flightHistory?.getAUser?.totalFee) +
+                      {userProfile?.getAUser?.totalFee
+                        ? numberWithCommas(userProfile?.getAUser?.totalFee) +
                           " NGN"
                         : "≈ 0.00 NGN"}
                       )
@@ -274,15 +266,15 @@ const Home = () => {
                   <p>Refunds Claimed</p>
                   <div className="flex items-center book">
                     <p className="booked">
-                      {flightHistory?.getAUser?.numOfRefunds
-                        ? flightHistory?.getAUser?.numOfRefunds
+                      {userProfile?.getAUser?.numOfRefunds
+                        ? userProfile?.getAUser?.numOfRefunds
                         : "0"}
                     </p>
                     <p className="aero-token">
                       (
-                      {flightHistory?.getAUser?.totalRefunds
+                      {userProfile?.getAUser?.totalRefunds
                         ? numberWithCommas(
-                            flightHistory?.getAUser?.totalRefunds
+                            userProfile?.getAUser?.totalRefunds
                           ) + " NGN"
                         : "≈ 0.00 NGN"}
                       )
@@ -306,19 +298,17 @@ const Home = () => {
                   <div className="flex items-start sm:items-center lg:items-start xl:items-center book xl:flex-row lg:flex-col sm:flex-row flex-col">
                     <p className="booked">
                       {" "}
-                      {flightHistory?.getAUser?.totalRefunds
-                        ? numberWithCommas(
-                            flightHistory?.getAUser?.totalDeposits
-                          )
+                      {userProfile?.getAUser?.totalRefunds
+                        ? numberWithCommas(userProfile?.getAUser?.totalDeposits)
                         : "0.00"}
                     </p>
                     <p className="aero-token">
                       {`≈ ${
-                        flightHistory?.getAUser?.totalRefunds
+                        userProfile?.getAUser?.totalRefunds
                           ? numberWithCommas(
-                              flightHistory?.getAUser?.totalDeposits
+                              userProfile?.getAUser?.totalDeposits
                             ) + " NGN"
-                          : "≈ 0.00 NGN"
+                          : " 0.00 NGN"
                       }`}
                     </p>
                   </div>
@@ -329,9 +319,9 @@ const Home = () => {
                   <div className="book">
                     <p className="booked">
                       (
-                      {flightHistory?.getAUser?.totalRefunds
+                      {userProfile?.getAUser?.totalRefunds
                         ? numberWithCommas(
-                            flightHistory?.getAUser?.totalWithdraws
+                            userProfile?.getAUser?.totalWithdraws
                           ) + " NGN"
                         : "≈ 0.00 NGN"}
                       )

@@ -162,7 +162,7 @@ function App() {
         />
 
         <Route
-          path={"/confirmation"}
+          path={"/verify-email"}
           element={
             <RequireAuth>
               <ConfirmEmail />

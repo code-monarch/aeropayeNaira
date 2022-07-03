@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { authContext } from "../hooks/auth";
-import { verifyContext } from "../hooks/verifyContext";
 import { ReactComponent as Logo } from "../assets/icons/logo.svg";
 import { ReactComponent as Notification } from "../assets/dashboard-icons/Notification.svg";
 import { ReactComponent as Arrow } from "../assets/dashboard-icons/arrow-down.svg";
@@ -16,19 +15,18 @@ import { ReactComponent as WalletActive } from "../assets/dashboard-icons/Wallet
 import { ReactComponent as SwapActive } from "../assets/dashboard-icons/Swap-active.svg";
 import { ReactComponent as SettingActive } from "../assets/dashboard-icons/Setting-active.svg";
 import MobileNav from "./mobile/MobileNav";
-// import { useOnlineStatus } from "../utils/useOnlineStatus";
+import { useVerifEmailStatus } from "../utils/EmailVerifStatus";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Nav = ({ userName, isActive, setIsActive }) => {
   const navigate = useNavigate();
 
+  const location = useLocation();
+  console.log("pathname", location.pathname);
+
   const { auth } = useContext(authContext);
   const firstname = auth?.user?.firstname;
-
-  const { verify } = useContext(verifyContext);
-
-  console.log("Nav verification status: ", verify);
 
   const [showOption, setShowOption] = useState(false);
   const [showProfile, setShowProfile] = useState(
@@ -49,20 +47,23 @@ const Nav = ({ userName, isActive, setIsActive }) => {
     });
   });
 
-  // const isOnline = useOnlineStatus();
-  // isOnline
-  //   ? console.log("Is Online: ", true)
-  //   : console.log("isOnline: ", false);
+  const isVerified = useVerifEmailStatus();
+  isVerified
+    ? console.log("Is Verified: ", true)
+    : console.log("Is verified: ", false);
 
   return (
     <div className="sticky z-10 top-0 w-screen">
-      {/* {!isOnline ? (
-        <div className="text-black flex justify-center items-center bg-[#fff6ed] py-[10px] transition-all ease-out duration-700">
-          You're Offline
-        </div>
+      {!isVerified ? (
+        <Link
+          to="/verify-email"
+          className="font-sans text-black flex justify-center items-center bg-[#fff6ed] py-[10px] transition-all ease-out duration-700"
+        >
+          Verify your Email address to book flights
+        </Link>
       ) : (
         ""
-      )} */}
+      )}
       {showMobileNav ? (
         <MobileNav isActive={isActive} setIsActive={setIsActive} />
       ) : (

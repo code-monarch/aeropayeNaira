@@ -19,6 +19,8 @@ import { ReactComponent as BusinessClassIcon } from "../../../assets/flightClass
 import { ReactComponent as EcoClassIcon } from "../../../assets/flightClass/economy.svg";
 import { ReactComponent as PremiumEcoClassIcon } from "../../../assets/flightClass/premiumEco.svg";
 import { ReactComponent as FirstClassIcon } from "../../../assets/flightClass/first.svg";
+import { toastError } from "../../../component/shared/Toasts";
+import { useVerifEmailStatus } from "../../../utils/EmailVerifStatus";
 
 // import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
@@ -36,6 +38,7 @@ import BookingFailedModal from "./BookingFailedModal";
 
 const FlightItinerary = () => {
   // saves itinerarRef which is passed to BookingDetails component
+  const isVerified = useVerifEmailStatus();
   const [itinerary, setItinerary] = useState("");
   const itineraryRef = useRef(null);
 
@@ -254,10 +257,14 @@ const FlightItinerary = () => {
                     <div className="flex items-center">
                       <button
                         onClick={() => {
-                          itineraryRef.current = flight;
-                          const itineraryPointer = itineraryRef.current;
-                          setItinerary(itineraryPointer);
-                          openBookingModal();
+                          if (isVerified) {
+                            itineraryRef.current = flight;
+                            const itineraryPointer = itineraryRef.current;
+                            setItinerary(itineraryPointer);
+                            openBookingModal();
+                          } else {
+                            toastError("Verify your Email to book flights");
+                          }
                         }}
                         className="bg-green h-[42px] text-black text-[14px] font-sans font-[500] py-[15px] mr-[16px] px-[16px] flex justify-center items-center shadow-custom rounded-[6px] whitespace-nowrap"
                       >
@@ -372,10 +379,14 @@ const FlightItinerary = () => {
                   </Link>
                   <button
                     onClick={() => {
-                      itineraryRef.current = flight;
-                      const itineraryPointer = itineraryRef.current;
-                      setItinerary(itineraryPointer);
-                      openBookingModal();
+                      if (isVerified) {
+                        itineraryRef.current = flight;
+                        const itineraryPointer = itineraryRef.current;
+                        setItinerary(itineraryPointer);
+                        openBookingModal();
+                      } else {
+                        toastError("Verify your Email to book flights");
+                      }
                     }}
                     className="checkIn-button"
                   >

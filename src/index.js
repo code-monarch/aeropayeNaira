@@ -13,7 +13,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { AuthProvider } from "./hooks/auth";
-import { VerifyProvider } from "./hooks/verifyContext";
+import { EmailVerifStatusProvider } from "./utils/EmailVerifStatus";
 // import { OnlineStatusProvider } from "./utils/useOnlineStatus";
 
 import { setContext } from "@apollo/client/link/context";
@@ -46,11 +46,11 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthProvider>
         {/* <OnlineStatusProvider> */}
-          <VerifyProvider>
-            <ApolloProvider client={client}>
-              <App />
-            </ApolloProvider>
-          </VerifyProvider>
+        <ApolloProvider client={client}>
+          <EmailVerifStatusProvider>
+            <App />
+          </EmailVerifStatusProvider>
+        </ApolloProvider>
         {/* </OnlineStatusProvider> */}
       </AuthProvider>
     </BrowserRouter>

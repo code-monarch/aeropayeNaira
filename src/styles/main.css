@@ -3745,7 +3745,6 @@ nav .profile-button .profile-dropdown .log-out {
   padding: 24px 32px;
   display: flex;
   align-items: flex-start;
-  flex-shrink: 2;
 }
 .flight-container_information-list .section .body-flight_details .airline-logo {
   display: flex;
