@@ -15,10 +15,11 @@
     font-style: normal;
   }
 
-  html,body{
+  html, body{
   padding: 0 !important;
   margin: 0 !important;
   box-sizing: border-box !important;
+  width: 100vw;
   }
 
 

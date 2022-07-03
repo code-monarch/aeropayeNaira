@@ -69,7 +69,7 @@ const Flight = () => {
     });
   });
   return (
-    <>
+    <div className="w-[100vw]">
       <Layout>
         <div
           className={`${
@@ -228,7 +228,7 @@ const Flight = () => {
           onClaimedRefund={onClaimedRefund}
         />
       </Layout>
-    </>
+    </div>
   );
 };
 

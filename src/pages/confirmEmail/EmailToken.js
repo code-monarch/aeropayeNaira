@@ -2,25 +2,27 @@ import React, { useEffect, useRef } from "react";
 import { ReactComponent as Logo } from "../../assets/icons/logo.svg";
 import { useMutation } from "@apollo/client";
 import { toastError, toastSuccess } from "../../component/shared/Toasts";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
 import { VERIFY_EMAIL } from "../../hooks";
 
 const EmailToken = () => {
+  const navigate = useNavigate();
   let statusRef = useRef(null);
   const [verifyUser, { data, loading, error }] = useMutation(VERIFY_EMAIL);
   let { token } = useParams();
   console.log("Email Token:", token);
-//   let status = statusRef.current
+  //   let status = statusRef.current
   useEffect(() => {
     if (token) {
       verifyUser()
         .then((res) => {
           console.log("verify response", res?.data?.verifyUser);
-            statusRef.current = res?.data?.verifyUser;
-            console.log("statusRef", statusRef.current);
+          statusRef.current = res?.data?.verifyUser;
+          console.log("statusRef", statusRef.current);
           //   const status = res?.data?.verifyUser;
           if (statusRef.current === true) {
             toastSuccess(`${"Email verification successful"}`);
+            navigate("/")
           } else {
             toastError(`${"Email verification Failed"}`);
           }

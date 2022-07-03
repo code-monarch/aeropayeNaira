@@ -1,7 +1,17 @@
 import React, { createContext, useState, useEffect } from "react";
-import { ToastContainer, Slide } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 // import UserSessionManager from "../helpers/session.manager";
 import lodash from "lodash";
+
+
+const contextClass = {
+  success: "bg-blue-600",
+  error: "bg-red-600 shadow-none",
+  info: "bg-gray-600",
+  warning: "bg-orange-400",
+  default: "bg-indigo-600",
+  dark: "bg-white-600 font-gray-300",
+};
 
 export const authContext = createContext();
 
@@ -59,7 +69,9 @@ export const AuthProvider = (props) => {
       }}
     >
       {props.children}
-      <ToastContainer autoClose={4000} transition={Slide} />
+      <ToastContainer
+        autoClose={3000}
+      />
     </authContext.Provider>
   );
 };
