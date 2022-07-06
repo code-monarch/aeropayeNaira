@@ -102,7 +102,7 @@ const FlightItinerary = () => {
   return (
     <div>
       {(!data || data?.getAvailableFlights.length === 0) && (
-        <div className="flight-container_information">
+        <div className="flight-container_information !mr-0">
           <div className="section h-[200px] bg-white flex justify-center items-center">
             <div className="body"> NO RECORDS FOUND </div>
           </div>
@@ -112,7 +112,7 @@ const FlightItinerary = () => {
         <div key={flight?.flightCode} ref={itineraryRef}>
           {/* Display Mobile view itinerary */}
           {mobileView ? (
-            <div className="!w-full flex flex-col">
+            <div className="!w-full flex justify-center flex-col">
               {/* Warning */}
               <div className="!w-full bg-[#fff6ed] flex items-center py-[9px] px-[13px] mb-[16px] border-[1px] border-[#fce3b9] rounded-[4px]">
                 <Warning className={`${mobileView && "w-[40px]"}`} />
@@ -173,7 +173,7 @@ const FlightItinerary = () => {
                   {/* Flight details */}
                   <div className="bg-white w-full flex flex-row justify-between px-[17px] py-[22px]">
                     {/* Left side */}
-                    <div className="flex flex-col justify-between">
+                    <div className="flex flex-col justify-between sm:ml-[30px] my-[20px]">
                       <p className="font-sans font-[500] text-[18px]">
                         {flight?.departureTime}
                       </p>
@@ -191,13 +191,13 @@ const FlightItinerary = () => {
                     </div>
                     {/* Middle Side end */}
                     {/* Right Side */}
-                    <div className="flex flex-col justify-between">
+                    <div className="flex flex-col justify-between sm:mr-[25px]">
                       {/* Departure City */}
                       <div>
-                        <p className="text-[14px] mb-[4px]">
+                        <p className="text-[14px] sm:text-[18px] mb-[4px]">
                           {flight?.departureCity}
                         </p>
-                        <p className="text-[10px] text-[#8895A7]">
+                        <p className="text-[10px] text-[#8895A7] max-w-[100px]">
                           Murtala Muhammed International Airport (Nigeria)
                         </p>
                       </div>
@@ -233,10 +233,10 @@ const FlightItinerary = () => {
                         </div>
                       </div>
                       <div>
-                        <p className="text-[14px] mb-[4px]">
+                        <p className="text-[14px] sm:text-[18px] mb-[4px]">
                           {flight?.arrivalCity}
                         </p>
-                        <p className="text-[10px] text-[#8895A7]">
+                        <p className="text-[10px] text-[#8895A7] max-w-[100px]">
                           Nnamdi Azikwe Airport (Nigeria)
                         </p>
                       </div>
@@ -245,46 +245,48 @@ const FlightItinerary = () => {
                   </div>
                   {/* Flight details End */}
                   {/* Passenger Details */}
-                  <div className="w-full flex flex-col p-[20px]">
-                    <div className="flex items-center mb-[28px]">
-                      <Profile className="w-[25px] h-[20px] mr-[5px]" />
-                      <p className="text-[12px]">
-                        Passengers:
-                        <span className="mx-[8px]">Derek Hale</span>
-                      </p>
+                  <div className="w-full p-[20px]">
+                    <div className="w-full flex flex-col sm:flex-row sm:justify-between sm:items-center text-left">
+                      <div className="flex items-center mb-[28px] sm:mb-0">
+                        <Profile className="w-[25px] h-[20px] mr-[5px]" />
+                        <p className="text-[12px]">
+                          Passengers:
+                          <span className="mx-[8px]">Derek Hale</span>
+                        </p>
+                      </div>
+                      {/* Make payment and change flight buttons */}
+                      <div className="flex items-center">
+                        <button
+                          onClick={() => {
+                            if (isVerified) {
+                              itineraryRef.current = flight;
+                              const itineraryPointer = itineraryRef.current;
+                              setItinerary(itineraryPointer);
+                              openBookingModal();
+                            } else {
+                              toastError("Verify your Email to book flights");
+                            }
+                          }}
+                          className="bg-green h-[42px] text-black text-[14px] font-sans font-[500] py-[15px] mr-[16px] px-[16px] flex justify-center items-center shadow-custom rounded-[6px] whitespace-nowrap"
+                        >
+                          Make payment
+                        </button>
+                        <Link
+                          to="/flights/book-flight"
+                          className="h-[42px] text-black text-[14px] font-sans font-[500] flex justify-center items-center py-[15px] px-[16px] border-[1px] border-green rounded-[6px] shadow-custom whitespace-nowrap"
+                        >
+                          Change flight
+                        </Link>
+                      </div>
+                      {/* Make payment and change flight buttons end */}
                     </div>
-                    {/* Make payment and change flight buttons */}
-                    <div className="flex items-center">
-                      <button
-                        onClick={() => {
-                          if (isVerified) {
-                            itineraryRef.current = flight;
-                            const itineraryPointer = itineraryRef.current;
-                            setItinerary(itineraryPointer);
-                            openBookingModal();
-                          } else {
-                            toastError("Verify your Email to book flights");
-                          }
-                        }}
-                        className="bg-green h-[42px] text-black text-[14px] font-sans font-[500] py-[15px] mr-[16px] px-[16px] flex justify-center items-center shadow-custom rounded-[6px] whitespace-nowrap"
-                      >
-                        Make payment
-                      </button>
-                      <Link
-                        to="/flights/book-flight"
-                        className="h-[42px] text-black text-[14px] font-sans font-[500] flex justify-center items-center py-[15px] px-[16px] border-[1px] border-green rounded-[6px] shadow-custom whitespace-nowrap"
-                      >
-                        Change flight
-                      </Link>
-                    </div>
-                    {/* Make payment and change flight buttons end */}
                   </div>
                 </div>
               </div>
               {/* Itinerary End */}
             </div>
           ) : (
-            <div className="flight-container_information-list">
+            <div className="flight-container_information-list !mr-0">
               <div className="warning">
                 <Warning />
                 <p>

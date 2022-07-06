@@ -1,4 +1,4 @@
-import { useState, useRef, useContext } from "react";
+import React,{ useState, useRef, useContext } from "react";
 import { flightContext } from "../../../context/FlightProvider";
 import CancelModal from "./CancelModal";
 import CheckInModal from "./CheckInModal";

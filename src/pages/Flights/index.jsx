@@ -74,8 +74,8 @@ const Flight = () => {
         <div
           className={`${
             showMobileFilter
-              ? "!px-[18px] !pt-[16px]"
-              : " flight !pt-[72px] w-screen"
+              ? "px-[18px] pt-[16px]"
+              : " flight pt-[72px] w-screen"
           }`}
         >
           <div className="flight-container">

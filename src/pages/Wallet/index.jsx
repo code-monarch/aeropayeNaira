@@ -56,7 +56,8 @@ const Wallet = () => {
   const [controlShowBalance, setControlShowBalance] = useState("show");
   // Show wallet balance if false, else Hide wallet balance
   const [showBalance, setShowBalance] = useState(true);
-  const { loading, error, data } = useQuery(BALANCE);
+  const { data } = useQuery(BALANCE);
+  console.log("balanceData data: ", data?.balance?.data);
 
   // Mint token Mutation
   const [
@@ -98,7 +99,6 @@ const Wallet = () => {
 
   console.log("Minting Tokens", mintData);
 
-  const [isActive, setIsActive] = useState("wallet");
   const [showMobileButton, setShowMobileButton] = useState(
     window.matchMedia("(max-width:500px)").matches
   );
@@ -144,16 +144,16 @@ const Wallet = () => {
             </div>
             <p className="wallet-bal">
               {showBalance
-                ? data
-                  ? `${numberWithCommas(data?.balance?.data?.data)}`
+                ? data?.balance?.data
+                  ? `${numberWithCommas(data?.balance?.data)}`
                   : "0"
                 : "****"}
             </p>
             <p className="wallet-rate">
               {showBalance
-                ? data
-                  ? `≈ ${numberWithCommas(data?.balance?.data?.data)} NGN`
-                  : "≈ 0 NGN"
+                ? data?.balance?.data
+                  ? `≈ ${numberWithCommas(data?.balance?.data)} NGN`
+                  : "≈ 0.00 NGN"
                 : "****"}
             </p>
           </div>

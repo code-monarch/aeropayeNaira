@@ -12,12 +12,12 @@ import { GET_BOOKED_FLIGHTS } from "../../../hooks";
 import dateFormat from "dateformat";
 
 const style = {
-  card: `card bg-white w-[421px] !mr-[0px] mb-[20px] p-[16px] rounded-[8px] border-[1px] border-[#DDEFFF] cursor-pointer`,
+  card: `card bg-white w-full lg:w-[421px] !mr-[0px] mb-[20px] p-[16px] rounded-[8px] border-[1px] border-[#DDEFFF] cursor-pointer`,
   inner_wrapper: `card_wrapper py-[16px] px-[16px] `,
   flightIdWrapper: `flight_id_wrapper h-[43px] flex justify-between p-[13px] bg-bg rounded-[8px]`,
   flightIdFlex: `flight_id_flex flex items-center p-0`,
-  flightIdText: `uppercase flight_Id_text font-sans text-[14px] leading-[17px] font-[500] text-[#41526E] ml-[5.5px]`,
-  flightDetailsWrapper: `bg-red flight_details_wrapper w-[389px] flex justify-between my-[16px] p-[11px] rounded-[8px]`,
+  flightIdText: `uppercase flight_Id_text font-sans text-[12px] lg:text-[14px] leading-[17px] font-[500] text-[#41526E] ml-[5.5px]`,
+  flightDetailsWrapper: `bg-red flight_details_wrapper w-full lg:w-[389px] flex justify-between my-[16px] p-[11px] rounded-[8px]`,
   flightDetailsTime: `flight_details_time font-sans font-[500] text-[18px] leading-[21px] text-[#000000]`,
   flightDetailsLocation: `flight_details_Location font-sans font-[400] text-[14px] leading-[17px] text-[#000000] my-[8px]`,
   flightDetailsAirport: `flight_details_Airport max-w-[108px] font-serif font-[400] text-[11px] leading-[14px] text-[#8895A7]`,
@@ -128,7 +128,7 @@ const BookingDetails = ({
         <h3>Error while getting available flights</h3>
       )}
       <div className="bg-white !mr-[0px]rounded-[8px]">
-        <div className="bg-bg p-[16px] font-size font-[500] text-[18px] text-left">
+        <div className="bg-bg p-[16px] font-size font-[500] text-[18px] text-black text-left">
           Booking Summary
         </div>
         {/* Inner Wrapper */}
@@ -181,7 +181,7 @@ const BookingDetails = ({
                   </svg>
                 </div>
                 {/* Svg wrapper Flight Date End*/}
-                <h1 className={style.flightIdText}>
+                <h1 className={`${style.flightIdText} !text-[10px] lg:!text-[14px]`}>
                   {dateFormat(flightToBook?.departureDate, "mmmm dS, yyyy")}
                 </h1>
               </div>
