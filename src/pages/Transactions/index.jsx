@@ -59,7 +59,7 @@ const TableRow = ({ currentItems }) => {
               {items?.description}
             </td>
             <td className="table-body_items pr-[15px] flex flex-col items-end justify-center whitespace-nowrap w-[150px] dark:text-gray-400">
-              <p className="mr-[20px]">{numberWithCommas(items?.amount)}</p>
+              <p className="mr-[20px]">{`${numberWithCommas(items?.amount)} NGN`}</p>
               <p className="rates !mr-[20px]">
                 {`≈${numberWithCommas(items?.amount)} ARP`}
               </p>

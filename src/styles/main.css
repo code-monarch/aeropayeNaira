@@ -1778,7 +1778,7 @@ nav .profile-button .profile-dropdown .log-out {
   color: #b8c4ce !important;
 }
 .withdraw-container .withdraw-form_amount-form_input-copy {
-  border: 0.5px solid rgb(136, 149, 167);
+  border: 0.5px dashed rgb(136, 149, 167);
   height: 38px;
   margin-bottom: 24px;
   border-radius: 6px;

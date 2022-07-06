@@ -9,14 +9,15 @@ import { ReactComponent as WithdrawIcon } from "../../assets/dashboard-icons/wit
 import { ReactComponent as ReceiveIcon } from "../../assets/dashboard-icons/receiveIcon.svg";
 import { ReactComponent as FundIcon } from "../../assets/dashboard-icons/fundIcon.svg";
 import { ReactComponent as SendIcon } from "../../assets/dashboard-icons/sendIcon.svg";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toastError, toastSuccess } from "../../component/shared/Toasts";
+import Layout from "../../component/Layout";
+import { useVerifEmailStatus } from "../../utils/EmailVerifStatus";
 
 import { useMutation, useQuery } from "@apollo/client";
 import { MINT_TOKEN_MUTATION } from "../../hooks";
 import { GET_TRANSACTION_HISTORY } from "../../hooks";
 import { BALANCE } from "../../hooks";
-import Layout from "../../component/Layout";
 
 // Transaction type object with the different transaction types
 const transactTypes = {
@@ -29,7 +30,9 @@ const transactTypes = {
 };
 
 const Wallet = () => {
-  // Function that adds commas to amount figures
+  const navigate = useNavigate()
+    const isVerified = useVerifEmailStatus();
+  // This Function adds commas to amount figures
   const numberWithCommas = (x) => {
     return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
@@ -40,8 +43,6 @@ const Wallet = () => {
 
   //Query User Transaction history
   const {
-    loading: historyLoading,
-    error: historyError,
     data: transactions,
   } = useQuery(GET_TRANSACTION_HISTORY);
   console.log("user Transactions", transactions?.transactions);
@@ -57,7 +58,7 @@ const Wallet = () => {
   // Show wallet balance if false, else Hide wallet balance
   const [showBalance, setShowBalance] = useState(true);
   const { data } = useQuery(BALANCE);
-  console.log("balanceData data: ", data?.balance?.data);
+  console.log("balanceData data: ", data?.balance?.data?.data);
 
   // Mint token Mutation
   const [
@@ -144,15 +145,15 @@ const Wallet = () => {
             </div>
             <p className="wallet-bal">
               {showBalance
-                ? data?.balance?.data
-                  ? `${numberWithCommas(data?.balance?.data)}`
+                ? data?.balance?.data?.data
+                  ? `${numberWithCommas(data?.balance?.data?.data)}`
                   : "0"
                 : "****"}
             </p>
             <p className="wallet-rate">
               {showBalance
-                ? data?.balance?.data
-                  ? `≈ ${numberWithCommas(data?.balance?.data)} NGN`
+                ? data?.balance?.data?.data
+                  ? `≈ ${numberWithCommas(data?.balance?.data?.data)} NGN`
                   : "≈ 0.00 NGN"
                 : "****"}
             </p>
@@ -162,9 +163,16 @@ const Wallet = () => {
           {/* {mintLoading && <Spinner />} */}
           {showMobileButton ? (
             <div className="wallet-mobile-buttons">
-              <Link to="deposit" className="mobile_deposit mobile_button">
+              <div
+                onClick={() => {
+                  isVerified
+                    ? navigate("/deposit")
+                    : toastError("Verify Email address to make deposits");
+                }}
+                className="mobile_deposit mobile_button cursor-pointer"
+              >
                 Deposit
-              </Link>
+              </div>
 
               <div className="flex items-center w-full justify-evenly">
                 <Link to="withdraw" className="mobile_button mr-[16px]">
@@ -180,10 +188,17 @@ const Wallet = () => {
             </div>
           ) : (
             <div className="wallet-buttons">
-              <Link to="deposit" className="deposit button">
+              <div
+                onClick={() => {
+                  isVerified
+                    ? navigate("/deposit")
+                    : toastError("Verify Email address to make deposits");
+                }}
+                className="deposit button cursor-pointer"
+              >
                 <AddIcon />
                 <span>Deposit</span>
-              </Link>
+              </div>
               <Link to="withdraw" className="button">
                 <MinusIcon />
                 <span>Withdraw</span>
@@ -268,7 +283,7 @@ const Wallet = () => {
                         transaction?.trxType === transactTypes.booking
                           ? "-"
                           : "+"
-                      } ${numberWithCommas(transaction?.amount)}`}
+                      } ${numberWithCommas(transaction?.amount)} NGN`}
                     </p>
                     <p className="trans-rate">
                       {`≈ ${numberWithCommas(transaction?.amount)} ARP`}

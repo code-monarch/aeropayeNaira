@@ -41,6 +41,7 @@ const Receive = () => {
 
                 <label className="flex withdraw-form_amount-form_input-copy">
                   <input
+                    className="rounded-[6px] !pl-[10px]"
                     type="text"
                     value="0x078395eec8b3b15888b70cf64db2fadc12b6d860"
                     ref={textAreaRef}
