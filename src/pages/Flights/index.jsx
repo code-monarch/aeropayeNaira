@@ -70,17 +70,19 @@ const Flight = () => {
   });
   return (
     <Layout>
-      <div className={`${desktopView && "!pt-[72px] !pl-[32px]"} bg-bg px-[18px] pt-[30px] w-full md:flight lg:pt-[72px]`}>
+      <div
+        className={`${
+          desktopView && "!pt-[72px] !pl-[32px]"
+        } bg-bg px-[18px] pt-[30px] w-full md:flight lg:pt-[72px]`}
+      >
         <div
-          className={`${
-            mobileView && "!flex flex-col items-center"
-          } ${desktopView && "!flex !flex-col !items-start"} flight-container`}
+          className={`${mobileView && "!flex !flex-col !items-center"} ${
+            desktopView && "!flex !flex-col !items-start"
+          } flight-container`}
         >
           {/* Flight Container Navs */}
           <div
-            className={`${
-              mobileView && "sm:max-w-[600px]"
-            } !flex !items-center !justify-center w-full xl:max-w-[827px] flight-container-navs`}
+            className={`sm:max-w-[600px] !w-full xl:max-w-[827px] !flex !items-center !justify-center flight-container-navs`}
           >
             <label
               className={`${
