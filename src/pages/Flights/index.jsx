@@ -18,11 +18,6 @@ const Flight = () => {
 
   const [checkedIn, setCheckedIn] = useState(false);
 
-  // Show mobile filter for screens smaller than 768px or resized to that size
-  const [showMobileFilter, setShowMobileFilter] = useState(
-    window.matchMedia("(max-width:768x)").matches
-  );
-
   const [open, setOpen] = useState(false);
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
@@ -47,7 +42,12 @@ const Flight = () => {
 
   // Show mobile view for screens smaller than 768px or resized to that size
   const [mobileView, setMobileView] = useState(
-    window.matchMedia("(max-width:1279px)").matches
+    window.matchMedia("(max-width:1023px)").matches
+  );
+
+  // Show mobile filter for screens smaller than 768px or resized to that size
+  const [desktopView, setDesktopView] = useState(
+    window.matchMedia("(min-width:901px)").matches
   );
 
   const showTick = (a) => {
@@ -60,42 +60,40 @@ const Flight = () => {
 
   useEffect(() => {
     window.addEventListener("resize", () => {
-      setShowMobileFilter(window.matchMedia("(max-width:768px)").matches);
+      setDesktopView(window.matchMedia("(min-width:901px)").matches);
     });
   });
   useEffect(() => {
     window.addEventListener("resize", () => {
-      setMobileView(window.matchMedia("(max-width:1279px)").matches);
+      setMobileView(window.matchMedia("(max-width:1023px)").matches);
     });
   });
   return (
-    <div className="w-[100vw]">
-      <Layout>
+    <Layout>
+      <div className={`${desktopView && "!pt-[72px] !pl-[32px]"} bg-bg px-[18px] pt-[30px] w-full md:flight lg:pt-[72px]`}>
         <div
           className={`${
-            showMobileFilter
-              ? "px-[18px] pt-[16px]"
-              : " flight pt-[72px] w-screen"
-          }`}
+            mobileView && "!flex flex-col items-center"
+          } ${desktopView && "!flex !flex-col !items-start"} flight-container`}
         >
-          <div className="flight-container">
-            {/* Flight Container Navs */}
-            <div
+          {/* Flight Container Navs */}
+          <div
+            className={`${
+              mobileView && "sm:max-w-[600px]"
+            } !flex !items-center !justify-center w-full xl:max-w-[827px] flight-container-navs`}
+          >
+            <label
               className={`${
-                mobileView && "!w-full flex justify-between"
-              } flex items-center flight-container-navs`}
+                mobileView && "!w-full sm:max-w-[600px]"
+              } search-table border-[1px] border-[#E1E7EC]`}
             >
-              <label
-                className={`${
-                  showMobileFilter && "!mr-[8px] !w-[90%]"
-                } search-table border-[1px] border-[#E1E7EC]`}
-              >
-                <span className="mx-[4px]">
-                  <Search />
-                </span>
-                <input type="search" placeholder="Search flights by ID" />
-              </label>
+              <span className="mx-[4px]">
+                <Search />
+              </span>
+              <input type="search" placeholder="Search flights by ID" />
+            </label>
 
+            {/* {!mobileView ? ( 
               <button
                 className={`${
                   showMobileFilter
@@ -126,10 +124,10 @@ const Flight = () => {
                       <Arrow />
                     </div>
                   )}
-                </div>
+                </div> */}
 
-                {/* Dropdown Options */}
-                {showOption && (
+            {/* Dropdown Options */}
+            {/* {showOption && (
                   <ul
                     className={`filter-dropdown ${
                       showMobileFilter
@@ -159,76 +157,82 @@ const Flight = () => {
                       </li>
                     ))}
                   </ul>
-                )}
-                {/* Dropdown Options End */}
-              </button>
+                )} */}
+            {/* Dropdown Options End */}
+            {/* </button>
+              ): ""} */}
 
-              {!showMobileFilter && (
-                <>
-                  <Link
-                    to="/flights/book-flight"
-                    className="book-button whitespace-nowrap"
-                  >
-                    Book a flight
-                  </Link>
-                  <Link
-                    to="/flights/paid-flights"
-                    className="payed-button ml-[30px] whitespace-nowrap"
-                  >
-                    Paid flights
-                  </Link>
-                </>
-              )}
-            </div>
-            {/* Flight Container Navs End */}
+            <>
+              <Link
+                to="/flights/book-flight"
+                className={`${
+                  desktopView
+                    ? "book-button whitespace-nowrap ml-[30px]"
+                    : "hidden"
+                }`}
+              >
+                Book a flight
+              </Link>
+              <Link
+                to="/flights/paid-flights"
+                className={`${
+                  desktopView
+                    ? "payed-button ml-[15px] whitespace-nowrap"
+                    : "hidden"
+                }`}
+              >
+                Paid flights
+              </Link>
+            </>
+          </div>
+          {/* Flight Container Navs End */}
 
-            <div className="flex flex-col">
-              {/* <div className="flight-container_timeline"></div> */}
+          <div className="flex flex-col">
+            {/* <div className="flight-container_timeline"></div> */}
 
-              {filter === "All" ? (
-                <FlightsInfo
-                  onCanceled={onCanceled}
-                  checkedIn={checkedIn}
-                  open={open}
-                  onOpenModal={onOpenModal}
-                  onCloseModal={onCloseModal}
-                  onCloseCancelModal={onCloseCancelModal}
-                  openCancelModal={openCancelModal}
-                  onOpenCancelModal={onOpenCancelModal}
-                  isCanceled={isCanceled}
-                  onOpenRefundModal={onOpenRefundModal}
-                  isRefunded={isRefunded}
-                  filter={filter}
-                />
-              ) : filter === "Ongoing" ? (
-                <OngoingFlight
-                  checkedIn={checkedIn}
-                  onOpenModal={onOpenModal}
-                  onOpenCancelModal={onOpenCancelModal}
-                  isCanceled={isCanceled}
-                  onOpenRefundModal={onOpenRefundModal}
-                  isRefunded={isRefunded}
-                />
-              ) : (
-                "canceled"
-              )}
-            </div>
+            {filter === "All" ? (
+              <FlightsInfo
+                onCanceled={onCanceled}
+                checkedIn={checkedIn}
+                open={open}
+                onOpenModal={onOpenModal}
+                onCloseModal={onCloseModal}
+                onCloseCancelModal={onCloseCancelModal}
+                openCancelModal={openCancelModal}
+                onOpenCancelModal={onOpenCancelModal}
+                isCanceled={isCanceled}
+                onOpenRefundModal={onOpenRefundModal}
+                isRefunded={isRefunded}
+                filter={filter}
+              />
+            ) : filter === "Ongoing" ? (
+              <OngoingFlight
+                checkedIn={checkedIn}
+                onOpenModal={onOpenModal}
+                onOpenCancelModal={onOpenCancelModal}
+                isCanceled={isCanceled}
+                onOpenRefundModal={onOpenRefundModal}
+                isRefunded={isRefunded}
+              />
+            ) : (
+              "canceled"
+            )}
           </div>
         </div>
+      </div>
 
-        <RefundModal
-          openRefundModal={openRefundModal}
-          onCloseRefundModal={onCloseRefundModal}
-          onOpenRefundedModal={onOpenRefundedModal}
-        />
+      <RefundModal
+        openRefundModal={openRefundModal}
+        onCloseRefundModal={onCloseRefundModal}
+        onOpenRefundedModal={onOpenRefundedModal}
+      />
 
-        <RefundedModal
-          openRefundModal={openRefundedModal}
-          onCloseRefundedModal={onCloseRefundedModal}
-          onClaimedRefund={onClaimedRefund}
-        />
-      </Layout>
-    </div>
+      <RefundedModal
+        openRefundModal={openRefundedModal}
+        onCloseRefundedModal={onCloseRefundedModal}
+        onClaimedRefund={onClaimedRefund}
+      />
+    </Layout>
   );
 };
 

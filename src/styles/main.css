@@ -1778,7 +1778,7 @@ nav .profile-button .profile-dropdown .log-out {
   color: #b8c4ce !important;
 }
 .withdraw-container .withdraw-form_amount-form_input-copy {
-  border: 0.5px dashed rgb(136, 149, 167);
+  border: 0.5px solid rgb(136, 149, 167);
   height: 38px;
   margin-bottom: 24px;
   border-radius: 6px;
@@ -2948,11 +2948,6 @@ nav .profile-button .profile-dropdown .log-out {
   padding: 64px;
   min-height: 100vh;
 }
-@media only screen and (max-width: 768px) {
-  .flight {
-    padding: 16px;
-  }
-}
 .flight-container {
   max-width: 1280px;
   margin: 0 auto;
@@ -3061,6 +3056,7 @@ nav .profile-button .profile-dropdown .log-out {
 }
 .flight-container_information {
   width: 827px;
+  margin-right: 37px;
 }
 @media only screen and (max-width: 826px) {
   .flight-container_information {

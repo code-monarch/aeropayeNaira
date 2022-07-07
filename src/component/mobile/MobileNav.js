@@ -27,7 +27,7 @@ const MobileNav = ({ isActive, setIsActive }) => {
     setOpenNav(!openNav);
   };
   return (
-    <nav className="sticky z-10 top-0 w-full px-4">
+    <nav className="sticky z-10 top-0 w-full px-4 md:px-[64px]">
       <div className="flex items-center justify-between">
         <div className="">
           <NavLink to="/">

@@ -65,7 +65,7 @@ const FlightItinerary = () => {
 
   // Show mobile view for screens smaller than 768px or resized to that size
   const [mobileView, setMobileView] = useState(
-    window.matchMedia("(max-width:768px)").matches
+    window.matchMedia("(max-width:900px)").matches
   );
   // Show mobile view for screens smaller than 360px or resized to that size
   const [smallMobile, setSmallMobile] = useState(
@@ -90,7 +90,7 @@ const FlightItinerary = () => {
 
   useEffect(() => {
     window.addEventListener("resize", () => {
-      setMobileView(window.matchMedia("(max-width:768px)").matches);
+      setMobileView(window.matchMedia("(max-width:900px)").matches);
     });
   });
   useEffect(() => {
@@ -109,12 +109,16 @@ const FlightItinerary = () => {
         </div>
       )}
       {data?.getAvailableFlights?.map((flight) => (
-        <div key={flight?.flightCode} ref={itineraryRef}>
+        <div
+          className="flex flex-col items-center lg:items-start"
+          key={flight?.flightCode}
+          ref={itineraryRef}
+        >
           {/* Display Mobile view itinerary */}
           {mobileView ? (
-            <div className="!w-full flex justify-center flex-col">
+            <div className="w-full sm:max-w-[600px] flex flex-col items-center">
               {/* Warning */}
-              <div className="!w-full bg-[#fff6ed] flex items-center py-[9px] px-[13px] mb-[16px] border-[1px] border-[#fce3b9] rounded-[4px]">
+              <div className="w-full bg-[#fff6ed] flex items-center py-[9px] px-[13px] mb-[16px] border-[1px] border-[#fce3b9] rounded-[4px]">
                 <Warning className={`${mobileView && "w-[40px]"}`} />
                 <p className="font-serif font-[400] text-[10px] sm:text-[12px] md:text-[14px] text-black ml-[10px]">
                   The availability of this flight will expire in{" "}
@@ -125,9 +129,9 @@ const FlightItinerary = () => {
               {/* Itinerary */}
               <div className="flex flex-col items-center w-full rounded-[8px] mb-[32px] shadow-custom">
                 {/* Header */}
-                <div className="bg-black w-full font-sans text-[14px] text-white font-[500] px-[16px] py-[8px] flex flex-col rounded-t-[8px]">
+                <div className="bg-black w-full font-sans text-[14px] text-white font-[500] px-[16px] py-[8px] flex flex-row justify-between items-center rounded-t-[8px]">
                   {/* Top */}
-                  <div className="flex items-center mb-[16px]">
+                  <div className="flex items-center">
                     <p className="text-[12px] sm:text-[14px] md:text-[16px]">
                       Itinerary :
                     </p>
@@ -137,15 +141,9 @@ const FlightItinerary = () => {
                       &nbsp;&nbsp; {flight.arrivalCity}&nbsp;&nbsp;
                     </div>
                   </div>
-                  {/* Bottom */}
-                  <div className="flex justify-between items-center">
-                    <p className="text-[12px] sm:text-[14px] md:text-[16px]">
-                      Ticketless ID: XXXXXXX
-                    </p>
-                    <div className="bg-[#515964] text-[12px] flex justify-center items-center h-[28px] py-[7px] px-[12px] rounded-[4px] whitespace-nowrap">
-                      <Plane className="mr-[8px] w-[15px] h-[13px]" />
-                      One-way
-                    </div>
+                  <div className="bg-[#515964] text-[12px] flex justify-center items-center h-[28px] py-[7px] px-[12px] rounded-[4px] whitespace-nowrap">
+                    <Plane className="mr-[8px] w-[15px] h-[13px]" />
+                    One-way
                   </div>
                 </div>
                 {/* Body */}
@@ -246,14 +244,14 @@ const FlightItinerary = () => {
                   {/* Flight details End */}
                   {/* Passenger Details */}
                   <div className="w-full p-[20px]">
-                    <div className="w-full flex flex-col sm:flex-row sm:justify-between sm:items-center text-left">
-                      <div className="flex items-center mb-[28px] sm:mb-0">
+                    <div className="w-full flex flex-col sm:flex-row sm:justify-end sm:items-center text-left">
+                      {/* <div className="flex items-center mb-[28px] sm:mb-0">
                         <Profile className="w-[25px] h-[20px] mr-[5px]" />
                         <p className="text-[12px]">
                           Passengers:
                           <span className="mx-[8px]">Derek Hale</span>
                         </p>
-                      </div>
+                      </div> */}
                       {/* Make payment and change flight buttons */}
                       <div className="flex items-center">
                         <button
@@ -286,7 +284,7 @@ const FlightItinerary = () => {
               {/* Itinerary End */}
             </div>
           ) : (
-            <div className="flight-container_information-list !mr-0">
+            <div className="w-[827px] flight-container_information-list !mr-0">
               <div className="warning">
                 <Warning />
                 <p>
