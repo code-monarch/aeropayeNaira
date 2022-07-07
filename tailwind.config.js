@@ -25,6 +25,16 @@ module.exports = {
     backgroundImage: {
       svgPattern: "url('/svg/svgPattern.svg')",
     },
+    keyframes: {
+      shimmer: {
+        "100%": {
+          transform: "translateX(100%)",
+        },
+      },
+    },
+    animation: {
+      shimmering: "shimmer 2s linear infinite",
+    },
   },
   plugins: [
     require("daisyui"),

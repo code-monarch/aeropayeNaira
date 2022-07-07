@@ -54,7 +54,7 @@ const FlightsInfo = ({
 
   return (
     <div className="flex sm:flex-col flex-row lg-flex-row xl-flex-row">
-      <div className="flight-container_information">
+      <div className="flight-container_information !mr-0">
         <FlightItinerary />
       </div>
     </div>

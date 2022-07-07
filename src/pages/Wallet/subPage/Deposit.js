@@ -7,8 +7,7 @@ import Button from "../../../component/shared/Button";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { MAKE_PAYMENT_MUTATION } from "../../../hooks";
-import { BALANCE } from "../../../hooks";
+import { MAKE_PAYMENT_MUTATION, BALANCE } from "../../../hooks";
 
 import Layout from "../../../component/Layout";
 import { toastError, toastSuccess } from "../../../component/shared/Toasts";
