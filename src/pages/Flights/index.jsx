@@ -45,9 +45,14 @@ const Flight = () => {
     window.matchMedia("(max-width:1023px)").matches
   );
 
+  // Show Paid flights button in column
+  const [colPaidBtn, SetColPaidBtn] = useState(
+    window.matchMedia("(max-width:767px)").matches
+  );
+
   // Show mobile filter for screens smaller than 768px or resized to that size
   const [desktopView, setDesktopView] = useState(
-    window.matchMedia("(min-width:901px)").matches
+    window.matchMedia("(min-width:768px)").matches
   );
 
   const showTick = (a) => {
@@ -60,7 +65,12 @@ const Flight = () => {
 
   useEffect(() => {
     window.addEventListener("resize", () => {
-      setDesktopView(window.matchMedia("(min-width:901px)").matches);
+      setDesktopView(window.matchMedia("(min-width:768px)").matches);
+    });
+  });
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      SetColPaidBtn(window.matchMedia("(max-width:767px)").matches);
     });
   });
   useEffect(() => {
@@ -84,16 +94,29 @@ const Flight = () => {
           <div
             className={`sm:max-w-[600px] !w-full xl:max-w-[827px] !flex !items-center !justify-center flight-container-navs`}
           >
-            <label
-              className={`${
-                mobileView && "!w-full sm:max-w-[600px]"
-              } search-table border-[1px] border-[#E1E7EC]`}
-            >
-              <span className="mx-[4px]">
-                <Search />
-              </span>
-              <input type="search" placeholder="Search flights by ID" />
-            </label>
+            <div className="flex flex-col sm:max-w-[600px] !w-full xl:max-w-[827px]">
+              <label
+                className={`${
+                  mobileView && "!w-full md:w-full"
+                } search-table border-[1px] border-[#E1E7EC]`}
+              >
+                <span className="mx-[4px]">
+                  <Search />
+                </span>
+                <input type="search" placeholder="Search flights by ID" />
+              </label>
+              {/* Display Paid Flight Button when width => 900px */}
+              <Link
+                to="/flights/paid-flights"
+                className={`${
+                  colPaidBtn
+                    ? "payed-button !w-full !ml-0 mt-[10px] whitespace-nowrap !rounded-[4px]"
+                    : "hidden"
+                }`}
+              >
+                Paid flights
+              </Link>
+            </div>
 
             {/* {!mobileView ? ( 
               <button
