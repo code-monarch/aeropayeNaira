@@ -9,8 +9,7 @@ import { useForm } from "react-hook-form";
 import FormError from "../../../component/shared/FormError";
 
 import { useMutation, useQuery } from "@apollo/client";
-import { BALANCE } from "../../../hooks";
-import { TRANSFER_TOKEN } from "../../../hooks";
+import { TRANSFER_TOKEN, BALANCE } from "../../../hooks";
 import { useNavigate } from "react-router-dom";
 
 const Send = () => {
@@ -19,8 +18,6 @@ const Send = () => {
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
-  const [address, setAddress] = useState("");
-  const [amount, setAmount] = useState("");
   const [walletBalance, setWalletBalance] = useState("");
 
   const {
@@ -33,22 +30,21 @@ const Send = () => {
 
   // Get balance Query
   const { data } = useQuery(BALANCE);
-  // setWalletBalance(data?.balance?.data?.data);
+
   let balance = data?.balance?.data?.data;
   console.log("wallet balance", data?.balance?.data?.data);
-  // setWalletBalance(data?.balance?.data?.data)
 
   // Mutation for Transferring Token
   const [
     transferToken,
-    { data: transferTokenData, loading: sendingToken, error: TransferError },
+    { loading: sendingToken },
   ] = useMutation(TRANSFER_TOKEN, {
     refetchQueries: [
       { query: BALANCE }, // DocumentNode object parsed with gql
       "balance", // Query name
     ],
   });
-
+  
   useEffect(() => {
     balance && setWalletBalance(balance);
 

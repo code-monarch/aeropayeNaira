@@ -21,5 +21,6 @@ export { CHECK_IN } from "./mutation.checkin";
 export { CANCEL_BOOKING } from "./mutation.cancel.booking";
 export { VERIFY_EMAIL } from "./mutation.verify.email";
 export { SEND_EMAIL_VERIFICATION } from "./mutation.sendEmail.verification";
+export { GET_DEPOSIT_QRCODE } from "./mutation.generateQRcode.js";
 
 
