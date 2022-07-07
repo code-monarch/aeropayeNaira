@@ -82,7 +82,7 @@ const Flight = () => {
     <Layout>
       <div
         className={`${
-          desktopView && "!pt-[72px] !pl-[32px]"
+          desktopView && "!pt-[72px] !pl-[32px] w-full"
         } bg-bg px-[18px] pt-[30px] w-full md:flight lg:pt-[72px]`}
       >
         <div
