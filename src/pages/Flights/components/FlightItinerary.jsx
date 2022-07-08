@@ -104,7 +104,7 @@ const FlightItinerary = () => {
       {(!data || data?.getAvailableFlights.length === 0) && (
         <div className="flight-container_information !min-h-screen !w-full !mr-0">
           <div className="section h-[200px] !w-full bg-white flex justify-center items-center">
-            <div className="body"> NO RECORDS FOUND </div>
+            <div className="body"> NO RECORD FOUND </div>
           </div>
         </div>
       )}

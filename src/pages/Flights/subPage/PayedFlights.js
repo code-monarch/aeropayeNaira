@@ -23,8 +23,7 @@ import CancelModal from "../components/CancelModal";
 import CheckInModal from "../components/CheckInModal";
 
 import { useQuery } from "@apollo/client";
-import { GET_BOOKED_FLIGHTS } from "../../../hooks";
-import { FLIGHT_HISTORY } from "../../../hooks";
+import { GET_BOOKED_FLIGHTS, FLIGHT_HISTORY } from "../../../hooks";
 
 const PayedFlights = () => {
   const [checkedIn, setCheckedIn] = useState(false);
@@ -57,7 +56,7 @@ const PayedFlights = () => {
   const ref = useRef(null);
 
   // Get Passenger Booked Flights
-  const { data: bookedFlights, loading, error } = useQuery(GET_BOOKED_FLIGHTS);
+  const { data: bookedFlights } = useQuery(GET_BOOKED_FLIGHTS);
   console.log("UserBooked Flights:", bookedFlights);
 
   const { data: flightHistory } = useQuery(FLIGHT_HISTORY);
@@ -107,7 +106,7 @@ const PayedFlights = () => {
                   bookedFlights?.getBookedFlight.length === 0) && (
                   <div className="flight-container_information">
                     <div className="section h-[200px] bg-white flex justify-center items-center">
-                      <div className="body"> NO RECORDS FOUND </div>
+                      <div className="body"> NO RECORD FOUND </div>
                     </div>
                   </div>
                 )}
@@ -401,10 +400,11 @@ const PayedFlights = () => {
                         </div>
                       )
                     )}
+                    {/*  */}
                   {(flightHistory?.bookedFlightHistory?.length === 0 ||
                     flightHistory === undefined) && (
                     <div className="flight-history_item !h-[200px] !flex !justify-center !items-center">
-                      NO RECORDS FOUND
+                      NO RECORD FOUND
                     </div>
                   )}
                 </div>

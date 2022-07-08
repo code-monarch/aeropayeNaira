@@ -428,7 +428,7 @@ const Account = () => {
         {bankdetailsLength === false && (
           <div className="accountss-item">
             <div className="accountss-item_one">
-              <p>NO RECORDS FOUND</p>
+              <p>NO RECORD FOUND</p>
             </div>
           </div>
         )}

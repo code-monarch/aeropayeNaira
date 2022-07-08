@@ -195,7 +195,7 @@ const Withdraw = () => {
                       type="button"
                     >
                       {/* {loadingBanks && "Getting bank details..."} */}
-                      {bankdetailsLength === false && "No records found"}
+                      {bankdetailsLength === false && "No record found"}
                       {setValue}
                       {bankDetails &&
                         bankdetailsLength !== false &&
