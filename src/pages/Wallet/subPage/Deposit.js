@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ReactComponent as ArrowLeft } from "../../../assets/dashboard-icons/arrow-left.svg";
 import { ReactComponent as Paystack } from "../../../assets/dashboard-icons/Paystack_Logo.svg";
 import flutterwave from "../../../assets/dashboard-icons/flutterwave.svg";
