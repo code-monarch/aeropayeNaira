@@ -237,7 +237,7 @@ const Wallet = () => {
             {(!transactionPlusOffset ||
               transactionPlusOffset?.transactionPlusOffset?.length === 0) && (
               <div className="recent-history_list text-center py-[32px]">
-                NO RECORDS FOUND
+                NO RECORD FOUND
               </div>
             )}
             {transactionPlusOffset?.map((transaction, index) => (
