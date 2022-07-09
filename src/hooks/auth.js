@@ -70,7 +70,7 @@ export const AuthProvider = (props) => {
     >
       {props.children}
       <ToastContainer
-        autoClose={3000}
+        autoClose={5000}
       />
     </authContext.Provider>
   );
