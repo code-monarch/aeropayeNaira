@@ -4,21 +4,20 @@ import { ReactComponent as Paystack } from "../../../assets/dashboard-icons/Pays
 import flutterwave from "../../../assets/dashboard-icons/flutterwave.svg";
 import { ReactComponent as Lock } from "../../../assets/icons/lock.svg";
 import Button from "../../../component/shared/Button";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { MAKE_PAYMENT_MUTATION, BALANCE } from "../../../hooks";
+import { MAKE_PAYMENT_MUTATION } from "../../../hooks";
 
 import Layout from "../../../component/Layout";
-import { toastError, toastSuccess } from "../../../component/shared/Toasts";
+import { toastError } from "../../../component/shared/Toasts";
 
 const Deposit = () => {
-  let navigate = useNavigate();
   const [focus, setFocus] = useState("");
   const [depositAmount, setDepositAmount] = useState("0.00");
 
   // Add two zeros to Amount inputed
-  const depositAmountPlusTrailingZeros = depositAmount + Number("0") + Number("0");
+  const depositAmountPlusTrailingZeros =
+    depositAmount + Number("0") + Number("0");
   console.log(depositAmountPlusTrailingZeros);
 
   //
@@ -26,19 +25,19 @@ const Deposit = () => {
 
   const submit = () => {
     makePayment({
-      variables: {
-        amountDeposited: Number(depositAmountPlusTrailingZeros),
-      },
-    })
-      .then((res) => {
-        console.log("res", res);
-        const url = res?.data?.makePayment?.data?.authorization_url;
-         window.location.replace(`${url}`);
-        console.log(url, "payment checkout");
-      })
-      .catch((error) => {
-        toastError(error);
-      });
+          variables: {
+            amountDeposited: Number(depositAmountPlusTrailingZeros),
+          },
+        })
+          .then((res) => {
+            console.log("res", res);
+            const url = res?.data?.makePayment?.data?.authorization_url;
+            window.location.replace(`${url}`);
+            console.log(url, "payment checkout");
+          })
+          .catch((error) => {
+            toastError(error);
+          })
   };
   return (
     <>
@@ -142,8 +141,7 @@ const Deposit = () => {
                   className="withdraw-form_button flex items-center cursor-pointer justify-center"
                   loading={loading}
                   onClick={() => {
-                    submit()
-                    // window.location.replace(`${authorization_url}`);
+                    submit();
                   }}
                 >
                   Continue

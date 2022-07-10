@@ -3,7 +3,6 @@ import { ReactComponent as Warning } from "../../../assets/dashboard-icons/Icon_
 import { ReactComponent as ArrowLeft } from "../../../assets/dashboard-icons/arrow-left.svg";
 import { ReactComponent as Copy } from "../../../assets/dashboard-icons/copy.svg";
 import { Link } from "react-router-dom";
-import { RiLoader5Fill } from "react-icons/ri";
 import Layout from "../../../component/Layout";
 import { useMutation } from "@apollo/client";
 import { GET_DEPOSIT_QRCODE } from "../../../hooks";

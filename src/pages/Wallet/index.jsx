@@ -166,7 +166,7 @@ const Wallet = () => {
               <div
                 onClick={() => {
                   isVerified
-                    ? navigate("/deposit")
+                    ? navigate("/wallet/deposit")
                     : toastError("Verify Email address to make deposits");
                 }}
                 className="mobile_deposit mobile_button cursor-pointer"
@@ -191,8 +191,10 @@ const Wallet = () => {
               <div
                 onClick={() => {
                   isVerified
-                    ? navigate("/deposit")
-                    : toastError("Verify Email address to make deposits");
+                    ? navigate("/wallet/deposit")
+                    : toastError(
+                        "Cannot make deposit because your Email is not verified"
+                      );
                 }}
                 className="deposit button cursor-pointer"
               >
@@ -236,8 +238,8 @@ const Wallet = () => {
           <div className="recent-history">
             {(!transactionPlusOffset ||
               transactionPlusOffset?.transactionPlusOffset?.length === 0) && (
-              <div className="recent-history_list text-center py-[32px]">
-                NO RECORD FOUND
+              <div className="recent-history_list text-center py-[32px] font-medium text-black">
+                No Record Found
               </div>
             )}
             {transactionPlusOffset?.map((transaction, index) => (
