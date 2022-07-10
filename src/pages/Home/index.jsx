@@ -148,7 +148,7 @@ const Home = () => {
                 {userProfile?.getAUser?.walletBalance === 0 ||
                   userProfile?.getAUser?.walletBalance === undefined ||
                   (userProfile?.getAUser?.walletBalance === null && (
-                    <Link to="/wallet/deposit" className="step">
+                    <Link to="/wallet" className="step">
                       <span className="step-stat uppercase">Step 4</span>
                       <span className="step-info">Fund your wallet</span>
                       <ArrowRight />
