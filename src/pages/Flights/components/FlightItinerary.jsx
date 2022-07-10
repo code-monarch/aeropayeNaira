@@ -1,24 +1,25 @@
 import { useState, useRef, useEffect } from "react";
-import { ReactComponent as Warning } from "../../../assets/dashboard-icons/Icon_Warning.svg";
-import { ReactComponent as Aero } from "../../../assets/dashboard-icons/aerologo.svg";
-import { ReactComponent as AirArik } from "../../../assets/dashboard-icons/Airlines.svg";
-import { ReactComponent as AirIbom } from "../../../assets/dashboard-icons/Airlines-3.svg";
-import { ReactComponent as AirPeace } from "../../../assets/dashboard-icons/Airlines-2.svg";
-import { ReactComponent as Dana } from "../../../assets/dashboard-icons/danaLogo.svg";
-import { ReactComponent as Line } from "../../../assets/dashboard-icons/Line.svg";
-import { ReactComponent as MobileLine } from "../../../assets/dashboard-icons/mobile-line.svg";
-import { ReactComponent as Arr } from "../../../assets/dashboard-icons/Arr2.svg";
-import { ReactComponent as Plane } from "../../../assets/dashboard-icons/flight-plane.svg";
-import { ReactComponent as Calendar } from "../../../assets/dashboard-icons/calendar-2.svg";
-import { ReactComponent as Profile } from "../../../assets/dashboard-icons/profile.svg";
-import { ReactComponent as Arrival } from "../../../assets/dashboard-icons/arrival-icon.svg";
-import { ReactComponent as ShowIcon } from "../../../assets/icons/showIcon.svg";
-import { ReactComponent as Departure } from "../../../assets/dashboard-icons/departure-icon.svg";
-import { ReactComponent as ArrRight } from "../../../assets/dashboard-icons/ArrRight.svg";
-import { ReactComponent as BusinessClassIcon } from "../../../assets/flightClass/business.svg";
-import { ReactComponent as EcoClassIcon } from "../../../assets/flightClass/economy.svg";
-import { ReactComponent as PremiumEcoClassIcon } from "../../../assets/flightClass/premiumEco.svg";
-import { ReactComponent as FirstClassIcon } from "../../../assets/flightClass/first.svg";
+import {
+  Skeleton,
+  WarningIcon,
+  AeroLogo,
+  AirArikLogo,
+  AirIbomLogo,
+  AirPeaceLogo,
+  DanaLogo,
+  MobileLineIcon,
+  LineIcon,
+  ArrIcon,
+  PlaneIcon,
+  CalendarIcon,
+  WhiteCalenderIcon,
+  DepartureIcon,
+  ArrRightIcon,
+  BusinessClassIcon,
+  EcoClassIcon,
+  PremiumEcoClassIcon,
+  FirstClassIcon,
+} from "./";
 import { toastError } from "../../../component/shared/Toasts";
 import { useVerifEmailStatus } from "../../../utils/EmailVerifStatus";
 
@@ -29,7 +30,6 @@ import { Link } from "react-router-dom";
 import dateFormat from "dateformat";
 
 import { GET_AVAILABLE_FLIGHTS } from "../../../hooks";
-// import { GET_ALL_PASSENGERS } from "../../../hooks";
 import { useQuery } from "@apollo/client";
 
 import BookingSummaryModal from "./BookingSummaryModal";
@@ -101,13 +101,15 @@ const FlightItinerary = () => {
 
   return (
     <div>
-      {(!data || data?.getAvailableFlights.length === 0) && (
+      {(!data || data?.getAvailableFlights.length === 0) && !loading && (
         <div className="flight-container_information !min-h-screen !w-full !mr-0">
-          <div className="section h-[200px] !w-full bg-white flex justify-center items-center">
-            <div className="body"> NO RECORD FOUND </div>
+          <div className="section h-[200px] !w-full flex flex-col justify-center items-center">
+            <div className="body text-[20px] font-bold"> NO RECORD FOUND </div>
+            <div className="body"> There are no available flights </div>
           </div>
         </div>
       )}
+      {loading && !mobileView && <Skeleton />}
       {data?.getAvailableFlights?.map((flight) => (
         <div
           className="flex flex-col items-center lg:items-start"
@@ -119,7 +121,7 @@ const FlightItinerary = () => {
             <div className="w-full sm:max-w-[600px] flex flex-col items-center">
               {/* Warning */}
               <div className="w-full bg-[#fff6ed] flex items-center py-[9px] px-[13px] mb-[16px] border-[1px] border-[#fce3b9] rounded-[4px]">
-                <Warning className={`${mobileView && "w-[40px]"}`} />
+                <WarningIcon className={`${mobileView && "w-[40px]"}`} />
                 <p className="font-serif font-[400] text-[10px] sm:text-[12px] md:text-[14px] text-black ml-[10px]">
                   The availability of this flight will expire in{" "}
                   <b>23:30:12 </b>
@@ -130,44 +132,36 @@ const FlightItinerary = () => {
               <div className="flex flex-col items-center w-full rounded-[8px] mb-[32px] shadow-custom">
                 {/* Header */}
                 <div className="bg-black w-full font-sans text-[14px] text-white font-[500] px-[16px] py-[8px] flex flex-row justify-between items-center rounded-t-[8px]">
-                  {/* Top */}
-                  <div className="flex items-center">
-                    <p className="text-[12px] sm:text-[14px] md:text-[16px]">
-                      Itinerary :
-                    </p>
-                    <div className="flex items-center text-[12px] sm:text-[14px]">
-                      &nbsp;&nbsp; {flight.departureCity} &nbsp;&nbsp;
-                      <Arr className="w-[15px] h-[13px] sm:w-[16px] sm:h-[15px] md:w-[19px] md:h-[17px]" />{" "}
-                      &nbsp;&nbsp; {flight.arrivalCity}&nbsp;&nbsp;
-                    </div>
-                  </div>
-                  <div className="bg-[#515964] text-[12px] flex justify-center items-center h-[28px] py-[7px] px-[12px] rounded-[4px] whitespace-nowrap">
-                    <Plane className="mr-[8px] w-[15px] h-[13px]" />
-                    One-way
-                  </div>
-                </div>
-                {/* Body */}
-                <div className="w-full flex flex-col items-center">
-                  {/* Departure and Arrival Info */}
-                  <div className="bg-[#EDFFF9] w-full flex flex-col text-black px-[18px] py-[11px]">
-                    <p className="flex items-center text-[12px] sm-text-[14px] md:text-[16px] mb-[16px]">
-                      <Departure className="mr-[12px] w-[15px] h-[13px]" />
-                      Departure:
-                      <span className="mx-[12px] text-[12px] sm:text-[14px]">
-                        {flight?.departureCity}
-                      </span>
-                      <ArrRight className="w-[15px] h-[13px] sm:w-[17px] sm:h-[15px] md:w-[19px] md:h-[17px]" />
-                      <span className="mx-[12px] text-[12px] sm:text-[14px]">
-                        {flight?.arrivalCity}
-                      </span>
-                    </p>
+                  <div className="flex flex-col">
+                    {/* Top */}
                     <div className="flex items-center">
-                      <Calendar className="w-[15px] h-[13px] sm:w-[17px] sm:h-[15px] md:w-[19px] md:h-[17px] mr-[12px]" />
+                      <p className="text-[12px] sm:text-[14px] md:text-[16px]">
+                        Itinerary :
+                      </p>
+                      <div className="flex items-center text-[12px] sm:text-[14px]">
+                        &nbsp;&nbsp; {flight.departureCity} &nbsp;&nbsp;
+                        <ArrIcon className="w-[15px] h-[13px] sm:w-[16px] sm:h-[15px] md:w-[19px] md:h-[17px]" />{" "}
+                        &nbsp;&nbsp; {flight.arrivalCity}&nbsp;&nbsp;
+                      </div>
+                    </div>
+                    <div className="flex items-center mt-[10px]">
+                      <div className="mr-[12px]">
+                        <WhiteCalenderIcon />
+                      </div>
                       <p className="text-[12px] sm:text-[14px]">
                         {dateFormat(flight?.departureDate, "mmmm dS, yyyy")}
                       </p>
                     </div>
                   </div>
+                  <div className="bg-[#515964] text-[12px] flex justify-center items-center h-[28px] py-[7px] px-[12px] rounded-[4px] whitespace-nowrap">
+                    <div className="mr-[8px]">
+                      <PlaneIcon className="mr-[8px] w-[15px] h-[13px]" />
+                    </div>
+                    One-way
+                  </div>
+                </div>
+                {/* Body */}
+                <div className="w-full flex flex-col items-center">
                   {/* Flight details */}
                   <div className="bg-white w-full flex flex-row justify-between px-[17px] py-[22px]">
                     {/* Left side */}
@@ -185,7 +179,7 @@ const FlightItinerary = () => {
                       <p className="mr-[24px] text-[10px] text-[#8895A7] whitespace-nowrap">
                         1h 30m <br />0 Stops
                       </p>
-                      <MobileLine className="h-full" />
+                      <MobileLineIcon className="h-full" />
                     </div>
                     {/* Middle Side end */}
                     {/* Right Side */}
@@ -207,11 +201,17 @@ const FlightItinerary = () => {
                         }`}
                       >
                         <div className="flex items-center w-[57px] mr-[16px] px-[6px] py-[2px] border-[0.5px] border-[#8895A7] rounded-[8px] shadow-none">
-                          {flight?.airlineName === "Air Peace" && <AirPeace />}
-                          {flight?.airlineName === "Ibom Air" && <AirIbom />}
-                          {flight?.airlineName === "Arik Air" && <AirArik />}
-                          {flight?.airlineName === "Dana Air" && <Dana />}
-                          {flight?.airlineName === "Aero" && <Aero />}
+                          {flight?.airlineName === "Air Peace" && (
+                            <AirPeaceLogo />
+                          )}
+                          {flight?.airlineName === "Ibom Air" && (
+                            <AirIbomLogo />
+                          )}
+                          {flight?.airlineName === "Arik Air" && (
+                            <AirArikLogo />
+                          )}
+                          {flight?.airlineName === "Dana Air" && <DanaLogo />}
+                          {flight?.airlineName === "Aero" && <AeroLogo />}
                         </div>
                         <div
                           className={`${
@@ -256,6 +256,7 @@ const FlightItinerary = () => {
                       <div className="flex items-center">
                         <button
                           onClick={() => {
+                            // Passenger can only book a flight when they've verified their Email
                             if (isVerified) {
                               itineraryRef.current = flight;
                               const itineraryPointer = itineraryRef.current;
@@ -284,86 +285,97 @@ const FlightItinerary = () => {
               {/* Itinerary End */}
             </div>
           ) : (
-            <div className="w-[827px] flight-container_information-list !mr-0">
+            <div className="w-[827px] flight-container_information-list !shadow-none !mr-0">
               <div className="warning">
-                <Warning />
+                <WarningIcon />
                 <p>
                   The availability of this flight will expire in{" "}
                   <b>23:30:12 </b>
                   if payment is not being made.
                 </p>
               </div>
-              <div className="header">
-                <p className="flex items-center">
-                  Itinerary : &nbsp;&nbsp; {flight.departureCity} &nbsp;&nbsp;
-                  <Arr /> &nbsp;&nbsp; {flight.arrivalCity}&nbsp;&nbsp;
-                  |&nbsp;&nbsp; Ticketless ID: XXXXXXX
-                </p>
+              <div className="shadow-card">
+                <div className="header">
+                  <p className="flex items-center">
+                    Itinerary : &nbsp;&nbsp; {flight.departureCity} &nbsp;&nbsp;
+                    <ArrIcon /> &nbsp;&nbsp; {flight.arrivalCity}
+                    &nbsp;&nbsp; |&nbsp;&nbsp; Ticketless ID: XXXXXXX
+                  </p>
 
-                <div className="flight-type">
-                  <Plane className="mr-[8px]" />
-                  One-way Trip
-                </div>
-              </div>
-              <div className="section">
-                <div className="body">
-                  <div className="info">
-                    <p className="flex items-center">
-                      <Departure className="mr-[12px]" />
-                      Departure:
-                      <span className="mx-[12px]">{flight?.departureCity}</span>
-                      <ArrRight />
-                      <span className="mx-[12px]">{flight?.arrivalCity}</span>
-                    </p>
-                    <div className="flex items-center">
-                      <Calendar className="mr-[12px]" />
-                      <p>
-                        {dateFormat(flight?.departureDate, "mmmm dS, yyyy")}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="body-flight_details">
-                    <div className="airline-logo">
-                      {flight?.airlineName === "Air Peace" && <AirPeace />}
-                      {flight?.airlineName === "Ibom Air" && <AirIbom />}
-                      {flight?.airlineName === "Arik Air" && <AirArik />}
-                      {flight?.airlineName === "Dana Air" && <Dana />}
-                      {flight?.airlineName === "Aero" && <Aero />}
-                    </div>
-
-                    <div className="departure-time">
-                      <p className="time">{flight?.departureTime}</p>
-                      <p className="location">{flight?.departureCity}</p>
-                      <p className="airport">
-                        Murtala Muhammed International Airport (Nigeria)
-                      </p>
-                    </div>
-
-                    <div className="hours">
-                      <p className="mb-[4px]">1h 45m</p>
-                      <Line />
-                      <p className="mt-[4px]">0 Stops</p>
-                    </div>
-
-                    <div className="arrival-time">
-                      <p className="time">{flight?.arrivalTime}</p>
-                      <p className="location">{flight?.arrivalCity}</p>
-                      <p className="airport">Nnamdi Azikwe Airport (Nigeria)</p>
-                    </div>
-
-                    <div>
-                      {flight?.class === "ECONOMY" && <EcoClassIcon />}
-                      {flight?.class === "FIRST_CLASS" && <FirstClassIcon />}
-                      {flight?.class === "BUSINESS" && <BusinessClassIcon />}
-                      {flight?.class === "PREMIUM_ECONOMY" && (
-                        <PremiumEcoClassIcon />
-                      )}
-                    </div>
+                  <div className="flight-type">
+                    <PlaneIcon className="mr-[8px]" />
+                    One-way Trip
                   </div>
                 </div>
-              </div>
-              <div className="flight-checkout !justify-end">
-                {/* <div className="flex items-center">
+                <div className="section">
+                  <div className="body">
+                    <div className="info">
+                      <div className="flex items-center">
+                        <div className="mr-[12px]">
+                          <DepartureIcon />
+                        </div>
+                        Departure:
+                        <span className="!mx-[12px]">
+                          {flight?.departureCity}
+                        </span>
+                        <ArrRightIcon />
+                        <span className="mx-[12px]">{flight?.arrivalCity}</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="mr-[12px]">
+                          <CalendarIcon />
+                        </div>
+                        <p>
+                          {dateFormat(flight?.departureDate, "mmmm dS, yyyy")}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="body-flight_details">
+                      <div className="airline-logo">
+                        {flight?.airlineName === "Air Peace" && (
+                          <AirPeaceLogo />
+                        )}
+                        {flight?.airlineName === "Ibom Air" && <AirIbomLogo />}
+                        {flight?.airlineName === "Arik Air" && <AirArikLogo />}
+                        {flight?.airlineName === "Dana Air" && <DanaLogo />}
+                        {flight?.airlineName === "Aero" && <AeroLogo />}
+                      </div>
+
+                      <div className="departure-time">
+                        <p className="time">{flight?.departureTime}</p>
+                        <p className="location">{flight?.departureCity}</p>
+                        <p className="airport">
+                          Murtala Muhammed International Airport (Nigeria)
+                        </p>
+                      </div>
+
+                      <div className="hours">
+                        <p className="mb-[4px]">1h 45m</p>
+                        <LineIcon />
+                        <p className="mt-[4px]">0 Stops</p>
+                      </div>
+
+                      <div className="arrival-time">
+                        <p className="time">{flight?.arrivalTime}</p>
+                        <p className="location">{flight?.arrivalCity}</p>
+                        <p className="airport">
+                          Nnamdi Azikwe Airport (Nigeria)
+                        </p>
+                      </div>
+
+                      <div>
+                        {flight?.class === "ECONOMY" && <EcoClassIcon />}
+                        {flight?.class === "FIRST_CLASS" && <FirstClassIcon />}
+                        {flight?.class === "BUSINESS" && <BusinessClassIcon />}
+                        {flight?.class === "PREMIUM_ECONOMY" && (
+                          <PremiumEcoClassIcon />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="flight-checkout !justify-end">
+                  {/* <div className="flex items-center">
                 <Profile className="mx-[10px]" />
                 <p>
                   Passengers:
@@ -371,29 +383,30 @@ const FlightItinerary = () => {
                 </p>
               </div> */}
 
-                {/* Make Payment */}
-                {/* Show Flight booking summary when Make Payment is clicked */}
-                <div className="flex items-center">
-                  <Link to="/flights/book-flight" className="cancel-button">
-                    Change flight
-                  </Link>
-                  <button
-                    onClick={() => {
-                      if (isVerified) {
-                        itineraryRef.current = flight;
-                        const itineraryPointer = itineraryRef.current;
-                        setItinerary(itineraryPointer);
-                        openBookingModal();
-                      } else {
-                        toastError("Verify your Email to book flights");
-                      }
-                    }}
-                    className="checkIn-button"
-                  >
-                    Make payment
-                  </button>
+                  {/* Make Payment */}
+                  {/* Show Flight booking summary when Make Payment is clicked */}
+                  <div className="flex items-center">
+                    <Link to="/flights/book-flight" className="cancel-button">
+                      Change flight
+                    </Link>
+                    <button
+                      onClick={() => {
+                        if (isVerified) {
+                          itineraryRef.current = flight;
+                          const itineraryPointer = itineraryRef.current;
+                          setItinerary(itineraryPointer);
+                          openBookingModal();
+                        } else {
+                          toastError("Verify your Email to book flights");
+                        }
+                      }}
+                      className="checkIn-button"
+                    >
+                      Make payment
+                    </button>
+                  </div>
+                  {/* Make Payment End */}
                 </div>
-                {/* Make Payment End */}
               </div>
             </div>
           )}

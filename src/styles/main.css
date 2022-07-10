@@ -2943,6 +2943,19 @@ nav .profile-button .profile-dropdown .log-out {
   }
 }
 
+body::-webkit-scrollbar {
+  width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
 .flight {
   background: #F7FAFC;
   padding: 64px;
@@ -3056,7 +3069,7 @@ nav .profile-button .profile-dropdown .log-out {
 }
 .flight-container_information {
   width: 827px;
-  margin-right: 0 !important;
+  margin-right: 37px;
 }
 @media only screen and (max-width: 826px) {
   .flight-container_information {
@@ -3267,10 +3280,21 @@ nav .profile-button .profile-dropdown .log-out {
 .flight-container_history-container {
   background-color: white;
   width: 312px;
-  height: auto;
+  max-height: 300px;
+  overflow-y: auto;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
+}
+.flight-container_history-container ::-webkit-scrollbar {
+  width: 1em;
+}
+.flight-container_history-container ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.flight-container_history-container ::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }
 .flight-container_history-container .flight-history_item {
   display: flex;
@@ -3727,7 +3751,7 @@ nav .profile-button .profile-dropdown .log-out {
   height: 80%;
   position: relative;
   overflow: hidden;
-  background-color: #F7FAFC;
+  background-color: #f7fafc;
 }
 .skeleton-box::after {
   position: absolute;
@@ -3745,6 +3769,31 @@ nav .profile-button .profile-dropdown .log-out {
   100% {
     transform: translateX(100%);
   }
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeletonShimmer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #eaecee;
+}
+.skeletonShimmer::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.7) 20%, rgba(255, 255, 255, 0.9) 60%, white);
+  -webkit-animation: shimmer 4s infinite;
+          animation: shimmer 4s infinite;
+  content: "";
 }
 @keyframes shimmer {
   100% {
