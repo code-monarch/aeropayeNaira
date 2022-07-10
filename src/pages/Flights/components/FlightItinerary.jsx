@@ -12,6 +12,7 @@ import {
   ArrIcon,
   PlaneIcon,
   CalendarIcon,
+  WhiteCalenderIcon,
   DepartureIcon,
   ArrRightIcon,
   BusinessClassIcon,
@@ -131,44 +132,36 @@ const FlightItinerary = () => {
               <div className="flex flex-col items-center w-full rounded-[8px] mb-[32px] shadow-custom">
                 {/* Header */}
                 <div className="bg-black w-full font-sans text-[14px] text-white font-[500] px-[16px] py-[8px] flex flex-row justify-between items-center rounded-t-[8px]">
-                  {/* Top */}
-                  <div className="flex items-center">
-                    <p className="text-[12px] sm:text-[14px] md:text-[16px]">
-                      Itinerary :
-                    </p>
-                    <div className="flex items-center text-[12px] sm:text-[14px]">
-                      &nbsp;&nbsp; {flight.departureCity} &nbsp;&nbsp;
-                      <ArrIcon className="w-[15px] h-[13px] sm:w-[16px] sm:h-[15px] md:w-[19px] md:h-[17px]" />{" "}
-                      &nbsp;&nbsp; {flight.arrivalCity}&nbsp;&nbsp;
-                    </div>
-                  </div>
-                  <div className="bg-[#515964] text-[12px] flex justify-center items-center h-[28px] py-[7px] px-[12px] rounded-[4px] whitespace-nowrap">
-                    <PlaneIcon className="mr-[8px] w-[15px] h-[13px]" />
-                    One-way
-                  </div>
-                </div>
-                {/* Body */}
-                <div className="w-full flex flex-col items-center">
-                  {/* Departure and Arrival Info */}
-                  <div className="bg-[#EDFFF9] w-full flex flex-col text-black px-[18px] py-[11px]">
-                    <p className="flex items-center text-[12px] sm-text-[14px] md:text-[16px] mb-[16px]">
-                      <DepartureIcon className="mr-[12px] w-[15px] h-[13px]" />
-                      Departure:
-                      <span className="mx-[12px] text-[12px] sm:text-[14px]">
-                        {flight?.departureCity}
-                      </span>
-                      <ArrRightIcon className="w-[15px] h-[13px] sm:w-[17px] sm:h-[15px] md:w-[19px] md:h-[17px]" />
-                      <span className="mx-[12px] text-[12px] sm:text-[14px]">
-                        {flight?.arrivalCity}
-                      </span>
-                    </p>
+                  <div className="flex flex-col">
+                    {/* Top */}
                     <div className="flex items-center">
-                      <CalendarIcon className="w-[15px] h-[13px] sm:w-[17px] sm:h-[15px] md:w-[19px] md:h-[17px] mr-[12px]" />
+                      <p className="text-[12px] sm:text-[14px] md:text-[16px]">
+                        Itinerary :
+                      </p>
+                      <div className="flex items-center text-[12px] sm:text-[14px]">
+                        &nbsp;&nbsp; {flight.departureCity} &nbsp;&nbsp;
+                        <ArrIcon className="w-[15px] h-[13px] sm:w-[16px] sm:h-[15px] md:w-[19px] md:h-[17px]" />{" "}
+                        &nbsp;&nbsp; {flight.arrivalCity}&nbsp;&nbsp;
+                      </div>
+                    </div>
+                    <div className="flex items-center mt-[10px]">
+                      <div className="mr-[12px]">
+                        <WhiteCalenderIcon />
+                      </div>
                       <p className="text-[12px] sm:text-[14px]">
                         {dateFormat(flight?.departureDate, "mmmm dS, yyyy")}
                       </p>
                     </div>
                   </div>
+                  <div className="bg-[#515964] text-[12px] flex justify-center items-center h-[28px] py-[7px] px-[12px] rounded-[4px] whitespace-nowrap">
+                    <div className="mr-[8px]">
+                      <PlaneIcon className="mr-[8px] w-[15px] h-[13px]" />
+                    </div>
+                    One-way
+                  </div>
+                </div>
+                {/* Body */}
+                <div className="w-full flex flex-col items-center">
                   {/* Flight details */}
                   <div className="bg-white w-full flex flex-row justify-between px-[17px] py-[22px]">
                     {/* Left side */}
@@ -263,6 +256,7 @@ const FlightItinerary = () => {
                       <div className="flex items-center">
                         <button
                           onClick={() => {
+                            // Passenger can only book a flight when they've verified their Email
                             if (isVerified) {
                               itineraryRef.current = flight;
                               const itineraryPointer = itineraryRef.current;

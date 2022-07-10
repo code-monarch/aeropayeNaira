@@ -1,4 +1,3 @@
-import { Divider } from "@mui/material";
 import React from "react";
 
 const LoadingSkeleton = () => {
@@ -28,8 +27,8 @@ const LoadingSkeleton = () => {
                   </div>
                 </div>
                 <div className="body-flight_details">
-                  <div className="airline-logo !p-0">
-                    <div className="skeleton-box !bg-bg"></div>
+                  <div className="airline-logo !sr-onlybg-bg !p-0 !border-0 !rounded-[12px]">
+                    <div className="skeleton-box !bg-bg !rounded-[12px]"></div>
                   </div>
 
                   <div className="departure-time !w-[150px] !h-[120px] !p-0">
