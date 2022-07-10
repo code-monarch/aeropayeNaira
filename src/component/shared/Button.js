@@ -6,6 +6,7 @@ export const ButtonStyle = styled.button`
 	cursor: ${(props) => props.disabled && "not-allowed"};
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	// background: ${(props) => props.disabled && "#EBEBF2"};
 
 	// :hover {

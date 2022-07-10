@@ -819,7 +819,7 @@ nav .profile-button .profile-dropdown .log-out {
 }
 .home .welcome-div_message .text {
   margin: 10px 0;
-  color: #E1E7EC;
+  color: #e1e7ec;
   line-height: 22px;
   font-size: 16px;
   font-family: "Circular", sans-serif;
@@ -848,7 +848,7 @@ nav .profile-button .profile-dropdown .log-out {
 }
 @media only screen and (max-width: 500px) {
   .home .home-container .get-started {
-    padding: 16px;
+    padding: 0px;
     margin-top: 0px;
   }
 }
@@ -900,7 +900,7 @@ nav .profile-button .profile-dropdown .log-out {
   margin: 8px 0;
 }
 .home .home-container .get-started_container .infoo_subtitle {
-  color: #5F6B7A;
+  color: #5f6b7a;
   line-height: 20px;
   margin: 8px 0;
   font-family: "Circular", sans-serif;
@@ -912,7 +912,7 @@ nav .profile-button .profile-dropdown .log-out {
 }
 .home .home-container .get-started_steps .complete {
   font-size: 14px;
-  color: #5F6B7A;
+  color: #5f6b7a;
   font-family: "Circular", sans-serif;
   font-weight: 400;
 }
@@ -921,7 +921,7 @@ nav .profile-button .profile-dropdown .log-out {
   height: 18px;
   padding: 4px;
   margin: 0 12px;
-  color: #5F6B7A;
+  color: #5f6b7a;
   border: 1px solid rgb(95, 107, 122);
   border-radius: 30px;
   font-size: 10px;
@@ -999,6 +999,11 @@ nav .profile-button .profile-dropdown .log-out {
     height: 250px;
   }
 }
+@media only screen and (min-width: 200px) and (max-width: 640px) {
+  .home .user-details_container {
+    margin-top: 0px;
+  }
+}
 @media only screen and (min-width: 501px) and (max-width: 1024px) {
   .home .user-details_container {
     margin-bottom: 23px;
@@ -1035,7 +1040,7 @@ nav .profile-button .profile-dropdown .log-out {
   color: #060A33;
 }
 .home .user-details_container .balance-container .rates {
-  color: #8895A7;
+  color: #8895a7;
   font-family: "Circular", sans-serif;
   font-weight: 400;
   margin: 8px 0;
@@ -1062,7 +1067,7 @@ nav .profile-button .profile-dropdown .log-out {
   font-family: "Rubik", sans-serif;
 }
 .home .user-details_container .flight-booked .book .aero-token {
-  color: #8895A7;
+  color: #8895a7;
   font-family: "Circular", sans-serif;
   font-weight: 400;
   font-size: 14px;

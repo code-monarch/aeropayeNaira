@@ -5,8 +5,8 @@ const list = [1,2,3,4,5]
 const HistorySkeleton = () => {
     return (
       <>
-        {list.map((i) => (
-          <div className="flight-history_item">
+        {list.map((i, index) => (
+          <div key={index} className="flight-history_item">
             <div className="flight-history_item-list">
               <div className="flight-history_item-list-places !h-[14px] !w-[170px]">
                   <div className="skeleton-box !bg-bg"></div>
