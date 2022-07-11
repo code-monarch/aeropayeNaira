@@ -53,7 +53,7 @@ const Wallet = () => {
 
   // Get six transactions from Transactions query
   const transactionPlusOffset = useMemo(() => {
-    return transactions?.transactions?.slice(0, 6);
+    return transactions?.transactions?.slice(0, 4);
   }, [transactions]);
 
   console.log("transactionPlusOffset: ", transactionPlusOffset);

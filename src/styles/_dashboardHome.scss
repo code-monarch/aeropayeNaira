@@ -75,8 +75,7 @@
       padding: 32px 32px 36px;
 
       @media only screen and (max-width: 500px) {
-        padding: 0px;
-        margin-top: 0px;
+        margin-top: 0px !important;
       }
 
       .getting_started {
@@ -225,6 +224,9 @@
   }
 
   .user-details {
+    @media only screen and (min-width: 200px) and (max-width: 640px) {
+      margin-top: 0px;
+    }
     &_container {
       width: 421px;
       height: 200px;
@@ -236,9 +238,6 @@
 
       @media only screen and (min-width: 1025px) and (max-width: 1074px) {
         height: 250px;
-      }
-      @media only screen and (min-width: 200px) and (max-width: 640px) {
-        margin-top: 0px;
       }
       @media only screen and (min-width: 501px) and (max-width: 1024px) {
         margin-bottom: 23px;

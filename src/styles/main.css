@@ -848,8 +848,7 @@ nav .profile-button .profile-dropdown .log-out {
 }
 @media only screen and (max-width: 500px) {
   .home .home-container .get-started {
-    padding: 0px;
-    margin-top: 0px;
+    margin-top: 0px !important;
   }
 }
 .home .home-container .get-started .getting_started {
@@ -985,6 +984,11 @@ nav .profile-button .profile-dropdown .log-out {
   margin: 0 12px;
   font-weight: 400;
 }
+@media only screen and (min-width: 200px) and (max-width: 640px) {
+  .home .user-details {
+    margin-top: 0px;
+  }
+}
 .home .user-details_container {
   width: 421px;
   height: 200px;
@@ -997,11 +1001,6 @@ nav .profile-button .profile-dropdown .log-out {
 @media only screen and (min-width: 1025px) and (max-width: 1074px) {
   .home .user-details_container {
     height: 250px;
-  }
-}
-@media only screen and (min-width: 200px) and (max-width: 640px) {
-  .home .user-details_container {
-    margin-top: 0px;
   }
 }
 @media only screen and (min-width: 501px) and (max-width: 1024px) {
