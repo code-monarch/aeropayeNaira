@@ -1,18 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import FlightHistory from "../components/FlightHistory";
 import Layout from "../../../component/Layout";
 import {
   Skeleton,
-  FlightHistorySkeleton,
   AeroLogo,
   AirArikLogo,
   AirIbomLogo,
   AirPeaceLogo,
   DanaLogo,
   LineIcon,
-  MobileLineIcon,
   ProfileIcon,
-  ShowIcon,
   ArrIcon,
   ArrowLeftIcon,
   PlaneIcon,
@@ -29,7 +27,7 @@ import CheckInModal from "../components/CheckInModal";
 import MobileItinerary from "../components/MobileItinerary";
 
 import { useQuery } from "@apollo/client";
-import { GET_BOOKED_FLIGHTS, FLIGHT_HISTORY } from "../../../hooks";
+import { GET_BOOKED_FLIGHTS } from "../../../hooks";
 
 const PayedFlights = () => {
   // Show mobile view for screens smaller than 768px or resized to that size
@@ -70,12 +68,6 @@ const PayedFlights = () => {
   const itineraryRef = useRef(null);
   const ref = useRef(null);
 
-  // Get Passenger Flight history
-  const { data: flightHistory, loading: loadingFlightHistory } =
-    useQuery(FLIGHT_HISTORY);
-  console.log("flight History", flightHistory?.bookedFlightHistory);
-  console.log("History", flightHistory);
-
   // Get Passenger Booked Flights
   const { data: bookedFlights, loading: loadingBookedFlights } =
     useQuery(GET_BOOKED_FLIGHTS);
@@ -99,7 +91,7 @@ const PayedFlights = () => {
   console.log("current Ref: ", ref.current);
   return (
     <Layout>
-      <div className="bg-bg w-screen pt-0 lg:pt-[72px] flex flex-col items-center lg:items-start 2xl:items-center min-h-[100vh] py-[32px] px-[15px] lg:pl-[64px]">
+      <div className="bg-bg w-screen pt-0 lg:pt-[72px] py-[32px] px-[15px] lg:pl-[64px] flex flex-col items-center lg:items-start 2xl:items-center min-h-[100vh]">
         <div className="2xl:w-[1536px] 2xl:flex 2xl:flex-col 2xl:items-center">
           <div className="w-[100%] 2xl:w-[1536px] flex flex-col">
             {/* Back Button */}
@@ -113,7 +105,10 @@ const PayedFlights = () => {
             </div>
             {/* Back Button End */}
             {mobileView ? (
-              <MobileItinerary />
+              <div>
+                <MobileItinerary />
+                <FlightHistory />
+              </div>
             ) : (
               <div className="flex flex-col sm:flex-col xl:flex-row 2xl:flex-row lg:justify-between xl:justify-between 2xl:justify-evenly pr-[64px]">
                 {/* Left side */}
@@ -402,50 +397,9 @@ const PayedFlights = () => {
                       </div>
                     ))}
                 </div>
-                {/* Right Side */}
+                {/* Right Side End*/}
                 {/* Flight History Right side */}
-                <div className="flight-container_history">
-                  <p className="flight-container_history_title">
-                    My flights history
-                  </p>
-                  <div className="flight-container_history-container">
-                    {loadingFlightHistory && <FlightHistorySkeleton />}
-                    {flightHistory?.bookedFlightHistory &&
-                      flightHistory?.bookedFlightHistory?.map(
-                        (flightHistory, index) => (
-                          <div className="flight-history_item" key={index}>
-                            <div className="flight-history_item-list">
-                              <p className="flight-history_item-list-places">
-                                <span className="mr-[12px]">
-                                  {flightHistory?.departureCity}
-                                  {/* Lagos (LOS) */}
-                                </span>
-                                <ArrRightIcon />
-                                <span className="ml-[12px]">
-                                  {flightHistory?.arrivalCity}
-                                  {/* Abuja(ABV) */}
-                                </span>
-                              </p>
-                              <p className="flight-history_item-list-date">
-                                {flightHistory?.departureDate}
-                                {/* Feb 04, 2022 */}
-                              </p>
-                            </div>
-                            <ShowIcon />
-                          </div>
-                        )
-                      )}
-
-                    {/* W */}
-                    {(flightHistory?.bookedFlightHistory?.length === 0 ||
-                      flightHistory === undefined) &&
-                      !loadingFlightHistory &&(
-                        <div className="flight-history_item !h-[200px] !flex !justify-center !items-center !text-[20px] !font-semibold">
-                          No Record Found
-                        </div>
-                      )}
-                  </div>
-                </div>
+                <FlightHistory />
               </div>
             )}
           </div>
