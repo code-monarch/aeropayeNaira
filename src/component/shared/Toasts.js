@@ -13,7 +13,7 @@ export const toastSuccess = (message) => {
   return toast.success(message, {
     position: toast.POSITION.TOP_RIGHT,
     hideProgressBar: true,
-    toastId: "warning",
+    toastId: "success",
     transition: Slide,
   });
 };
@@ -28,9 +28,9 @@ export const toastWarning = (message) => {
 };
 export const toastLoading = (message) => {
   return toast.loading(message, {
-    position: toast.POSITION.TOP_RIGHT,
+    position: toast.POSITION.TOP_CENTER,
     hideProgressBar: true,
-    toastId: "warning",
+    toastId: "loading",
     transition: Slide,
   });
 };

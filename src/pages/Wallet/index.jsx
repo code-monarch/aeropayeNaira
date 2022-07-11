@@ -10,7 +10,11 @@ import { ReactComponent as ReceiveIcon } from "../../assets/dashboard-icons/rece
 import { ReactComponent as FundIcon } from "../../assets/dashboard-icons/fundIcon.svg";
 import { ReactComponent as SendIcon } from "../../assets/dashboard-icons/sendIcon.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { toastError, toastSuccess } from "../../component/shared/Toasts";
+import {
+  toastError,
+  toastSuccess,
+  toastLoading,
+} from "../../component/shared/Toasts";
 import Layout from "../../component/Layout";
 import { useVerifEmailStatus } from "../../utils/EmailVerifStatus";
 
@@ -49,7 +53,7 @@ const Wallet = () => {
 
   // Get six transactions from Transactions query
   const transactionPlusOffset = useMemo(() => {
-    return transactions?.transactions?.slice(0, 4);
+    return transactions?.transactions?.slice(0, 6);
   }, [transactions]);
 
   console.log("transactionPlusOffset: ", transactionPlusOffset);
@@ -82,7 +86,7 @@ const Wallet = () => {
   console.log("search param", search);
 
   useEffect(() => {
-    // Mint Token when Searched parameter is found
+    // Mint Token when Txn ref is found in Search param
     if (search) {
       mintFunction()
         .then((res) => {
@@ -99,6 +103,7 @@ const Wallet = () => {
   }, [search, mintFunction]);
 
   console.log("Minting Tokens", mintData);
+
 
   const [showMobileButton, setShowMobileButton] = useState(
     window.matchMedia("(max-width:500px)").matches
@@ -160,7 +165,7 @@ const Wallet = () => {
           </div>
           {/* Wallet Balance banner End */}
 
-          {/* {mintLoading && <Spinner />} */}
+
           {showMobileButton ? (
             <div className="wallet-mobile-buttons">
               <div

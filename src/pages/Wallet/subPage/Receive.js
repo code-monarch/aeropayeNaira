@@ -51,7 +51,6 @@ const Receive = () => {
                     {loading ? (
                       ""
                     ) : (
-                      // <RiLoader5Fill size={34} className="animate-spin ml-4" />
                       <img src={img} alt="QR code" />
                     )}
                   </div>
