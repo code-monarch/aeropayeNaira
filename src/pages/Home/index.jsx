@@ -32,7 +32,8 @@ const Home = () => {
   const { data: bankDetailsData } = useQuery(GET_BANK_DETAILS);
 
   const { data: userProfile } = useQuery(USER_PROFILE);
-  console.log("Number of flights", userProfile);
+  console.log("UserProfile", userProfile);
+  console.log("UserProfile", userProfile?.getAUser?.walletBalance);
 
   // Store VerificationStatus in variable
   const verificationStatus = data?.userVerificationStatus;
@@ -128,7 +129,7 @@ const Home = () => {
                 {/* Step 3 */}
                 {(bankdetailsLength === false ||
                   bankDetailsData === undefined) && (
-                  <Link to="/settings" className="step">
+                  <Link to="/settings#bank-account" className="step">
                     <span className="step-stat uppercase">Step 3</span>
                     <span className="step-info">Add a bank account</span>
                     {bankdetailsLength === false ? <ArrowRight /> : ""}
@@ -169,7 +170,7 @@ const Home = () => {
                 {/* Step 4 End */}
 
                 {/* Step 5 */}
-                <Link to="/settings" className="step">
+                <Link to="/settings#profile" className="step">
                   <span className="step-stat uppercase">Step 5</span>
                   <span className="step-info">
                     Complete your booking profile

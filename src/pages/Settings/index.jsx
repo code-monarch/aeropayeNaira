@@ -34,12 +34,6 @@ const Settings = () => {
   });
 
   useEffect(() => {
-    if (openTab === "account") {
-      navigate("#bank-account");
-    }
-  }, [navigate, openTab]);
-
-  useEffect(() => {
     if (hashRoute === "#bank-account") {
       setOpenTab((openTab) => "account");
     } else if (hashRoute === "#profile") {
@@ -48,7 +42,7 @@ const Settings = () => {
       setOpenTab((openTab) => "security");
     } else if (hashRoute === "#currency") {
       setOpenTab((openTab) => "currency");
-    } else {
+    } else if (hashRoute === "") {
       setHashRoute((hashRoute) => "#bank-account");
       setOpenTab((openTab) => "account");
     }
