@@ -159,17 +159,20 @@ const MobileItinerary = () => {
                     <div className="flex items-center text-[12px] sm:text-[14px] whitespace-nowrap">
                       &nbsp;&nbsp; {bookedFlight.departureCity} &nbsp;&nbsp;
                       <ArrIcon className="w-[15px] h-[13px] sm:w-[16px] sm:h-[15px] md:w-[19px] md:h-[17px]" />{" "}
-                      &nbsp;&nbsp; {bookedFlight.arrivalCity}&nbsp;&nbsp;
+                      &nbsp;&nbsp; {bookedFlight.arrivalCity}
                     </div>
                   </div>
-                  <div className="flex items-center mt-[10px]">
-                    <div className="mr-[12px]">
+                  <div className="flex items-center mt-[5px]">
+                    <div className="mr-[5px]">
                       <WhiteCalenderIcon />
                     </div>
                     <p className="text-[12px] sm:text-[14px]">
                       {bookedFlight?.departureDate}
                     </p>
                   </div>
+                  <p className="mt-[10px] text-[12px] sm:text-[14px]">
+                    Ticketless ID: {bookedFlight.ticketId}
+                  </p>
                 </div>
                 <div className="bg-[#515964] text-[12px] flex justify-center self-end sm:self-center items-center h-[28px] py-[7px] px-[12px] rounded-[4px] whitespace-nowrap">
                   <div className="mr-[8px]">
