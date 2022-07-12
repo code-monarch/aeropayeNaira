@@ -51,7 +51,7 @@ const Security = () => {
             </div>
 
             <div className='security-options-list_toggle'>
-              <label for="toggle-one" className="flex relative items-center cursor-pointer">
+              <label htmlFor="toggle-one" className="flex relative items-center cursor-pointer">
                 <input type="checkbox" id="toggle-one" className="sr-only" 
                 onClick={onOpenModal =>  (setOpen('auth'))} />
                 <div className="border border-gray-200 toggle-bg toggle-btn"></div>
@@ -82,7 +82,7 @@ const Security = () => {
             </div>
 
             <div className='security-options-list_toggle'>
-              <label for="toggle-two" className="flex relative items-center cursor-pointer">
+              <label htmlFor="toggle-two" className="flex relative items-center cursor-pointer">
                 <input type="checkbox" id="toggle-two" className="sr-only"
                 onClick={onOpenModal =>  (setOpen('sms'))} />
                 <div className="border border-gray-200 toggle-bg toggle-btn"></div>

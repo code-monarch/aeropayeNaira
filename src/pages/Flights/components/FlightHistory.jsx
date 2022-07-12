@@ -46,8 +46,8 @@ const FlightHistory = () => {
         {(flightHistory?.bookedFlightHistory?.length === 0 ||
           flightHistory === undefined) &&
           !loadingFlightHistory && (
-            <div className="flight-history_item !h-[200px] !flex !justify-center !items-center !text-[20px] !font-semibold">
-              No Record Found
+            <div className="flight-history_item !h-[200px] !flex !justify-center !items-center !text-[16px] !font-semibold">
+              No record found
             </div>
           )}
       </div>

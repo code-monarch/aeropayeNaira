@@ -83,7 +83,7 @@ const Flight = () => {
       <div
         className={`${
           desktopView && "!pt-[72px] !pl-[32px] w-full"
-        } bg-bg px-[18px] pt-[30px] w-full md:flight lg:pt-[72px]`}
+        } bg-bg min-h-screen px-[18px] pt-[30px] w-full md:flight lg:pt-[72px]`}
       >
         <div
           className={`${mobileView && "!flex !flex-col !items-center"} ${

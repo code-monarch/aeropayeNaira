@@ -72,7 +72,7 @@ const Home = () => {
         </div>
         {/* Welcome Banner End */}
 
-        <section className="home-container mx-[34px] w-[1312px]">
+        <section className="home-container mx-[34px] max-w-[1312px]">
           <div
             className={
               closeGetStarted

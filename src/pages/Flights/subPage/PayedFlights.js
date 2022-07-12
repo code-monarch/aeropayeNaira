@@ -91,7 +91,7 @@ const PayedFlights = () => {
   console.log("current Ref: ", ref.current);
   return (
     <Layout>
-      <div className="bg-bg w-screen pt-0 lg:pt-[72px] py-[32px] px-[15px] lg:pl-[64px] flex flex-col items-center lg:items-start 2xl:items-center min-h-[100vh]">
+      <div className="bg-bg min-h-screen w-screen pt-0 lg:pt-[72px] py-[32px] px-[15px] lg:pl-[64px] flex flex-col items-center lg:items-start 2xl:items-center">
         <div className="2xl:w-[1536px] 2xl:flex 2xl:flex-col 2xl:items-center">
           <div className="w-[100%] 2xl:w-[1536px] flex flex-col">
             {/* Back Button */}
@@ -120,7 +120,7 @@ const PayedFlights = () => {
                         <div className="section h-[200px] flex justify-center !flex-col items-center">
                           <div className="body !text-[20px] font-sans !font-bold">
                             {" "}
-                            No flights found{" "}
+                            No FLIGHTS FOUND{" "}
                           </div>
                           <div className="body font-sans">
                             {" "}
