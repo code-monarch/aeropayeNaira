@@ -13,10 +13,11 @@ import { Link } from "react-router-dom";
 import Layout from "../../component/Layout";
 
 import { useQuery } from "@apollo/client";
-import { USER_VERIFICATION_STATUS } from "../../hooks";
-import { GET_BANK_DETAILS } from "../../hooks";
-import { BALANCE } from "../../hooks";
-import { USER_PROFILE } from "../../hooks";
+import {
+  USER_VERIFICATION_STATUS,
+  GET_BANK_DETAILS,
+  USER_PROFILE,
+} from "../../hooks";
 
 const Home = () => {
   const numberWithCommas = (x) => {

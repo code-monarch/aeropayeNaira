@@ -116,7 +116,7 @@ const MobileItinerary = () => {
   return (
     <div className="w-full sm:max-w-[600px] flex flex-col items-center">
       {(!bookedFlights || bookedFlights?.getBookedFlight.length === 0) && (
-        <div className="flight-container_information">
+        <div className="flight-container_information !mr-0">
           <div className="section h-[200px] flex justify-center !flex-col items-center">
             <div className="body !text-[20px] font-sans !font-bold">
               {" "}

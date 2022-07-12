@@ -14,6 +14,7 @@ export const USER_PROFILE = gql`
       totalRefunds
       totalDeposits
       totalWithdraws
+      addr
     }
   }
 `;

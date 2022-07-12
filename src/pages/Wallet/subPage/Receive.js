@@ -4,8 +4,8 @@ import { ReactComponent as ArrowLeft } from "../../../assets/dashboard-icons/arr
 import { ReactComponent as Copy } from "../../../assets/dashboard-icons/copy.svg";
 import { Link } from "react-router-dom";
 import Layout from "../../../component/Layout";
-import { useMutation } from "@apollo/client";
-import { GET_DEPOSIT_QRCODE } from "../../../hooks";
+import { useMutation, useQuery } from "@apollo/client";
+import { GET_DEPOSIT_QRCODE, USER_PROFILE } from "../../../hooks";
 
 const Receive = () => {
   const [isCopy, setIsCopy] = useState(false);
@@ -19,6 +19,7 @@ const Receive = () => {
 
   // This Mutation gets the user deposit QR code
   const [getDepositQRCode, { loading }] = useMutation(GET_DEPOSIT_QRCODE);
+  const { data: userProfile } = useQuery(USER_PROFILE);
 
   const [img, setImg] = useState("");
 
@@ -48,11 +49,7 @@ const Receive = () => {
               <div className="w-full flex justify-center">
                 <div className="flex justify-center items-center w-[200px] h-[200px] p-[5px] border-[1px] border-[#DDEFFF] rounded-[8px]">
                   <div className={`${loading && "skeleton-box"}`}>
-                    {loading ? (
-                      ""
-                    ) : (
-                      <img src={img} alt="QR code" />
-                    )}
+                    {loading ? "" : <img src={img} alt="QR code" />}
                   </div>
                 </div>
               </div>
@@ -73,7 +70,8 @@ const Receive = () => {
                   <input
                     className="rounded-[6px] !pl-[10px]"
                     type="text"
-                    value="0x078395eec8b3b15888b70cf64db2fadc12b6d860"
+                    value={userProfile?.addr}
+                    // value="0x078395eec8b3b15888b70cf64db2fadc12b6d860"
                     ref={textAreaRef}
                     readOnly
                   />
