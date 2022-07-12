@@ -11,8 +11,6 @@ import {
   PlaneIcon,
   ProfileIcon,
   WhiteCalenderIcon,
-  DepartureIcon,
-  ArrRightIcon,
   BusinessClassIcon,
   EcoClassIcon,
   PremiumEcoClassIcon,

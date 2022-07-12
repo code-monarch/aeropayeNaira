@@ -149,7 +149,10 @@ const FlightItinerary = () => {
                         <WhiteCalenderIcon />
                       </div>
                       <p className="text-[12px] sm:text-[14px]">
-                        {dateFormat(flight?.departureDate, "mmmm dS, yyyy")}
+                        {dateFormat(
+                          flight?.departureDate,
+                          "dddd, mmmm dS, yyyy"
+                        )}
                       </p>
                     </div>
                   </div>
