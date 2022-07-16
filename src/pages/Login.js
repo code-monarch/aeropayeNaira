@@ -52,16 +52,12 @@ const Login = () => {
 					JSON.stringify(userData)
 				);
 				auth.updateAuth(userData);
-				// setAuth({ userData });
 				toastSuccess("Login successful");
-				// history.push(`/verify/${data.email}`);
 				navigate(from, { replace: true });
-				// window.location = "https://aeropaye-dashboard-convexity.vercel.app/";
 			})
 			.catch((error) => {
 				reset();
 				toastError(error.message);
-				// return loader && loader.current?.complete();
 			});
 	};
 

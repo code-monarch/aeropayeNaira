@@ -1,35 +1,32 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext  } from "react";
 import { ReactComponent as Logo } from "../../assets/icons/logo.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ReactComponent as Tick } from "../../assets/icons/tick-circle.svg";
 import { ReactComponent as Profile } from "../../assets/icons/Profile.svg";
 import { ReactComponent as Email } from "../../assets/icons/email.svg";
 import { ReactComponent as Password } from "../../assets/icons/password.svg";
 import { ReactComponent as Hide } from "../../assets/icons/Hide.svg";
 import { ReactComponent as ShowIcon } from "../../assets/icons/showIcon.svg";
-import { ReactComponent as AirlineName } from "../../assets/icons/logo.svg";
-import { useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/high-res.css";
-// import "react-phone-input-2/lib/style.css";
 import { SIGNUP_MUTATION } from "../../hooks";
 import { useMutation } from "@apollo/client";
 import { toastError, toastSuccess } from "../../component/shared/Toasts";
 import { Controller, useForm } from "react-hook-form";
 import FormError from "../../component/shared/FormError";
-// import useAuth from "../../hooks/useAuth";
 import { authContext } from "../../hooks/auth";
 import Button from "../../component/shared/Button";
-import { RiContrastDropLine } from "react-icons/ri";
+import LeftsideInfo from "./components/LeftsideInfo";
+import PasswordStrength from "./components/PasswordStrength";
+
+
 
 const SignUp = () => {
-  // const { auth, setAuth } = useAuth();
-  // console.log("auth context", auth)
   const { auth } = useContext(authContext);
 
   const [showPassword, setShowPassword] = useState(false);
   const [focus, setFocus] = useState("");
-  const [error, setError] = useState(false);
+  const [error] = useState(false);
 
   let navigate = useNavigate();
 
@@ -43,10 +40,14 @@ const SignUp = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
+      fname: "",
       phone: "",
+      lname: "",
+      email: "",
     },
   });
 
+  // This functions sends the form data in the Sign up mutation
   const submit = (data) => {
     signup({
       variables: {
@@ -87,72 +88,8 @@ const SignUp = () => {
   return (
     <div className="signup-container 2xl:h-screen h-auto">
       <div className="flex justify-evenly signup-container-2">
-        <div className="signup">
-          <NavLink to="/" className="signup-logo">
-            <Logo className="w-auto" />
-          </NavLink>
-          <div>
-            <div className="flex signup-details">
-              <div className="signup-details_icon">
-                <Tick />
-              </div>
-
-              <div>
-                <p className="signup-details_title">
-                  Tokenized ticketing system
-                </p>
-                <p className="signup-details_subtitle">
-                  Aeropaye convert a Tokenized Tickets digit into a digital
-                  credential that can't be stolen or reused.{" "}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex signup-details">
-              <div className="signup-details_icon">
-                <Tick />
-              </div>
-              <div>
-                <p className="signup-details_title">Autonomous refund engine</p>
-                <p className="signup-details_subtitle">
-                  On cancelling or delaying the Flight, Aeropaye will process
-                  refund within seconds from the time of delayed or cancelled
-                  flight.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex signup-details items-start">
-              <div className="signup-details_icon">
-                <Tick />
-              </div>
-              <div>
-                <p className="signup-details_title">
-                  Blockchain smart contract secured
-                </p>
-                <p className="signup-details_subtitle">
-                  Aeropaye Smart contracts improve the time-consuming processes
-                  in travellers refund claims adjudication to cut cost for
-                  Airlines.{" "}
-                </p>
-              </div>
-            </div>
-            <div className="flex signup-details">
-              <div className="signup-details_icon">
-                <Tick />
-              </div>
-              <div>
-                <p className="signup-details_title">
-                  Access to exclusive discounts
-                </p>
-                <p className="signup-details_subtitle">
-                  Aeropaye Offers exclusive discounts.{" "}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        {/* Left side details */}
+        <LeftsideInfo />
         <div>
           <div className="signup-form">
             <p className="title">How do you intend to use aeropaye?</p>
@@ -163,6 +100,7 @@ const SignUp = () => {
             <div className={`${error ? "error-line" : "line"}`}></div>
             <form onSubmit={handleSubmit(submit)}>
               <div className="flex sm:flex-row flex-col">
+                {/* First Name */}
                 <div className="signup-form_field w-full">
                   <p className="label">First Name</p>
                   <label
@@ -191,7 +129,9 @@ const SignUp = () => {
                   </label>
                   <FormError errors={errors} name="fname" />
                 </div>
+                {/* First Name End */}
 
+                {/* Last Name */}
                 <div className="signup-form_field w-full ml-0 sm:ml-[16px]">
                   <p className="label">Last Name</p>
                   <label
@@ -220,8 +160,9 @@ const SignUp = () => {
                   </label>
                   <FormError errors={errors} name="lname" />
                 </div>
+                {/* Last Name end */}
               </div>
-
+              {/* Email Address */}
               <div className="signup-form_field">
                 <p className="label">Email Address</p>
                 <label
@@ -252,7 +193,8 @@ const SignUp = () => {
                 </label>
                 <FormError errors={errors} name="email" />
               </div>
-
+              {/* Email Address End */}
+              {/* Phone number */}
               <div className="signup-form_field">
                 <p className="label">Phone Number</p>
 
@@ -284,7 +226,8 @@ const SignUp = () => {
                 />
                 <FormError errors={errors} name="phone" />
               </div>
-
+              {/* Phone number end */}
+              {/* Password */}
               <div className="signup-form_field">
                 <p className="label">Password</p>
                 <label
@@ -303,10 +246,11 @@ const SignUp = () => {
                     name="password"
                     {...register("password", {
                       required: "Enter a stong password",
-                      minLength: {
-                        value: 8,
+                      pattern: {
+                        value:
+                          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*"'()+,-./:;<=>?[\]^_`{|}~])(?=.{8,})/,
                         message:
-                          "Password should be at least 8 characters long",
+                          "Password should be at least 8 characters long; a lowercase and an uppercase alphabet and a number",
                       },
                     })}
                     onBlur={() => setFocus("")}
@@ -326,9 +270,11 @@ const SignUp = () => {
                     )}
                   </span>
                 </label>
+                <PasswordStrength control={control} errors={errors} />
                 <FormError errors={errors} name="password" />
               </div>
-
+              {/* Password End */}
+              {/* checkBox */}
               <div className="mb-[23px]">
                 <label className="flex items-center cursor-pointer">
                   <input
@@ -353,7 +299,7 @@ const SignUp = () => {
                 </label>
                 <FormError errors={errors} name="checkbox" />
               </div>
-
+              {/* CheckBox end */}
               <Button
                 className="login-container_login flex items-center justify-center cursor-pointerjustify-center"
                 type="submit"
