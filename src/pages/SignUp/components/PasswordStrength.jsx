@@ -48,7 +48,7 @@ const PasswordStrength = ({ control, errors }) => {
             {passwordStrength === 2 && "Moderate"}{" "}
             {passwordStrength === 3 && "Hard"}
           </span>
-          {errors ? (
+          {!errors ? (
             ""
           ) : (
             <p className="text-[12px] mt-[5px]">
