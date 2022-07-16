@@ -18,6 +18,7 @@ import MobileNav from "./mobile/MobileNav";
 import { useVerifEmailStatus } from "../utils/EmailVerifStatus";
 
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import VerifyEmailText from "./VerifyEmailText";
 
 const Nav = ({ userName, isActive, setIsActive }) => {
   const navigate = useNavigate();
@@ -55,12 +56,7 @@ const Nav = ({ userName, isActive, setIsActive }) => {
   return (
     <div className="sticky z-10 top-0 w-screen">
       {!isVerified ? (
-        <Link
-          to="/verify-email"
-          className="font-sans text-black flex justify-center items-center bg-[#fff6ed] py-[10px] transition-all ease-out duration-700"
-        >
-          Verify your Email address to book flights
-        </Link>
+        <VerifyEmailText />
       ) : (
         ""
       )}
