@@ -87,9 +87,9 @@ const Send = () => {
                 <p className="withdraw-form_title">Who are you sending to?</p>
 
                 <div className="withdraw-form_amount-form">
-                  <p className="withdraw-form_amount-form_title">
+                  {/* <p className="withdraw-form_amount-form_title">
                     Recipient Address
-                  </p>
+                  </p> */}
 
                   <label
                     className={`flex withdraw-form_amount-form_input ${
@@ -104,7 +104,7 @@ const Send = () => {
                       {...register("address", {
                         required: "Please enter wallet address",
                       })}
-                      placeholder="Enter wallet address"
+                      placeholder="Enter Recipient wallet address"
                       onFocus={() => setFocus("address")}
                     />
                     <button
@@ -134,11 +134,11 @@ const Send = () => {
               </div>
 
               {/* AMOUNT */}
-              <div className="mt-[36px] mb-[32px]">
+              <div className="mt-[16px] mb-[32px]">
                 <p className="withdraw-form_title">How much are you sending?</p>
 
                 <div className="withdraw-form_amount-form">
-                  <p className="withdraw-form_amount-form_title">Amount</p>
+                  {/* <p className="withdraw-form_amount-form_title">Amount</p> */}
 
                   {/* AMOUNT INPUT */}
                   <label

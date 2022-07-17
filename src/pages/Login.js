@@ -72,9 +72,9 @@ const Login = () => {
 
         <form onSubmit={handleSubmit(submit)}>
           <div className="login-container_email">
-            <p className="label">Email or Phone</p>
+            <p className="label !mb-0 !pl-0">Email or Phone</p>
             <label
-              className={`flex items-center ${
+              className={`flex items-center !mt-0 ${
                 focus === "email-input" ? "clicked" : ""
               }`}
             >
@@ -97,9 +97,9 @@ const Login = () => {
           </div>
 
           <div className="login-container_email">
-            <p className="label">Password</p>
+            <p className="label !mb-0 !pl-0 !pt-0">Password</p>
             <label
-              className={`flex items-center ${
+              className={`flex items-center mt-0 ${
                 focus === "password-input" ? "clicked" : ""
               }`}
             >

@@ -34,7 +34,7 @@ const Settings = () => {
   });
 
   useEffect(() => {
-    if (hashRoute === "#bank-account") {
+    if (hashRoute === "#bank-details") {
       setOpenTab((openTab) => "account");
     } else if (hashRoute === "#profile") {
       setOpenTab((openTab) => "profile");
@@ -43,7 +43,7 @@ const Settings = () => {
     } else if (hashRoute === "#currency") {
       setOpenTab((openTab) => "currency");
     } else if (hashRoute === "") {
-      setHashRoute((hashRoute) => "#bank-account");
+      setHashRoute((hashRoute) => "#bank-details");
       setOpenTab((openTab) => "account");
     }
   }, [hashRoute]);
@@ -120,13 +120,13 @@ const Settings = () => {
               <div className="2xl:w-screen 2xl:flex 2xl:justify-center">
                 <div className="settings-container-header_tab-btn 2xl:!w-[1356px] 2xl:!pl-0">
                   <button
-                    path="#bank-account"
+                    path="#bank-details"
                     className={`tab-button mr-[12px] ${
                       openTab === "account" && "open-tab"
                     }`}
                     onClick={() => {
                       setOpenTab("account");
-                      navigate("#bank-account");
+                      navigate("#bank-details");
                     }}
                   >
                     Manage bank account

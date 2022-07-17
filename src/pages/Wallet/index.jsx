@@ -48,6 +48,8 @@ const Wallet = () => {
   //Query User Transaction history
   const {
     data: transactions,
+    error: errorGettingTransacs,
+    loading: loadingTrasacs,
   } = useQuery(GET_TRANSACTION_HISTORY);
   console.log("user Transactions", transactions?.transactions);
 
@@ -58,7 +60,7 @@ const Wallet = () => {
 
   console.log("transactionPlusOffset: ", transactionPlusOffset);
 
-  const [controlShowBalance, setControlShowBalance] = useState("show");
+  const [controlShowBalance] = useState("show");
   // Show wallet balance if false, else Hide wallet balance
   const [showBalance, setShowBalance] = useState(true);
   const { data } = useQuery(BALANCE);
@@ -165,7 +167,6 @@ const Wallet = () => {
           </div>
           {/* Wallet Balance banner End */}
 
-
           {showMobileButton ? (
             <div className="wallet-mobile-buttons">
               <div
@@ -198,7 +199,7 @@ const Wallet = () => {
                   isVerified
                     ? navigate("/wallet/deposit")
                     : toastError(
-                        "Cannot make deposit because your Email is not verified"
+                        "Verify your Email address to make deposit"
                       );
                 }}
                 className="deposit button cursor-pointer"
@@ -234,15 +235,21 @@ const Wallet = () => {
             ) : (
               <p className="title">Recent wallet transactions</p>
             )}
-
-            <Link to="/transaction-history" className="trans-history">
+            <Link
+              to="/transaction-history"
+              className={`${
+                (errorGettingTransacs ||
+                  loadingTrasacs ||
+                  transactions?.transactions.length === 0) &&
+                "!text-gray"
+              } trans-history`}
+            >
               See all transactions
             </Link>
           </div>
           {/* RECENT HISTORY */}
           <div className="recent-history">
-            {(!transactionPlusOffset ||
-              transactionPlusOffset?.transactionPlusOffset?.length === 0) && (
+            {transactions?.transactions.length === 0 && (
               <div className="recent-history_list text-center py-[32px] font-medium text-black">
                 No Record Found
               </div>

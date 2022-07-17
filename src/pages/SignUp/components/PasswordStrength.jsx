@@ -52,9 +52,8 @@ const PasswordStrength = ({ control, hidePasswordHint }) => {
             ""
           ) : (
             <p className="text-[12px] mt-[5px]">
-              Hint: A strong Password is at least 8 characters long and
-              must contain a lowercase and an uppercase alphabet and a
-              number
+              Hint: A storng Password is at least 8 characters long and must contain a number, a
+              lower and uppercase alphabet and any special character
             </p>
           )}
         </div>
