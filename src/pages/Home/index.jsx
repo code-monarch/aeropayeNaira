@@ -184,8 +184,8 @@ const Home = () => {
             {/* Getting Started End */}
 
             <div className="w-full lg:w-auto flex items-center justify-between pr-2">
-              <label className="checkbox flex items-center">
-                <input type="checkbox" />
+              <label className="flex items-center">
+                <input type="checkbox" className="cursor-pointer shadow-sm"/>
                 <span className="checkbox-info">Don't show me this again</span>
               </label>
               <div

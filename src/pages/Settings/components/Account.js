@@ -1,23 +1,23 @@
 import React, { useState } from "react";
-import ReactFlagsSelect from "react-flags-select";
+// import ReactFlagsSelect from "react-flags-select";
 import { ReactComponent as ArrowDown } from "../../../assets/dashboard-icons/arrow-down.svg";
 import { ReactComponent as Trash } from "../../../assets/dashboard-icons/trash.svg";
 import Button from "../../../component/shared/Button";
 
-import { Controller, useForm } from "react-hook-form";
+// import { Controller, useForm } from "react-hook-form";
 import { toastError, toastSuccess } from "../../../component/shared/Toasts";
 
 import { useMutation, useQuery } from "@apollo/client";
 import { BANK_DETAILS_MUTATION } from "../../../hooks";
 import { GET_BANK_DETAILS } from "../../../hooks";
+import { banks, accTypes, countries } from "../data";
 
 // import FormError from "../../../component/shared/FormError";
 
 const Account = () => {
-	const [focus, setFocus] = useState("");
+  const [focus, setFocus] = useState("");
 
   //   const [openDropdown, setOpenDropdown] = useState(false)
-  const [selected, setSelected] = useState("NG");
   const [selectCountry, setSelectCountry] = useState();
   const [accName, setAccName] = useState();
   const [selectedBank, setSelectedBank] = useState();
@@ -26,7 +26,7 @@ const Account = () => {
   const [iban, setIban] = useState();
 
   //Bank Details Mutation
-  const [userBankDetails, { data, loading, error }] = useMutation(
+  const [userBankDetails, { loading }] = useMutation(
     BANK_DETAILS_MUTATION,
     {
       refetchQueries: [
@@ -38,8 +38,6 @@ const Account = () => {
   //Bank Details Query
   const {
     data: bankDetails,
-    loading: loadingBankDetails,
-    error: bankDetailsError,
   } = useQuery(GET_BANK_DETAILS);
   console.log("bank details", bankDetails)
 
@@ -51,88 +49,6 @@ const Account = () => {
       bankDetails?.userBankDetails.length
   );
 
-  const banks = [
-    "9Payment Service Bank",
-    "Abbey Mortgage Bank",
-    "Above Only MFB",
-    "Access Bank",
-    "Access Bank (Diamond)",
-    "Airtel Smartcash PSB",
-    "ALAT by WEMA",
-    "Amju Unique MFB",
-    "ASO Savings and Loans",
-    "Astrapolaris MFB LTD",
-    "Bainescredit MFB",
-    "Bowen Microfinance Bank",
-    "Carbon",
-    "CEMCS Microfinance Bank",
-    "Chanelle Microfinance Bank Limited",
-    "Citibank Nigeria",
-    "Corestep MFB",
-    "Coronation Merchant Bank",
-    "Ecobank Nigeria",
-    "Ekondo Microfinance Bank",
-    "Eyowo",
-    "Fidelity Bank",
-    "Firmus MFB",
-    "First Bank of Nigeria",
-    "First City Monument Bank",
-    "FSDH Merchant Bank Limited",
-    "Gateway Mortgage Bank LTD",
-    "Globus Bank",
-    "GoMoney",
-    "Guaranty Trust Bank",
-    "Hackman Microfinance Bank",
-    "Hasal Microfinance Bank",
-    "Heritage Bank",
-    "HopePSB",
-    "Ibile Microfinance Bank",
-    "Infinity MFB",
-    "Jaiz Bank",
-    "Kadpoly MFB",
-    "Keystone Bank",
-    "Kredi Money MFB LTD",
-    "Kuda Bank",
-    "Lagos Building Investment Company Plc.",
-    "Links MFB",
-    "Living Trust Mortgage Bank",
-    "Lotus Bank",
-    "Mayfair MFB",
-    "Mint MFB",
-    "MoMo PSB",
-    "Paga",
-    "PalmPay",
-    "Parallex Bank",
-    "Parkway - ReadyCash",
-    "Paycom",
-    "Petra Mircofinance Bank Plc",
-    "Polaris Bank",
-    "Providus Bank",
-    "QuickFund MFB",
-    "Rand Merchant Bank",
-    "Refuge Mortgage Bank",
-    "Rubies MFB",
-    "Safe Haven MFB",
-    "Sparkle Microfinance Bank",
-    "Stanbic IBTC Bank",
-    "Standard Chartered Bank",
-    "Stellas MFB",
-    "Sterling Bank",
-    "Suntrust Bank",
-    "TAJ Bank",
-    "Tangerine Money",
-    "TCF MFB",
-    "Titan Bank",
-    "Unical MFB",
-    "Union Bank of Nigeria",
-    "United Bank For Africa",
-    "Unity Bank",
-    "VFD Microfinance Bank Limited",
-    "Wema Bank",
-    "Zenith Bank",
-  ];
-  const accTypes = ["SAVINGS_ACCOUNT", "CURRENT_ACCOUNT"];
-  const countries = ["NIGERIA", "GHANA", "USA", "BRAZIL"];
   return (
     <div className="account-container">
       <div className="account-container_form">
@@ -178,7 +94,12 @@ const Account = () => {
               <p className="account-form_inputs-title">
                 Bank Account Resident Country
               </p>
-              <div className="account-form_inputs-dropdown flex items-center justify-between">
+              <div
+                className={`account-form_inputs-dropdown flex items-center justify-between ${
+                  focus === "dropdownButton6" ? "clicked" : ""
+                }`}
+                onClick={() => setFocus("dropdownButton6")}
+              >
                 <button
                   id="dropdownButton6"
                   data-dropdown-toggle="dropdown6"
@@ -223,7 +144,7 @@ const Account = () => {
             {/* RESIDENT COUNTRY */}
 
             {/* ACCOUNT NAME */}
-            <div className="account-form_inputs">
+            <div className={`account-form_inputs`}>
               <p className="account-form_inputs-title"> Name on account</p>
               <label
                 htmlFor="accName"
@@ -255,10 +176,15 @@ const Account = () => {
             {/* BANK NAME */}
             <div className="account-form_inputs input_1">
               <p className="account-form_inputs-title">Bank Name</p>
-              <div className="account-form_inputs-dropdown flex items-center justify-between">
+              <div
+                className={`account-form_inputs-dropdown flex items-center justify-between ${
+                  focus === "dropdown_bankName" ? "clicked" : ""
+                }`}
+                onClick={() => setFocus("dropdown_bankName")}
+              >
                 <button
                   id="dropdownButton"
-                  data-dropdown-toggle="dropdown"
+                  data-dropdown-toggle="dropdown_bankName"
                   className={`${
                     selectedBank && "text-black"
                   } acct-dropdown w-full px-4 py-2.5 text-left inline-flex items-center justify-between`}
@@ -268,7 +194,7 @@ const Account = () => {
                   <ArrowDown />
                 </button>
                 <div
-                  id="dropdown"
+                  id="dropdown_bankName"
                   className="hidden z-10 w-[250px] h-[300px] overflow-auto list-none bg-white rounded divide-y divide-gray-100 shadow-md"
                 >
                   <ul className="py-1" aria-labelledby="dropdownButton">
@@ -323,10 +249,15 @@ const Account = () => {
             {/* ACCOUNT TYPE */}
             <div className="account-form_inputs input_1">
               <p className="account-form_inputs-title">Account Type</p>
-              <div className="account-form_inputs-dropdown flex items-center justify-between">
+              <div
+                className={`account-form_inputs-dropdown flex items-center justify-between ${
+                  focus === "dropdown_acctType" ? "clicked" : ""
+                }`}
+                onClick={() => setFocus("dropdown_acctType")}
+              >
                 <button
                   type="button"
-                  id="dropdownButton2"
+                  id="dropdown_acctType"
                   data-dropdown-toggle="dropdown2"
                   className={`${
                     selectAccType && "text-black"
@@ -358,6 +289,7 @@ const Account = () => {
               </div>
             </div>
             {/* ACCOUNT TYPE END */}
+            {/* SWIFT CODE */}
             <div className="account-form_inputs">
               <p className="account-form_inputs-title text-[#8895A7]">
                 BIC / SWIFT Code
@@ -377,7 +309,7 @@ const Account = () => {
                 />
               </div>
             </div>
-            {/* ACCOUNT TYPE END */}
+            {/* SWIFT CODE END */}
           </div>
 
           {/* SAVE ACCOUNT BUTTON */}

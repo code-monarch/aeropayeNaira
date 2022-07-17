@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import {Dropdown} from "flowbite";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ReactComponent as Profile } from "../../assets/icons/Profile.svg";
 import { ReactComponent as Email } from "../../assets/icons/email.svg";
@@ -101,9 +102,9 @@ const SignUp = () => {
               <div className="flex sm:flex-row flex-col">
                 {/* First Name */}
                 <div className="signup-form_field w-full">
-                  <p className="label">First Name</p>
+                  <p className="label !mb-0 !pl-0">First Name</p>
                   <label
-                    className={`flex items-center ${
+                    className={`flex items-center !mt-0 ${
                       focus === "fname-input" ? "clicked" : ""
                     }`}
                   >
@@ -132,9 +133,9 @@ const SignUp = () => {
 
                 {/* Last Name */}
                 <div className="signup-form_field w-full ml-0 sm:ml-[16px]">
-                  <p className="label">Last Name</p>
+                  <p className="label !mb-0 !pl-0">Last Name</p>
                   <label
-                    className={`flex items-center ${
+                    className={`flex items-center !mt-0 ${
                       focus === "lname-input" ? "clicked" : ""
                     }`}
                   >
@@ -163,9 +164,9 @@ const SignUp = () => {
               </div>
               {/* Email Address */}
               <div className="signup-form_field">
-                <p className="label">Email Address</p>
+                <p className="label !mb-0 !pl-0 !pt-0">Email Address</p>
                 <label
-                  className={`flex items-center ${
+                  className={`flex items-center !mt-0 ${
                     focus === "email-input" ? "clicked" : ""
                   }`}
                 >
@@ -195,7 +196,7 @@ const SignUp = () => {
               {/* Email Address End */}
               {/* Phone number */}
               <div className="signup-form_field">
-                <p className="label">Phone Number</p>
+                <p className="label !mb-0 !pl-0 !pt-0">Phone Number</p>
 
                 <Controller
                   control={control}
@@ -207,12 +208,12 @@ const SignUp = () => {
                       onChange={onChange}
                       value={value}
                       inputStyle={{
-                        marginLeft: "50px",
+                        marginLeft: "49px",
                         borderTopLeftRadius: "0px",
                         borderBottomLeftRadius: "0px",
                         paddingLeft: "10px",
                       }}
-                      className={`flex items-center ${
+                      className={`flex items-center !mt-0 ${
                         focus === "phone-input" ? "clicked" : ""
                       }`}
                       onBlur={() => setFocus("")}
@@ -228,9 +229,9 @@ const SignUp = () => {
               {/* Phone number end */}
               {/* Password */}
               <div className="signup-form_field">
-                <p className="label">Password</p>
+                <p className="label !mb-0 !pl-0 !pt-0">Password</p>
                 <label
-                  className={`flex items-center ${
+                  className={`flex items-center !mt-0 ${
                     focus === "password-input" ? "clicked" : ""
                   }`}
                 >
@@ -240,7 +241,7 @@ const SignUp = () => {
                   <input
                     type={showPassword ? "text" : "password"}
                     placeholder="Password"
-                    className="appearance-none"
+                    className="appearance-none !mt-0"
                     id="password"
                     name="password"
                     {...register("password", {
@@ -249,7 +250,7 @@ const SignUp = () => {
                         value:
                           /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*"'()+,-./:;<=>?[\]^_`{|}~])(?=.{8,})/,
                         message:
-                          "Password should be at least 8 characters long and must contain a lowercase and an uppercase alphabet, and a number",
+                          "Password should be at least 8 characters long and must contain a number, a lower and uppercase alphabet and any special character",
                       },
                     })}
                     onBlur={() => setFocus("")}
@@ -279,22 +280,24 @@ const SignUp = () => {
               {/* checkBox */}
               <div className="mb-[23px]">
                 <label className="flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    className="appearance-none w-[20px] h-[20px] mr-[12px] bg-bg rounded-sm shadow-sm border-[1px] border-black cursor-pointer"
-                    id="tncCheckbox"
-                    name="checkbox"
-                    {...register("checkbox", {
-                      required: "Please accept the terms",
-                    })}
-                  />
+                  <div className="flex justify-center items-center w-[30px] h-[20px] p-0 mr-[12px] border-[1px] border-[#e1e7ec] rounded-sm">
+                    <input
+                      type="checkbox"
+                      className="appearance-none h-full w-full shadow-sm cursor-pointer"
+                      id="tncCheckbox"
+                      name="checkbox"
+                      {...register("checkbox", {
+                        required: "Please accept the terms",
+                      })}
+                    />
+                  </div>
                   <p className="signup-field-tnc">
                     By creating an account, you agree to our{" "}
-                    <span className="signup-field-tnc_item">
+                    <span className="signup-field-tnc_item hover:underline">
                       <NavLink to="/">Terms and Conditions</NavLink>
                     </span>{" "}
                     and acknowledge our{" "}
-                    <span className="signup-field-tnc_item">
+                    <span className="signup-field-tnc_item hover:underline">
                       <NavLink to="/">Privacy policy</NavLink>
                     </span>{" "}
                   </p>
@@ -303,7 +306,7 @@ const SignUp = () => {
               </div>
               {/* CheckBox end */}
               <Button
-                className="login-container_login flex items-center justify-center cursor-pointerjustify-center"
+                className="login-container_login flex items-center cursor-pointer justify-center"
                 type="submit"
                 loading={loading && loading}
               >
