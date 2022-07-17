@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {useWatch } from "react-hook-form";
 
-const PasswordStrength = ({ control, errors }) => {
+const PasswordStrength = ({ control, hidePasswordHint }) => {
   const [passwordStrength, setPasswordStrength] = useState();
   const password = useWatch({
     control,
@@ -48,12 +48,13 @@ const PasswordStrength = ({ control, errors }) => {
             {passwordStrength === 2 && "Moderate"}{" "}
             {passwordStrength === 3 && "Hard"}
           </span>
-          {!errors ? (
+          {hidePasswordHint ? (
             ""
           ) : (
             <p className="text-[12px] mt-[5px]">
-              Hint: A strong Password should be at least 8 characters long; a
-              lowercase and an uppercase alphabet and a number
+              Hint: A strong Password is at least 8 characters long and
+              must contain a lowercase and an uppercase alphabet and a
+              number
             </p>
           )}
         </div>

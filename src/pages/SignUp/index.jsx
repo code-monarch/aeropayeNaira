@@ -1,7 +1,5 @@
-import React, { useState, useContext  } from "react";
-import { ReactComponent as Logo } from "../../assets/icons/logo.svg";
+import React, { useState, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { ReactComponent as Tick } from "../../assets/icons/tick-circle.svg";
 import { ReactComponent as Profile } from "../../assets/icons/Profile.svg";
 import { ReactComponent as Email } from "../../assets/icons/email.svg";
 import { ReactComponent as Password } from "../../assets/icons/password.svg";
@@ -19,12 +17,11 @@ import Button from "../../component/shared/Button";
 import LeftsideInfo from "./components/LeftsideInfo";
 import PasswordStrength from "./components/PasswordStrength";
 
-
-
 const SignUp = () => {
   const { auth } = useContext(authContext);
 
   const [showPassword, setShowPassword] = useState(false);
+  const [hidePasswordHint, setHidePasswordHint] = useState(false);
   const [focus, setFocus] = useState("");
   const [error] = useState(false);
 
@@ -82,8 +79,10 @@ const SignUp = () => {
         // return loader && loader.current?.complete();
       });
   };
-
   console.log("Mutation data", signupData);
+
+  // This function checks is there error in form submission then sets hidePasswordHint to true
+  const onError = () => setHidePasswordHint(true);
 
   return (
     <div className="signup-container 2xl:h-screen h-auto">
@@ -98,7 +97,7 @@ const SignUp = () => {
             </p>
 
             <div className={`${error ? "error-line" : "line"}`}></div>
-            <form onSubmit={handleSubmit(submit)}>
+            <form onSubmit={handleSubmit(submit, onError)}>
               <div className="flex sm:flex-row flex-col">
                 {/* First Name */}
                 <div className="signup-form_field w-full">
@@ -250,7 +249,7 @@ const SignUp = () => {
                         value:
                           /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*"'()+,-./:;<=>?[\]^_`{|}~])(?=.{8,})/,
                         message:
-                          "Password should be at least 8 characters long; a lowercase and an uppercase alphabet and a number",
+                          "Password should be at least 8 characters long and must contain a lowercase and an uppercase alphabet, and a number",
                       },
                     })}
                     onBlur={() => setFocus("")}
@@ -270,7 +269,10 @@ const SignUp = () => {
                     )}
                   </span>
                 </label>
-                <PasswordStrength control={control} errors={errors} />
+                <PasswordStrength
+                  control={control}
+                  hidePasswordHint={hidePasswordHint}
+                />
                 <FormError errors={errors} name="password" />
               </div>
               {/* Password End */}
