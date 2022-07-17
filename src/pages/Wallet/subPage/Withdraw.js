@@ -28,10 +28,8 @@ const Withdraw = () => {
   const [walletBalance, setWalletBalance] = useState("");
 
   const {
-    control,
     register,
     setValue,
-    getValues,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -40,8 +38,7 @@ const Withdraw = () => {
   const { data } = useQuery(BALANCE);
 
   // Get bank details Query
-  const { data: bankDetails, loading: loadingBanks } =
-    useQuery(GET_BANK_DETAILS);
+  const { data: bankDetails } = useQuery(GET_BANK_DETAILS);
   console.log("Bank Details:", bankDetails);
   const banks = bankDetails?.userBankDetails?.acctBank;
   console.log("banksss: ", banks);
@@ -69,7 +66,7 @@ const Withdraw = () => {
   // Mutation for Redeeming Token to Fiat
   const [
     redeemFiat,
-    { data: redeemData, loading: redeeming, error: redeemError },
+    { loading: redeeming },
   ] = useMutation(REDEEM_FIAT_MUTATION, {
     refetchQueries: [
       { query: BALANCE }, // DocumentNode object parsed with gql
@@ -112,9 +109,9 @@ const Withdraw = () => {
                 </p>
 
                 <div className="withdraw-form_amount-form">
-                  <p className="withdraw-form_amount-form_title">
+                  {/* <p className="withdraw-form_amount-form_title">
                     Withdrawal Amount
-                  </p>
+                  </p> */}
 
                   <label
                     className={`flex withdraw-form_amount-form_input ${
@@ -172,36 +169,68 @@ const Withdraw = () => {
                   <p className="withdraw-form_amount-form_title">
                     Select Withdrawal Account
                   </p>
-                  <div className="w-full flex justify-between items-center">
-                    <label
-                      className={`withdraw-form_amount-form_dropdown !w-[65%] !pl-[20px] py-2.5 text-left inline-flex items-center justify-between withdraw-form_amount-form_input${
+                  <div
+                    className={`w-full flex flex-col justify-between items-center`}
+                  >
+                    <button
+                      id="dropdownDefault"
+                      data-dropdown-toggle="dropdown34"
+                      onClick={() => setFocus("account")}
+                      className={`withdraw-form_amount-form_dropdown !w-full !p-[20px] py-2.5 text-left inline-flex items-center justify-between withdraw-form_amount-form_input ${
                         focus === "account" ? "clicked" : ""
                       }`}
-                    >
-                      <input
-                        readOnly
-                        className="w-full"
-                        onFocus={() => setFocus("account")}
-                        {...register("accountToWithdraw", {
-                          required: "Please select bank details",
-                        })}
-                      />
-                    </label>
-                    <button
-                      id="dropdownButton"
-                      name="accountToWithdraw"
-                      data-dropdown-toggle="dropdown"
-                      className="withdraw-form_amount-form_dropdown !w-[30%] !text-[12px] px-1 py-2.5 text-center inline-flex items-center justify-center whitespace-nowrap"
                       type="button"
                     >
-                      {/* {loadingBanks && "Getting bank details..."} */}
-                      {bankdetailsLength === false && "No record found"}
-                      {setValue}
-                      {bankDetails &&
-                        bankdetailsLength !== false &&
-                        "Select bank"}
-                      <ArrowDown />
+                      {acctBank ? "Select Bank details" : "No Account details found"}
+                      <svg
+                        className="ml-2 w-4 h-4"
+                        aria-hidden="true"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M19 9l-7 7-7-7"
+                        ></path>
+                      </svg>
                     </button>
+                    {acctBank ? (
+                      <div
+                        id="dropdown34"
+                        className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+                      >
+                        <ul
+                          className="py-1 text-sm text-gray-700 dark:text-gray-200"
+                          aria-labelledby="dropdownDefault"
+                        >
+                          {bankDetails?.userBankDetails?.map((bank, index) => (
+                            <li
+                              key={index}
+                              className="block w-[100%] text-left py-2 px-4 text-sm text-[#212934] hover:bg-[#F0FFFC] cursor-pointer"
+                              onClick={() => {
+                                setValue(
+                                  "accountToWithdraw",
+                                  `${bank?.acctNumber}`,
+                                  {
+                                    shouldValidate: true,
+                                    shouldDirty: true,
+                                  }
+                                );
+                                // setSelectedBank(bank);
+                              }}
+                            >
+                              {`${bank.acctBank}:`}&nbsp;{bank.acctNumber}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                   </div>
                   <div className="w-[100%] flex justify-end">
                     <FormError errors={errors} name="accountToWithdraw" />
