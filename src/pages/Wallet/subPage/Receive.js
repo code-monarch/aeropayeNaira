@@ -20,7 +20,12 @@ const Receive = () => {
 
   // This Mutation gets the user deposit QR code
   const [getDepositQRCode, { loading }] = useMutation(GET_DEPOSIT_QRCODE);
-  const { data: userProfile, loading: loadingUserDetails, error: errorGettingUserData } = useQuery(USER_PROFILE);
+  const {
+    data: userProfile,
+    loading: loadingUserDetails,
+    error: errorGettingUserData,
+  } = useQuery(USER_PROFILE);
+  console.log("USER PROFILE", userProfile);
 
   const [qrimg, setQrImg] = useState("");
 
@@ -54,8 +59,10 @@ const Receive = () => {
                       ""
                     ) : (
                       <img
-                        src={`${userProfile?.addr ? qrimg : Error}`}
-                        className={`${!userProfile?.addr && "w-[40px] h-[40px]"}`}
+                        src={`${userProfile?.getAUser?.addr ? qrimg : Error}`}
+                        className={`${
+                          !userProfile?.getAUser?.addr && "w-[40px] h-[40px]"
+                        }`}
                         alt="QR code"
                       />
                     )}
@@ -79,9 +86,9 @@ const Receive = () => {
                   <input
                     className="rounded-[6px] !pl-[10px]"
                     type="text"
-                    value={userProfile?.addr}
+                    value={userProfile?.getAUser?.addr}
                     placeholder={`${
-                      !loadingUserDetails && !userProfile?.addr
+                      !loadingUserDetails && !userProfile?.getAUser?.addr
                         ? "Verify Email to create a wallet address"
                         : ""
                     } ${

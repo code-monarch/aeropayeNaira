@@ -92,12 +92,11 @@ const SignUp = () => {
         <LeftsideInfo />
         <div>
           <div className="signup-form">
-            <p className="title">How do you intend to use aeropaye?</p>
+            {/* <p className="title">How do you intend to use aeropaye?</p>
             <p className="sub">
               To book flights and claim refunds for canceled flights.
             </p>
-
-            <div className={`${error ? "error-line" : "line"}`}></div>
+            <div className={`${error ? "error-line" : "line"}`}></div> */}
             <form onSubmit={handleSubmit(submit, onError)}>
               <div className="flex sm:flex-row flex-col">
                 {/* First Name */}
