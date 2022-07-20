@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./index.css";
 import "./styles/main.css";
 import { Route, Routes } from "react-router-dom";
@@ -24,11 +24,8 @@ import NoMatch from "./pages/NoMatch";
 
 // Toasts Notification
 import "react-toastify/dist/ReactToastify.css";
-import useAuth from "./hooks/useAuth";
 
 function App() {
-  const { auth } = useAuth();
-  console.log("index auth", auth);
   return (
     <>
       {" "}

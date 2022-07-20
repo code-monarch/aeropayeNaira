@@ -11,7 +11,6 @@ import { LOGIN_MUTATION } from "../hooks";
 import { toastError, toastSuccess } from "../component/shared/Toasts";
 import { useForm } from "react-hook-form";
 import FormError from "../component/shared/FormError";
-// import useAuth from "../hooks/useAuth";
 import { authContext } from "../hooks/auth";
 import Button from "../component/shared/Button";
 

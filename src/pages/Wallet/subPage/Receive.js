@@ -88,14 +88,13 @@ const Receive = () => {
                     type="text"
                     value={userProfile?.getAUser?.addr}
                     placeholder={`${
-                      !loadingUserDetails && !userProfile?.getAUser?.addr
+                      !loadingUserDetails && !errorGettingUserData && !userProfile?.getAUser?.addr
                         ? "Verify Email to create a wallet address"
                         : ""
-                    } ${
+                    }${
                       loadingUserDetails ? "Getting your wallet address..." : ""
-                    }
-                     ${
-                       errorGettingUserData ? "Couldn't get wallet address" : ""
+                    }${
+                       errorGettingUserData ? "Could not get your wallet address" : ""
                      }`}
                     ref={textAreaRef}
                     readOnly
