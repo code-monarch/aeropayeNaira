@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import {Dropdown} from "flowbite";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ReactComponent as Profile } from "../../assets/icons/Profile.svg";
 import { ReactComponent as Email } from "../../assets/icons/email.svg";
@@ -24,7 +23,6 @@ const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [hidePasswordHint, setHidePasswordHint] = useState(false);
   const [focus, setFocus] = useState("");
-  const [error] = useState(false);
 
   let navigate = useNavigate();
 
@@ -196,7 +194,6 @@ const SignUp = () => {
               {/* Phone number */}
               <div className="signup-form_field">
                 <p className="label !mb-0 !pl-0 !pt-0">Phone Number</p>
-
                 <Controller
                   control={control}
                   id="phone"
@@ -207,12 +204,21 @@ const SignUp = () => {
                       onChange={onChange}
                       value={value}
                       inputStyle={{
-                        marginLeft: "49px",
+                        display: "inline-block",
+                        marginLeft: "62px",
                         borderTopLeftRadius: "0px",
                         borderBottomLeftRadius: "0px",
-                        paddingLeft: "10px",
+                        borderColor: "#e1e7ec",
+                        backgroundColor: "white",
+                        border: "none",
+                        // zIndex: "3",
                       }}
-                      className={`flex items-center !mt-0 ${
+                      buttonStyle={{
+                        width: "57px",
+                        marginRight: "70px",
+                        border: "none",
+                      }}
+                      className={`flex items-center !mt-0  !mb-0 border-[1px] bg-white border-[#e1e7ec] rounded-[6px] ${
                         focus === "phone-input" ? "clicked" : ""
                       }`}
                       onBlur={() => setFocus("")}
