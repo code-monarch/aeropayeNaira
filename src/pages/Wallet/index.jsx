@@ -19,9 +19,11 @@ import Layout from "../../component/Layout";
 import { useVerifEmailStatus } from "../../utils/EmailVerifStatus";
 
 import { useMutation, useQuery } from "@apollo/client";
-import { MINT_TOKEN_MUTATION } from "../../hooks";
-import { GET_TRANSACTION_HISTORY } from "../../hooks";
-import { BALANCE } from "../../hooks";
+import {
+  MINT_TOKEN_MUTATION,
+  GET_TRANSACTION_HISTORY,
+  BALANCE,
+} from "../../hooks";
 
 // Transaction type object with the different transaction types
 const transactTypes = {

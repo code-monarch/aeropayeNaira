@@ -8,7 +8,7 @@ import { VERIFY_EMAIL } from "../../hooks";
 const EmailToken = () => {
   const navigate = useNavigate();
   let statusRef = useRef(null);
-  const [verifyUser, { data, loading, error }] = useMutation(VERIFY_EMAIL);
+  const [verifyUser] = useMutation(VERIFY_EMAIL);
   let { token } = useParams();
   console.log("Email Token:", token);
   //   let status = statusRef.current
@@ -32,7 +32,8 @@ const EmailToken = () => {
           console.log("verify error", error);
         });
     }
-  }, [token, verifyUser]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="bg-bg h-[100vh] w-[100vw] flex flex-col pt-[64px] justify-top items-center">
