@@ -46,16 +46,16 @@ const PasswordStrength = ({ control, hidePasswordHint }) => {
           >
             {passwordStrength === 1 && "Weak"}{" "}
             {passwordStrength === 2 && "Moderate"}{" "}
-            {passwordStrength === 3 && "Hard"}
+            {passwordStrength === 3 && "Strong"}
           </span>
-          {hidePasswordHint ? (
+          {/* {hidePasswordHint ? (
             ""
           ) : (
             <p className="text-[12px] mt-[5px]">
               Hint: Password should be at least 8 characters long and must contain a number, a
               lower and uppercase alphabet and any special character
             </p>
-          )}
+          )} */}
         </div>
       </div>
     </>
