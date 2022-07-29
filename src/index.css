@@ -22,6 +22,32 @@
   width: 100vw;
   }
 
+@layer components {
+  .mulishFont {
+      font-family: "Mulish", sans-serif;
+  }
+}
+@layer components {
+  .button {
+    background: #22e0bb;
+    font-family: "Rubik", sans-serif;
+    font-weight: 500;
+    color: #060a33;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 13.5px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+}
+@layer components {
+  .wrapper {
+    @apply w-[1080px];
+  }
+}
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&family=Mulish:wght@400;600&family=Rubik:wght@400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');

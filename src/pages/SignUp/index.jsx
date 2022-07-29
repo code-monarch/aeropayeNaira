@@ -314,6 +314,7 @@ const SignUp = () => {
                 className="login-container_login flex items-center cursor-pointer justify-center"
                 type="submit"
                 loading={loading && loading}
+                disabled={loading && loading}
               >
                 Create account
               </Button>

@@ -20,6 +20,8 @@ import SignUp from "./pages/SignUp";
 import TwoFA from "./pages/TwoFA";
 import ConfirmEmail from "./pages/confirmEmail/ConfirmEmail";
 import EmailToken from "./pages/confirmEmail/EmailToken";
+import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
+import ResetPassword from "./pages/forgotPassword/ResetPassword";
 import NoMatch from "./pages/NoMatch";
 
 // Toasts Notification
@@ -45,6 +47,8 @@ function App() {
         <Route path="signup" exact element={<SignUp />} />
         <Route path="2FA" exact element={<TwoFA />} />
         <Route path="confirmation" exact element={<ConfirmEmail />} />
+        <Route path="forgot-password" exact element={<ForgotPassword />} />
+        <Route path="reset-password" exact element={<ResetPassword />} />
 
         {/* Protected Routes */}
 
