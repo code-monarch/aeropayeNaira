@@ -55,6 +55,7 @@ const ResetPassword = () => {
       })
         .then((res) => {
           toastSuccess(`${res.errors.message}`);
+          navigate("/login")
         //   toastSuccess(`${res.data.status}`);
         })
         .catch((error) => {
@@ -70,7 +71,7 @@ const ResetPassword = () => {
   return (
     <div className="bg-bg min-h-screen w-full overflow-x-hidden flex justify-center pt-[80px]">
       <div className="w-[90%] xl:wrapper flex flex-col items-center">
-        <div className="w-full flex justify-start mb-[50px] lg:mb-[10px]">
+        {/* <div className="w-full flex justify-start mb-[50px] lg:mb-[10px]">
           <button
             type="button"
             onClick={() => navigate(-1)}
@@ -81,7 +82,7 @@ const ResetPassword = () => {
               Back
             </button>
           </button>
-        </div>
+        </div> */}
         <Link to="/" className="mb-[30px]">
           <Logo className="w-auto" />
         </Link>
@@ -100,7 +101,7 @@ const ResetPassword = () => {
           {/* Password */}
           <div className="mb-[15px]">
             {" "}
-            <p className="label !mb-0 !pl-0">Password</p>
+            <p className="label !mb-0 !pl-0">New Password</p>
             <label
               className={`flex items-center h-[48px] !mt-0 px-[15px] border-[#E1E7EC] border-[1px] rounded-[8px] ${
                 focus === "password-input" ? "clicked" : ""
