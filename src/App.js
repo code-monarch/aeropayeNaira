@@ -51,8 +51,6 @@ function App() {
         <Route path="reset-password" exact element={<ResetPassword />} />
 
         {/* Protected Routes */}
-
-        {/* <Route path="/" element={<Layout />}> */}
         <Route
           path="/"
           element={
@@ -182,7 +180,6 @@ function App() {
 
         {/* Catch All */}
         <Route path="*" element={<NoMatch />} />
-        {/* </Route> */}
       </Routes>
     </>
   );
