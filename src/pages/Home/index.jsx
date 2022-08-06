@@ -1,4 +1,4 @@
-import React,{ useContext, useCallback, useState } from "react";
+import React,{ useContext, useState } from "react";
 import { authContext } from "../../hooks/auth";
 import { ReactComponent as Wave } from "../../assets/dashboard-icons/wave.svg";
 import { ReactComponent as Onboarding } from "../../assets/dashboard-icons/onboarding_illus.svg";
