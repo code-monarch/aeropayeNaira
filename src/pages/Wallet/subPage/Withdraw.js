@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { ReactComponent as ArrowLeft } from "../../../assets/dashboard-icons/arrow-left.svg";
-import { ReactComponent as ArrowDown } from "../../../assets/dashboard-icons/arrow-down.svg";
 import { Link } from "react-router-dom";
 import Layout from "../../../component/Layout";
 
@@ -14,7 +13,8 @@ import { useNavigate } from "react-router-dom";
 
 import { useMutation, useQuery } from "@apollo/client";
 import { BALANCE } from "../../../hooks";
-import { REDEEM_FIAT_MUTATION } from "../../../hooks";
+// import { REDEEM_FIAT_MUTATION } from "../../../hooks";
+import { REDEEM_ENAIRA } from "../../../hooks";
 import { GET_BANK_DETAILS } from "../../../hooks";
 
 const Withdraw = () => {
@@ -64,10 +64,7 @@ const Withdraw = () => {
   }, [balance]);
 
   // Mutation for Redeeming Token to Fiat
-  const [
-    redeemFiat,
-    { loading: redeeming },
-  ] = useMutation(REDEEM_FIAT_MUTATION, {
+  const [redeemEnaira, { loading: redeeming }] = useMutation(REDEEM_ENAIRA, {
     refetchQueries: [
       { query: BALANCE }, // DocumentNode object parsed with gql
       "balance", // Query name
@@ -77,14 +74,14 @@ const Withdraw = () => {
   // Handle form submit
   const submit = (data) => {
     console.log("dataaa", data);
-    redeemFiat({
+    redeemEnaira({
       variables: {
         amount: data?.amount,
-        accountToWithdraw: data?.accountToWithdraw,
+        // accountToWithdraw: data?.accountToWithdraw,
       },
     })
       .then((res) => {
-        toastSuccess(`${res?.data?.redeemFiat?.message}`);
+        toastSuccess(`${res?.data?.redeemEnaira?.message}`);
         navigate(-1);
       })
       .catch((error) => {
@@ -130,7 +127,7 @@ const Withdraw = () => {
                       onFocus={() => setFocus("amount")}
                       className="input-email !pl-[5px]"
                       {...register("amount", {
-                        required: "Please enter Amount",
+                        required: "Please enter an Amount",
                       })}
                     />
                     <span
@@ -160,7 +157,7 @@ const Withdraw = () => {
                 </div>
               </div>
 
-              <div className="mt-[36px] mb-[32px]">
+              {/* <div className="mt-[36px] mb-[32px]">
                 <p className="withdraw-form_title">
                   How would you like to get paid?
                 </p>
@@ -262,11 +259,11 @@ const Withdraw = () => {
                     </ul>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               <div>
                 <Button
-                  className="withdraw-form_button flex items-center cursor-pointer justify-center"
+                  className="withdraw-form_button flex items-center cursor-pointer justify-center !mt-[36px]"
                   type="submit"
                   loading={redeeming}
                   disabled={redeeming}

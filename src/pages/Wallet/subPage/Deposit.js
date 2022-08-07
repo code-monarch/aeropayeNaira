@@ -6,10 +6,11 @@ import { ReactComponent as Lock } from "../../../assets/icons/lock.svg";
 import Button from "../../../component/shared/Button";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { MAKE_PAYMENT_MUTATION } from "../../../hooks";
+// import { MAKE_PAYMENT_MUTATION } from "../../../hooks";
+import { ENAIRA_MINT } from "../../../hooks";
 
 import Layout from "../../../component/Layout";
-import { toastError } from "../../../component/shared/Toasts";
+import { toastError, toastSuccess } from "../../../component/shared/Toasts";
 
 const Deposit = () => {
   const [focus, setFocus] = useState("");
@@ -21,23 +22,22 @@ const Deposit = () => {
   console.log(depositAmountPlusTrailingZeros);
 
   //
-  const [makePayment, { loading }] = useMutation(MAKE_PAYMENT_MUTATION);
+  // const [makePayment, { loading }] = useMutation(MAKE_PAYMENT_MUTATION);
+  const [enairaMint, { loading }] = useMutation(ENAIRA_MINT);
 
   const submit = () => {
-    makePayment({
-          variables: {
-            amountDeposited: Number(depositAmountPlusTrailingZeros),
-          },
-        })
-          .then((res) => {
-            console.log("res", res);
-            const url = res?.data?.makePayment?.data?.authorization_url;
-            window.location.replace(`${url}`);
-            console.log(url, "payment checkout");
-          })
-          .catch((error) => {
-            toastError(error);
-          })
+    enairaMint({
+      variables: {
+        amount: Number(depositAmountPlusTrailingZeros),
+      },
+    })
+      .then((res) => {
+        console.log("res", res);
+        toastSuccess(`${res?.data?.enairaMint?.message}`);
+      })
+      .catch((error) => {
+        toastError(error);
+      });
   };
   return (
     <>
@@ -65,13 +65,13 @@ const Deposit = () => {
                       focus === "amt" ? "clicked" : ""
                     }`}
                   >
-                    <span className="cur inline-flex items-center px-3 rounded-l-md">
+                    <span className="cur inline-flex items-center px-3 mr-[8px] rounded-l-md">
                       NGN
                     </span>
                     {/* Deposit input */}
                     <input
                       type="number"
-                      className="!appearance-none"
+                      className="!appearance-none rounded-r-[6px]"
                       placeholder="0.00"
                       onFocus={() => setFocus("amt")}
                       onChange={(e) => {
@@ -83,62 +83,9 @@ const Deposit = () => {
                 </div>
               </div>
 
-              <div className="my-[32px]">
-                <p className="withdraw-form_title">
-                  How would you like to pay?
-                </p>
-
-                <div className="withdraw-form_amount-form">
-                  <fieldset className="platforms">
-                    <legend className="sr-only">paymentPlatform</legend>
-
-                    <div
-                      className={`platform platform-1 flex items-center cursor-pointer ${
-                        focus === "radio-1" ? "checked" : ""
-                      }`}
-                    >
-                      <input
-                        id="platform-option-1"
-                        type="radio"
-                        name="paymentPlatform"
-                        className="radio-button"
-                        aria-labelledby="platform-option-1"
-                        aria-describedby="platform-option-1"
-                        onFocus={() => setFocus("radio-1")}
-                      />
-                      <label
-                        htmlFor="platform-option-1"
-                        className="ml-2 platform-option-1"
-                      >
-                        <Paystack />
-                      </label>
-                    </div>
-
-                    <div
-                      className={`platform platform-2 flex items-center cursor-pointer ${
-                        focus === "radio-2" ? "checked" : ""
-                      }`}
-                    >
-                      <input
-                        id="platform-option-2"
-                        type="radio"
-                        name="paymentPlatform"
-                        className="radio-button"
-                        aria-labelledby="platform-option-2"
-                        aria-describedby="platform-option-2"
-                        onFocus={() => setFocus("radio-2")}
-                      />
-                      <label htmlFor="platform-option-2" className="ml-2">
-                        <img src={flutterwave} alt="x" />
-                      </label>
-                    </div>
-                  </fieldset>
-                </div>
-              </div>
-
               <div>
                 <Button
-                  className="withdraw-form_button flex items-center cursor-pointer justify-center"
+                  className="withdraw-form_button flex items-center cursor-pointer justify-center !mt-[36px]"
                   loading={loading}
                   onClick={() => {
                     submit();
