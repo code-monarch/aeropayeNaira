@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ReactComponent as ArrowLeft } from "../../../assets/dashboard-icons/arrow-left.svg";
 import { Link } from "react-router-dom";
+import eNaira from "../../../assets/eNaira.png";
 import Layout from "../../../component/Layout";
 
 import Button from "../../../component/shared/Button";
@@ -42,13 +43,13 @@ const Withdraw = () => {
   console.log("Bank Details:", bankDetails);
   const banks = bankDetails?.userBankDetails?.acctBank;
   console.log("banksss: ", banks);
-  const acctBank = bankDetails?.userBankDetails?.acctBank;
-  const acctNumber = bankDetails?.userBankDetails?.acctNumber;
+  // const acctBank = bankDetails?.userBankDetails?.acctBank;
+  // const acctNumber = bankDetails?.userBankDetails?.acctNumber;
 
-  let bankdetailsLength = Boolean(
-    Array.isArray(bankDetails?.userBankDetails) &&
-      bankDetails?.userBankDetails.length
-  );
+  // let bankdetailsLength = Boolean(
+  //   Array.isArray(bankDetails?.userBankDetails) &&
+  //     bankDetails?.userBankDetails.length
+  // );
 
   // setWalletBalance(data?.balance?.data?.data);
   let balance = data?.balance?.data?.data;
@@ -157,110 +158,6 @@ const Withdraw = () => {
                 </div>
               </div>
 
-              {/* <div className="mt-[36px] mb-[32px]">
-                <p className="withdraw-form_title">
-                  How would you like to get paid?
-                </p>
-
-                <div className="withdraw-form_amount-form">
-                  <p className="withdraw-form_amount-form_title">
-                    Select Withdrawal Account
-                  </p>
-                  <div
-                    className={`w-full flex flex-col justify-between items-center`}
-                  >
-                    <button
-                      id="dropdownDefault"
-                      data-dropdown-toggle="dropdown34"
-                      onClick={() => setFocus("account")}
-                      className={`withdraw-form_amount-form_dropdown !w-full !p-[20px] py-2.5 text-left inline-flex items-center justify-between withdraw-form_amount-form_input ${
-                        focus === "account" ? "clicked" : ""
-                      }`}
-                      type="button"
-                    >
-                      {acctBank ? "Select Bank details" : "No Account details found"}
-                      <svg
-                        className="ml-2 w-4 h-4"
-                        aria-hidden="true"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M19 9l-7 7-7-7"
-                        ></path>
-                      </svg>
-                    </button>
-                    {acctBank ? (
-                      <div
-                        id="dropdown34"
-                        className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
-                      >
-                        <ul
-                          className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                          aria-labelledby="dropdownDefault"
-                        >
-                          {bankDetails?.userBankDetails?.map((bank, index) => (
-                            <li
-                              key={index}
-                              className="block w-[100%] text-left py-2 px-4 text-sm text-[#212934] hover:bg-[#F0FFFC] cursor-pointer"
-                              onClick={() => {
-                                setValue(
-                                  "accountToWithdraw",
-                                  `${bank?.acctNumber}`,
-                                  {
-                                    shouldValidate: true,
-                                    shouldDirty: true,
-                                  }
-                                );
-                                // setSelectedBank(bank);
-                              }}
-                            >
-                              {`${bank.acctBank}:`}&nbsp;{bank.acctNumber}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                  <div className="w-[100%] flex justify-end">
-                    <FormError errors={errors} name="accountToWithdraw" />
-                  </div>
-                  <div
-                    id="dropdown"
-                    className="hidden z-10 overflow-auto list-none bg-white rounded divide-y divide-gray-100 shadow-md"
-                  >
-                    <ul className="py-1" aria-labelledby="dropdownButton">
-                      {bankDetails?.userBankDetails?.map((bank, index) => (
-                        <li
-                          key={index}
-                          className="block w-[100%] text-left py-2 px-4 text-sm text-[#212934] hover:bg-[#F0FFFC] cursor-pointer"
-                          onClick={() => {
-                            setValue(
-                              "accountToWithdraw",
-                              `${bank?.acctNumber}`,
-                              {
-                                shouldValidate: true,
-                                shouldDirty: true,
-                              }
-                            );
-                            // setSelectedBank(bank);
-                          }}
-                        >
-                          {`${bank.acctBank}:`}&nbsp;{bank.acctNumber}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div> */}
-
               <div>
                 <Button
                   className="withdraw-form_button flex items-center cursor-pointer justify-center !mt-[36px]"
@@ -276,6 +173,10 @@ const Withdraw = () => {
                 Should arrive after 5 network confirmations
               </p>
             </form>
+            <div className="flex justify-center items-center space-x-[16px] mt-[35px]">
+              <h2 className="text-[20px]">Powered by</h2>
+              <img src={eNaira} alt="eNaira logo" className="w-[150px]" />
+            </div>
           </div>
         </div>
       </Layout>

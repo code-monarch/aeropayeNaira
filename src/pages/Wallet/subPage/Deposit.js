@@ -1,42 +1,34 @@
 import React, { useState } from "react";
 import { ReactComponent as ArrowLeft } from "../../../assets/dashboard-icons/arrow-left.svg";
-import { ReactComponent as Paystack } from "../../../assets/dashboard-icons/Paystack_Logo.svg";
-import flutterwave from "../../../assets/dashboard-icons/flutterwave.svg";
-import { ReactComponent as Lock } from "../../../assets/icons/lock.svg";
 import Button from "../../../component/shared/Button";
-import { Link } from "react-router-dom";
+import eNaira from "../../../assets/eNaira.png";
+import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-// import { MAKE_PAYMENT_MUTATION } from "../../../hooks";
 import { ENAIRA_MINT } from "../../../hooks";
 
 import Layout from "../../../component/Layout";
 import { toastError, toastSuccess } from "../../../component/shared/Toasts";
 
 const Deposit = () => {
+  const navigate = useNavigate();
   const [focus, setFocus] = useState("");
   const [depositAmount, setDepositAmount] = useState("0.00");
 
-  // Add two zeros to Amount inputed
-  const depositAmountPlusTrailingZeros =
-    depositAmount + Number("0") + Number("0");
-  console.log(depositAmountPlusTrailingZeros);
-
-  //
-  // const [makePayment, { loading }] = useMutation(MAKE_PAYMENT_MUTATION);
   const [enairaMint, { loading }] = useMutation(ENAIRA_MINT);
 
   const submit = () => {
     enairaMint({
       variables: {
-        amount: Number(depositAmountPlusTrailingZeros),
+        amount: Number(depositAmount),
       },
     })
       .then((res) => {
         console.log("res", res);
         toastSuccess(`${res?.data?.enairaMint?.message}`);
+        navigate("/wallet");
       })
       .catch((error) => {
-        toastError(error);
+        toastError(`${error.message}`);
       });
   };
   return (
@@ -91,19 +83,13 @@ const Deposit = () => {
                     submit();
                   }}
                 >
-                  Continue
+                  Continue to deposit
                 </Button>
               </div>
-
-              <p className="withdraw-form_info-depo flex items-center">
-                <Lock className="mr-[10px]" />
-                You will be redirected to the third party's webpage to make this
-                payment
-              </p>
-
-              <p className="withdraw-form_sub-info">
-                Deposit Aeropaye token instead
-              </p>
+            </div>
+            <div className="flex justify-center items-center space-x-[16px] mt-[35px]">
+              <h2 className="text-[20px]">Powered by</h2>
+              <img src={eNaira} alt="eNaira logo" className="w-[150px]" />
             </div>
           </div>
         </div>
